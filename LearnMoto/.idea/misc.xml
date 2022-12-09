@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Christian Villanueva/AndroidStudioProjects/LearnMoto/app/src/main/res/drawable-anydpi/ic_user_circle.xml" value="0.1595" />
+        <entry key="..\:/Users/Christian Villanueva/AndroidStudioProjects/LearnMoto/app/src/main/res/drawable/background_edittext.xml" value="0.129" />
+        <entry key="..\:/Users/Christian Villanueva/AndroidStudioProjects/LearnMoto/app/src/main/res/drawable/border.xml" value="0.129" />
+        <entry key="..\:/Users/Christian Villanueva/AndroidStudioProjects/LearnMoto/app/src/main/res/drawable/checkbox.xml" value="0.129" />
+        <entry key="..\:/Users/Christian Villanueva/AndroidStudioProjects/LearnMoto/app/src/main/res/drawable/checked_button.xml" value="0.129" />
+        <entry key="..\:/Users/Christian Villanueva/AndroidStudioProjects/LearnMoto/app/src/main/res/drawable/circle_outline.xml" value="0.129" />
+        <entry key="..\:/Users/Christian Villanueva/AndroidStudioProjects/LearnMoto/app/src/main/res/drawable/custom_background.xml" value="0.1595" />
+        <entry key="..\:/Users/Christian Villanueva/AndroidStudioProjects/LearnMoto/app/src/main/res/drawable/custom_checkbox.xml" value="0.129" />
+        <entry key="..\:/Users/Christian Villanueva/AndroidStudioProjects/LearnMoto/app/src/main/res/drawable/custom_login_button.xml" value="0.129" />
+        <entry key="..\:/Users/Christian Villanueva/AndroidStudioProjects/LearnMoto/app/src/main/res/drawable/custom_radiobutton.xml" value="0.129" />
+        <entry key="..\:/Users/Christian Villanueva/AndroidStudioProjects/LearnMoto/app/src/main/res/drawable/custom_spinner.xml" value="0.1595" />
+        <entry key="..\:/Users/Christian Villanueva/AndroidStudioProjects/LearnMoto/app/src/main/res/drawable/gradient_button.xml" value="0.129" />
+        <entry key="..\:/Users/Christian Villanueva/AndroidStudioProjects/LearnMoto/app/src/main/res/drawable/ic_baseline_arrow_drop_down_circle_24.xml" value="0.1595" />
+        <entry key="..\:/Users/Christian Villanueva/AndroidStudioProjects/LearnMoto/app/src/main/res/drawable/ic_baseline_vpn_key_24.xml" value="0.1595" />
+        <entry key="..\:/Users/Christian Villanueva/AndroidStudioProjects/LearnMoto/app/src/main/res/drawable/ic_home.xml" value="0.1595" />
+        <entry key="..\:/Users/Christian Villanueva/AndroidStudioProjects/LearnMoto/app/src/main/res/drawable/ic_todo.xml" value="0.1595" />
+        <entry key="..\:/Users/Christian Villanueva/AndroidStudioProjects/LearnMoto/app/src/main/res/drawable/roundcorner.xml" value="0.1595" />
+        <entry key="..\:/Users/Christian Villanueva/AndroidStudioProjects/LearnMoto/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/Christian Villanueva/AndroidStudioProjects/LearnMoto/app/src/main/res/layout/activity_parent_login.xml" value="0.22" />
+        <entry key="..\:/Users/Christian Villanueva/AndroidStudioProjects/LearnMoto/app/src/main/res/layout/activity_parent_registration.xml" value="0.2" />
+        <entry key="..\:/Users/Christian Villanueva/AndroidStudioProjects/LearnMoto/app/src/main/res/layout/activity_settings.xml" value="0.16485507246376813" />
+        <entry key="..\:/Users/Christian Villanueva/AndroidStudioProjects/LearnMoto/app/src/main/res/layout/activity_student_login.xml" value="0.16485507246376813" />
+        <entry key="..\:/Users/Christian Villanueva/AndroidStudioProjects/LearnMoto/app/src/main/res/layout/activity_student_registration.xml" value="0.25" />
+        <entry key="..\:/Users/Christian Villanueva/AndroidStudioProjects/LearnMoto/app/src/main/res/layout/activity_student_view.xml" value="0.22" />
+        <entry key="..\:/Users/Christian Villanueva/AndroidStudioProjects/LearnMoto/app/src/main/res/layout/activity_teacher_login.xml" value="0.16485507246376813" />
+        <entry key="..\:/Users/Christian Villanueva/AndroidStudioProjects/LearnMoto/app/src/main/res/layout/activity_teacher_registration.xml" value="0.25" />
+        <entry key="..\:/Users/Christian Villanueva/AndroidStudioProjects/LearnMoto/app/src/main/res/layout/activity_todo.xml" value="0.16485507246376813" />
+        <entry key="..\:/Users/Christian Villanueva/AndroidStudioProjects/LearnMoto/app/src/main/res/layout/border.xml" value="0.16485507246376813" />
+        <entry key="..\:/Users/Christian Villanueva/AndroidStudioProjects/LearnMoto/app/src/main/res/layout/custom_spinner.xml" value="0.22" />
+        <entry key="..\:/Users/Christian Villanueva/AndroidStudioProjects/LearnMoto/app/src/main/res/layout/framelayout.xml" value="0.10625" />
+        <entry key="..\:/Users/Christian Villanueva/AndroidStudioProjects/LearnMoto/app/src/main/res/layout/grid_layout.xml" value="0.25" />
+        <entry key="..\:/Users/Christian Villanueva/AndroidStudioProjects/LearnMoto/app/src/main/res/layout/mylayout.xml" value="0.16485507246376813" />
+        <entry key="..\:/Users/Christian Villanueva/AndroidStudioProjects/LearnMoto/app/src/main/res/layout/user_type.xml" value="0.33" />
+        <entry key="..\:/Users/Christian Villanueva/AndroidStudioProjects/LearnMoto/app/src/main/res/menu/item_menu.xml" value="0.184375" />
+        <entry key="..\:/Users/Christian Villanueva/AndroidStudioProjects/LearnMoto/app/src/main/res/xml/network_security_config.xml" value="0.10729166666666666" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

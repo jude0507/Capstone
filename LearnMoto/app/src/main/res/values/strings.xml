@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">LearnMoto</string>
+    <string name="home_text">Home</string>
+    <string name="todo_text">To-Do</string>
+    <string name="setting_text">Settings</string>
+    <string name="welcome">Welcome</string>
+    <string name="login">Login</string>
+    <string name="new_user">New User?</string>
+    <string name="teacher_user_id">Teacher User ID</string>
+    <string name="teacher_name">Teacher Name</string>
+    <string name="address">Address</string>
+    <string name="create_your_account">CREATE YOUR ACCOUNT</string>
+    <string name="password">Password</string>
+    <string name="assign_level">Assign Level</string>
+
+
+    <string-array name="Levels">
+        <item>Nursery</item>
+        <item>Kinder</item>
+        <item>Preparatory</item>
+    </string-array>
+
+
+</resources>

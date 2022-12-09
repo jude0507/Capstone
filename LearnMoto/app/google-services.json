@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "281737860276",
+    "project_id": "learnmoto",
+    "storage_bucket": "learnmoto.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:281737860276:android:cf0e68b2543e3383ba73e1",
+        "android_client_info": {
+          "package_name": "com.example.learnmoto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "281737860276-07tvv1c9guh9botiutffmsn8bcc89qh5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_0QP0P0-NzsCuEw1EUVldQi3kUrTJu04"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "281737860276-07tvv1c9guh9botiutffmsn8bcc89qh5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

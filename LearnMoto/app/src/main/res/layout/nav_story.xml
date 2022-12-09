@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fontColor"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginVertical="5dp"
+        android:onClick="clicklayout"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/back_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Home"
+            android:textColor="@color/black"
+            android:drawableLeft="@drawable/ic_leftarrow"
+            android:onClick="BacktoStudentHome"
+            android:layout_margin="15dp"
+            android:textSize="18dp"/>
+
+        <!--        <ImageView-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_margin="15dp"-->
+        <!--            android:layout_marginVertical="10dp"-->
+        <!--            android:src="@drawable/ic_leftarrow"/>-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Story"
+            android:textSize="30dp"
+            android:layout_marginVertical="15dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/fingerpaint"
+            android:layout_gravity="center"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="200dp"
+            android:layout_height="150dp"
+            app:cardCornerRadius="10dp"
+            app:cardBackgroundColor="@color/cardColor"
+            app:cardElevation="5dp"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_storytelling"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/read"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:fontFamily="@font/aloevera"
+            android:textColor="@color/fontColor"
+            android:background="@drawable/custom_login_button"
+            android:text="READ"
+            android:onClick="readme"
+            android:drawableRight="@drawable/ic_reading"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="200dp"
+            android:layout_height="150dp"
+            app:cardCornerRadius="10dp"
+            app:cardBackgroundColor="@color/cardColor"
+            app:cardElevation="5dp"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_storytelling"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/watch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:text="WATCH"
+            android:background="@drawable/custom_login_button"
+            android:fontFamily="@font/aloevera"
+            android:textColor="@color/fontColor"
+            android:onClick="watchme"
+            android:drawableRight="@drawable/ic_watching"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="200dp"
+            android:layout_height="150dp"
+            app:cardCornerRadius="10dp"
+            app:cardBackgroundColor="@color/cardColor"
+            app:cardElevation="5dp"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_storytelling"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/takequiz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:text="TAKE A QUIZ"
+            android:fontFamily="@font/aloevera"
+            android:textColor="@color/fontColor"
+            android:background="@drawable/custom_login_button"
+            android:drawableRight="@drawable/ic_quiz"
+            android:onClick="takeaquiz"/>
+
+    </LinearLayout>
+
+</ScrollView>

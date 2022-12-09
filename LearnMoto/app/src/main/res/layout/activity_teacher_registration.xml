@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".Teacher.TeacherRegistration">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/logo"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/create_your_account"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/white"/>
+
+        <EditText
+            android:id="@+id/TeacherName"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/custom_input"
+            android:drawableStart="@drawable/custom_icon_name"
+            android:hint="@string/teacher_name"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:inputType="textCapWords"
+            android:drawablePadding="10dp"
+            android:padding="10dp" />
+
+        <EditText
+            android:id="@+id/TeacherAddress"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/custom_input"
+            android:drawableStart="@drawable/custom_icon_address"
+            android:hint="@string/address"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:inputType="textCapWords"
+            android:drawablePadding="10dp"
+            android:padding="10dp" />
+        <EditText
+            android:id="@+id/TeacherPhone"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/custom_input"
+            android:drawableLeft="@drawable/custom_icon_phone"
+            android:drawablePadding="10dp"
+            android:hint="Phone Number"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:padding="10dp"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/TeacherID"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/custom_input"
+            android:drawableStart="@drawable/custom_icon_user"
+            android:hint="@string/teacher_user_id"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:inputType="text"
+            android:maxLength="15"
+            android:drawablePadding="10dp"
+            android:padding="10dp" />
+        <EditText
+            android:id="@+id/TeacherPass"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/custom_input"
+            android:drawableStart="@drawable/custom_icon_key"
+            android:hint="@string/password"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:drawablePadding="10dp"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:layout_marginBottom="15dp"/>
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginHorizontal="5sp"-->
+<!--                android:textSize="17dp"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:drawableStart="@drawable/ic_add"-->
+<!--                android:text="ASSIGN LEVEL"-->
+<!--                android:onClick="ShowWindowLevel"/>-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginHorizontal="5sp"-->
+<!--                android:textSize="17dp"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:drawableStart="@drawable/ic_add"-->
+<!--                android:text="ASSIGN SUBJECTS"/>-->
+
+<!--        </LinearLayout>-->
+
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="Sign up"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:background="@drawable/custom_login_button"
+            android:onClick="RegistrationFunction"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Already registered?"
+                android:textColor="@color/white"
+                android:textSize="15dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:onClick="TeacherLogin"
+                android:text=" Sign in"
+                android:textColor="@color/green"
+                android:textSize="18dp"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

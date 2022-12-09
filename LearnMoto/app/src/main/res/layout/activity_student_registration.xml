@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background"
+    tools:context=".Student.StudentRegistration">
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/logo"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CREATE YOUR ACCOUNT"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="340dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="5dp"
+        android:layout_marginTop="10dp"
+        app:cardBackgroundColor="@color/transparent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Student Information"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:textColor="@color/white"/>
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/studentName"
+                    android:layout_width="300dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_input"
+                    android:drawableLeft="@drawable/custom_icon_name"
+                    android:drawablePadding="10dp"
+                    android:hint="Student Name"
+                    android:inputType="textCapWords"
+                    android:padding="10dp"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/studentAddress"
+                    android:layout_width="300dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_input"
+                    android:drawableLeft="@drawable/custom_icon_address"
+                    android:drawablePadding="10dp"
+                    android:hint="Address"
+                    android:maxLength="50"
+                    android:padding="10dp"
+                    android:inputType="textCapWords"
+                    android:textSize="18dp" />
+
+                <RadioGroup
+                    android:id="@+id/radiogrp"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/background_edittext"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/icon_gender"
+                        android:drawablePadding="10dp"
+                        android:text="Gender:"
+                        android:textSize="18dp" />
+
+                    <RadioButton
+                        android:id="@+id/male"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Male" />
+
+                    <RadioButton
+                        android:id="@+id/female"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="30sp"
+                        android:text="Female" />
+                </RadioGroup>
+
+                <EditText
+                    android:id="@+id/et_birthday"
+                    android:layout_width="300dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_input"
+                    android:drawableLeft="@drawable/custom_icon_calendar"
+                    android:drawablePadding="10dp"
+                    android:hint="Birthday"
+                    android:editable="false"
+                    android:padding="10dp"
+                    android:textSize="18dp" />
+
+                <LinearLayout
+                    android:layout_width="300dp"
+                    android:layout_height="45dp"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:padding="10dp"
+                    android:background="@drawable/custom_input">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/custom_icon_level"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Year Level: "
+                        android:textSize="18dp"
+                        />
+
+                    <Spinner
+                        android:id="@+id/year_level"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/custom_spinner"/>
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/guardianName"
+                    android:layout_width="300dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_input"
+                    android:drawableLeft="@drawable/custom_icon_name"
+                    android:drawablePadding="10dp"
+                    android:hint="Guardian/Parent Name"
+                    android:inputType="textCapWords"
+                    android:padding="10dp"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/studentID"
+                    android:layout_width="300dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_input"
+                    android:drawableLeft="@drawable/custom_icon_user"
+                    android:drawablePadding="10dp"
+                    android:hint="Student ID"
+                    android:maxLength="9"
+                    android:inputType="number"
+                    android:padding="10dp"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/studentPass"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_input"
+                    android:drawableLeft="@drawable/custom_icon_key"
+                    android:drawablePadding="10dp"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:padding="10dp"
+                    android:textSize="18dp"
+                    android:layout_marginBottom="15dp"/>
+
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/captureimage"-->
+<!--                    android:layout_width="300dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:background="@drawable/background_edittext"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:layout_marginLeft="80dp"-->
+<!--                        android:text="Take a photo"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="20sp" />-->
+<!--                    <ImageView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="5dp"-->
+<!--                        android:layout_marginLeft="5dp"-->
+<!--                        android:src="@drawable/icon_camera"/>-->
+<!--                </LinearLayout>-->
+
+<!--                <androidx.cardview.widget.CardView-->
+<!--                    android:layout_width="100dp"-->
+<!--                    android:layout_height="100dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    app:cardCornerRadius="50dp"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:layout_marginBottom="10dp">-->
+
+<!--                    <de.hdodenhof.circleimageview.CircleImageView-->
+<!--                        android:id="@+id/studentImage"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        app:civ_border_color="@color/white"-->
+<!--                        android:src="@drawable/ic_user_circle"-->
+<!--                        app:civ_border_width="2dp"/>-->
+
+<!--                </androidx.cardview.widget.CardView>-->
+
+            </LinearLayout>
+        </ScrollView>
+
+
+    </androidx.cardview.widget.CardView>
+    <Button
+        android:id="@+id/btnStudentSignUp"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:text="Sign up"
+        android:textColor="@color/fontColor"
+        android:textSize="18sp"
+        android:onClick="SignUpFunction"
+        android:background="@color/light_green"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Already registered?"
+            android:textColor="@color/white"
+            android:textSize="15dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Sign in"
+            android:textColor="@color/green"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:onClick="StudentLoginPage"/>
+
+    </LinearLayout>
+
+</LinearLayout>
