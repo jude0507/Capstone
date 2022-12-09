@@ -28,7 +28,7 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.MyViewHo
     private Context context;
     //private List<String> title;
     private List<Integer> images;
-    private itemClickListener listener;
+    //private itemClickListener listener;
 
     public StudentAdapter(Context context, List<Integer> images){
         this.context = context;
@@ -115,7 +115,7 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.MyViewHo
 //        }
     }
 
-    public interface itemClickListener{
-        void clickListener(View view, int position);
-    }
+//    public interface itemClickListener{
+//        void clickListener(View view, int position);
+//    }
 }

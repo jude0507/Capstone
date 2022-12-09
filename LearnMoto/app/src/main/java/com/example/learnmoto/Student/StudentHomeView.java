@@ -44,7 +44,6 @@ public class StudentHomeView extends AppCompatActivity {
     AnnouncementAdapter announcementAdapter;
     BottomNavigationView bottomNavigationView;
     RecyclerView recyclerView, rv_announcement;
-    List<String> titles;
     List<Integer> mImages;
     StudentAdapter studentAdapter;
     ScrollView scrollView;
@@ -108,7 +107,6 @@ public class StudentHomeView extends AppCompatActivity {
             return false;
         });
 
-        titles = new ArrayList<>();
         mImages = new ArrayList<>();
 
         studentAdapter = new StudentAdapter(this, mImages);
