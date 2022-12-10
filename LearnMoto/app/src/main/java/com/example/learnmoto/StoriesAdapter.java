@@ -7,12 +7,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.learnmoto.Nursery.NurseryEnglish;
+import com.example.learnmoto.Nursery.Story.FirstStory;
+import com.example.learnmoto.Nursery.Story.FourthStory;
+import com.example.learnmoto.Nursery.Story.SecondStory;
+import com.example.learnmoto.Nursery.Story.ThirdStory;
 
 import java.util.List;
 
@@ -58,18 +60,20 @@ public class StoriesAdapter extends RecyclerView.Adapter<StoriesAdapter.MyViewHo
             storyTitles = itemView.findViewById(R.id.story_title);
             storyImages = itemView.findViewById(R.id.story_Image);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    switch (getAdapterPosition()){
-                        case 0:
-                            Toast.makeText(view.getContext(), "0", Toast.LENGTH_SHORT).show();
-                            view.getContext().startActivity(new Intent(view.getContext(), ViewStory.class));
-                            break;
-                        case 1:
-                            Toast.makeText(view.getContext(), "1", Toast.LENGTH_SHORT).show();
-                            view.getContext().startActivity(new Intent(view.getContext(), ViewStory.class));
-                    }
+            itemView.setOnClickListener(view -> {
+                switch (getAdapterPosition()){
+                    case 0:
+                        view.getContext().startActivity(new Intent(view.getContext(), FirstStory.class));
+                        break;
+                    case 1:
+                        view.getContext().startActivity(new Intent(view.getContext(), SecondStory.class));
+                        break;
+                    case 2:
+                        view.getContext().startActivity(new Intent(view.getContext(), ThirdStory.class));
+                        break;
+                    case 3:
+                        view.getContext().startActivity(new Intent(view.getContext(), FourthStory.class));
+                        break;
                 }
             });
 

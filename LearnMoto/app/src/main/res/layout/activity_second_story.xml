@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewStory"
+    tools:context=".Nursery.Story.SecondStory"
     android:background="@drawable/background">
 
     <LinearLayout
@@ -26,13 +26,14 @@
             android:layout_height="150dp"
             android:layout_gravity="center"
             android:id="@+id/ImageStory"
-            android:src="@drawable/ic_gallery_dialog"/>
+            android:src="@drawable/ant_dove"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Title"
             android:textSize="20dp"
+            android:capitalize="characters"
             android:id="@+id/TitleStory"
             android:layout_gravity="center"/>
 
@@ -47,16 +48,6 @@
             android:textColor="@color/black"
             android:textSize="18dp"
             android:text="Story"/>
-
-        <!--            <TextView-->
-        <!--                android:id="@+id/storytelling"-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:layout_marginVertical="10dp"-->
-        <!--                android:padding="15dp"-->
-        <!--                android:textColor="@color/black"-->
-        <!--                android:text="Story"-->
-        <!--                android:textAlignment="center" />-->
 
         <LinearLayout
             android:layout_width="wrap_content"

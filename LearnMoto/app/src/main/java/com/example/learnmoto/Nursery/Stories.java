@@ -21,7 +21,10 @@ import me.biubiubiu.justifytext.library.JustifyTextView;
 public class Stories extends AppCompatActivity {
 
 
-    public static String title1, title2, title3, title4;
+    public final static String title1 = "The lion and the mouse";
+    public final static String title2 = "The ant and the dove";
+    public final static String title3 = "The ant and the grasshopper";
+    public final static String title4 = "The tale of the pencil";
     RecyclerView rv_stories;
     List<String> storyTitles;
     List<Integer> storyImages;
@@ -33,11 +36,6 @@ public class Stories extends AppCompatActivity {
         setContentView(R.layout.activity_stories);
 
         rv_stories = findViewById(R.id.stories);
-
-        title1 = "The lion and the mouse";
-        title2 = "The ant and the dove";
-        title3 = "The ant and the grasshopper";
-        title4 = "The tale of the pencil";
 
         storyTitles = new ArrayList<>();
         storyImages = new ArrayList<>();

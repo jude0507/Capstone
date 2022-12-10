@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Nursery.Story.ThirdStory"
+    android:background="@drawable/background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--        <include layout="@layout/toolbar"/>-->
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:onClick="BackToStories"
+            android:src="@drawable/ic_arrowback"/>
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:id="@+id/ImageStory"
+            android:src="@drawable/ant_grasshopper"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Title"
+            android:textSize="20dp"
+            android:capitalize="characters"
+            android:id="@+id/TitleStory"
+            android:layout_gravity="center"/>
+
+        <me.biubiubiu.justifytext.library.JustifyTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/justifyfield"
+            android:layout_marginStart="16dp"
+            android:paddingStart="15dp"
+            android:layout_marginTop="16dp"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:text="Story"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginVertical="15dp">
+
+            <ImageView
+                android:onClick="Play"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:src="@drawable/ic_play"/>
+
+            <ImageView
+                android:onClick="Pause"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:src="@drawable/ic_pause"/>
+
+            <ImageView
+                android:onClick="Stop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:src="@drawable/ic_stop"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
