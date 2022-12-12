@@ -1,4 +1,4 @@
-package com.example.learnmoto.CrayonContent;
+package com.example.learnmoto.Nursery.English;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
@@ -9,22 +9,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.learnmoto.Nursery.Stories;
+import com.example.learnmoto.PDF;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Student.StudentHomeView;
 
-public class CrayonsRead extends AppCompatActivity {
+public class NurseryEnglish extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_crayons_read);
+        setContentView(R.layout.activity_nursery_english);
 
         drawerLayout = findViewById(R.id.mydrawer_layout);
 
     }
-
     public void clickmenu(View view) {
         openDrawer(drawerLayout);
     }
@@ -48,10 +49,10 @@ public class CrayonsRead extends AppCompatActivity {
         recreate();
     }
     public void watchme(View view){
-        redirectActivity(this, CrayonsWatch.class);
+        redirectActivity(this, NurseryEnglishWatch.class);
     }
     public void takeaquiz(View view){
-        redirectActivity(this, CrayonsQuiz.class);
+        redirectActivity(this, NurseryEnglishQuiz.class);
     }
 
     public static void redirectActivity(Activity activity, Class myclass) {
@@ -72,4 +73,11 @@ public class CrayonsRead extends AppCompatActivity {
         startActivity(new Intent(this, StudentHomeView.class));
     }
 
+    public void story(View view) {
+        startActivity(new Intent(this, Stories.class));
+    }
+
+    public void pdf(View view) {
+        startActivity(new Intent(this, PDF.class));
+    }
 }

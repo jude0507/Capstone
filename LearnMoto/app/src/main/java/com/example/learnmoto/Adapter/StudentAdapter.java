@@ -10,16 +10,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.learnmoto.AnimalContent.AnimalsRead;
-import com.example.learnmoto.CrayonContent.CrayonsRead;
 import com.example.learnmoto.Kinder.KinderEnglish;
-import com.example.learnmoto.NumberContent.NumberRead;
-import com.example.learnmoto.Nursery.NurseryEnglish;
+import com.example.learnmoto.Nursery.English.NurseryEnglish;
 import com.example.learnmoto.Preparatory.PreparatoryEnglish;
 import com.example.learnmoto.R;
-import com.example.learnmoto.ShapeContent.ShapesRead;
-import com.example.learnmoto.StoryContent.StoryRead;
 import com.example.learnmoto.Student.StudentLogin;
 
 import java.util.List;
@@ -87,23 +81,23 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.MyViewHo
                             break;
                         case 1:
                             Toast.makeText(v.getContext(), "Math", Toast.LENGTH_SHORT).show();
-                            v.getContext().startActivity(new Intent(v.getContext(), CrayonsRead.class));
+                            //v.getContext().startActivity(new Intent(v.getContext(), CrayonsRead.class));
                             break;
                         case 2:
                             Toast.makeText(v.getContext(), "Science", Toast.LENGTH_SHORT).show();
-                            v.getContext().startActivity(new Intent(v.getContext(), NumberRead.class));
+                            //v.getContext().startActivity(new Intent(v.getContext(), NumberRead.class));
                             break;
                         case 3:
                             Toast.makeText(v.getContext(), "Christian Living", Toast.LENGTH_SHORT).show();
-                            v.getContext().startActivity(new Intent(v.getContext(), StoryRead.class));
+                            //v.getContext().startActivity(new Intent(v.getContext(), StoryRead.class));
                             break;
                         case 4:
                             Toast.makeText(v.getContext(), "Filipino", Toast.LENGTH_SHORT).show();
-                            v.getContext().startActivity(new Intent(v.getContext(), ShapesRead.class));
+                            //v.getContext().startActivity(new Intent(v.getContext(), ShapesRead.class));
                             break;
                         case 5:
                             Toast.makeText(v.getContext(), "Sibika at Kultura", Toast.LENGTH_SHORT).show();
-                            v.getContext().startActivity(new Intent(v.getContext(), AnimalsRead.class));
+                            //v.getContext().startActivity(new Intent(v.getContext(), AnimalsRead.class));
                             break;
                     }
                 }

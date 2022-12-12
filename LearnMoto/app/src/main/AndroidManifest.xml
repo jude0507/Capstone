@@ -21,6 +21,20 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".Nursery.English.NurseryEnglishQuiz"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Nursery.English.NurseryEnglishWatch"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ViewPDF"
             android:exported="false"
             android:noHistory="true">
@@ -85,7 +99,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Nursery.NurseryEnglish"
+            android:name=".Nursery.English.NurseryEnglish"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.learnmoto.Nursery.NurseryEnglish;
 import com.github.barteksc.pdfviewer.PDFView;
 
 public class ViewPDF extends AppCompatActivity {
@@ -27,6 +26,15 @@ public class ViewPDF extends AppCompatActivity {
         }
         if (getItem.equals("alphabets")){
             pdfviewer.fromAsset("alphabets.pdf").load();
+        }
+        if (getItem.equals("Real or Make")){
+            pdfviewer.fromAsset("Real or Make.pdf").load();
+        }
+        if (getItem.equals("Different Colors")){
+            pdfviewer.fromAsset("Different Colors.pdf").load();
+        }
+        if (getItem.equals("Reading Objects")){
+            pdfviewer.fromAsset("Reading Objects.pdf").load();
         }
 
     }

@@ -1,4 +1,4 @@
-package com.example.learnmoto.AlphabetContent;
+package com.example.learnmoto.Nursery.English;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
@@ -12,14 +12,14 @@ import android.view.View;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Student.StudentHomeView;
 
-public class AlphabetRead extends AppCompatActivity {
+public class NurseryEnglishQuiz extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_alphabet_read);
+        setContentView(R.layout.activity_nursery_english_quiz);
 
         drawerLayout = findViewById(R.id.mydrawer_layout);
 
@@ -45,13 +45,13 @@ public class AlphabetRead extends AppCompatActivity {
     }
 
     public void readme(View view){
-        recreate();
+        redirectActivity(this, NurseryEnglish.class);
     }
     public void watchme(View view){
-        redirectActivity(this, AlphabetWatch.class);
+        redirectActivity(this, NurseryEnglishWatch.class);
     }
     public void takeaquiz(View view){
-        redirectActivity(this, AlphabetQuiz.class);
+        recreate();
     }
 
     public static void redirectActivity(Activity activity, Class myclass) {
@@ -71,4 +71,5 @@ public class AlphabetRead extends AppCompatActivity {
     public void BacktoStudentHome(View view){
         startActivity(new Intent(this, StudentHomeView.class));
     }
+
 }

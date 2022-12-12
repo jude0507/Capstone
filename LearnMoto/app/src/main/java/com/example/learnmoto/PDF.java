@@ -9,8 +9,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.learnmoto.Kinder.KinderEnglish;
 import com.example.learnmoto.Model.PDFModel;
-import com.example.learnmoto.Nursery.NurseryEnglish;
+import com.example.learnmoto.Nursery.English.NurseryEnglish;
 import com.example.learnmoto.Student.StudentLogin;
 
 import java.util.ArrayList;
@@ -20,6 +21,8 @@ public class PDF extends AppCompatActivity {
     private ArrayList<PDFModel> pdfModel;
     private RecyclerView rv_pdf;
     private ItemClickListener listener;
+
+    String checkLevel = StudentLogin.sLevel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +39,13 @@ public class PDF extends AppCompatActivity {
 
     private void setPDFTitle() {
 
-        String checkLevel = StudentLogin.sLevel;
-
         if (checkLevel.equals("Nursery")){
             pdfModel.add(new PDFModel("colors"));
             pdfModel.add(new PDFModel("alphabets"));
+        }else if (checkLevel.equals("Kinder")){
+            pdfModel.add(new PDFModel("Real or Make"));
+            pdfModel.add(new PDFModel("Different Colors"));
+            pdfModel.add(new PDFModel("Reading Objects"));
         }
 
     }
@@ -67,6 +72,11 @@ public class PDF extends AppCompatActivity {
     }
 
     public void BacktoEnglishClass(View view) {
-        startActivity(new Intent(this, NurseryEnglish.class));
+        if (checkLevel.equals("Nursery")){
+            startActivity(new Intent(this, NurseryEnglish.class));
+        } else if (checkLevel.equals("Kinder")){
+            startActivity(new Intent(this, KinderEnglish.class));
+        }
+
     }
 }
