@@ -5,18 +5,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 import com.example.learnmoto.R;
-import com.example.learnmoto.StoriesAdapter;
+import com.example.learnmoto.Adapter.StoriesAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import me.biubiubiu.justifytext.library.JustifyTextView;
 
 public class Stories extends AppCompatActivity {
 

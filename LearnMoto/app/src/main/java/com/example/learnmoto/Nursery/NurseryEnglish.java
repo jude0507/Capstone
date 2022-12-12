@@ -1,29 +1,26 @@
 package com.example.learnmoto.Nursery;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Intent;
-import android.media.MediaPlayer;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.learnmoto.AlphabetContent.AlphabetQuiz;
 import com.example.learnmoto.AlphabetContent.AlphabetWatch;
-import com.example.learnmoto.MainActivity;
+import com.example.learnmoto.PDF;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Student.StudentHomeView;
+import com.example.learnmoto.Student.StudentLogin;
 
-import me.biubiubiu.justifytext.library.JustifyTextView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class NurseryEnglish extends AppCompatActivity {
 
@@ -34,9 +31,8 @@ public class NurseryEnglish extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nursery_english);
 
-
-
         drawerLayout = findViewById(R.id.mydrawer_layout);
+
 
 
     }
@@ -60,10 +56,7 @@ public class NurseryEnglish extends AppCompatActivity {
     }
 
     public void readme(View view){
-        //DialogWindows();
         recreate();
-
-
     }
     public void watchme(View view){
         redirectActivity(this, AlphabetWatch.class);
@@ -95,5 +88,6 @@ public class NurseryEnglish extends AppCompatActivity {
     }
 
     public void pdf(View view) {
+        startActivity(new Intent(this, PDF.class));
     }
 }

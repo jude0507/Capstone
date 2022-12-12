@@ -17,13 +17,12 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.learnmoto.AnnouncementAdapter;
+import com.example.learnmoto.Adapter.AnnouncementAdapter;
 import com.example.learnmoto.Model.AnnouncementModel;
 import com.example.learnmoto.Model.StudentInfo;
 import com.example.learnmoto.R;
-import com.example.learnmoto.StudentAdapter;
-import com.example.learnmoto.Teacher.Announcement;
-import com.example.learnmoto.TranslateAnimatioUI;
+import com.example.learnmoto.Adapter.StudentAdapter;
+import com.example.learnmoto.Adapter.TranslateAnimatioUI;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentChange;
@@ -111,14 +110,14 @@ public class StudentHomeView extends AppCompatActivity {
 
         studentAdapter = new StudentAdapter(this, mImages);
 
-        if (level.equals("nursery")){
+        if (level.equals("Nursery")){
 
             mImages.add(R.drawable.logo_english);
             mImages.add(R.drawable.logo_math);
             mImages.add(R.drawable.logo_science);
             mImages.add(R.drawable.logo_cl);
 
-        }else if (level.equals("kinder")){
+        }else if (level.equals("Kinder")){
 
             mImages.add(R.drawable.logo_english);
             mImages.add(R.drawable.logo_math);

@@ -31,7 +31,7 @@ public class ThirdStory extends AppCompatActivity {
         TitleStory = findViewById(R.id.TitleStory);
         jtv = findViewById(R.id.justifyfield);
 
-        Story3 ="One summer’s day, in a field, a Grasshopper was hopping about, chirping and singing to its heart's content. An Ant passed by, bearing along with great effort an ear of corn he was taking to his nest.\n" +
+        Story3 = "One summer’s day, in a field, a Grasshopper was hopping about, chirping and singing to its heart's content. An Ant passed by, bearing along with great effort an ear of corn he was taking to his nest.\n" +
                 "\"Why don’t you come and chat with me,\" asked the Grasshopper, \"instead of toiling your life away?\"\n" +
                 "\"I am helping to store up food for the winter,\" said the Ant, \"and I recommend you to do the same.\"\n" +
                 "\"Why bother about winter?\" said the Grasshopper. \"We have got plenty of food at present.\"\n" +

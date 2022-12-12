@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="5sp"
+    app:cardCornerRadius="2sp"
+    android:layout_marginBottom="10dp">
+
+    <TextView
+        android:id="@+id/pdfTitle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Title"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:textColor="@color/black"/>
+
+</androidx.cardview.widget.CardView>

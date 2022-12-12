@@ -20,9 +20,8 @@ import android.widget.Toast;
 
 import com.example.learnmoto.R;
 import com.example.learnmoto.Student.StudentHomeView;
-import com.example.learnmoto.Student.StudentLogin;
 import com.example.learnmoto.Student.StudentSettings;
-import com.example.learnmoto.TranslateAnimatioUI;
+import com.example.learnmoto.Adapter.TranslateAnimatioUI;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;

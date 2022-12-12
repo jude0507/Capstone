@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Bundle;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
@@ -18,7 +17,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.learnmoto.Model.StudentInfo;
 import com.example.learnmoto.R;
-import com.example.learnmoto.TranslateAnimatioUI;
+import com.example.learnmoto.Adapter.TranslateAnimatioUI;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.CollectionReference;
