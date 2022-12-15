@@ -21,21 +21,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".Nursery.English.NurseryEnglishQuiz"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".Nursery.English.NurseryEnglishWatch"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".ViewPDF"
+            android:name=".Preparatory.Math.PreparatoryMathQuiz"
             android:exported="false"
             android:noHistory="true">
             <meta-data
@@ -43,64 +29,209 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".PDF"
-            android:exported="false">
+            android:name=".Preparatory.Math.PreparatoryMathWatch"
+            android:exported="false"
+            android:noHistory="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Preparatory.Math.PreparatoryMathRead"
+            android:exported="false"
+            android:noHistory="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Kinder.Math.KinderMathQuiz"
+            android:exported="false"
+            android:noHistory="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Kinder.Math.KinderMathWatch"
+            android:exported="false"
+            android:noHistory="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Kinder.Math.KinderMathRead"
+            android:exported="false"
+            android:noHistory="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Kinder.English.KinderEnglishQuiz"
+            android:exported="false"
+            android:noHistory="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Kinder.English.KinderEnglishWatch"
+            android:exported="false"
+            android:noHistory="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Nursery.Math.NurseryMathQuiz"
+            android:exported="false"
+            android:noHistory="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Nursery.Math.NurseryMathWatch"
+            android:exported="false"
+            android:noHistory="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Nursery.Math.NurseryMathRead"
+            android:exported="false"
+            android:noHistory="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".PDF.MathViewPDF"
+            android:exported="false"
+            android:noHistory="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Preparatory.English.PreparatoryEnglishWatch"
+            android:exported="false"
+            android:noHistory="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Preparatory.English.PreparatoryEnglishQuiz"
+            android:exported="false"
+            android:noHistory="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Nursery.English.NurseryEnglishQuiz"
+            android:exported="false"
+            android:noHistory="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Nursery.English.NurseryEnglishWatch"
+            android:exported="false"
+            android:noHistory="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".PDF.EnglishViewPDF"
+            android:exported="false"
+            android:noHistory="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".PDF.EnglishPDF"
+            android:exported="false"
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".Nursery.Story.FourthStory"
-            android:exported="false">
+            android:exported="false"
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".Nursery.Story.ThirdStory"
-            android:exported="false">
+            android:exported="false"
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".Nursery.Story.SecondStory"
-            android:exported="false">
+            android:exported="false"
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".Nursery.Story.FirstStory"
-            android:exported="false">
+            android:exported="false"
+            android:noHistory="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".PDF.MathPDF"
+            android:exported="false"
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".Nursery.Stories"
-            android:exported="false">
+            android:exported="false"
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Preparatory.PreparatoryEnglish"
-            android:exported="false">
+            android:name=".Preparatory.English.PreparatoryEnglish"
+            android:exported="false"
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Kinder.KinderEnglish"
-            android:exported="false">
+            android:name=".Kinder.English.KinderEnglish"
+            android:exported="false"
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".Nursery.English.NurseryEnglish"
-            android:exported="false">
+            android:exported="false"
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -115,7 +246,8 @@
         </activity>
         <activity
             android:name=".Teacher.TeacherView"
-            android:exported="false">
+            android:exported="false"
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -124,134 +256,6 @@
             android:name=".Parent.ParentSettings"
             android:exported="false"
             android:noHistory="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".ShapeContent.ShapesQuiz"
-            android:exported="false"
-            android:noHistory="true">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".AnimalContent.AnimalsQuiz"
-            android:exported="false"
-            android:noHistory="true">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".ShapeContent.ShapesWatch"
-            android:exported="false"
-            android:noHistory="true">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".AnimalContent.AnimalsWatch"
-            android:exported="false"
-            android:noHistory="true">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".AnimalContent.AnimalsRead"
-            android:exported="false"
-            android:noHistory="true">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".ShapeContent.ShapesRead"
-            android:exported="false"
-            android:noHistory="true">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".StoryContent.StoryQuiz"
-            android:exported="false"
-            android:noHistory="true">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".StoryContent.StoryWatch"
-            android:exported="false"
-            android:noHistory="true">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".StoryContent.StoryRead"
-            android:exported="false"
-            android:noHistory="true">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".NumberContent.NumberWatch"
-            android:exported="false"
-            android:noHistory="true">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".NumberContent.NumberQuiz"
-            android:exported="false"
-            android:noHistory="true">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".NumberContent.NumberRead"
-            android:exported="false"
-            android:noHistory="true">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".CrayonContent.CrayonsQuiz"
-            android:exported="false"
-            android:noHistory="true">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".CrayonContent.CrayonsWatch"
-            android:exported="false"
-            android:noHistory="true">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".CrayonContent.CrayonsRead"
-            android:exported="false"
-            android:noHistory="true">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".AlphabetContent.AlphabetRead"
-            android:exported="false"
-            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -314,8 +318,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AlphabetContent.AlphabetWatch" />
-        <activity android:name=".AlphabetContent.AlphabetQuiz" />
     </application>
 
 </manifest>

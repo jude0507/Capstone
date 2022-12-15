@@ -14,7 +14,7 @@
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="E-Learning Application"
+        android:text="LearnMoto"
         android:textAlignment="center"
         android:textSize="22dp"
         android:layout_weight="1"

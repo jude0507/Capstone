@@ -10,7 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.learnmoto.Nursery.Stories;
-import com.example.learnmoto.PDF;
+import com.example.learnmoto.PDF.EnglishPDF;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Student.StudentHomeView;
 
@@ -78,6 +78,6 @@ public class NurseryEnglish extends AppCompatActivity {
     }
 
     public void pdf(View view) {
-        startActivity(new Intent(this, PDF.class));
+        startActivity(new Intent(this, EnglishPDF.class));
     }
 }

@@ -156,16 +156,13 @@ public class StudentHomeView extends AppCompatActivity {
 
     private void EventChangeListener() {
         db.collection("Announcements")
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                        for (DocumentChange documentChange : value.getDocumentChanges()){
-                            if (documentChange.getType() == DocumentChange.Type.ADDED){
-                                announcementArray.add(documentChange.getDocument().toObject(AnnouncementModel.class));
-                            }
-
-                            announcementAdapter.notifyDataSetChanged();
+                .addSnapshotListener((value, error) -> {
+                    for (DocumentChange documentChange : value.getDocumentChanges()){
+                        if (documentChange.getType() == DocumentChange.Type.ADDED){
+                            announcementArray.add(documentChange.getDocument().toObject(AnnouncementModel.class));
                         }
+
+                        announcementAdapter.notifyDataSetChanged();
                     }
                 });
     }

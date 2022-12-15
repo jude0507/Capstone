@@ -19,58 +19,22 @@
             android:layout_margin="10dp">
 
             <include layout="@layout/mytoolbar"/>
-            <!--            <LinearLayout-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="match_parent"-->
-            <!--                android:orientation="horizontal"-->
-            <!--                android:layout_gravity="center"-->
-            <!--                android:layout_marginTop="20dp">-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp">
 
-            <!--                <LinearLayout-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:orientation="vertical"-->
-            <!--                    android:layout_marginHorizontal="20dp"-->
-            <!--                    android:id="@+id/pdf">-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="QUIZ"
+                    android:textSize="50dp"/>
 
-            <!--                    <ImageView-->
-            <!--                        android:layout_width="100dp"-->
-            <!--                        android:layout_height="150dp"-->
-            <!--                        android:onClick="pdf"-->
-            <!--                        android:src="@drawable/ic_pdf"/>-->
+            </LinearLayout>
 
-            <!--                    <TextView-->
-            <!--                        android:layout_width="wrap_content"-->
-            <!--                        android:layout_height="wrap_content"-->
-            <!--                        android:text="PDF"-->
-            <!--                        android:textColor="@color/black"-->
-            <!--                        android:layout_gravity="center"/>-->
-
-            <!--                </LinearLayout>-->
-
-            <!--                <LinearLayout-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:layout_marginHorizontal="20dp"-->
-            <!--                    android:orientation="vertical"-->
-            <!--                    android:id="@+id/story">-->
-
-            <!--                    <ImageView-->
-            <!--                        android:onClick="story"-->
-            <!--                        android:layout_width="100dp"-->
-            <!--                        android:layout_height="150dp"-->
-            <!--                        android:src="@drawable/ic_story"/>-->
-
-            <!--                    <TextView-->
-            <!--                        android:layout_width="wrap_content"-->
-            <!--                        android:layout_height="wrap_content"-->
-            <!--                        android:text="Story"-->
-            <!--                        android:textColor="@color/black"-->
-            <!--                        android:layout_gravity="center"/>-->
-
-            <!--                </LinearLayout>-->
-
-            <!--            </LinearLayout>-->
         </LinearLayout>
 
     </ScrollView>

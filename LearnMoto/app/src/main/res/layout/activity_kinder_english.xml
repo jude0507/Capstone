@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:id="@+id/mydrawer_layout"
-    tools:context=".Kinder.KinderEnglish">
+    tools:context=".Kinder.English.KinderEnglish">
 
     <ScrollView
         android:layout_width="match_parent"
