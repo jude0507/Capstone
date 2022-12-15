@@ -22,9 +22,6 @@ public class EnglishViewPDF extends AppCompatActivity {
 
         String getItem = getIntent().getStringExtra("EnglishPDF");
 
-//        if (getItem.equals("colors")){
-//            pdfviewer.fromAsset("colors.pdf").load();
-//        }
         if (getItem.equals("Alphabets")){
             pdfviewer.fromAsset("Alphabet 1.pdf").load();
         }
