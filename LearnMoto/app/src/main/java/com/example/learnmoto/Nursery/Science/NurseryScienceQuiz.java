@@ -43,10 +43,10 @@ public class NurseryScienceQuiz extends AppCompatActivity {
     }
 
     public void readme(View view){
-        redirectActivity(this, KinderScienceRead.class);
+        redirectActivity(this, NurseryScienceRead.class);
     }
     public void watchme(View view){
-        redirectActivity(this, KinderScienceWatch.class);
+        redirectActivity(this, NurseryScienceWatch.class);
     }
     public void takeaquiz(View view){
         recreate();

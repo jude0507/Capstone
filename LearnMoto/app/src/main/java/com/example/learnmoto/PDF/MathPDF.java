@@ -77,7 +77,7 @@ public class MathPDF extends AppCompatActivity {
         };
     }
 
-    public void BacktoEnglishClass(View view) {
+    public void BacktoMathClass(View view) {
         if (checkLevel.equals("Nursery")){
             startActivity(new Intent(this, NurseryMathRead.class));
         } else if (checkLevel.equals("Kinder")){

@@ -71,14 +71,14 @@ public class SciencePDF extends AppCompatActivity {
     private void setOnclickListener() {
         listener = (view, position) -> {
             String item = pdfModel.get(position).getPdftitle();
-            Intent intent = new Intent(getApplicationContext(), EnglishViewPDF.class);
+            Intent intent = new Intent(getApplicationContext(), ScienceViewPDF.class);
             intent.putExtra("SciencePDF",item);
             startActivity(intent);
 
         };
     }
 
-    public void BacktoEnglishClass(View view) {
+    public void BacktoScienceClass(View view) {
         if (checkLevel.equals("Nursery")){
             startActivity(new Intent(this, NurseryScienceRead.class));
         } else if (checkLevel.equals("Kinder")){

@@ -10,15 +10,22 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.learnmoto.Kinder.ChristianLiving.KinderChristianLivingRead;
 import com.example.learnmoto.Kinder.English.KinderEnglish;
+import com.example.learnmoto.Kinder.Filipino.KinderFilipinoRead;
 import com.example.learnmoto.Kinder.Math.KinderMathRead;
 import com.example.learnmoto.Kinder.Science.KinderScienceRead;
+import com.example.learnmoto.Nursery.ChristianLiving.NurseryChristianLivingRead;
 import com.example.learnmoto.Nursery.English.NurseryEnglish;
 import com.example.learnmoto.Nursery.Math.NurseryMathRead;
 import com.example.learnmoto.Nursery.Science.NurseryScienceRead;
+import com.example.learnmoto.Preparatory.ChristianLiving.PreparatoryChristianLivingRead;
 import com.example.learnmoto.Preparatory.English.PreparatoryEnglish;
+import com.example.learnmoto.Preparatory.Filipino.PreparatoryFilipinoRead;
 import com.example.learnmoto.Preparatory.Math.PreparatoryMathRead;
 import com.example.learnmoto.Preparatory.Science.PreparatoryScienceRead;
+import com.example.learnmoto.Preparatory.SibikaKultura.PreparatorySibKulRead;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Student.StudentLogin;
 
@@ -106,15 +113,32 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.MyViewHo
                         break;
                     case 3:
                         Toast.makeText(v.getContext(), "Christian Living", Toast.LENGTH_SHORT).show();
+                        if (studentLevel.equals("Nursery")){
+                            Toast.makeText(v.getContext(), "Nursery", Toast.LENGTH_SHORT).show();
+                            v.getContext().startActivity(new Intent(v.getContext(), NurseryChristianLivingRead.class));
+                        }else if (studentLevel.equals("Kinder")){
+                            Toast.makeText(v.getContext(), "Kinder", Toast.LENGTH_SHORT).show();
+                            v.getContext().startActivity(new Intent(v.getContext(), KinderChristianLivingRead.class));
+                        }else{
+                            Toast.makeText(v.getContext(), "Preparatory", Toast.LENGTH_SHORT).show();
+                            v.getContext().startActivity(new Intent(v.getContext(), PreparatoryChristianLivingRead.class));
+                        }
                         //v.getContext().startActivity(new Intent(v.getContext(), StoryRead.class));
                         break;
                     case 4:
                         Toast.makeText(v.getContext(), "Filipino", Toast.LENGTH_SHORT).show();
+                        if (studentLevel.equals("Kinder")){
+                            Toast.makeText(v.getContext(), "Kinder", Toast.LENGTH_SHORT).show();
+                            v.getContext().startActivity(new Intent(v.getContext(), KinderFilipinoRead.class));
+                        }else{
+                            Toast.makeText(v.getContext(), "Preparatory", Toast.LENGTH_SHORT).show();
+                            v.getContext().startActivity(new Intent(v.getContext(), PreparatoryFilipinoRead.class));
+                        }
                         //v.getContext().startActivity(new Intent(v.getContext(), ShapesRead.class));
                         break;
                     case 5:
                         Toast.makeText(v.getContext(), "Sibika at Kultura", Toast.LENGTH_SHORT).show();
-                        //v.getContext().startActivity(new Intent(v.getContext(), AnimalsRead.class));
+                        v.getContext().startActivity(new Intent(v.getContext(), PreparatorySibKulRead.class));
                         break;
                 }
             });

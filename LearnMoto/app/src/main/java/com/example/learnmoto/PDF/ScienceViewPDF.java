@@ -36,7 +36,7 @@ public class ScienceViewPDF extends AppCompatActivity {
             pdfviewer.fromAsset("Body Parts.pdf").load();
         }
         if (getItem.equals("Know about Seasons")){
-            pdfviewer.fromAsset("Know about Seasons.pdf").load();
+            pdfviewer.fromAsset("Seasons.pdf").load();
         }
         if (getItem.equals("Solar System")){
             pdfviewer.fromAsset("Solar System.pdf").load();
@@ -45,7 +45,7 @@ public class ScienceViewPDF extends AppCompatActivity {
     }
 
     public void BacktoPDF(View view) {
-        startActivity(new Intent(this, EnglishPDF.class));
+        startActivity(new Intent(this, SciencePDF.class));
     }
 
 }
