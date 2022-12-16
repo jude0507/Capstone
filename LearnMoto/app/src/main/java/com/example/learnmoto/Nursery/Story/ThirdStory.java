@@ -3,12 +3,15 @@ package com.example.learnmoto.Nursery.Story;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.media.MediaPlayer;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.Nursery.Stories;
 import com.example.learnmoto.R;
 
@@ -21,6 +24,7 @@ public class ThirdStory extends AppCompatActivity {
     JustifyTextView jtv;
     TextView TitleStory;
     ImageView ImageStory;
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,10 +77,20 @@ public class ThirdStory extends AppCompatActivity {
     }
 
     @Override
+    protected void onStart() {
+        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, intentFilter);
+        super.onStart();
+    }
+
+    @Override
     protected void onStop() {
         stopMediaPlayer();
+        unregisterReceiver(networkChangeListener);
         super.onStop();
     }
+
+
 
     public void BackToStories(View view) {
         startActivity(new Intent(this, Stories.class));

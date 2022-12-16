@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
@@ -18,6 +20,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Student.StudentHomeView;
 import com.example.learnmoto.Student.StudentSettings;
@@ -51,6 +54,8 @@ public class TeacherView extends AppCompatActivity {
     String TeacherName = TeacherLogin.teacher_name;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -198,7 +203,17 @@ public class TeacherView extends AppCompatActivity {
             }
             alertDialog.dismiss();
         });
+    }
+    @Override
+    protected void onStart() {
+        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, intentFilter);
+        super.onStart();
+    }
 
-
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
     }
 }

@@ -6,12 +6,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 
 import com.example.learnmoto.ItemClickListener;
 import com.example.learnmoto.Kinder.English.KinderEnglish;
 import com.example.learnmoto.Model.PDFModel;
+import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.Nursery.English.NurseryEnglish;
 import com.example.learnmoto.Adapter.PDFAdapter;
 import com.example.learnmoto.Preparatory.English.PreparatoryEnglish;
@@ -27,6 +30,8 @@ public class EnglishPDF extends AppCompatActivity {
     private ItemClickListener listener;
 
     String checkLevel = StudentLogin.sLevel;
+
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,4 +92,18 @@ public class EnglishPDF extends AppCompatActivity {
             startActivity(new Intent(this, PreparatoryEnglish.class));
         }
     }
+
+    @Override
+    protected void onStart() {
+        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, intentFilter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
+    }
+
 }

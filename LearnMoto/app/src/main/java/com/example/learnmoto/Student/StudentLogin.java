@@ -3,13 +3,17 @@ package com.example.learnmoto.Student;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.learnmoto.MainActivity;
+import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.R;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
@@ -24,12 +28,16 @@ public class StudentLogin extends AppCompatActivity {
     public static final String StudentName = "sName";
     public static final String StudentLevel = "sLevel";
 
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
+
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference collectionReference = db.collection("Student");
 
     EditText studentID, studentPass;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+
+    LinearLayout loginBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +46,8 @@ public class StudentLogin extends AppCompatActivity {
 
         studentID = findViewById(R.id.my_studID);
         studentPass = findViewById(R.id.my_studpass);
+        loginBtn = findViewById(R.id.studentHome);
+
 
         sharedPreferences = getSharedPreferences("Preferences", MODE_PRIVATE);
 
@@ -124,4 +134,18 @@ public class StudentLogin extends AppCompatActivity {
     public void BacktoMain(View view) {
         startActivity(new Intent(this, MainActivity.class));
     }
+
+    @Override
+    protected void onStart() {
+        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, intentFilter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
+    }
+
 }

@@ -3,6 +3,8 @@ package com.example.learnmoto.Teacher;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -10,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.learnmoto.Model.AnnouncementModel;
+import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Student.StudentHomeView;
 import com.example.learnmoto.Student.StudentSettings;
@@ -28,6 +31,8 @@ public class Announcement extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     String authorID = TeacherLogin.teacher_ID;
     String authorName = TeacherLogin.teacher_name;
+
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,5 +112,17 @@ public class Announcement extends AppCompatActivity {
 //        }else{
 //            Toast.makeText(this, "NO DATA PLEASE INPUT", Toast.LENGTH_SHORT).show();
 //        }
+    }
+    @Override
+    protected void onStart() {
+        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, intentFilter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
     }
 }

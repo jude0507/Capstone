@@ -5,6 +5,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
@@ -19,6 +21,7 @@ import com.bumptech.glide.Glide;
 import com.example.learnmoto.Adapter.ChildListAdapter;
 import com.example.learnmoto.Model.ParentInfo;
 import com.example.learnmoto.Model.StudentInfo;
+import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.R;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -45,6 +48,8 @@ public class ParentView extends AppCompatActivity {
     CollectionReference collectionReference = db.collection("Parent");
 
     String ParentName = ParentLogin.pName;
+
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -179,4 +184,18 @@ public class ParentView extends AppCompatActivity {
         backpressedTimes = System.currentTimeMillis();
 
     }
+
+    @Override
+    protected void onStart() {
+        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, intentFilter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
+    }
+
 }

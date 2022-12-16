@@ -6,9 +6,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.R;
 import com.example.learnmoto.PDF.SciencePDF;
 import com.example.learnmoto.Student.StudentHomeView;
@@ -16,6 +19,7 @@ import com.example.learnmoto.Student.StudentHomeView;
 public class PreparatoryScienceRead extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,5 +75,18 @@ public class PreparatoryScienceRead extends AppCompatActivity {
 
     public void pdf(View view) {
         startActivity(new Intent(this, SciencePDF.class));
+    }
+
+    @Override
+    protected void onStart() {
+        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, intentFilter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
     }
 }

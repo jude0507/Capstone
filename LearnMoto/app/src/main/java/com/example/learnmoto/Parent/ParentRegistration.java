@@ -3,14 +3,16 @@ package com.example.learnmoto.Parent;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.learnmoto.Model.ParentInfo;
+import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.R;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -21,6 +23,7 @@ public class ParentRegistration extends AppCompatActivity {
 
     private EditText ParentName, ParentAddress, ParentChildID, ParentID, ParentPassword, ParentPhone;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,5 +102,18 @@ public class ParentRegistration extends AppCompatActivity {
         ParentID.setError("Required Field");
         ParentPassword.setError("Required Field");
         ParentPhone.setError("Required Field");
+    }
+
+    @Override
+    protected void onStart() {
+        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, intentFilter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
     }
 }

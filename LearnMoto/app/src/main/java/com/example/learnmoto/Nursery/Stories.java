@@ -5,9 +5,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.Nursery.English.NurseryEnglish;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Adapter.StoriesAdapter;
@@ -26,6 +29,7 @@ public class Stories extends AppCompatActivity {
     List<String> storyTitles;
     List<Integer> storyImages;
     StoriesAdapter storiesAdapter;
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,4 +61,18 @@ public class Stories extends AppCompatActivity {
     public void BacktoEnglishClass(View view) {
         startActivity(new Intent(this, NurseryEnglish.class));
     }
+
+    @Override
+    protected void onStart() {
+        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, intentFilter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
+    }
+
 }
