@@ -3,6 +3,7 @@ package com.example.learnmoto.Teacher;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -22,7 +23,9 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.learnmoto.Adapter.StudentSubjectAdapter;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
+import com.example.learnmoto.LevelAdapter;
 import com.example.learnmoto.Model.TeacherInfo;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Adapter.TranslateAnimatioUI;
@@ -58,17 +61,15 @@ public class TeacherView extends AppCompatActivity {
     AlertDialog alertDialog;
     ArrayList<String> addLevel = new ArrayList<String>();
     ArrayAdapter<String> arrayAdapter;
-    //ArrayList<String> teacherInfoArrayList;
     List<String> levelArray;
     ListView ListLevel, listClass;
     EditText AssignLevelInput;
-    String GetAssignedLevel;
     String data = "";
-    List<Map<String, Object>> assignLevel;
 
-    String [] year1 = {"Nursery"};
-    String [] year2 = {"Nursery", "Kinder"};
-    String [] year3 = {"Nursery", "Kinder", "Preparatory"};
+    public static String GetAssignedLevel;
+    public static List<Map<String, Object>> assignLevel;
+    LevelAdapter levelAdapter;
+    List<Integer> mImages;
 
     String TeacherName = TeacherLogin.teacher_name;
 
@@ -91,8 +92,8 @@ public class TeacherView extends AppCompatActivity {
         viewSubjects = findViewById(R.id.subject_arrow_btn);
         viewClassAdvisory = findViewById(R.id.advisoryClass_arrow_btn);
         rvAssignedSubjects = findViewById(R.id.rvSubjects);
-        listClass = findViewById(R.id.listClass);
-        //rvAssignClass = findViewById(R.id.rvClass);
+        //listClass = findViewById(R.id.listClass);
+        rvAssignClass = findViewById(R.id.rvClass);
         assignClassLayout = findViewById(R.id.expandMyClass);
         assignClassContainer = findViewById(R.id.assignClassLayout);
         subjectContainer = findViewById(R.id.teacherSubjectLayout);
@@ -104,16 +105,6 @@ public class TeacherView extends AppCompatActivity {
         //https://stackoverflow.com/questions/54711228/compare-two-arrays-with-not-the-same-order
 
         DisplayAssignedLevel();
-//        if (assignLevel.containsAll(Arrays.asList(year1)) && assignLevel.equals(Arrays.asList(year1))){
-//            Toast.makeText(this, "year1", Toast.LENGTH_SHORT).show();
-//        }else if (assignLevel.containsAll(Arrays.asList(year2)) && assignLevel.equals(Arrays.asList(year2))){
-//            Toast.makeText(this, "year2", Toast.LENGTH_SHORT).show();
-//        }else if (assignLevel.containsAll(Arrays.asList(year3)) && assignLevel.equals(Arrays.asList(year3))){
-//            Toast.makeText(this, "year3", Toast.LENGTH_SHORT).show();
-//        }else{
-//            Toast.makeText(this, "year null", Toast.LENGTH_SHORT).show();
-//        }
-
 
         bottomNavigationView.setSelectedItemId(R.id.home);
         teacherName.setText(TeacherName);
@@ -257,36 +248,59 @@ public class TeacherView extends AppCompatActivity {
 
                     Toast.makeText(this, GetAssignedLevel, Toast.LENGTH_SHORT).show();
 
-                    //Di ko macompare ung nasa loob ng assignLevel para makuha ung level na nasa loob
+                    mImages = new ArrayList<>();
+
+                    levelAdapter = new LevelAdapter(this, mImages);
+
+                    try {
+                        if (GetAssignedLevel != "null" && !GetAssignedLevel.isEmpty()){
+                            if (assignLevel.contains("Kinder") && assignLevel.contains("Preparatory") && assignLevel.contains("Nursery")){
+                                Toast.makeText(this, "NKP", Toast.LENGTH_SHORT).show();
+                                mImages.add(R.drawable.kinder_logo);
+                                mImages.add(R.drawable.nursery_logo);
+                                mImages.add(R.drawable.preparatory_logo);
+                            }
+                            else if (assignLevel.contains("Nursery") && assignLevel.contains("Kinder")){
+                                Toast.makeText(this, "NK", Toast.LENGTH_SHORT).show();
+                                mImages.add(R.drawable.kinder_logo);
+                                mImages.add(R.drawable.nursery_logo);
+                            }
+                            else if(assignLevel.contains("Kinder") && assignLevel.contains("Preparatory")){
+                                Toast.makeText(this, "KP", Toast.LENGTH_SHORT).show();
+                                mImages.add(R.drawable.nursery_logo);
+                                mImages.add(R.drawable.preparatory_logo);
+                            }
+                            else if(assignLevel.contains("Nursery") && assignLevel.contains("Preparatory")){
+                                Toast.makeText(this, "NP", Toast.LENGTH_SHORT).show();
+                                mImages.add(R.drawable.nursery_logo);
+                                mImages.add(R.drawable.preparatory_logo);
+                            }
+                            else if (assignLevel.contains("Kinder")){
+                                Toast.makeText(this, "K", Toast.LENGTH_SHORT).show();
+                                mImages.add(R.drawable.kinder_logo);
+                            }
+                            else if (assignLevel.contains("Nursery")){
+                                Toast.makeText(this, "N", Toast.LENGTH_SHORT).show();
+                                mImages.add(R.drawable.nursery_logo);
+                            }
+                            else if (assignLevel.contains("Preparatory")){
+                                Toast.makeText(this, "P", Toast.LENGTH_SHORT).show();
+                                mImages.add(R.drawable.preparatory_logo);
+                            }
+                        }else{
+                            Toast.makeText(this, "NONE", Toast.LENGTH_SHORT).show();
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+
+                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+                    rvAssignClass.setLayoutManager(linearLayoutManager);
+                    rvAssignClass.setAdapter(levelAdapter);
 
                 }
             }
         });
-//        collectionReference.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                for (DocumentSnapshot document : task.getResult()) {
-//                    List<String> list = (List<String>) document.get("assignLevel");
-//                    for (String item : list) {
-//                        Log.d("TAG", item);
-//                    }
-//
-//                }
-//            }
-//        });
-//        documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-//                if (task.isSuccessful()){
-//                    DocumentSnapshot documentSnapshot = task.getResult();
-//                    if (documentSnapshot.exists()){
-//                        List<Map<String, TeacherInfo>> teacherInfo = (List<Map<String, TeacherInfo>>) documentSnapshot.get("assignLevel");
-//                    }
-//                }
-//            }
-//        });
-
-
     }
     @Override
     protected void onStart() {

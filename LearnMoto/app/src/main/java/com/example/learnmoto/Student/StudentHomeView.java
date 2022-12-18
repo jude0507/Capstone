@@ -23,7 +23,7 @@ import com.example.learnmoto.Model.AnnouncementModel;
 import com.example.learnmoto.Model.StudentInfo;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.R;
-import com.example.learnmoto.Adapter.StudentAdapter;
+import com.example.learnmoto.Adapter.StudentSubjectAdapter;
 import com.example.learnmoto.Adapter.TranslateAnimatioUI;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.CollectionReference;
@@ -43,7 +43,7 @@ public class StudentHomeView extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     RecyclerView recyclerView, rv_announcement;
     List<Integer> mImages;
-    StudentAdapter studentAdapter;
+    StudentSubjectAdapter studentSubjectAdapter;
     ScrollView scrollView;
 
     TextView textViewannounce, studentName, adviserName, textTitle;
@@ -109,7 +109,7 @@ public class StudentHomeView extends AppCompatActivity {
 
         mImages = new ArrayList<>();
 
-        studentAdapter = new StudentAdapter(this, mImages);
+        studentSubjectAdapter = new StudentSubjectAdapter(this, mImages);
 
         if (level.equals("Nursery")){
 
@@ -140,7 +140,7 @@ public class StudentHomeView extends AppCompatActivity {
         //StudentSubjects
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(studentAdapter);
+        recyclerView.setAdapter(studentSubjectAdapter);
 
         //AnnouncementArray
         rv_announcement.setHasFixedSize(true);

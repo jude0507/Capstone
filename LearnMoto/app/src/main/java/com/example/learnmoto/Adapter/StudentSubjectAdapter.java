@@ -31,12 +31,12 @@ import com.example.learnmoto.Student.StudentLogin;
 
 import java.util.List;
 
-public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.MyViewHolder> {
+public class StudentSubjectAdapter extends RecyclerView.Adapter<StudentSubjectAdapter.MyViewHolder> {
 
     private Context context;
     private List<Integer> images;
 
-    public StudentAdapter(Context context, List<Integer> images){
+    public StudentSubjectAdapter(Context context, List<Integer> images){
         this.context = context;
         this.images = images;
     }
