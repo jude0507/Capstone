@@ -8,7 +8,7 @@ public class ParentInfo {
 
     String myid;
     public String pName, pAddress, pPhoneNumber, pPassword, pID, pChildID,imageurl, imagename;
-    //List<String> pChildID;
+
 
     public ParentInfo(){
 
