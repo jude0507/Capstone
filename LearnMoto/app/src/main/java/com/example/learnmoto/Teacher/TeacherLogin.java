@@ -2,10 +2,14 @@ package com.example.learnmoto.Teacher;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -16,15 +20,18 @@ import com.example.learnmoto.R;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Arrays;
+
 public class TeacherLogin extends AppCompatActivity {
 
     EditText Teacher_ID, Teacher_Pass;
-    public static String teacher_ID, teacher_pass, teacher_name, teacher_address;
+    public static String teacher_ID, teacher_pass, teacher_name, teacher_address, teacher_assignLevel;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +39,20 @@ public class TeacherLogin extends AppCompatActivity {
 
         Teacher_ID = findViewById(R.id.teacherID);
         Teacher_Pass = findViewById(R.id.teacherPassword);
+
+        Teacher_Pass.setOnTouchListener((v, event) -> {
+            final int DrawableRight = 2;
+            if (event.getAction() == MotionEvent.ACTION_UP){
+                if (event.getRawX() >= (Teacher_Pass.getRight() - Teacher_Pass.getCompoundDrawables()
+                [DrawableRight].getBounds().width())){
+                    Teacher_Pass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                }
+            }else{
+                Teacher_Pass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            }
+            return false;
+        });
+
 
     }
 
@@ -56,6 +77,8 @@ public class TeacherLogin extends AppCompatActivity {
                     teacher_pass = documentSnapshot.getString("teacher_pass").toString();
                     teacher_name = documentSnapshot.getString("teacher_name").toString();
                     teacher_address = documentSnapshot.getString("teacher_address").toString();
+                    //teacher_assignLevel = documentSnapshot.getString("assignLevel").toString();
+                    //teacher_assignLevel = String.valueOf(documentSnapshot.getString("assignLevel"));
                     //teacher_address = documentSnapshot.getString("teacher_address").toString();
                     if (Teacher_ID.getText().toString().equals(teacher_ID) && Teacher_Pass.getText().toString().equals(teacher_pass)){
                         Toast.makeText(TeacherLogin.this, "Login Successfully", Toast.LENGTH_SHORT).show();

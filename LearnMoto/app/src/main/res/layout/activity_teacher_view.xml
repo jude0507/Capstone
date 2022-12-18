@@ -149,15 +149,21 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
                     android:orientation="vertical"
-                    android:visibility="gone"
                     android:animateLayoutChanges="true"
                     android:padding="10dp">
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:padding="10dp"
+<!--                    <androidx.recyclerview.widget.RecyclerView-->
+<!--                        android:padding="10dp"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:id="@+id/rvClass"/>-->
+
+                    <ListView
+                        android:id="@+id/listClass"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/rvSubjects"/>
+                        android:padding="5sp"/>
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -235,7 +241,7 @@
                         android:padding="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/assignedLevel"/>
+                        android:id="@+id/rvSubjects"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 

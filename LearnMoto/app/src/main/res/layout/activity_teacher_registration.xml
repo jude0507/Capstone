@@ -36,7 +36,7 @@
             android:background="@drawable/custom_input"
             android:drawableStart="@drawable/custom_icon_name"
             android:hint="@string/teacher_name"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:layout_gravity="center"
             android:inputType="textCapWords"
             android:drawablePadding="10dp"
@@ -50,7 +50,7 @@
             android:background="@drawable/custom_input"
             android:drawableStart="@drawable/custom_icon_address"
             android:hint="@string/address"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:layout_gravity="center"
             android:inputType="textCapWords"
             android:drawablePadding="10dp"
@@ -68,7 +68,7 @@
             android:inputType="phone"
             android:maxLength="11"
             android:padding="10dp"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/TeacherID"
@@ -78,7 +78,7 @@
             android:background="@drawable/custom_input"
             android:drawableStart="@drawable/custom_icon_user"
             android:hint="@string/teacher_user_id"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:layout_gravity="center"
             android:inputType="text"
             android:maxLength="15"
@@ -91,8 +91,24 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/custom_input"
             android:drawableStart="@drawable/custom_icon_key"
+            android:drawableEnd="@drawable/custom_icon_toggle_eye"
             android:hint="@string/password"
-            android:textSize="18sp"
+            android:textSize="16sp"
+            android:layout_gravity="center"
+            android:drawablePadding="10dp"
+            android:inputType="textPassword"
+            android:padding="10dp"/>
+
+        <EditText
+            android:id="@+id/ConfirmPass"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/custom_input"
+            android:drawableStart="@drawable/custom_icon_key"
+            android:drawableEnd="@drawable/custom_icon_toggle_eye"
+            android:hint="Confirm Password"
+            android:textSize="16sp"
             android:layout_gravity="center"
             android:drawablePadding="10dp"
             android:inputType="textPassword"

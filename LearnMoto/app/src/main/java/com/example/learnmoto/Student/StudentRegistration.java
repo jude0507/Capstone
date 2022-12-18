@@ -2,12 +2,16 @@ package com.example.learnmoto.Student;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -33,7 +37,7 @@ import java.util.List;
 public class StudentRegistration extends AppCompatActivity {
 
     private Spinner yearlevelSpinner;
-    private EditText studentID, studentPass, studentName, studentAddress, studentBday, guardianName;
+    private EditText studentID, studentPass, confirmPass, studentName, studentAddress, studentBday, guardianName;
     private RadioGroup radioGroup;
     Button btnStudentSignUp;
     int age;
@@ -53,8 +57,10 @@ public class StudentRegistration extends AppCompatActivity {
         radioGroup = findViewById(R.id.radiogrp);
         studentID = findViewById(R.id.studentID);
         studentPass = findViewById(R.id.studentPass);
+        confirmPass = findViewById(R.id.confirmpass);
         guardianName = findViewById(R.id.guardianName);
         btnStudentSignUp = findViewById(R.id.btnStudentSignUp);
+        ShowPassword();
 
         List<String> yearlvl = new ArrayList<>();
         yearlvl.add(0, "Choose Level");
@@ -144,6 +150,7 @@ public class StudentRegistration extends AppCompatActivity {
         String student_guardian = guardianName.getText().toString().trim();
         String student_ID = studentID.getText().toString().trim();
         String student_Pass = studentPass.getText().toString().trim();
+        String ConfirmPassword = confirmPass.getText().toString();
         String student_age = String.valueOf(age);
 
         AlertDialog.Builder alBuilder = new AlertDialog.Builder(this);
@@ -154,30 +161,39 @@ public class StudentRegistration extends AppCompatActivity {
             if(!student_Name.isEmpty() && !student_Address.isEmpty() && !student_Gender.isEmpty() &&
                     !student_Birthday.isEmpty() && !student_Level.isEmpty() && !student_guardian.isEmpty()
                     && !student_ID.isEmpty() && !student_Pass.isEmpty()){
-                DocumentReference documentReference = firestore.collection("Student").document(student_ID);
-                documentReference.get().addOnSuccessListener(documentSnapshot -> {
-                    if (documentSnapshot.exists()){
-                        Toast.makeText(StudentRegistration.this, "Student ID has been registered", Toast.LENGTH_SHORT).show();
+                if (ConfirmPassword.equals(student_Pass)){
+                    if (student_Pass.length() >= 6){
+                        DocumentReference documentReference = firestore.collection("Student").document(student_ID);
+                        documentReference.get().addOnSuccessListener(documentSnapshot -> {
+                            if (documentSnapshot.exists()){
+                                Toast.makeText(StudentRegistration.this, "Student ID has been registered", Toast.LENGTH_SHORT).show();
+                            }else{
+                                if (student_Level.equals("Choose Level")){
+                                    Toast.makeText(this, "Chose your level", Toast.LENGTH_SHORT).show();
+                                }else{
+                                    StudentInfo studentInfo = new StudentInfo();
+                                    studentInfo.setsName(student_Name);
+                                    studentInfo.setsAddress(student_Address);
+                                    studentInfo.setsAge(student_age);
+                                    studentInfo.setsGender(student_Gender);
+                                    studentInfo.setsBirthday(student_Birthday);
+                                    studentInfo.setsLevel(student_Level);
+                                    studentInfo.setsGuardian(student_guardian);
+                                    studentInfo.setsID(student_ID);
+                                    studentInfo.setsPassword(student_Pass);
+                                    firestore.collection("Student").document(student_ID).set(studentInfo);
+                                    Toast.makeText(StudentRegistration.this, "Registration Successfully", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(StudentRegistration.this, StudentLogin.class));
+                                }
+                            }
+                        });
                     }else{
-                        if (student_Level.equals("Choose Level")){
-                            Toast.makeText(this, "Chose your level", Toast.LENGTH_SHORT).show();
-                        }else{
-                            StudentInfo studentInfo = new StudentInfo();
-                            studentInfo.setsName(student_Name);
-                            studentInfo.setsAddress(student_Address);
-                            studentInfo.setsAge(student_age);
-                            studentInfo.setsGender(student_Gender);
-                            studentInfo.setsBirthday(student_Birthday);
-                            studentInfo.setsLevel(student_Level);
-                            studentInfo.setsGuardian(student_guardian);
-                            studentInfo.setsID(student_ID);
-                            studentInfo.setsPassword(student_Pass);
-                            firestore.collection("Student").document(student_ID).set(studentInfo);
-                            Toast.makeText(StudentRegistration.this, "Registration Successfully", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(StudentRegistration.this, StudentLogin.class));
-                        }
+                        studentPass.setError("Atleast 6 characters required");
                     }
-                });
+                }else{
+                    confirmPass.setError("Not Matched");
+                }
+
 
             }else{
                 studentName.setError("Required Field!");
@@ -192,6 +208,36 @@ public class StudentRegistration extends AppCompatActivity {
         });
         alBuilder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
         alBuilder.show();
+
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    public void ShowPassword(){
+        studentPass.setOnTouchListener((v, event) -> {
+            final int DrawableRight = 2;
+            if (event.getAction() == MotionEvent.ACTION_UP){
+                if (event.getRawX() >= (studentPass.getRight() - studentPass.getCompoundDrawables()
+                        [DrawableRight].getBounds().width())){
+                    studentPass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                }
+            }else{
+                studentPass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            }
+            return false;
+        });
+
+        confirmPass.setOnTouchListener((v, event) -> {
+            final int DrawableRight = 2;
+            if (event.getAction() == MotionEvent.ACTION_UP){
+                if (event.getRawX() >= (confirmPass.getRight() - confirmPass.getCompoundDrawables()
+                        [DrawableRight].getBounds().width())){
+                    confirmPass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                }
+            }else{
+                confirmPass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            }
+            return false;
+        });
 
     }
 

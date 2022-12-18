@@ -85,6 +85,6 @@ public class KinderScienceQuiz extends AppCompatActivity {
     protected void onStop() {
         unregisterReceiver(networkChangeListener);
         super.onStop();
-    }s
+    }
 
 }

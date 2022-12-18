@@ -50,6 +50,7 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/custom_input"
         android:drawableLeft="@drawable/custom_icon_key"
+        android:drawableRight="@drawable/custom_icon_toggle_eye"
         android:hint="Password"
         android:textSize="18dp"
         android:layout_gravity="center"

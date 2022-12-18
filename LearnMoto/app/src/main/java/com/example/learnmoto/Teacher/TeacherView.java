@@ -1,5 +1,6 @@
 package com.example.learnmoto.Teacher;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,6 +11,7 @@ import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -21,25 +23,34 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
+import com.example.learnmoto.Model.TeacherInfo;
 import com.example.learnmoto.R;
-import com.example.learnmoto.Student.StudentHomeView;
-import com.example.learnmoto.Student.StudentSettings;
 import com.example.learnmoto.Adapter.TranslateAnimatioUI;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 public class TeacherView extends AppCompatActivity {
 
-    Button viewClassLevel, viewSubjects, viewClassAdvisory, ListLevelbtn, closeWindow;
+    Button viewClassLevel, viewSubjects, viewClassAdvisory, AddLevelList, savebtn;
     BottomNavigationView bottomNavigationView;
     ScrollView scrollView;
     TextView teacherName;
-    RecyclerView rvAssignedLevel;
+    RecyclerView rvAssignedSubjects, rvAssignClass;
     LinearLayout assignClassLayout, assignClassContainer, subjectContainer,expandSubjects,
             advisoryClassContainer, expandClassAdvisory;
 
@@ -47,13 +58,24 @@ public class TeacherView extends AppCompatActivity {
     AlertDialog alertDialog;
     ArrayList<String> addLevel = new ArrayList<String>();
     ArrayAdapter<String> arrayAdapter;
-    ListView ListLevel;
+    //ArrayList<String> teacherInfoArrayList;
+    List<String> levelArray;
+    ListView ListLevel, listClass;
     EditText AssignLevelInput;
+    String GetAssignedLevel;
     String data = "";
+    List<Map<String, Object>> assignLevel;
+
+    String [] year1 = {"Nursery"};
+    String [] year2 = {"Nursery", "Kinder"};
+    String [] year3 = {"Nursery", "Kinder", "Preparatory"};
 
     String TeacherName = TeacherLogin.teacher_name;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    CollectionReference collectionReference = db.collection("Teacher");
+    DocumentReference documentReference = collectionReference.document(TeacherLogin.teacher_ID);
+
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
 
@@ -68,7 +90,9 @@ public class TeacherView extends AppCompatActivity {
         viewClassLevel = findViewById(R.id.class_arrow_btn);
         viewSubjects = findViewById(R.id.subject_arrow_btn);
         viewClassAdvisory = findViewById(R.id.advisoryClass_arrow_btn);
-        rvAssignedLevel = findViewById(R.id.assignedLevel);
+        rvAssignedSubjects = findViewById(R.id.rvSubjects);
+        listClass = findViewById(R.id.listClass);
+        //rvAssignClass = findViewById(R.id.rvClass);
         assignClassLayout = findViewById(R.id.expandMyClass);
         assignClassContainer = findViewById(R.id.assignClassLayout);
         subjectContainer = findViewById(R.id.teacherSubjectLayout);
@@ -76,9 +100,24 @@ public class TeacherView extends AppCompatActivity {
         advisoryClassContainer = findViewById(R.id.teacherAdvisoryClass);
         expandClassAdvisory = findViewById(R.id.expandAdvisoryClass);
 
+        //teacherInfoArrayList = new ArrayList<>();
+        //https://stackoverflow.com/questions/54711228/compare-two-arrays-with-not-the-same-order
+
+        DisplayAssignedLevel();
+//        if (assignLevel.containsAll(Arrays.asList(year1)) && assignLevel.equals(Arrays.asList(year1))){
+//            Toast.makeText(this, "year1", Toast.LENGTH_SHORT).show();
+//        }else if (assignLevel.containsAll(Arrays.asList(year2)) && assignLevel.equals(Arrays.asList(year2))){
+//            Toast.makeText(this, "year2", Toast.LENGTH_SHORT).show();
+//        }else if (assignLevel.containsAll(Arrays.asList(year3)) && assignLevel.equals(Arrays.asList(year3))){
+//            Toast.makeText(this, "year3", Toast.LENGTH_SHORT).show();
+//        }else{
+//            Toast.makeText(this, "year null", Toast.LENGTH_SHORT).show();
+//        }
+
+
         bottomNavigationView.setSelectedItemId(R.id.home);
         teacherName.setText(TeacherName);
-        //assignClassLayout.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
+
 
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
 
@@ -93,12 +132,12 @@ public class TeacherView extends AppCompatActivity {
                     return true;
 
                 case R.id.profile:
-                    startActivity(new Intent(getApplicationContext(), StudentSettings.class));
+                    startActivity(new Intent(getApplicationContext(), TeacherProfile.class));
                     overridePendingTransition(0,0);
                     return true;
 
                 case R.id.settings:
-                    startActivity(new Intent(getApplicationContext(), StudentHomeView.class));
+                    startActivity(new Intent(getApplicationContext(), TeacherSettings.class));
                     overridePendingTransition(0,0);
                     return true;
             }
@@ -156,15 +195,15 @@ public class TeacherView extends AppCompatActivity {
         final View view = getLayoutInflater().inflate(R.layout.assign_class_level,null);
 
         AssignLevelInput = view.findViewById(R.id.inputAssignLevel);
-        closeWindow = view.findViewById(R.id.CloseWindow);
-        ListLevelbtn = view.findViewById(R.id.SaveLevelList);
+        savebtn= view.findViewById(R.id.Save);
+        AddLevelList = view.findViewById(R.id.AddLevelList);
         ListLevel = view.findViewById(R.id.listlevel);
 
         builder.setView(view);
         alertDialog = builder.create();
         alertDialog.show();
 
-        ListLevelbtn.setOnClickListener(v -> {
+        AddLevelList.setOnClickListener(v -> {
             String inputLevel = AssignLevelInput.getText().toString();
 
             if (addLevel.contains(inputLevel)){
@@ -184,7 +223,10 @@ public class TeacherView extends AppCompatActivity {
             }
         });
 
-        closeWindow.setOnClickListener(v -> {
+        //https://stackoverflow.com/questions/49657098/android-firestore-query-array
+        //https://stackoverflow.com/questions/58113840/how-to-retrieve-an-array-from-firestore
+
+        savebtn.setOnClickListener(v -> {
             for (String item:addLevel){
                 data = data + "" + item + ",";
 
@@ -194,7 +236,7 @@ public class TeacherView extends AppCompatActivity {
             }else{
 
                 String [] dataArray = data.split("\\s*,\\s*");
-                List<String> levelArray = Arrays.asList(dataArray);
+                levelArray = Arrays.asList(dataArray);
 
                 DocumentReference documentReference = db.collection("Teacher")
                         .document(TeacherLogin.teacher_ID);
@@ -203,6 +245,48 @@ public class TeacherView extends AppCompatActivity {
             }
             alertDialog.dismiss();
         });
+    }
+
+    public void DisplayAssignedLevel(){
+        documentReference.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot document = task.getResult();
+                if (document.exists()) {
+                    assignLevel = (List<Map<String, Object>>) document.get("assignLevel");
+                    GetAssignedLevel = String.valueOf(assignLevel);
+
+                    Toast.makeText(this, GetAssignedLevel, Toast.LENGTH_SHORT).show();
+
+                    //Di ko macompare ung nasa loob ng assignLevel para makuha ung level na nasa loob
+
+                }
+            }
+        });
+//        collectionReference.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                for (DocumentSnapshot document : task.getResult()) {
+//                    List<String> list = (List<String>) document.get("assignLevel");
+//                    for (String item : list) {
+//                        Log.d("TAG", item);
+//                    }
+//
+//                }
+//            }
+//        });
+//        documentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                if (task.isSuccessful()){
+//                    DocumentSnapshot documentSnapshot = task.getResult();
+//                    if (documentSnapshot.exists()){
+//                        List<Map<String, TeacherInfo>> teacherInfo = (List<Map<String, TeacherInfo>>) documentSnapshot.get("assignLevel");
+//                    }
+//                }
+//            }
+//        });
+
+
     }
     @Override
     protected void onStart() {

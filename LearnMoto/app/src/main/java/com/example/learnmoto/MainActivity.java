@@ -36,44 +36,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         clickableLayout = findViewById(R.id.userType);
 
-        //CheckConnection();
-
     }
-
-//    public void CheckConnection(){
-//        ConnectivityManager connectivityManager = (ConnectivityManager) getApplicationContext()
-//                .getSystemService(Context.CONNECTIVITY_SERVICE);
-//
-//        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-//        if(networkInfo == null || !networkInfo.isConnected() || !networkInfo.isAvailable()){
-//
-//            Dialog dialog = new Dialog(this);
-//            //content view
-//            dialog.setContentView(R.layout.check_internet_dialog);
-//            //outside touch
-//            dialog.setCanceledOnTouchOutside(false);
-//            //set width and height
-//            dialog.getWindow().setLayout(WindowManager.LayoutParams.WRAP_CONTENT,
-//                    WindowManager.LayoutParams.WRAP_CONTENT);
-//            //transparent background
-//            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//            //set animation
-//            dialog.getWindow().getAttributes().windowAnimations = android.R.style.Animation_Dialog;
-//
-//            //initialize the button
-//            tryagain = dialog.findViewById(R.id.try_again);
-//            //perform action
-//            tryagain.setOnClickListener(v -> {
-//                //startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
-//                recreate();
-//                dialog.dismiss();
-//                //UserType();
-//            });
-//            dialog.show();
-//        }else{
-//            clickableLayout.setOnClickListener(v -> UserType());
-//        }
-//    }
 
     private void UserType(){
         AlertDialog.Builder myBuilder = new AlertDialog.Builder(MainActivity.this);

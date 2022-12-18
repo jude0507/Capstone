@@ -38,15 +38,14 @@
             android:text="Student Information"
             android:textAlignment="center"
             android:textSize="20sp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="15dp"
+            android:layout_margin="15dp"
             android:textColor="@color/white"/>
 
         <ScrollView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="30dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -65,7 +64,7 @@
                     android:hint="Student Name"
                     android:inputType="textCapWords"
                     android:padding="10dp"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/studentAddress"
@@ -80,7 +79,7 @@
                     android:maxLength="50"
                     android:padding="10dp"
                     android:inputType="textCapWords"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
                 <RadioGroup
                     android:id="@+id/radiogrp"
@@ -97,7 +96,7 @@
                         android:drawableLeft="@drawable/icon_gender"
                         android:drawablePadding="10dp"
                         android:text="Gender:"
-                        android:textSize="18dp" />
+                        android:textSize="16sp" />
 
                     <RadioButton
                         android:id="@+id/male"
@@ -126,7 +125,7 @@
                     android:hint="Birthday"
                     android:editable="false"
                     android:padding="10dp"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
                 <LinearLayout
                     android:layout_width="300dp"
@@ -145,7 +144,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Year Level: "
-                        android:textSize="18dp"
+                        android:textSize="16sp"
                         />
 
                     <Spinner
@@ -168,7 +167,7 @@
                     android:hint="Guardian/Parent Name"
                     android:inputType="textCapWords"
                     android:padding="10dp"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/studentID"
@@ -177,13 +176,13 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/custom_input"
-                    android:drawableLeft="@drawable/custom_icon_user"
+                    android:drawableStart="@drawable/custom_icon_user"
                     android:drawablePadding="10dp"
                     android:hint="Student ID"
                     android:maxLength="9"
                     android:inputType="number"
                     android:padding="10dp"
-                    android:textSize="18dp" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/studentPass"
@@ -192,57 +191,29 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/custom_input"
-                    android:drawableLeft="@drawable/custom_icon_key"
+                    android:drawableStart="@drawable/custom_icon_key"
+                    android:drawableEnd="@drawable/custom_icon_toggle_eye"
                     android:drawablePadding="10dp"
                     android:hint="Password"
                     android:inputType="textPassword"
                     android:padding="10dp"
-                    android:textSize="18dp"
+                    android:textSize="16sp"/>
+
+                <EditText
+                    android:id="@+id/confirmpass"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_input"
+                    android:drawableStart="@drawable/custom_icon_key"
+                    android:drawableEnd="@drawable/custom_icon_toggle_eye"
+                    android:drawablePadding="10dp"
+                    android:hint="Confirm Password"
+                    android:inputType="textPassword"
+                    android:padding="10dp"
+                    android:textSize="16sp"
                     android:layout_marginBottom="15dp"/>
-
-<!--                <LinearLayout-->
-<!--                    android:id="@+id/captureimage"-->
-<!--                    android:layout_width="300dp"-->
-<!--                    android:layout_height="40dp"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:layout_marginTop="10dp"-->
-<!--                    android:background="@drawable/background_edittext"-->
-<!--                    android:orientation="horizontal">-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_gravity="center"-->
-<!--                        android:layout_marginLeft="80dp"-->
-<!--                        android:text="Take a photo"-->
-<!--                        android:textColor="@color/black"-->
-<!--                        android:textSize="20sp" />-->
-<!--                    <ImageView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginTop="5dp"-->
-<!--                        android:layout_marginLeft="5dp"-->
-<!--                        android:src="@drawable/icon_camera"/>-->
-<!--                </LinearLayout>-->
-
-<!--                <androidx.cardview.widget.CardView-->
-<!--                    android:layout_width="100dp"-->
-<!--                    android:layout_height="100dp"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    app:cardCornerRadius="50dp"-->
-<!--                    android:layout_marginTop="10dp"-->
-<!--                    android:layout_marginBottom="10dp">-->
-
-<!--                    <de.hdodenhof.circleimageview.CircleImageView-->
-<!--                        android:id="@+id/studentImage"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:layout_gravity="center"-->
-<!--                        app:civ_border_color="@color/white"-->
-<!--                        android:src="@drawable/ic_user_circle"-->
-<!--                        app:civ_border_width="2dp"/>-->
-
-<!--                </androidx.cardview.widget.CardView>-->
 
             </LinearLayout>
         </ScrollView>

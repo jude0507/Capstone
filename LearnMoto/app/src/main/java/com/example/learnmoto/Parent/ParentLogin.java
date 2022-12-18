@@ -2,11 +2,15 @@ package com.example.learnmoto.Parent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -36,16 +40,27 @@ public class ParentLogin extends AppCompatActivity {
 
         ParentID = findViewById(R.id.parentID);
         ParentPass = findViewById(R.id.parentPassword);
+        ShowPassword();
+    }
 
+    @SuppressLint("ClickableViewAccessibility")
+    public void ShowPassword(){
+        ParentPass.setOnTouchListener((v, event) -> {
+            final int DrawableRight = 2;
+            if (event.getAction() == MotionEvent.ACTION_UP){
+                if (event.getRawX() >= (ParentPass.getRight() - ParentPass.getCompoundDrawables()
+                        [DrawableRight].getBounds().width())){
+                    ParentPass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                }
+            }else{
+                ParentPass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            }
+            return false;
+        });
     }
 
     public void ParentViewFunction(View view) {
-//        sharedPreferences = getSharedPreferences("Preferences", MODE_PRIVATE);
-//        SharedPreferences.Editor editor = sharedPreferences.edit();
-//        editor.putBoolean("hasLoggedIn", true);
-//        editor.commit();
         ParentLoginFunction();
-
     }
 
     private void ParentLoginFunction() {

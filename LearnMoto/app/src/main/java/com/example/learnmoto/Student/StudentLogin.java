@@ -2,11 +2,15 @@ package com.example.learnmoto.Student;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -50,12 +54,11 @@ public class StudentLogin extends AppCompatActivity {
 
 
         sharedPreferences = getSharedPreferences("Preferences", MODE_PRIVATE);
+        Showpassword();
 
         if (sharedPreferences.contains(Username)){
             startActivity(new Intent(StudentLogin.this, StudentHomeView.class));
         }
-
-        //stayLogin();
 
     }
 
@@ -64,10 +67,6 @@ public class StudentLogin extends AppCompatActivity {
     }
 
     public void studentHomeViewLogin(View view) {
-//        sharedPreferences = getSharedPreferences("Preferences", MODE_PRIVATE);
-//        editor = sharedPreferences.edit();
-//        editor.putBoolean("hasLoggedIn", true);
-//        editor.apply();
         LoginFunction();
     }
 
@@ -76,7 +75,7 @@ public class StudentLogin extends AppCompatActivity {
             DocumentReference documentReference = db.collection("Student").document(studentID.getText().toString());
             documentReference.get().addOnSuccessListener(documentSnapshot -> {
                 if (documentSnapshot.exists()) {
-                    //String fetchLevel;
+
                     studID = documentSnapshot.getString("sID").toString();
                     studPass = documentSnapshot.getString("sPassword").toString();
                     sLevel = documentSnapshot.getString("sLevel").toString();
@@ -129,6 +128,22 @@ public class StudentLogin extends AppCompatActivity {
 
         }
 
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    public void Showpassword(){
+        studentPass.setOnTouchListener((v, event) -> {
+            final int DrawableRight = 2;
+            if (event.getAction() == MotionEvent.ACTION_UP){
+                if (event.getRawX() >= (studentPass.getRight() - studentPass.getCompoundDrawables()
+                        [DrawableRight].getBounds().width())){
+                    studentPass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                }
+            }else{
+                studentPass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            }
+            return false;
+        });
     }
 
     public void BacktoMain(View view) {

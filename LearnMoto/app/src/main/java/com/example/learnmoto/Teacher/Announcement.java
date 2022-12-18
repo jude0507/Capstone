@@ -61,12 +61,12 @@ public class Announcement extends AppCompatActivity {
                     return true;
 
                 case R.id.profile:
-                    startActivity(new Intent(getApplicationContext(), StudentSettings.class));
+                    startActivity(new Intent(getApplicationContext(), TeacherProfile.class));
                     overridePendingTransition(0,0);
                     return true;
 
                 case R.id.settings:
-                    startActivity(new Intent(getApplicationContext(), StudentHomeView.class));
+                    startActivity(new Intent(getApplicationContext(), TeacherSettings.class));
                     overridePendingTransition(0,0);
                     return true;
             }

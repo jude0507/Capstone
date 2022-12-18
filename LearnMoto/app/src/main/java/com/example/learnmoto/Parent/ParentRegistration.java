@@ -2,10 +2,14 @@ package com.example.learnmoto.Parent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -21,7 +25,7 @@ public class ParentRegistration extends AppCompatActivity {
    // LinearLayout captureImage;
    // CircleImageView imageViewProfile;
 
-    private EditText ParentName, ParentAddress, ParentChildID, ParentID, ParentPassword, ParentPhone;
+    private EditText ParentName, ParentAddress, ParentChildID, ParentID, ParentPassword, confirmpass,ParentPhone;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
@@ -35,7 +39,40 @@ public class ParentRegistration extends AppCompatActivity {
         ParentChildID = findViewById(R.id.ParentChildID);
         ParentID = findViewById(R.id.ParentID);
         ParentPassword = findViewById(R.id.ParentPass);
+        confirmpass = findViewById(R.id.ConfirmPass);
         ParentPhone = findViewById(R.id.ParentPhone);
+
+        ShowPassword();
+
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    public void ShowPassword(){
+        ParentPassword.setOnTouchListener((v, event) -> {
+            final int DrawableRight = 2;
+            if (event.getAction() == MotionEvent.ACTION_UP){
+                if (event.getRawX() >= (ParentPassword.getRight() - ParentPassword.getCompoundDrawables()
+                        [DrawableRight].getBounds().width())){
+                    ParentPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                }
+            }else{
+                ParentPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            }
+            return false;
+        });
+
+        confirmpass.setOnTouchListener((v, event) -> {
+            final int DrawableRight = 2;
+            if (event.getAction() == MotionEvent.ACTION_UP){
+                if (event.getRawX() >= (confirmpass.getRight() - confirmpass.getCompoundDrawables()
+                        [DrawableRight].getBounds().width())){
+                    confirmpass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                }
+            }else{
+                confirmpass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            }
+            return false;
+        });
 
     }
 
@@ -50,6 +87,7 @@ public class ParentRegistration extends AppCompatActivity {
         String Parent_ID = ParentID.getText().toString().trim();
         String Parent_Password = ParentPassword.getText().toString().trim();
         String Parent_Phone = ParentPhone.getText().toString().trim();
+        String confirmPass = confirmpass.getText().toString();
 
         if (!Parent_ChildID.isEmpty()){
             DocumentReference studentReference = db.collection("Student").document(Parent_ChildID);
@@ -61,28 +99,34 @@ public class ParentRegistration extends AppCompatActivity {
                         ParentChildID.setError("Not Found");
                         Toast.makeText(ParentRegistration.this, "Child ID not Found", Toast.LENGTH_SHORT).show();
                     }else{
-                        //Toast.makeText(ParentRegistration.this, "Equal", Toast.LENGTH_SHORT).show();
                         if(!Parent_Name.isEmpty() && !Parent_Address.isEmpty() &&
                                 !Parent_ID.isEmpty() && !Parent_Password.isEmpty() && !Parent_Phone.isEmpty()){
-                            DocumentReference documentReference = db.collection("Parent").document(ParentID.getText().toString());
-                            documentReference.get().addOnSuccessListener(documentSnapshot1 -> {
-                                if (documentSnapshot1.exists()){
-                                    ParentID.setError("UserID already registered");
-                                    Toast.makeText(ParentRegistration.this, "UserID already registered", Toast.LENGTH_SHORT).show();
+                            if (confirmPass.equals(Parent_Password)){
+                                if (Parent_Password.length() >= 6){
+                                    DocumentReference documentReference = db.collection("Parent").document(ParentID.getText().toString());
+                                    documentReference.get().addOnSuccessListener(documentSnapshot1 -> {
+                                        if (documentSnapshot1.exists()){
+                                            ParentID.setError("UserID already registered");
+                                            Toast.makeText(ParentRegistration.this, "UserID already registered", Toast.LENGTH_SHORT).show();
+                                        }else{
+                                            ParentInfo parentInfo = new ParentInfo();
+                                            parentInfo.setpName(Parent_Name);
+                                            parentInfo.setpAddress(Parent_Address);
+                                            parentInfo.setpChildID(Parent_ChildID);
+                                            parentInfo.setpID(Parent_ID);
+                                            parentInfo.setpPassword(Parent_Password);
+                                            parentInfo.setpPhoneNumber(String.valueOf(Parent_Phone));
+                                            db.collection("Parent").document(Parent_ID).set(parentInfo);
+                                            Toast.makeText(ParentRegistration.this, "Registration Successfully", Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(ParentRegistration.this, ParentLogin.class));
+                                        }
+                                    });
                                 }else{
-                                    ParentInfo parentInfo = new ParentInfo();
-                                    parentInfo.setpName(Parent_Name);
-                                    parentInfo.setpAddress(Parent_Address);
-                                    parentInfo.setpChildID(Parent_ChildID);
-                                    parentInfo.setpID(Parent_ID);
-                                    parentInfo.setpPassword(Parent_Password);
-                                    parentInfo.setpPhoneNumber(String.valueOf(Parent_Phone));
-                                    db.collection("Parent").document(Parent_ID).set(parentInfo);
-                                    Toast.makeText(ParentRegistration.this, "Registration Successfully", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(ParentRegistration.this, ParentLogin.class));
+                                    ParentPassword.setError("Atleast 6 characters required");
                                 }
-                            });
-
+                            }else{
+                                confirmpass.setError("Not Matched");
+                            }
                         }else{
                             setErrors();
                         }

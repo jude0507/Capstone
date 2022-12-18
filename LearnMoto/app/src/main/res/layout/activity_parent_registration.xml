@@ -46,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="20sp">
+            android:layout_marginTop="30dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -59,9 +59,9 @@
                     android:layout_height="45dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/background_edittext"
-                    android:drawableLeft="@drawable/custom_icon_name"
+                    android:drawableStart="@drawable/custom_icon_name"
                     android:hint="Parent Name"
-                    android:textSize="18dp"
+                    android:textSize="16sp"
                     android:layout_gravity="center"
                     android:inputType="textCapWords"
                     android:drawablePadding="10dp"
@@ -72,9 +72,9 @@
                     android:layout_height="45dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/background_edittext"
-                    android:drawableLeft="@drawable/custom_icon_user"
+                    android:drawableStart="@drawable/custom_icon_user"
                     android:hint="Child ID"
-                    android:textSize="18dp"
+                    android:textSize="16sp"
                     android:layout_gravity="center"
                     android:inputType="number"
                     android:drawablePadding="10dp"
@@ -86,9 +86,9 @@
                     android:layout_height="45dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/background_edittext"
-                    android:drawableLeft="@drawable/custom_icon_address"
+                    android:drawableStart="@drawable/custom_icon_address"
                     android:hint="Address"
-                    android:textSize="18dp"
+                    android:textSize="16sp"
                     android:layout_gravity="center"
                     android:inputType="textCapWords"
                     android:drawablePadding="10dp"
@@ -100,9 +100,9 @@
                     android:layout_height="45dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/background_edittext"
-                    android:drawableLeft="@drawable/custom_icon_phone"
+                    android:drawableStart="@drawable/custom_icon_phone"
                     android:hint="Phone Number"
-                    android:textSize="18dp"
+                    android:textSize="16sp"
                     android:layout_gravity="center"
                     android:inputType="phone"
                     android:maxLength="11"
@@ -115,9 +115,9 @@
                     android:layout_height="45dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/background_edittext"
-                    android:drawableLeft="@drawable/custom_icon_user"
+                    android:drawableStart="@drawable/custom_icon_user"
                     android:hint="Parent User ID"
-                    android:textSize="18dp"
+                    android:textSize="16sp"
                     android:layout_gravity="center"
                     android:inputType="text"
                     android:maxLength="15"
@@ -130,56 +130,31 @@
                     android:layout_height="45dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/background_edittext"
-                    android:drawableLeft="@drawable/custom_icon_key"
+                    android:drawableStart="@drawable/custom_icon_key"
+                    android:drawableEnd="@drawable/custom_icon_toggle_eye"
                     android:hint="Password"
-                    android:textSize="18dp"
+                    android:textSize="16sp"
+                    android:layout_gravity="center"
+                    android:drawablePadding="10dp"
+                    android:inputType="textPassword"
+                    android:padding="10dp"/>
+
+                <EditText
+                    android:id="@+id/ConfirmPass"
+                    android:layout_width="300dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/background_edittext"
+                    android:drawableStart="@drawable/custom_icon_key"
+                    android:drawableEnd="@drawable/custom_icon_toggle_eye"
+                    android:hint="Confirm Password"
+                    android:textSize="16sp"
                     android:layout_gravity="center"
                     android:drawablePadding="10dp"
                     android:inputType="textPassword"
                     android:padding="10dp"
                     android:layout_marginBottom="15dp"/>
-<!--                <LinearLayout-->
-<!--                    android:id="@+id/captureimage"-->
-<!--                    android:layout_width="300dp"-->
-<!--                    android:layout_height="40dp"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:layout_marginTop="5dp"-->
-<!--                    android:background="@drawable/background_edittext"-->
-<!--                    android:orientation="horizontal">-->
 
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_gravity="center"-->
-<!--                        android:layout_marginLeft="80dp"-->
-<!--                        android:text="Take a photo"-->
-<!--                        android:textColor="@color/black"-->
-<!--                        android:textSize="20sp" />-->
-<!--                    <ImageView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginTop="5dp"-->
-<!--                        android:layout_marginLeft="5dp"-->
-<!--                        android:src="@drawable/icon_camera"/>-->
-<!--                </LinearLayout>-->
-
-<!--                <androidx.cardview.widget.CardView-->
-<!--                    android:layout_width="100dp"-->
-<!--                    android:layout_height="100dp"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    app:cardCornerRadius="50dp"-->
-<!--                    android:layout_marginTop="10dp"-->
-<!--                    android:layout_marginBottom="15dp">-->
-
-<!--                    <de.hdodenhof.circleimageview.CircleImageView-->
-<!--                        android:id="@+id/parentImage"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:layout_gravity="center"-->
-<!--                        app:civ_border_color="@color/white"-->
-<!--                        android:src="@drawable/ic_user_circle"-->
-<!--                        app:civ_border_width="2dp"/>-->
-<!--                </androidx.cardview.widget.CardView>-->
             </LinearLayout>
         </ScrollView>
 
