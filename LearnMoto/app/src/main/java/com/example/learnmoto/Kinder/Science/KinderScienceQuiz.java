@@ -12,8 +12,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
-import com.example.learnmoto.Nursery.Science.NurseryScienceRead;
-import com.example.learnmoto.Nursery.Science.NurseryScienceWatch;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Student.StudentHomeView;
 
@@ -47,10 +45,10 @@ public class KinderScienceQuiz extends AppCompatActivity {
     }
 
     public void readme(View view){
-        redirectActivity(this, NurseryScienceRead.class);
+        redirectActivity(this, KinderScienceRead.class);
     }
     public void watchme(View view){
-        redirectActivity(this, NurseryScienceWatch.class);
+        redirectActivity(this, KinderScienceWatch.class);
     }
     public void takeaquiz(View view){
         recreate();

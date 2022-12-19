@@ -1,6 +1,5 @@
 package com.example.learnmoto.Teacher;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,7 +11,6 @@ import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -23,29 +21,19 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.learnmoto.Adapter.StudentSubjectAdapter;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
-import com.example.learnmoto.LevelAdapter;
-import com.example.learnmoto.Model.TeacherInfo;
+import com.example.learnmoto.Adapter.LevelAdapter;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Adapter.TranslateAnimatioUI;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 public class TeacherView extends AppCompatActivity {
 
@@ -60,6 +48,7 @@ public class TeacherView extends AppCompatActivity {
     AlertDialog.Builder builder;
     AlertDialog alertDialog;
     ArrayList<String> addLevel = new ArrayList<String>();
+    //ArrayList<String> AssignLevelValue = new ArrayList<String>();
     ArrayAdapter<String> arrayAdapter;
     List<String> levelArray;
     ListView ListLevel, listClass;
@@ -67,7 +56,7 @@ public class TeacherView extends AppCompatActivity {
     String data = "";
 
     public static String GetAssignedLevel;
-    public static List<Map<String, Object>> assignLevel;
+    public static List<String> assignLevel;
     LevelAdapter levelAdapter;
     List<Integer> mImages;
 
@@ -243,13 +232,20 @@ public class TeacherView extends AppCompatActivity {
             if (task.isSuccessful()) {
                 DocumentSnapshot document = task.getResult();
                 if (document.exists()) {
-                    assignLevel = (List<Map<String, Object>>) document.get("assignLevel");
+                    assignLevel = (List<String>) document.get("assignLevel");
                     GetAssignedLevel = String.valueOf(assignLevel);
 
+                    //Display array in this format [1, 2]
                     Toast.makeText(this, GetAssignedLevel, Toast.LENGTH_SHORT).show();
 
-                    mImages = new ArrayList<>();
+//                    AssignLevelValue = assignLevel.toArray();
+//
+//                    arrayAdapter = new ArrayAdapter<String>(TeacherView.this,
+//                            android.R.layout.simple_list_item_1, (Object[]) AssignLevelValue);
+//                    ListLevel.setAdapter(arrayAdapter);
 
+
+                    mImages = new ArrayList<>();
                     levelAdapter = new LevelAdapter(this, mImages);
 
                     try {
@@ -306,6 +302,7 @@ public class TeacherView extends AppCompatActivity {
     protected void onStart() {
         IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
         registerReceiver(networkChangeListener, intentFilter);
+        //DisplayAssignedLevel();
         super.onStart();
     }
 
