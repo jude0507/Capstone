@@ -21,9 +21,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:background="@drawable/gradientbg"
-                android:gravity="center"
+                android:gravity="center|left"
                 android:orientation="horizontal"
-                android:paddingRight="80dp">
+                android:paddingLeft="20dp">
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="80dp"

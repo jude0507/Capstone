@@ -22,21 +22,24 @@
         tools:targetApi="31" >
         <activity
             android:name=".Kinder.KinderClassList"
-            android:exported="false" >
+            android:exported="false"
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".Preparatory.PreparatoryClassList"
-            android:exported="false" >
+            android:exported="false"
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".Nursery.NurseryClassList"
-            android:exported="false" >
+            android:exported="false"
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -52,7 +55,7 @@
         <activity
             android:name=".Teacher.TeacherProfile"
             android:exported="false"
-            android:noHistory="false" >
+            android:noHistory="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

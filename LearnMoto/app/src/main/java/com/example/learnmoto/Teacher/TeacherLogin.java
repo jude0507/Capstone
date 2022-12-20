@@ -17,6 +17,8 @@ import android.widget.Toast;
 import com.example.learnmoto.MainActivity;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.R;
+import com.example.learnmoto.ShowPassword;
+import com.example.learnmoto.Student.StudentLogin;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -25,7 +27,7 @@ import java.util.Arrays;
 public class TeacherLogin extends AppCompatActivity {
 
     EditText Teacher_ID, Teacher_Pass;
-    public static String teacher_ID, teacher_pass, teacher_name, teacher_address, teacher_assignLevel;
+    public static String teacher_ID, teacher_pass, teacher_name, teacher_address, teacher_phone;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -40,18 +42,23 @@ public class TeacherLogin extends AppCompatActivity {
         Teacher_ID = findViewById(R.id.teacherID);
         Teacher_Pass = findViewById(R.id.teacherPassword);
 
-        Teacher_Pass.setOnTouchListener((v, event) -> {
-            final int DrawableRight = 2;
-            if (event.getAction() == MotionEvent.ACTION_UP){
-                if (event.getRawX() >= (Teacher_Pass.getRight() - Teacher_Pass.getCompoundDrawables()
-                [DrawableRight].getBounds().width())){
-                    Teacher_Pass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                }
-            }else{
-                Teacher_Pass.setTransformationMethod(PasswordTransformationMethod.getInstance());
-            }
-            return false;
-        });
+        ShowPassword showPassword = new ShowPassword();
+        showPassword.ShowPassword(Teacher_Pass);
+
+
+
+//        Teacher_Pass.setOnTouchListener((v, event) -> {
+//            final int DrawableRight = 2;
+//            if (event.getAction() == MotionEvent.ACTION_UP){
+//                if (event.getRawX() >= (Teacher_Pass.getRight() - Teacher_Pass.getCompoundDrawables()
+//                [DrawableRight].getBounds().width())){
+//                    Teacher_Pass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+//                }
+//            }else{
+//                Teacher_Pass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+//            }
+//            return false;
+//        });
 
 
     }
@@ -77,6 +84,7 @@ public class TeacherLogin extends AppCompatActivity {
                     teacher_pass = documentSnapshot.getString("teacher_pass").toString();
                     teacher_name = documentSnapshot.getString("teacher_name").toString();
                     teacher_address = documentSnapshot.getString("teacher_address").toString();
+                    teacher_phone = documentSnapshot.getString("teacher_phone").toString();
                     //teacher_assignLevel = documentSnapshot.getString("assignLevel").toString();
                     //teacher_assignLevel = String.valueOf(documentSnapshot.getString("assignLevel"));
                     //teacher_address = documentSnapshot.getString("teacher_address").toString();

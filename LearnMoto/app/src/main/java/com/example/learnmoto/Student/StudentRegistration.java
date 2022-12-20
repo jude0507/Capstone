@@ -26,6 +26,7 @@ import android.widget.Toast;
 import com.example.learnmoto.Model.StudentInfo;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.R;
+import com.example.learnmoto.ShowPassword;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -60,7 +61,10 @@ public class StudentRegistration extends AppCompatActivity {
         confirmPass = findViewById(R.id.confirmpass);
         guardianName = findViewById(R.id.guardianName);
         btnStudentSignUp = findViewById(R.id.btnStudentSignUp);
-        ShowPassword();
+
+        ShowPassword showPassword = new ShowPassword();
+        showPassword.ShowPassword(studentPass);
+        showPassword.ShowPassword(confirmPass);
 
         List<String> yearlvl = new ArrayList<>();
         yearlvl.add(0, "Choose Level");
@@ -208,36 +212,6 @@ public class StudentRegistration extends AppCompatActivity {
         });
         alBuilder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
         alBuilder.show();
-
-    }
-
-    @SuppressLint("ClickableViewAccessibility")
-    public void ShowPassword(){
-        studentPass.setOnTouchListener((v, event) -> {
-            final int DrawableRight = 2;
-            if (event.getAction() == MotionEvent.ACTION_UP){
-                if (event.getRawX() >= (studentPass.getRight() - studentPass.getCompoundDrawables()
-                        [DrawableRight].getBounds().width())){
-                    studentPass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                }
-            }else{
-                studentPass.setTransformationMethod(PasswordTransformationMethod.getInstance());
-            }
-            return false;
-        });
-
-        confirmPass.setOnTouchListener((v, event) -> {
-            final int DrawableRight = 2;
-            if (event.getAction() == MotionEvent.ACTION_UP){
-                if (event.getRawX() >= (confirmPass.getRight() - confirmPass.getCompoundDrawables()
-                        [DrawableRight].getBounds().width())){
-                    confirmPass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                }
-            }else{
-                confirmPass.setTransformationMethod(PasswordTransformationMethod.getInstance());
-            }
-            return false;
-        });
 
     }
 

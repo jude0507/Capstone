@@ -19,5 +19,6 @@
     <color name="cardColor">#88CD9F</color>
     <color name="yellowOrange">#EFA632</color>
     <color name="transparent">#00000000</color>
+    <color name="transparent1">#3C8F8A8A</color>
     <color name="grayColor">#AAAAAA</color>
 </resources>

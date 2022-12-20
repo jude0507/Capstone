@@ -106,22 +106,31 @@ public class StudentInfoSettings extends AppCompatActivity {
         ReadOnlyText();
 
     }
+
     public void ReadOnlyText() {
         studName.setEnabled(false);
+        studName.setBackgroundResource(R.drawable.background_edittext);
         studName.setTextColor(ContextCompat.getColor(this, R.color.black));
         studID.setEnabled(false);
+        studID.setBackgroundResource(R.drawable.background_edittext);
         studID.setTextColor(ContextCompat.getColor(this, R.color.black));
         studPass.setEnabled(false);
+        studPass.setBackgroundResource(R.drawable.background_edittext);
         studPass.setTextColor(ContextCompat.getColor(this, R.color.black));
         studAddress.setEnabled(false);
+        studAddress.setBackgroundResource(R.drawable.background_edittext);
         studAddress.setTextColor(ContextCompat.getColor(this, R.color.black));
         studGuardian.setEnabled(false);
+        studGuardian.setBackgroundResource(R.drawable.background_edittext);
         studGuardian.setTextColor(ContextCompat.getColor(this, R.color.black));
         studLevel.setEnabled(false);
+        studLevel.setBackgroundResource(R.drawable.background_edittext);
         studLevel.setTextColor(ContextCompat.getColor(this, R.color.black));
         studBirthday.setEnabled(false);
+        studBirthday.setBackgroundResource(R.drawable.background_edittext);
         studBirthday.setTextColor(ContextCompat.getColor(this, R.color.black));
         studGender.setEnabled(false);
+        studGender.setBackgroundResource(R.drawable.background_edittext);
         studGender.setTextColor(ContextCompat.getColor(this, R.color.black));
         updateButton.setEnabled(false);
         updateButton.setTextColor(ContextCompat.getColor(this, R.color.white));

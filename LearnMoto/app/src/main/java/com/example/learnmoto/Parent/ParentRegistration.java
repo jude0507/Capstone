@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.learnmoto.Model.ParentInfo;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.R;
+import com.example.learnmoto.ShowPassword;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -42,37 +43,10 @@ public class ParentRegistration extends AppCompatActivity {
         confirmpass = findViewById(R.id.ConfirmPass);
         ParentPhone = findViewById(R.id.ParentPhone);
 
-        ShowPassword();
+        ShowPassword showPassword = new ShowPassword();
+        showPassword.ShowPassword(ParentPassword);
+        showPassword.ShowPassword(confirmpass);
 
-    }
-
-    @SuppressLint("ClickableViewAccessibility")
-    public void ShowPassword(){
-        ParentPassword.setOnTouchListener((v, event) -> {
-            final int DrawableRight = 2;
-            if (event.getAction() == MotionEvent.ACTION_UP){
-                if (event.getRawX() >= (ParentPassword.getRight() - ParentPassword.getCompoundDrawables()
-                        [DrawableRight].getBounds().width())){
-                    ParentPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                }
-            }else{
-                ParentPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-            }
-            return false;
-        });
-
-        confirmpass.setOnTouchListener((v, event) -> {
-            final int DrawableRight = 2;
-            if (event.getAction() == MotionEvent.ACTION_UP){
-                if (event.getRawX() >= (confirmpass.getRight() - confirmpass.getCompoundDrawables()
-                        [DrawableRight].getBounds().width())){
-                    confirmpass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                }
-            }else{
-                confirmpass.setTransformationMethod(PasswordTransformationMethod.getInstance());
-            }
-            return false;
-        });
 
     }
 

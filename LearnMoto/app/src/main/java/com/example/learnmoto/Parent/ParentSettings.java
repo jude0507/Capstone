@@ -101,12 +101,16 @@ public class ParentSettings extends AppCompatActivity {
 
     public void ReadTextOnly(){
         Et_Name.setEnabled(false);
+        Et_Name.setBackgroundResource(R.drawable.background_edittext);
         Et_Name.setTextColor(ContextCompat.getColor(this, R.color.black));
         Et_Address.setEnabled(false);
+        Et_Address.setBackgroundResource(R.drawable.background_edittext);
         Et_Address.setTextColor(ContextCompat.getColor(this, R.color.black));
         Et_ParentID.setEnabled(false);
+        Et_ParentID.setBackgroundResource(R.drawable.background_edittext);
         Et_ParentID.setTextColor(ContextCompat.getColor(this, R.color.black));
         Et_Password.setEnabled(false);
+        Et_Password.setBackgroundResource(R.drawable.background_edittext);
         Et_Password.setTextColor(ContextCompat.getColor(this, R.color.black));
         Update.setEnabled(false);
         Update.setTextColor(ContextCompat.getColor(this, R.color.white));
@@ -132,7 +136,6 @@ public class ParentSettings extends AppCompatActivity {
         alBuilder.setPositiveButton("Confirm", (dialog, which) -> {
 
             Et_Address.setEnabled(true);
-            //studLevel.setEnabled(true);
             Et_Password.setEnabled(true);
             Update.setEnabled(true);
             chooseFile.setEnabled(true);

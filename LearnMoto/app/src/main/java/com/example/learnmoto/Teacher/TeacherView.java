@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
@@ -47,7 +48,7 @@ public class TeacherView extends AppCompatActivity {
 
     AlertDialog.Builder builder;
     AlertDialog alertDialog;
-    ArrayList<String> addLevel = new ArrayList<String>();
+    ArrayList<String> addLevel = new ArrayList<>();
     //ArrayList<String> AssignLevelValue = new ArrayList<String>();
     ArrayAdapter<String> arrayAdapter;
     List<String> levelArray;
@@ -67,7 +68,6 @@ public class TeacherView extends AppCompatActivity {
     DocumentReference documentReference = collectionReference.document(TeacherLogin.teacher_ID);
 
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -203,6 +203,11 @@ public class TeacherView extends AppCompatActivity {
             }
         });
 
+        addLevel.add(String.valueOf(assignLevel));
+        arrayAdapter = new ArrayAdapter<String>(TeacherView.this,
+                android.R.layout.simple_list_item_1, addLevel);
+        ListLevel.setAdapter(arrayAdapter);
+
         //https://stackoverflow.com/questions/49657098/android-firestore-query-array
         //https://stackoverflow.com/questions/58113840/how-to-retrieve-an-array-from-firestore
 
@@ -238,12 +243,10 @@ public class TeacherView extends AppCompatActivity {
                     //Display array in this format [1, 2]
                     Toast.makeText(this, GetAssignedLevel, Toast.LENGTH_SHORT).show();
 
-//                    AssignLevelValue = assignLevel.toArray();
-//
+//                    addLevel.add(String.valueOf(assignLevel));
 //                    arrayAdapter = new ArrayAdapter<String>(TeacherView.this,
-//                            android.R.layout.simple_list_item_1, (Object[]) AssignLevelValue);
+//                            android.R.layout.simple_list_item_1, addLevel);
 //                    ListLevel.setAdapter(arrayAdapter);
-
 
                     mImages = new ArrayList<>();
                     levelAdapter = new LevelAdapter(this, mImages);

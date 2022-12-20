@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.learnmoto.Model.TeacherInfo;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.R;
+import com.example.learnmoto.ShowPassword;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -37,37 +38,10 @@ public class TeacherRegistration extends AppCompatActivity {
         TeacherID = findViewById(R.id.TeacherID);
         TeacherPassword = findViewById(R.id.TeacherPass);
         confirmPass = findViewById(R.id.ConfirmPass);
-        ShowPassword();
 
-    }
-
-    @SuppressLint("ClickableViewAccessibility")
-    public void ShowPassword(){
-        TeacherPassword.setOnTouchListener((v, event) -> {
-            final int DrawableRight = 2;
-            if (event.getAction() == MotionEvent.ACTION_UP){
-                if (event.getRawX() >= (TeacherPassword.getRight() - TeacherPassword.getCompoundDrawables()
-                        [DrawableRight].getBounds().width())){
-                    TeacherPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                }
-            }else{
-                TeacherPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-            }
-            return false;
-        });
-
-        confirmPass.setOnTouchListener((v, event) -> {
-            final int DrawableRight = 2;
-            if (event.getAction() == MotionEvent.ACTION_UP){
-                if (event.getRawX() >= (confirmPass.getRight() - confirmPass.getCompoundDrawables()
-                        [DrawableRight].getBounds().width())){
-                    confirmPass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                }
-            }else{
-                confirmPass.setTransformationMethod(PasswordTransformationMethod.getInstance());
-            }
-            return false;
-        });
+        ShowPassword showPassword = new ShowPassword();
+        showPassword.ShowPassword(TeacherPassword);
+        showPassword.ShowPassword(confirmPass);
 
     }
 

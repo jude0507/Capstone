@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.learnmoto.MainActivity;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.R;
+import com.example.learnmoto.ShowPassword;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -54,7 +55,9 @@ public class StudentLogin extends AppCompatActivity {
 
 
         sharedPreferences = getSharedPreferences("Preferences", MODE_PRIVATE);
-        Showpassword();
+        ShowPassword showPassword = new ShowPassword();
+        showPassword.ShowPassword(studentPass);
+
 
         if (sharedPreferences.contains(Username)){
             startActivity(new Intent(StudentLogin.this, StudentHomeView.class));
@@ -130,21 +133,36 @@ public class StudentLogin extends AppCompatActivity {
 
     }
 
-    @SuppressLint("ClickableViewAccessibility")
-    public void Showpassword(){
-        studentPass.setOnTouchListener((v, event) -> {
-            final int DrawableRight = 2;
-            if (event.getAction() == MotionEvent.ACTION_UP){
-                if (event.getRawX() >= (studentPass.getRight() - studentPass.getCompoundDrawables()
-                        [DrawableRight].getBounds().width())){
-                    studentPass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                }
-            }else{
-                studentPass.setTransformationMethod(PasswordTransformationMethod.getInstance());
-            }
-            return false;
-        });
-    }
+   // @SuppressLint("ClickableViewAccessibility")
+//    public void Showpassword(){
+//        studentPass.setOnTouchListener((v, event) -> {
+//            final int DrawableRight = 2;
+//            if (event.getAction() == MotionEvent.ACTION_UP){
+//                if (event.getRawX() >= (studentPass.getRight() - studentPass.getCompoundDrawables()
+//                        [DrawableRight].getBounds().width())){
+//                    studentPass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+//                }
+//            }else{
+//                studentPass.setTransformationMethod(PasswordTransformationMethod.getInstance());
+//            }
+//            return false;
+//        });
+//    }
+
+//    public static void password(EditText editText){
+//        editText.setOnTouchListener((v, event) -> {
+//            final int DrawableRight = 2;
+//            if (event.getAction() == MotionEvent.ACTION_UP){
+//                if (event.getRawX() >= (editText.getRight() - editText.getCompoundDrawables()
+//                        [DrawableRight].getBounds().width())){
+//                    editText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+//                }
+//            }else{
+//                editText.setTransformationMethod(PasswordTransformationMethod.getInstance());
+//            }
+//            return false;
+//        });
+//    }
 
     public void BacktoMain(View view) {
         startActivity(new Intent(this, MainActivity.class));

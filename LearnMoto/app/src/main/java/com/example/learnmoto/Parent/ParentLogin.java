@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.example.learnmoto.MainActivity;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.R;
+import com.example.learnmoto.ShowPassword;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -40,23 +41,10 @@ public class ParentLogin extends AppCompatActivity {
 
         ParentID = findViewById(R.id.parentID);
         ParentPass = findViewById(R.id.parentPassword);
-        ShowPassword();
-    }
 
-    @SuppressLint("ClickableViewAccessibility")
-    public void ShowPassword(){
-        ParentPass.setOnTouchListener((v, event) -> {
-            final int DrawableRight = 2;
-            if (event.getAction() == MotionEvent.ACTION_UP){
-                if (event.getRawX() >= (ParentPass.getRight() - ParentPass.getCompoundDrawables()
-                        [DrawableRight].getBounds().width())){
-                    ParentPass.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                }
-            }else{
-                ParentPass.setTransformationMethod(PasswordTransformationMethod.getInstance());
-            }
-            return false;
-        });
+        ShowPassword showPassword = new ShowPassword();
+        showPassword.ShowPassword(ParentPass);
+
     }
 
     public void ParentViewFunction(View view) {
