@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.text.method.KeyListener;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,28 +24,46 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.learnmoto.Adapter.TranslateAnimatioUI;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
+import com.example.learnmoto.MainActivity;
+import com.example.learnmoto.Model.StudentInfo;
 import com.example.learnmoto.R;
+import com.example.learnmoto.ShowPassword;
 import com.example.learnmoto.Student.StudentInfoSettings;
 import com.example.learnmoto.Student.StudentLogin;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class TeacherProfile extends AppCompatActivity {
 
     Uri imageUri;
+    String ImageURLPath;
     BottomNavigationView bottomNavigationView;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     LinearLayout ProfileLayout, ProfileContainer, AccountLayout, AccountContainer;
-    EditText TeacherName, Address, PhoneNumber, TeacherUserName, Password;
+    EditText TeacherName, Address, PhoneNumber, TeacherUserName, Password,
+            NewPass, ConfirmNewPass;
     TextView NameUser, TxtEditProfile;
-    Button ProfileBtn, AccountBtn, UpdatePicturebtn, ChangePassBtn, BasicInfoUpdateBtn, DoneUpdatePicture;
+    Button ProfileBtn, AccountBtn, ChangePassBtn, BasicInfoUpdateBtn, DoneUpdatePicture, ConfirmChangePassBtn;
     ImageView CameraBtn;
     ScrollView scrollView;
     CircleImageView ProfilePicture;
+
+    FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
+    StorageReference storageReference = firebaseStorage.getReference();
+
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    CollectionReference collectionReference = db.collection("Teacher");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,18 +82,22 @@ public class TeacherProfile extends AppCompatActivity {
         PhoneNumber = findViewById(R.id.et_PhoneNumber);
         TeacherUserName = findViewById(R.id.et_UserName);
         Password = findViewById(R.id.et_Pass);
+        NewPass = findViewById(R.id.et_newPass);
+        ConfirmNewPass = findViewById(R.id.et_confirmPass);
         ProfilePicture = findViewById(R.id.profile);
         CameraBtn = findViewById(R.id.EditProfilePhoto);
-        UpdatePicturebtn = findViewById(R.id.UpdatePicture);
         ChangePassBtn = findViewById(R.id.ChangePassBtn);
         BasicInfoUpdateBtn = findViewById(R.id.UpdateBasicInfoBtn);
-        DoneUpdatePicture = findViewById(R.id.UpdatePicture);
+        DoneUpdatePicture = findViewById(R.id.DoneUpdatePicture);
         NameUser = findViewById(R.id.NameUser);
         TxtEditProfile = findViewById(R.id.txtEditProfile);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.profile);
 
-
+        ShowPassword showPassword = new ShowPassword();
+        showPassword.ShowPassword(Password);
+        showPassword.ShowPassword(NewPass);
+        showPassword.ShowPassword(ConfirmNewPass);
         DisplayTeacherInfo();
         //TeacherName.setClickable(false);
 
@@ -137,8 +160,8 @@ public class TeacherProfile extends AppCompatActivity {
         if (requestCode == 101 && resultCode == Activity.RESULT_OK) {
             imageUri = data.getData();
             ProfilePicture.setImageURI(imageUri);
-            if (UpdatePicturebtn.getVisibility() == View.GONE){
-                UpdatePicturebtn.setVisibility(View.VISIBLE);
+            if (DoneUpdatePicture.getVisibility() == View.GONE){
+                DoneUpdatePicture.setVisibility(View.VISIBLE);
                 CameraBtn.setVisibility(View.GONE);
             }
         }
@@ -164,6 +187,10 @@ public class TeacherProfile extends AppCompatActivity {
                 PhoneNumber.setEnabled(true);
                 BasicInfoUpdateBtn.setEnabled(true);
                 ChangePassBtn.setEnabled(true);
+                Password.setEnabled(true);
+                Password.setText("");
+                NewPass.setVisibility(View.VISIBLE);
+                ConfirmNewPass.setVisibility(View.VISIBLE);
 
             }
 
@@ -182,9 +209,11 @@ public class TeacherProfile extends AppCompatActivity {
         PhoneNumber.setEnabled(false);
         PhoneNumber.setBackgroundResource(R.drawable.background_edittext);
         PhoneNumber.setTextColor(ContextCompat.getColor(this, R.color.black));
+        Password.setEnabled(false);
+        Password.setBackgroundResource(R.drawable.background_edittext);
+        Password.setTextColor(ContextCompat.getColor(this, R.color.black));
         TeacherName.setFocusable(false);
         TeacherUserName.setFocusable(false);
-        Password.setFocusable(false);
         BasicInfoUpdateBtn.setEnabled(false);
         ChangePassBtn.setEnabled(false);
     }
@@ -196,8 +225,24 @@ public class TeacherProfile extends AppCompatActivity {
         PhoneNumber.setText(TeacherLogin.teacher_phone);
         TeacherUserName.setText(TeacherLogin.teacher_ID);
         Password.setText(TeacherLogin.teacher_pass);
+        DisplayImage();
         ReadOnly();
 
+    }
+
+    public void DisplayImage(){
+        collectionReference.whereEqualTo("teacher_ID", TeacherLogin.teacher_ID)
+                .get().addOnSuccessListener(queryDocumentSnapshots -> {
+                    String imageDiplay = "";
+                    for (QueryDocumentSnapshot documentSnapshot: queryDocumentSnapshots){
+                        StudentInfo studentInfo = documentSnapshot.toObject(StudentInfo.class);
+                        studentInfo.setMyid(documentSnapshot.getId());
+
+                        imageDiplay += studentInfo.getImageurl();
+
+                    }
+                    Glide.with(getApplicationContext()).load(imageDiplay).placeholder(R.drawable.ic_user_circle).into(ProfilePicture);
+                });
     }
 
     @Override
@@ -222,8 +267,102 @@ public class TeacherProfile extends AppCompatActivity {
     }
 
     public void UpdateImage(View view) {
-        Toast.makeText(this, "Image", Toast.LENGTH_SHORT).show();
+        UploadImageToStorage();
         DoneUpdatePicture.setVisibility(View.GONE);
         CameraBtn.setVisibility(View.GONE);
     }
+
+    public void ChangePassword(View view) {
+        AlertDialog.Builder alBuilder = new AlertDialog.Builder(this);
+        alBuilder.setTitle("Confirmation Message")
+                .setMessage("Submit your new password");
+        alBuilder.setPositiveButton("Yes", (dialog, which) -> {
+            UpdatePassword();
+        });
+        alBuilder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
+        alBuilder.show();
+
+    }
+
+    public void UpdatePassword(){
+        String GetCurrentPassword = TeacherLogin.teacher_pass;
+        String InputPassword = Password.getText().toString();
+        String InputNewPassword = NewPass.getText().toString();
+        String InputConfirmPassword = ConfirmNewPass.getText().toString();
+
+        
+        if (InputPassword.equals(GetCurrentPassword)){
+            if (!InputNewPassword.isEmpty() && !InputNewPassword.equals(InputPassword) &&
+                    InputNewPassword.length() >= 6){
+                if (InputConfirmPassword.equals(InputNewPassword)){
+                    DocumentReference documentReference = db.collection("Teacher").document(TeacherLogin.teacher_ID);
+                    documentReference.update("teacher_pass", InputNewPassword);
+                    NewPass.setVisibility(View.GONE);
+                    ConfirmNewPass.setVisibility(View.GONE);
+                    ChangePassBtn.setEnabled(false);
+                    Toast.makeText(this, "New Password Submitted", Toast.LENGTH_SHORT).show();
+                    Password.setEnabled(false);
+                    Password.setText(InputNewPassword);
+
+                }else{
+                    ConfirmNewPass.setError("Not Matched");
+                }
+            }else{
+                NewPass.setError("Error: Field is Required/Matched");
+            }
+        }else{
+            Password.setError("Not Found");
+        }
+
+    }
+
+    public void UpdateBasicInformation(View view) {
+        AlertDialog.Builder alBuilder = new AlertDialog.Builder(this);
+        alBuilder.setTitle("Confirmation Message")
+                .setMessage("Are your sure you want to update your information");
+        alBuilder.setPositiveButton("Yes", (dialog, which) -> {
+            UpdateBasicInformation();
+        });
+        alBuilder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
+        alBuilder.show();
+    }
+
+    public void UpdateBasicInformation(){
+        String InputAddress = Address.getText().toString();
+        String InputPhoneNumber = PhoneNumber.getText().toString();
+
+        if (InputAddress.isEmpty() && InputPhoneNumber.isEmpty()){
+            Address.setError("Required Field");
+            PhoneNumber.setError("Required Field");
+        }else{
+            DocumentReference documentReference = db.collection("Teacher").document(TeacherLogin.teacher_ID);
+            documentReference.update("teacher_address", InputAddress);
+            documentReference.update("teacher_phone", InputPhoneNumber);
+            Toast.makeText(this, "Update Sucessfully", Toast.LENGTH_SHORT).show();
+            Address.setEnabled(false);
+            PhoneNumber.setEnabled(false);
+        }
+
+    }
+
+    public void UploadImageToStorage(){
+        if (imageUri != null) {
+            storageReference = firebaseStorage.getReference().child("images/").child(imageUri.getLastPathSegment());
+            storageReference.putFile(imageUri).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    storageReference.getDownloadUrl().addOnSuccessListener(uri -> {
+                        ImageURLPath = uri.toString();
+                        //Upload URL&ImageName to firestore
+                        DocumentReference documentReference = db.collection("Teacher").document(TeacherLogin.teacher_ID);
+                        documentReference.update("imageurl", ImageURLPath);
+                        documentReference.update("imagename", imageUri.toString());
+
+                        Toast.makeText(TeacherProfile.this, "Image Uploaded Successfully", Toast.LENGTH_LONG).show();
+                    });
+                }
+            });
+        }
+    }
+
+
 }

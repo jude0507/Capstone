@@ -22,8 +22,10 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.Adapter.LevelAdapter;
+import com.example.learnmoto.Model.StudentInfo;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Adapter.TranslateAnimatioUI;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -31,10 +33,13 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class TeacherView extends AppCompatActivity {
 
@@ -42,6 +47,7 @@ public class TeacherView extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     ScrollView scrollView;
     TextView teacherName;
+    CircleImageView ProfilePicture;
     RecyclerView rvAssignedSubjects, rvAssignClass;
     LinearLayout assignClassLayout, assignClassContainer, subjectContainer,expandSubjects,
             advisoryClassContainer, expandClassAdvisory;
@@ -75,6 +81,7 @@ public class TeacherView extends AppCompatActivity {
         setContentView(R.layout.activity_teacher_view);
 
         teacherName = findViewById(R.id.TeacherName);
+        ProfilePicture = findViewById(R.id.profile);
         bottomNavigationView = findViewById(R.id.bottom_nav);
         scrollView = findViewById(R.id.scroller);
         viewClassLevel = findViewById(R.id.class_arrow_btn);
@@ -301,6 +308,22 @@ public class TeacherView extends AppCompatActivity {
             }
         });
     }
+
+    public void DisplayImage(){
+        collectionReference.whereEqualTo("teacher_ID", TeacherLogin.teacher_ID)
+                .get().addOnSuccessListener(queryDocumentSnapshots -> {
+                    String imageDiplay = "";
+                    for (QueryDocumentSnapshot documentSnapshot: queryDocumentSnapshots){
+                        StudentInfo studentInfo = documentSnapshot.toObject(StudentInfo.class);
+                        studentInfo.setMyid(documentSnapshot.getId());
+
+                        imageDiplay += studentInfo.getImageurl();
+
+                    }
+                    Glide.with(getApplicationContext()).load(imageDiplay).placeholder(R.drawable.ic_user_circle).into(ProfilePicture);
+                });
+    }
+
     @Override
     protected void onStart() {
         IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
