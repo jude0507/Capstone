@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
@@ -61,6 +62,7 @@ public class TeacherView extends AppCompatActivity {
     ListView ListLevel, listClass;
     EditText AssignLevelInput;
     String data = "";
+
 
     public static String GetAssignedLevel;
     public static List<String> assignLevel;
@@ -328,6 +330,7 @@ public class TeacherView extends AppCompatActivity {
     protected void onStart() {
         IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
         registerReceiver(networkChangeListener, intentFilter);
+        DisplayImage();
         //DisplayAssignedLevel();
         super.onStart();
     }

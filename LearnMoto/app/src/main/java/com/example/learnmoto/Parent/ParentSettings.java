@@ -124,7 +124,6 @@ public class ParentSettings extends AppCompatActivity {
         documentReference.update("pID", Et_ParentID.getText().toString());
         documentReference.update("pPassword", Et_Password.getText().toString());
         UploadImageToStorage();
-        Toast.makeText(this, "Updated Successfully", Toast.LENGTH_SHORT).show();
         ReadTextOnly();
     }
 
@@ -157,7 +156,7 @@ public class ParentSettings extends AppCompatActivity {
                         documentReference.update("imageurl", ImageURLPath);
                         documentReference.update("imagename", imageUri.toString());
 
-                        Toast.makeText(ParentSettings.this, "Uploaded Successfully Storage", Toast.LENGTH_LONG).show();
+                        Toast.makeText(ParentSettings.this, "Information has been updated", Toast.LENGTH_LONG).show();
                     });
                 }
             });

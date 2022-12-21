@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
@@ -167,9 +168,14 @@ public class StudentRegistration extends AppCompatActivity {
                     && !student_ID.isEmpty() && !student_Pass.isEmpty()){
                 if (ConfirmPassword.equals(student_Pass)){
                     if (student_Pass.length() >= 6){
+                        ProgressDialog progressDialog = new ProgressDialog(this);
+                        progressDialog.show();
+                        progressDialog.setContentView(R.layout.progress_dialog_registration);
+                        progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
                         DocumentReference documentReference = firestore.collection("Student").document(student_ID);
                         documentReference.get().addOnSuccessListener(documentSnapshot -> {
                             if (documentSnapshot.exists()){
+                                progressDialog.dismiss();
                                 Toast.makeText(StudentRegistration.this, "Student ID has been registered", Toast.LENGTH_SHORT).show();
                             }else{
                                 if (student_Level.equals("Choose Level")){
@@ -186,6 +192,7 @@ public class StudentRegistration extends AppCompatActivity {
                                     studentInfo.setsID(student_ID);
                                     studentInfo.setsPassword(student_Pass);
                                     firestore.collection("Student").document(student_ID).set(studentInfo);
+                                    progressDialog.dismiss();
                                     Toast.makeText(StudentRegistration.this, "Registration Successfully", Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(StudentRegistration.this, StudentLogin.class));
                                 }

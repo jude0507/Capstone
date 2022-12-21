@@ -1,10 +1,12 @@
 package com.example.learnmoto.Teacher;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.drawable.Drawable;
@@ -34,13 +36,16 @@ import com.example.learnmoto.ShowPassword;
 import com.example.learnmoto.Student.StudentInfoSettings;
 import com.example.learnmoto.Student.StudentLogin;
 import com.github.dhaval2404.imagepicker.ImagePicker;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -58,6 +63,7 @@ public class TeacherProfile extends AppCompatActivity {
     ImageView CameraBtn;
     ScrollView scrollView;
     CircleImageView ProfilePicture;
+    ProgressDialog progressDialog;
 
     FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
     StorageReference storageReference = firebaseStorage.getReference();
@@ -321,6 +327,7 @@ public class TeacherProfile extends AppCompatActivity {
         alBuilder.setTitle("Confirmation Message")
                 .setMessage("Are your sure you want to update your information");
         alBuilder.setPositiveButton("Yes", (dialog, which) -> {
+
             UpdateBasicInformation();
         });
         alBuilder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
@@ -334,10 +341,15 @@ public class TeacherProfile extends AppCompatActivity {
         if (InputAddress.isEmpty() && InputPhoneNumber.isEmpty()){
             Address.setError("Required Field");
             PhoneNumber.setError("Required Field");
-        }else{
+        }else if(InputPhoneNumber.length() < 11){
+            PhoneNumber.setError("Phone Number must be valid");
+        }
+        else{
+
             DocumentReference documentReference = db.collection("Teacher").document(TeacherLogin.teacher_ID);
             documentReference.update("teacher_address", InputAddress);
             documentReference.update("teacher_phone", InputPhoneNumber);
+
             Toast.makeText(this, "Update Sucessfully", Toast.LENGTH_SHORT).show();
             Address.setEnabled(false);
             PhoneNumber.setEnabled(false);
@@ -347,6 +359,9 @@ public class TeacherProfile extends AppCompatActivity {
 
     public void UploadImageToStorage(){
         if (imageUri != null) {
+            progressDialog = new ProgressDialog(this);
+            progressDialog.setMessage("Setting your image");
+            progressDialog.show();
             storageReference = firebaseStorage.getReference().child("images/").child(imageUri.getLastPathSegment());
             storageReference.putFile(imageUri).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
@@ -356,11 +371,16 @@ public class TeacherProfile extends AppCompatActivity {
                         DocumentReference documentReference = db.collection("Teacher").document(TeacherLogin.teacher_ID);
                         documentReference.update("imageurl", ImageURLPath);
                         documentReference.update("imagename", imageUri.toString());
-
+                        progressDialog.dismiss();
                         Toast.makeText(TeacherProfile.this, "Image Uploaded Successfully", Toast.LENGTH_LONG).show();
                     });
                 }
-            });
+            }).addOnProgressListener(snapshot -> {
+                double progress = (100.0 * snapshot.getBytesTransferred()) / snapshot.getTotalByteCount();
+                progressDialog.setMessage(((int) progress) + "% Uploading Image....");
+            }).addOnFailureListener(e -> Toast.makeText(TeacherProfile.this, e.getMessage(), Toast.LENGTH_SHORT).show());
+        }else{
+            Toast.makeText(this, "No image uploaded. Please Try Again!", Toast.LENGTH_SHORT).show();
         }
     }
 

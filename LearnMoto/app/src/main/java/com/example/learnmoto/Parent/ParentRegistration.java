@@ -3,6 +3,7 @@ package com.example.learnmoto.Parent;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
@@ -71,16 +72,20 @@ public class ParentRegistration extends AppCompatActivity {
                     fetchStudID = documentSnapshot.getString("sID").toString();
                     if (!Parent_ChildID.equals(fetchStudID)){
                         ParentChildID.setError("Not Found");
-                        Toast.makeText(ParentRegistration.this, "Child ID not Found", Toast.LENGTH_SHORT).show();
                     }else{
                         if(!Parent_Name.isEmpty() && !Parent_Address.isEmpty() &&
                                 !Parent_ID.isEmpty() && !Parent_Password.isEmpty() && !Parent_Phone.isEmpty()){
                             if (confirmPass.equals(Parent_Password)){
                                 if (Parent_Password.length() >= 6){
+                                    ProgressDialog progressDialog = new ProgressDialog(this);
+                                    progressDialog.show();
+                                    progressDialog.setContentView(R.layout.progress_dialog_registration);
+                                    progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
                                     DocumentReference documentReference = db.collection("Parent").document(ParentID.getText().toString());
                                     documentReference.get().addOnSuccessListener(documentSnapshot1 -> {
                                         if (documentSnapshot1.exists()){
                                             ParentID.setError("UserID already registered");
+                                            progressDialog.dismiss();
                                             Toast.makeText(ParentRegistration.this, "UserID already registered", Toast.LENGTH_SHORT).show();
                                         }else{
                                             ParentInfo parentInfo = new ParentInfo();
@@ -91,6 +96,7 @@ public class ParentRegistration extends AppCompatActivity {
                                             parentInfo.setpPassword(Parent_Password);
                                             parentInfo.setpPhoneNumber(String.valueOf(Parent_Phone));
                                             db.collection("Parent").document(Parent_ID).set(parentInfo);
+                                            progressDialog.dismiss();
                                             Toast.makeText(ParentRegistration.this, "Registration Successfully", Toast.LENGTH_SHORT).show();
                                             startActivity(new Intent(ParentRegistration.this, ParentLogin.class));
                                         }

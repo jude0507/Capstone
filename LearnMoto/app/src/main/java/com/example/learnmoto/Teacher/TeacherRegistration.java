@@ -3,6 +3,7 @@ package com.example.learnmoto.Teacher;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
@@ -59,9 +60,14 @@ public class TeacherRegistration extends AppCompatActivity {
             if (Teacher_Phone.length() == 11) {
                 if (Teacher_Pass.length() >= 6){
                     if (ConfirmPass.equals(Teacher_Pass)){
+                        ProgressDialog progressDialog = new ProgressDialog(this);
+                        progressDialog.show();
+                        progressDialog.setContentView(R.layout.progress_dialog_registration);
+                        progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
                         DocumentReference teacherReference = firestore.collection("Teacher").document(Teacher_ID);
                         teacherReference.get().addOnSuccessListener(documentSnapshot -> {
                             if (documentSnapshot.exists()){
+                                progressDialog.dismiss();
                                 Toast.makeText(TeacherRegistration.this, "Teacher ID has been registered", Toast.LENGTH_SHORT).show();
                             }else{
                                 TeacherInfo teacherInfo = new TeacherInfo();
@@ -70,6 +76,7 @@ public class TeacherRegistration extends AppCompatActivity {
                                 teacherInfo.setTeacher_phone(Teacher_Phone);
                                 teacherInfo.setTeacher_ID(Teacher_ID);
                                 teacherInfo.setTeacher_pass(Teacher_Pass);
+                                progressDialog.dismiss();
                                 firestore.collection("Teacher").document(Teacher_ID).set(teacherInfo);
                                 Toast.makeText(TeacherRegistration.this, "Registration Successfully", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(TeacherRegistration.this, TeacherLogin.class));

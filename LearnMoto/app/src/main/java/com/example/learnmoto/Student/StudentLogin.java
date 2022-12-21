@@ -3,6 +3,7 @@ package com.example.learnmoto.Student;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -75,6 +76,10 @@ public class StudentLogin extends AppCompatActivity {
 
     private void LoginFunction(){
         if (!studentID.getText().toString().trim().isEmpty() && !studentPass.getText().toString().trim().isEmpty()){
+            ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.show();
+            progressDialog.setContentView(R.layout.progress_dialog_account_checking);
+            progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
             DocumentReference documentReference = db.collection("Student").document(studentID.getText().toString());
             documentReference.get().addOnSuccessListener(documentSnapshot -> {
                 if (documentSnapshot.exists()) {
@@ -100,21 +105,26 @@ public class StudentLogin extends AppCompatActivity {
                         editor.putString("sAddress", sAddress);
                         editor.commit();
                         if (sLevel.equals("Nursery")){
+                            progressDialog.dismiss();
                             Toast.makeText(this, "Nursery", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(this, StudentHomeView.class));
                         }else if(sLevel.equals("Kinder")){
+                            progressDialog.dismiss();
                             Toast.makeText(this, "Kinder", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(this, StudentHomeView.class));
                         }else{
+                            progressDialog.dismiss();
                             Toast.makeText(this, "Preparatory", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(this, StudentHomeView.class));
                         }
 
 
                     }else {
+                        progressDialog.dismiss();
                         Toast.makeText(StudentLogin.this, "Credential not match", Toast.LENGTH_SHORT).show();
                     }
                 }else {
+                    progressDialog.dismiss();
                     Toast.makeText(StudentLogin.this, "You don't have an account", Toast.LENGTH_SHORT).show();
                 }
             });

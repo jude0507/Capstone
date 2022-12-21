@@ -3,6 +3,7 @@ package com.example.learnmoto.Parent;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -34,6 +35,7 @@ public class ParentLogin extends AppCompatActivity {
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +55,10 @@ public class ParentLogin extends AppCompatActivity {
 
     private void ParentLoginFunction() {
         if (!ParentID.getText().toString().trim().isEmpty() && !ParentPass.getText().toString().trim().isEmpty()){
+            ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.show();
+            progressDialog.setContentView(R.layout.progress_dialog_account_checking);
+            progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
             DocumentReference documentReference = db.collection("Parent").document(ParentID.getText().toString());
             documentReference.get().addOnSuccessListener(documentSnapshot -> {
                 if (documentSnapshot.exists()) {
@@ -61,12 +67,15 @@ public class ParentLogin extends AppCompatActivity {
                     pName = documentSnapshot.getString("pName").toString();
                     pAddress = documentSnapshot.getString("pAddress").toString();
                     if (ParentID.getText().toString().equals(pID) && ParentPass.getText().toString().equals(pPass)){
+                        progressDialog.dismiss();
                         Toast.makeText(ParentLogin.this, "Login Successfully", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(ParentLogin.this, ParentView.class));
                     }else {
+                        progressDialog.dismiss();
                         Toast.makeText(ParentLogin.this, "Credential not match", Toast.LENGTH_SHORT).show();
                     }
                 }else {
+                    progressDialog.dismiss();
                     Toast.makeText(ParentLogin.this, "You don't have an account", Toast.LENGTH_SHORT).show();
                 }
             });
