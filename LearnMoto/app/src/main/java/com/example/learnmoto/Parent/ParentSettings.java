@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.learnmoto.DisplayImage;
 import com.example.learnmoto.Model.ParentInfo;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.R;
@@ -83,19 +84,7 @@ public class ParentSettings extends AppCompatActivity {
         Et_Address.setText(ParentAddress);
         Et_ParentID.setText(ParentID);
         Et_Password.setText(ParentPassword);
-
-        collectionReference.whereEqualTo("pID", ParentLogin.pID)
-                .get().addOnSuccessListener(queryDocumentSnapshots -> {
-                    String imageDiplay = "";
-                    for (QueryDocumentSnapshot documentSnapshot: queryDocumentSnapshots){
-                        ParentInfo parentInfo = documentSnapshot.toObject(ParentInfo.class);
-                        parentInfo.setMyid(documentSnapshot.getId());
-
-                        imageDiplay += parentInfo.getImageurl();
-
-                    }
-                    Glide.with(getApplicationContext()).load(imageDiplay).placeholder(R.drawable.ic_user_circle).into(ParentImage);
-                });
+        DisplayImage.RetrieveImageParents(this, "Parent", "pID" , ParentLogin.pID, ParentImage);
 
     }
 

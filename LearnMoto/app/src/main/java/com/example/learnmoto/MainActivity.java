@@ -87,4 +87,13 @@ public class MainActivity extends AppCompatActivity {
         unregisterReceiver(networkChangeListener);
         super.onStop();
     }
+
+    int pressed = 0;
+    @Override
+    public void onBackPressed() {
+        pressed++;
+        if (pressed == 1)
+            super.onBackPressed();
+    }
+
 }

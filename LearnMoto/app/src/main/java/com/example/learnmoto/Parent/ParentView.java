@@ -19,10 +19,12 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.learnmoto.Adapter.ChildListAdapter;
+import com.example.learnmoto.DisplayImage;
 import com.example.learnmoto.Model.ParentInfo;
 import com.example.learnmoto.Model.StudentInfo;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.R;
+import com.example.learnmoto.Teacher.TeacherLogin;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -148,18 +150,7 @@ public class ParentView extends AppCompatActivity {
     }
 
     public void DisplayImage(){
-        collectionReference.whereEqualTo("pID", ParentLogin.pID)
-                .get().addOnSuccessListener(queryDocumentSnapshots -> {
-                    String imageDiplay = "";
-                    for (QueryDocumentSnapshot documentSnapshot: queryDocumentSnapshots){
-                        ParentInfo parentInfo = documentSnapshot.toObject(ParentInfo.class);
-                        parentInfo.setMyid(documentSnapshot.getId());
-
-                        imageDiplay += parentInfo.getImageurl();
-
-                    }
-                    Glide.with(getApplicationContext()).load(imageDiplay).placeholder(R.drawable.ic_user_circle).into(ParentImage);
-                });
+        DisplayImage.RetrieveImageParents(this, "Parent", "pID" , ParentLogin.pID, ParentImage);
     }
 
 

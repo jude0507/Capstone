@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.learnmoto.Adapter.AnnouncementAdapter;
+import com.example.learnmoto.DisplayImage;
 import com.example.learnmoto.Model.AnnouncementModel;
 import com.example.learnmoto.Model.StudentInfo;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
@@ -170,18 +171,7 @@ public class StudentHomeView extends AppCompatActivity {
 
     //Dipslay Image for student user
     public void DisplayImage(){
-        collectionReference.whereEqualTo("sID", StudentLogin.studID)
-                .get().addOnSuccessListener(queryDocumentSnapshots -> {
-                    String imageDiplay = "";
-                    for (QueryDocumentSnapshot documentSnapshot: queryDocumentSnapshots){
-                        StudentInfo studentInfo = documentSnapshot.toObject(StudentInfo.class);
-                        studentInfo.setMyid(documentSnapshot.getId());
-
-                        imageDiplay += studentInfo.getImageurl();
-
-                    }
-                    Glide.with(getApplicationContext()).load(imageDiplay).placeholder(R.drawable.ic_user_circle).into(StudPicture);
-                });
+        DisplayImage.RetrieveImageStudents(this, "Student", "sID", StudentLogin.studID, StudPicture);
     }
 
 //    public void DisplayAdviserName(){
@@ -198,8 +188,6 @@ public class StudentHomeView extends AppCompatActivity {
 //                    Glide.with(getApplicationContext()).load(imageDiplay).placeholder(R.drawable.ic_user_circle).into(StudPicture);
 //                });
 //    }
-
-
 
     public void expand(View view) {
         int v = (containerMessage.getVisibility() == View.GONE)? View.VISIBLE: View.GONE;

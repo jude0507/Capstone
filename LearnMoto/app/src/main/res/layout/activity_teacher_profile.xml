@@ -207,6 +207,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
                         android:text="Update"
+                        android:visibility="gone"
                         android:textColor="@color/white"
                         android:onClick="UpdateBasicInformation"
                         android:background="@color/yellowOrange"/>
@@ -341,6 +342,7 @@
                         android:layout_gravity="right"
                         android:text="Change Password"
                         android:padding="10dp"
+                        android:visibility="gone"
                         android:textColor="@color/white"
                         android:onClick="ChangePassword"
                         android:background="@color/yellowOrange"/>

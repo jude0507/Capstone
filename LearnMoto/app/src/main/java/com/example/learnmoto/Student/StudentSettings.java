@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.learnmoto.DisplayImage;
 import com.example.learnmoto.Model.StudentInfo;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.R;
@@ -151,23 +152,8 @@ public class StudentSettings extends AppCompatActivity {
     }
 
     public void DisplayImage(){
-        collectionReference.whereEqualTo("sID", StudentLogin.studID)
-                .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        String imageDiplay = "";
-                        for (QueryDocumentSnapshot documentSnapshot: queryDocumentSnapshots){
-                            StudentInfo studentInfo = documentSnapshot.toObject(StudentInfo.class);
-                            studentInfo.setMyid(documentSnapshot.getId());
-
-                            imageDiplay += studentInfo.getImageurl();
-
-                        }
-                        Glide.with(getApplicationContext()).load(imageDiplay).placeholder(R.drawable.ic_user_circle).into(StudPicture);
-                    }
-                });
+        DisplayImage.RetrieveImageStudents(this, "Student", "sID", StudentLogin.studID, StudPicture);
     }
-
     public void editPersonalSettings(View view) {
         startActivity(new Intent(StudentSettings.this, StudentInfoSettings.class));
     }

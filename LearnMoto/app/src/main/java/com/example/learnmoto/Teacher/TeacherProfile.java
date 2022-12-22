@@ -29,6 +29,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.learnmoto.Adapter.TranslateAnimatioUI;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
+import com.example.learnmoto.DisplayImage;
 import com.example.learnmoto.MainActivity;
 import com.example.learnmoto.Model.StudentInfo;
 import com.example.learnmoto.R;
@@ -197,6 +198,8 @@ public class TeacherProfile extends AppCompatActivity {
                 Password.setText("");
                 NewPass.setVisibility(View.VISIBLE);
                 ConfirmNewPass.setVisibility(View.VISIBLE);
+                BasicInfoUpdateBtn.setVisibility(View.VISIBLE);
+                ChangePassBtn.setVisibility(View.VISIBLE);
 
             }
 
@@ -237,18 +240,7 @@ public class TeacherProfile extends AppCompatActivity {
     }
 
     public void DisplayImage(){
-        collectionReference.whereEqualTo("teacher_ID", TeacherLogin.teacher_ID)
-                .get().addOnSuccessListener(queryDocumentSnapshots -> {
-                    String imageDiplay = "";
-                    for (QueryDocumentSnapshot documentSnapshot: queryDocumentSnapshots){
-                        StudentInfo studentInfo = documentSnapshot.toObject(StudentInfo.class);
-                        studentInfo.setMyid(documentSnapshot.getId());
-
-                        imageDiplay += studentInfo.getImageurl();
-
-                    }
-                    Glide.with(getApplicationContext()).load(imageDiplay).placeholder(R.drawable.ic_user_circle).into(ProfilePicture);
-                });
+        DisplayImage.RetrieveImageTeacher(this, "Teacher", "teacher_ID" ,TeacherLogin.teacher_ID, ProfilePicture);
     }
 
     @Override

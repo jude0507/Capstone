@@ -1,12 +1,12 @@
 package com.example.learnmoto.Teacher;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,6 +27,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.Adapter.LevelAdapter;
+import com.example.learnmoto.DisplayImage;
 import com.example.learnmoto.Model.StudentInfo;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Adapter.TranslateAnimatioUI;
@@ -38,6 +40,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -56,12 +59,12 @@ public class TeacherView extends AppCompatActivity {
     AlertDialog.Builder builder;
     AlertDialog alertDialog;
     ArrayList<String> addLevel = new ArrayList<>();
-    //ArrayList<String> AssignLevelValue = new ArrayList<String>();
     ArrayAdapter<String> arrayAdapter;
     List<String> levelArray;
     ListView ListLevel, listClass;
     EditText AssignLevelInput;
     String data = "";
+    String dataarr = "";
 
 
     public static String GetAssignedLevel;
@@ -103,6 +106,7 @@ public class TeacherView extends AppCompatActivity {
         //https://stackoverflow.com/questions/54711228/compare-two-arrays-with-not-the-same-order
 
         DisplayAssignedLevel();
+        DisplayImage();
 
         bottomNavigationView.setSelectedItemId(R.id.home);
         teacherName.setText(TeacherName);
@@ -192,6 +196,61 @@ public class TeacherView extends AppCompatActivity {
         alertDialog = builder.create();
         alertDialog.show();
 
+        //check data list item from firestore then display in listview
+        //ITO JUDE 
+        try{
+            if (assignLevel.contains("Kinder") && assignLevel.contains("Preparatory") && assignLevel.contains("Nursery")){
+                addLevel.add("Kinder");
+                addLevel.add("Nursery");
+                addLevel.add("Preparatory");
+                arrayAdapter = new ArrayAdapter<String>(TeacherView.this,
+                        android.R.layout.simple_list_item_1, addLevel);
+                ListLevel.setAdapter(arrayAdapter);
+            }
+            else if (assignLevel.contains("Nursery") && assignLevel.contains("Kinder")){
+                addLevel.add("Kinder");
+                addLevel.add("Nursery");
+                arrayAdapter = new ArrayAdapter<String>(TeacherView.this,
+                        android.R.layout.simple_list_item_1, addLevel);
+                ListLevel.setAdapter(arrayAdapter);
+            }
+            else if(assignLevel.contains("Kinder") && assignLevel.contains("Preparatory")){
+                addLevel.add("Kinder");
+                addLevel.add("Preparatory");
+                arrayAdapter = new ArrayAdapter<String>(TeacherView.this,
+                        android.R.layout.simple_list_item_1, addLevel);
+                ListLevel.setAdapter(arrayAdapter);
+            }
+            else if(assignLevel.contains("Nursery") && assignLevel.contains("Preparatory")){
+                addLevel.add("Nursery");
+                addLevel.add("Preparatory");
+                arrayAdapter = new ArrayAdapter<String>(TeacherView.this,
+                        android.R.layout.simple_list_item_1, addLevel);
+                ListLevel.setAdapter(arrayAdapter);
+            }
+            else if (assignLevel.contains("Kinder")){
+                addLevel.add("Kinder");
+                arrayAdapter = new ArrayAdapter<String>(TeacherView.this,
+                        android.R.layout.simple_list_item_1, addLevel);
+                ListLevel.setAdapter(arrayAdapter);
+            }
+            else if (assignLevel.contains("Nursery")){
+                addLevel.add("Nursery");
+                arrayAdapter = new ArrayAdapter<String>(TeacherView.this,
+                        android.R.layout.simple_list_item_1, addLevel);
+                ListLevel.setAdapter(arrayAdapter);
+            }
+            else if (assignLevel.contains("Preparatory")){
+                addLevel.add("Preparatory");
+                arrayAdapter = new ArrayAdapter<String>(TeacherView.this,
+                        android.R.layout.simple_list_item_1, addLevel);
+                ListLevel.setAdapter(arrayAdapter);
+            }
+        }catch (Exception e){
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+
+        //add data in list
         AddLevelList.setOnClickListener(v -> {
             String inputLevel = AssignLevelInput.getText().toString();
 
@@ -206,20 +265,36 @@ public class TeacherView extends AppCompatActivity {
                 ListLevel.setAdapter(arrayAdapter);
                 AssignLevelInput.setText("");
 
+
             }else{
                 Toast.makeText(TeacherView.this, "Invalid Input", Toast.LENGTH_SHORT).show();
 
             }
+
         });
 
-        addLevel.add(String.valueOf(assignLevel));
-        arrayAdapter = new ArrayAdapter<String>(TeacherView.this,
-                android.R.layout.simple_list_item_1, addLevel);
-        ListLevel.setAdapter(arrayAdapter);
+        //LongPress for Delete item in list
+        ListLevel.setOnItemLongClickListener((parent, view1, position, id) -> {
+            final int selected_item = position;
 
-        //https://stackoverflow.com/questions/49657098/android-firestore-query-array
-        //https://stackoverflow.com/questions/58113840/how-to-retrieve-an-array-from-firestore
+            new AlertDialog.Builder(TeacherView.this)
+                    .setIcon(R.drawable.ic_delete)
+                    .setTitle("Delete Level")
+                    .setMessage("Do you want to delete this level in the list?")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            addLevel.remove(selected_item);
+                            arrayAdapter.notifyDataSetChanged();
+                        }
+                    })
+                    .setNegativeButton("Cancel", null)
+                    .show();
 
+            return true;
+        });
+
+        //save the list in firestore
         savebtn.setOnClickListener(v -> {
             for (String item:addLevel){
                 data = data + "" + item + ",";
@@ -235,11 +310,16 @@ public class TeacherView extends AppCompatActivity {
                 DocumentReference documentReference = db.collection("Teacher")
                         .document(TeacherLogin.teacher_ID);
                 documentReference.update("assignLevel", levelArray);
+                finish();
+                overridePendingTransition(0, 0);
+                startActivity(getIntent());
+                overridePendingTransition(0, 0);
                 Toast.makeText(TeacherView.this, "Save Successfully", Toast.LENGTH_SHORT).show();
             }
             alertDialog.dismiss();
         });
     }
+
 
     public void DisplayAssignedLevel(){
         documentReference.get().addOnCompleteListener(task -> {
@@ -247,15 +327,19 @@ public class TeacherView extends AppCompatActivity {
                 DocumentSnapshot document = task.getResult();
                 if (document.exists()) {
                     assignLevel = (List<String>) document.get("assignLevel");
+
+                    String[] arr = new String[assignLevel.size()];
+                    for (int i = 0; i < assignLevel.size(); i++){
+                        arr[i] = assignLevel.get(i);
+
+                        dataarr += assignLevel.get(i);
+                        if (i < assignLevel.size() -1){
+                            dataarr += ",";
+                        }
+                    }
+
+                    Toast.makeText(this, dataarr, Toast.LENGTH_SHORT).show();
                     GetAssignedLevel = String.valueOf(assignLevel);
-
-                    //Display array in this format [1, 2]
-                    Toast.makeText(this, GetAssignedLevel, Toast.LENGTH_SHORT).show();
-
-//                    addLevel.add(String.valueOf(assignLevel));
-//                    arrayAdapter = new ArrayAdapter<String>(TeacherView.this,
-//                            android.R.layout.simple_list_item_1, addLevel);
-//                    ListLevel.setAdapter(arrayAdapter);
 
                     mImages = new ArrayList<>();
                     levelAdapter = new LevelAdapter(this, mImages);
@@ -312,32 +396,26 @@ public class TeacherView extends AppCompatActivity {
     }
 
     public void DisplayImage(){
-        collectionReference.whereEqualTo("teacher_ID", TeacherLogin.teacher_ID)
-                .get().addOnSuccessListener(queryDocumentSnapshots -> {
-                    String imageDiplay = "";
-                    for (QueryDocumentSnapshot documentSnapshot: queryDocumentSnapshots){
-                        StudentInfo studentInfo = documentSnapshot.toObject(StudentInfo.class);
-                        studentInfo.setMyid(documentSnapshot.getId());
-
-                        imageDiplay += studentInfo.getImageurl();
-
-                    }
-                    Glide.with(getApplicationContext()).load(imageDiplay).placeholder(R.drawable.ic_user_circle).into(ProfilePicture);
-                });
+        DisplayImage.RetrieveImageTeacher(this, "Teacher", "teacher_ID" ,TeacherLogin.teacher_ID, ProfilePicture);
     }
 
     @Override
     protected void onStart() {
         IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
         registerReceiver(networkChangeListener, intentFilter);
-        DisplayImage();
-        //DisplayAssignedLevel();
         super.onStart();
     }
+
 
     @Override
     protected void onStop() {
         unregisterReceiver(networkChangeListener);
         super.onStop();
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        AssignLevelWindow();
+        super.onRestoreInstanceState(savedInstanceState);
     }
 }
