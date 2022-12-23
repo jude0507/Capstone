@@ -73,9 +73,9 @@
                             android:id="@+id/advisoryClass"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Level"
+                            android:text="@string/level"
                             android:textColor="@color/black"
-                            android:textSize="15dp" />
+                            android:textSize="15sp" />
 
                     </LinearLayout>
                 </LinearLayout>
@@ -87,11 +87,11 @@
                 android:padding="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="My Class"
-                android:drawableEnd="@drawable/ic_add"
+                android:text="@string/my_class"
                 android:drawablePadding="15dp"
                 android:textSize="20sp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                app:drawableEndCompat="@drawable/ic_add" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvAssignClass"
@@ -174,11 +174,12 @@
                 android:padding="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Subjects"
-                android:drawableEnd="@drawable/ic_add"
+                android:text="@string/subject"
                 android:drawablePadding="15dp"
                 android:textSize="20sp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                app:drawableEndCompat="@drawable/ic_add"
+                android:onClick="AddSubject"/>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvSubjects"
@@ -207,12 +208,12 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Subjects"
+                            android:text="@string/subjects"
                             android:textColor="@color/fontColor"
                             android:fontFamily="@font/aloevera"
                             android:layout_margin="5dp"
-                            android:layout_marginLeft="50dp"
-                            android:textSize="20dp" />
+                            android:layout_marginStart="50dp"
+                            android:textSize="20sp" />
 
                     </LinearLayout>
 
@@ -220,7 +221,7 @@
                         android:id="@+id/subject_arrow_btn"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
                         android:layout_marginStart="5dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="5dp"
@@ -252,7 +253,7 @@
                 android:padding="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Advisory Class"
+                android:text="@string/advisory_class"
                 android:textSize="20sp"
                 android:textColor="@color/black"/>
 
@@ -283,12 +284,12 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="My Class"
+                            android:text="@string/my_class"
                             android:textColor="@color/fontColor"
                             android:fontFamily="@font/aloevera"
                             android:layout_margin="5dp"
-                            android:layout_marginLeft="50dp"
-                            android:textSize="20dp" />
+                            android:layout_marginStart="50dp"
+                            android:textSize="20sp" />
 
                     </LinearLayout>
 
@@ -296,7 +297,7 @@
                         android:id="@+id/advisoryClass_arrow_btn"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="5dp"
                         android:layout_marginBottom="5dp"

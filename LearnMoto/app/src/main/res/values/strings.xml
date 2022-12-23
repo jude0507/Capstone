@@ -13,16 +13,19 @@
     <string name="password">Password</string>
     <string name="assign_level">Assign Level</string>
 
+    <string name="title_activity_kinder_filipino_watch">KinderFilipinoWatch</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="subjects">Subjects</string>
+    <string name="advisory_class">Advisory Class</string>
+    <string name="my_class">My Class</string>
+    <string name="subject">Subject</string>
+    <string name="level">Level</string>
 
     <string-array name="Levels">
         <item>Nursery</item>
         <item>Kinder</item>
         <item>Preparatory</item>
     </string-array>
-
-    <string name="title_activity_kinder_filipino_watch">KinderFilipinoWatch</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-
 
 </resources>

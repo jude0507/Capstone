@@ -69,9 +69,6 @@ public class TeacherLogin extends AppCompatActivity {
                     teacher_name = documentSnapshot.getString("teacher_name").toString();
                     teacher_address = documentSnapshot.getString("teacher_address").toString();
                     teacher_phone = documentSnapshot.getString("teacher_phone").toString();
-                    //teacher_assignLevel = documentSnapshot.getString("assignLevel").toString();
-                    //teacher_assignLevel = String.valueOf(documentSnapshot.getString("assignLevel"));
-                    //teacher_address = documentSnapshot.getString("teacher_address").toString();
                     if (Teacher_ID.getText().toString().equals(teacher_ID) && Teacher_Pass.getText().toString().equals(teacher_pass)){
                         progressDialog.dismiss();
                         Toast.makeText(TeacherLogin.this, "Login Successfully", Toast.LENGTH_SHORT).show();

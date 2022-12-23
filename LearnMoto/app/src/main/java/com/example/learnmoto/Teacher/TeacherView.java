@@ -13,6 +13,8 @@ import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -31,6 +33,7 @@ import com.example.learnmoto.DisplayImage;
 import com.example.learnmoto.Model.StudentInfo;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Adapter.TranslateAnimatioUI;
+import com.example.learnmoto.SubjectArrayClass;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
@@ -47,7 +50,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class TeacherView extends AppCompatActivity {
 
-    Button viewClassLevel, viewSubjects, viewClassAdvisory, AddLevelList, savebtn;
+    Button viewClassLevel, viewSubjects, viewClassAdvisory, AddLevelList, savebtn, SaveSubjectBtn;
     BottomNavigationView bottomNavigationView;
     ScrollView scrollView;
     TextView teacherName;
@@ -59,9 +62,9 @@ public class TeacherView extends AppCompatActivity {
     AlertDialog.Builder builder;
     AlertDialog alertDialog;
     ArrayList<String> addLevel = new ArrayList<>();
-    ArrayAdapter<String> arrayAdapter;
+    ArrayAdapter<String> arrayAdapter, arraySubjectsAdapter;
     List<String> levelArray;
-    ListView ListLevel, listClass;
+    ListView ListLevel, listsubject;
     EditText AssignLevelInput;
     String data = "";
     String dataarr = "";
@@ -93,7 +96,7 @@ public class TeacherView extends AppCompatActivity {
         viewSubjects = findViewById(R.id.subject_arrow_btn);
         viewClassAdvisory = findViewById(R.id.advisoryClass_arrow_btn);
         rvAssignedSubjects = findViewById(R.id.rvSubjects);
-        //listClass = findViewById(R.id.listClass);
+        //listsubject = findViewById(R.id.listSubject);
         rvAssignClass = findViewById(R.id.rvClass);
         assignClassLayout = findViewById(R.id.expandMyClass);
         assignClassContainer = findViewById(R.id.assignClassLayout);
@@ -182,6 +185,7 @@ public class TeacherView extends AppCompatActivity {
         AssignLevelWindow();
         //use the function on onClick
     }
+
     //function for add level window dialog
     public void AssignLevelWindow(){
         builder = new AlertDialog.Builder(TeacherView.this);
@@ -196,8 +200,10 @@ public class TeacherView extends AppCompatActivity {
         alertDialog = builder.create();
         alertDialog.show();
 
+        //https://www.geeksforgeeks.org/java-program-to-merge-two-arrays/
+
         //check data list item from firestore then display in listview
-        //ITO JUDE 
+        //ITO JUDE
         try{
             if (assignLevel.contains("Kinder") && assignLevel.contains("Preparatory") && assignLevel.contains("Nursery")){
                 addLevel.add("Kinder");
@@ -320,31 +326,30 @@ public class TeacherView extends AppCompatActivity {
         });
     }
 
-
     public void DisplayAssignedLevel(){
         documentReference.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 DocumentSnapshot document = task.getResult();
                 if (document.exists()) {
-                    assignLevel = (List<String>) document.get("assignLevel");
+                    try{
+                        assignLevel = (List<String>) document.get("assignLevel");
 
-                    String[] arr = new String[assignLevel.size()];
-                    for (int i = 0; i < assignLevel.size(); i++){
-                        arr[i] = assignLevel.get(i);
+                        String[] arr = new String[assignLevel.size()];
+                        for (int i = 0; i < assignLevel.size(); i++){
+                            arr[i] = assignLevel.get(i);
 
-                        dataarr += assignLevel.get(i);
-                        if (i < assignLevel.size() -1){
-                            dataarr += ",";
+                            dataarr += assignLevel.get(i);
+                            if (i < assignLevel.size() -1){
+                                dataarr += ",";
+                            }
                         }
-                    }
 
-                    Toast.makeText(this, dataarr, Toast.LENGTH_SHORT).show();
-                    GetAssignedLevel = String.valueOf(assignLevel);
+                        Toast.makeText(this, dataarr, Toast.LENGTH_SHORT).show();
+                        GetAssignedLevel = String.valueOf(assignLevel);
 
-                    mImages = new ArrayList<>();
-                    levelAdapter = new LevelAdapter(this, mImages);
+                        mImages = new ArrayList<>();
+                        levelAdapter = new LevelAdapter(this, mImages);
 
-                    try {
                         if (GetAssignedLevel != "null" && !GetAssignedLevel.isEmpty()){
                             if (assignLevel.contains("Kinder") && assignLevel.contains("Preparatory") && assignLevel.contains("Nursery")){
                                 Toast.makeText(this, "NKP", Toast.LENGTH_SHORT).show();
@@ -383,7 +388,8 @@ public class TeacherView extends AppCompatActivity {
                             Toast.makeText(this, "NONE", Toast.LENGTH_SHORT).show();
                         }
                     }catch (Exception e){
-                        e.printStackTrace();
+                        Toast.makeText(this, "You have no assign level. Please add your assign level Thank you!", Toast.LENGTH_SHORT).show();
+                        //e.printStackTrace();
                     }
 
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
@@ -406,7 +412,6 @@ public class TeacherView extends AppCompatActivity {
         super.onStart();
     }
 
-
     @Override
     protected void onStop() {
         unregisterReceiver(networkChangeListener);
@@ -417,5 +422,78 @@ public class TeacherView extends AppCompatActivity {
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         AssignLevelWindow();
         super.onRestoreInstanceState(savedInstanceState);
+    }
+
+    public void AddSubject(View view) {
+        DisplaySubject();
+    }
+
+    public void DisplaySubject(){
+
+
+        builder = new AlertDialog.Builder(TeacherView.this);
+        final View view = getLayoutInflater().inflate(R.layout.add_assign_subject,null);
+
+        SaveSubjectBtn = view.findViewById(R.id.saveSubjects);
+        listsubject = view.findViewById(R.id.listSubject);
+
+        builder.setView(view);
+        alertDialog = builder.create();
+        alertDialog.show();
+
+        try{
+            if (assignLevel.contains("Kinder") && assignLevel.contains("Preparatory") && assignLevel.contains("Nursery")){
+            }
+            else if (assignLevel.contains("Nursery") && assignLevel.contains("Kinder")){
+                SubjectArrayClass subjectArrayClass = new SubjectArrayClass();
+                //subjectArrayClass.CombineNK(SubjectArrayClass.NurserySubject, SubjectArrayClass.KinderSubject);
+                arraySubjectsAdapter = new ArrayAdapter<String>(TeacherView.this,
+                    android.R.layout.simple_list_item_multiple_choice,
+                        subjectArrayClass.Combine(SubjectArrayClass.NurserySubject, SubjectArrayClass.KinderSubject));
+                listsubject.setAdapter(arraySubjectsAdapter);
+            }
+            else if(assignLevel.contains("Kinder") && assignLevel.contains("Preparatory")){
+                SubjectArrayClass subjectArrayClass = new SubjectArrayClass();
+                //subjectArrayClass.CombineNK(SubjectArrayClass.NurserySubject, SubjectArrayClass.KinderSubject);
+                arraySubjectsAdapter = new ArrayAdapter<String>(TeacherView.this,
+                        android.R.layout.simple_list_item_multiple_choice,
+                        subjectArrayClass.Combine(SubjectArrayClass.KinderSubject, SubjectArrayClass.Preparatory));
+                listsubject.setAdapter(arraySubjectsAdapter);
+            }
+            else if(assignLevel.contains("Nursery") && assignLevel.contains("Preparatory")){
+                SubjectArrayClass subjectArrayClass = new SubjectArrayClass();
+                //subjectArrayClass.CombineNK(SubjectArrayClass.NurserySubject, SubjectArrayClass.KinderSubject);
+                arraySubjectsAdapter = new ArrayAdapter<String>(TeacherView.this,
+                        android.R.layout.simple_list_item_multiple_choice,
+                        subjectArrayClass.Combine(SubjectArrayClass.KinderSubject, SubjectArrayClass.Preparatory));
+                listsubject.setAdapter(arraySubjectsAdapter);
+            }
+            else if (assignLevel.contains("Kinder")){
+                arraySubjectsAdapter = new ArrayAdapter<String>(TeacherView.this,
+                        android.R.layout.simple_list_item_multiple_choice, SubjectArrayClass.KinderSubject);
+                listsubject.setAdapter(arraySubjectsAdapter);
+            }
+            else if (assignLevel.contains("Nursery")){
+                arraySubjectsAdapter = new ArrayAdapter<String>(TeacherView.this,
+                        android.R.layout.simple_list_item_multiple_choice, SubjectArrayClass.NurserySubject);
+                listsubject.setAdapter(arraySubjectsAdapter);
+            }
+            else if (assignLevel.contains("Preparatory")){
+                arraySubjectsAdapter = new ArrayAdapter<String>(TeacherView.this,
+                        android.R.layout.simple_list_item_multiple_choice, SubjectArrayClass.Preparatory);
+                listsubject.setAdapter(arraySubjectsAdapter);
+            }
+        }catch (Exception e){
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+
+        //arraySubjectsAdapter = new ArrayAdapter<String>(TeacherView.this,
+                //android.R.layout.simple_list_item_multiple_choice, Preparatory);
+        //listsubject.setAdapter(arraySubjectsAdapter);
+    }
+    
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 }
