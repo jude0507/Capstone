@@ -68,7 +68,7 @@ public class TeacherView extends AppCompatActivity {
     ArrayList<String> addSubjectToList = new ArrayList<>();
     ArrayAdapter<String> arrayAdapter, arraySubjectsAdapter;
     List<String> levelArray, subjectArray;
-    //final ListView ListLevel, listsubject, DisplaySubjectList;
+    ListView ListLevel, listsubject, DisplaySubjectList;
     String[] arraySubject;
     EditText AssignLevelInput;
     String DataAddLevel = "";
@@ -200,7 +200,7 @@ public class TeacherView extends AppCompatActivity {
         AssignLevelInput = view.findViewById(R.id.inputAssignLevel);
         savebtn= view.findViewById(R.id.Save);
         AddLevelList = view.findViewById(R.id.AddLevelList);
-        final ListView ListLevel = view.findViewById(R.id.listlevel);
+        ListLevel = view.findViewById(R.id.listlevel);
 
         builder.setView(view);
         alertDialog = builder.create();
@@ -441,7 +441,7 @@ public class TeacherView extends AppCompatActivity {
         final View view = getLayoutInflater().inflate(R.layout.add_assign_subject,null);
 
         SaveSubjectBtn = view.findViewById(R.id.saveSubjects);
-        ListView listsubject = view.findViewById(R.id.listSubject);
+        listsubject = view.findViewById(R.id.listSubject);
         ImageView CloseDialog = view.findViewById(R.id.closeSubjectDialog);
 
         builder.setView(view);
@@ -525,18 +525,22 @@ public class TeacherView extends AppCompatActivity {
         documentReference.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()){
                 DocumentSnapshot documentSnapshot = task.getResult();
-                if (documentSnapshot.exists()){
-                    assignSubjects = (List<String>) documentSnapshot.get("assignSubject");
+                try{
+                    if (documentSnapshot.exists()){
+                        assignSubjects = (List<String>) documentSnapshot.get("assignSubject");
 
-                    arraySubject = new String[assignSubjects.size()];
-                    for (int i = 0; i < assignSubjects.size(); i++){
-                        arraySubject[i] = assignSubjects.get(i);
-                        DataAssignSubject += assignSubjects.get(i);
-                        if (i < assignSubjects.size()){
-                            DataAssignSubject += ",";
+                        arraySubject = new String[assignSubjects.size()];
+                        for (int i = 0; i < assignSubjects.size(); i++){
+                            arraySubject[i] = assignSubjects.get(i);
+                            DataAssignSubject += assignSubjects.get(i);
+                            if (i < assignSubjects.size()){
+                                DataAssignSubject += ",";
+                            }
                         }
+                        Toast.makeText(this, DataAssignSubject, Toast.LENGTH_SHORT).show();
                     }
-                    Toast.makeText(this, DataAssignSubject, Toast.LENGTH_SHORT).show();
+                }catch (Exception e){
+                    e.getMessage();
                 }
             }
         });
@@ -554,7 +558,7 @@ public class TeacherView extends AppCompatActivity {
         ImageView showInformation = view.findViewById(R.id.information);
         Button saveUpdateSubject = view.findViewById(R.id.UpdateNewSubjects);
         Button Close = view.findViewById(R.id.Close);
-        final ListView DisplaySubjectList = view.findViewById(R.id.listDisplaySubject);
+        DisplaySubjectList = view.findViewById(R.id.listDisplaySubject);
 
         builder.setView(view);
         alertDialog = builder.create();
@@ -624,8 +628,8 @@ public class TeacherView extends AppCompatActivity {
             }
         });
 
-        showInformation.setOnClickListener(v -> Toast.makeText(TeacherView.this, "Delete Subject: Make a long press \n " +
-                "Open Subject: Single press \n\n Note: Always Save when you delete subjects ", Toast.LENGTH_SHORT).show());
+        showInformation.setOnClickListener(v -> Toast.makeText(TeacherView.this, "Delete Subject: Make a long press\n " +
+                "Open Subject: Single press\n\nNote: Always Save when you delete subjects ", Toast.LENGTH_SHORT).show());
         Close.setOnClickListener(v -> alertDialog.dismiss());
 
     }
