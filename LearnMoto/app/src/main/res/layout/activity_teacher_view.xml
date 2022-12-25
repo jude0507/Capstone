@@ -241,11 +241,29 @@
                     android:animateLayoutChanges="true"
                     android:padding="10dp">
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:padding="10dp"
+<!--                    <androidx.recyclerview.widget.RecyclerView-->
+<!--                        android:padding="10dp"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:id="@+id/rvSubjects"/>-->
+
+<!--                    <View-->
+<!--                        android:layout_width="350dp"-->
+<!--                        android:layout_height="2dp"-->
+<!--                        android:layout_marginVertical="5dp"-->
+<!--                        android:background="@color/light_white"/>-->
+
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/rvSubjects"/>
+                        android:layout_marginVertical="15dp"
+                        android:text="View Subjects"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:onClick="ViewSubjects"
+                        android:textAlignment="center"/>
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
