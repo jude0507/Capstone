@@ -58,6 +58,7 @@ public class TeacherLogin extends AppCompatActivity {
     private void LoginTeacher() {
         if (!Teacher_ID.getText().toString().trim().isEmpty() && !Teacher_Pass.getText().toString().trim().isEmpty()){
             progressDialog = new ProgressDialog(this);
+            progressDialog.setCanceledOnTouchOutside(false);
             progressDialog.show();
             progressDialog.setContentView(R.layout.progress_dialog_account_checking);
             progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);

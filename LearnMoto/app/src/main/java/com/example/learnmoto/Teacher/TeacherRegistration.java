@@ -76,8 +76,8 @@ public class TeacherRegistration extends AppCompatActivity {
                                 teacherInfo.setTeacher_phone(Teacher_Phone);
                                 teacherInfo.setTeacher_ID(Teacher_ID);
                                 teacherInfo.setTeacher_pass(Teacher_Pass);
-                                progressDialog.dismiss();
                                 firestore.collection("Teacher").document(Teacher_ID).set(teacherInfo);
+                                progressDialog.dismiss();
                                 Toast.makeText(TeacherRegistration.this, "Registration Successfully", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(TeacherRegistration.this, TeacherLogin.class));
                             }

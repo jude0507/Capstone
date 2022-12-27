@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.learnmoto" >
+    package="com.example.learnmoto">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -19,7 +19,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true"
-        tools:targetApi="31" >
+        tools:targetApi="31">
+        <activity
+            android:name=".SubjectVideo"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".Kinder.KinderClassList"
             android:exported="false"
@@ -47,7 +54,7 @@
         <activity
             android:name=".Teacher.TeacherSettings"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -63,7 +70,7 @@
         <activity
             android:name=".Preparatory.SibikaKultura.PreparatorySibKulQuiz"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -71,7 +78,7 @@
         <activity
             android:name=".Preparatory.SibikaKultura.PreparatorySibKulWatch"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -79,7 +86,7 @@
         <activity
             android:name=".Preparatory.SibikaKultura.PreparatorySibKulRead"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -87,7 +94,7 @@
         <activity
             android:name=".PDF.SibikaKulturaViewPDF"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -95,7 +102,7 @@
         <activity
             android:name=".PDF.SibikaKulturaPDF"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -103,7 +110,7 @@
         <activity
             android:name=".Preparatory.Filipino.PreparatoryFilipinoQuiz"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -111,7 +118,7 @@
         <activity
             android:name=".Preparatory.Filipino.PreparatoryFilipinoWatch"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -119,7 +126,7 @@
         <activity
             android:name=".Preparatory.Filipino.PreparatoryFilipinoRead"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -127,7 +134,7 @@
         <activity
             android:name=".Kinder.Filipino.KinderFilipinoQuiz"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -135,7 +142,7 @@
         <activity
             android:name=".Kinder.Filipino.KinderFilipinoWatch"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -143,7 +150,7 @@
         <activity
             android:name=".Kinder.Filipino.KinderFilipinoRead"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -151,7 +158,7 @@
         <activity
             android:name=".PDF.FilipinoViewPDF"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -159,7 +166,7 @@
         <activity
             android:name=".PDF.FilipinoPDF"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -167,7 +174,7 @@
         <activity
             android:name=".Kinder.ChristianLiving.KinderChristianLivingQuiz"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -175,7 +182,7 @@
         <activity
             android:name=".Kinder.ChristianLiving.KinderChristianLivingWatch"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -183,7 +190,7 @@
         <activity
             android:name=".Kinder.ChristianLiving.KinderChristianLivingRead"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -191,7 +198,7 @@
         <activity
             android:name=".Nursery.ChristianLiving.NurseryChristianLivingQuiz"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -199,7 +206,7 @@
         <activity
             android:name=".Nursery.ChristianLiving.NurseryChristianLivingWatch"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -207,7 +214,7 @@
         <activity
             android:name=".Nursery.ChristianLiving.NurseryChristianLivingRead"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -215,7 +222,7 @@
         <activity
             android:name=".Preparatory.ChristianLiving.PreparatoryChristianLivingQuiz"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -223,7 +230,7 @@
         <activity
             android:name=".Preparatory.ChristianLiving.PreparatoryChristianLivingWatch"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -231,7 +238,7 @@
         <activity
             android:name=".Preparatory.ChristianLiving.PreparatoryChristianLivingRead"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -239,7 +246,7 @@
         <activity
             android:name=".PDF.ChristianLivingViewPDF"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -247,7 +254,7 @@
         <activity
             android:name=".PDF.ChristianLivingPDF"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -255,7 +262,7 @@
         <activity
             android:name=".Preparatory.Science.PreparatoryScienceQuiz"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -263,7 +270,7 @@
         <activity
             android:name=".Preparatory.Science.PreparatoryScienceWatch"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -271,7 +278,7 @@
         <activity
             android:name=".Preparatory.Science.PreparatoryScienceRead"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -279,7 +286,7 @@
         <activity
             android:name=".Nursery.Science.NurseryScienceQuiz"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -287,7 +294,7 @@
         <activity
             android:name=".Nursery.Science.NurseryScienceWatch"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -295,7 +302,7 @@
         <activity
             android:name=".Nursery.Science.NurseryScienceRead"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -303,7 +310,7 @@
         <activity
             android:name=".PDF.ScienceViewPDF"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -311,7 +318,7 @@
         <activity
             android:name=".PDF.SciencePDF"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -319,7 +326,7 @@
         <activity
             android:name=".Kinder.Science.KinderScienceQuiz"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -327,7 +334,7 @@
         <activity
             android:name=".Kinder.Science.KinderScienceWatch"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -335,7 +342,7 @@
         <activity
             android:name=".Kinder.Science.KinderScienceRead"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -343,7 +350,7 @@
         <activity
             android:name=".Preparatory.Math.PreparatoryMathQuiz"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -351,7 +358,7 @@
         <activity
             android:name=".Preparatory.Math.PreparatoryMathWatch"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -359,7 +366,7 @@
         <activity
             android:name=".Preparatory.Math.PreparatoryMathRead"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -367,7 +374,7 @@
         <activity
             android:name=".Kinder.Math.KinderMathQuiz"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -375,7 +382,7 @@
         <activity
             android:name=".Kinder.Math.KinderMathWatch"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -383,7 +390,7 @@
         <activity
             android:name=".Kinder.Math.KinderMathRead"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -391,7 +398,7 @@
         <activity
             android:name=".Kinder.English.KinderEnglishQuiz"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -399,7 +406,7 @@
         <activity
             android:name=".Kinder.English.KinderEnglishWatch"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -407,7 +414,7 @@
         <activity
             android:name=".Nursery.Math.NurseryMathQuiz"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -415,7 +422,7 @@
         <activity
             android:name=".Nursery.Math.NurseryMathWatch"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -423,7 +430,7 @@
         <activity
             android:name=".Nursery.Math.NurseryMathRead"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -431,7 +438,7 @@
         <activity
             android:name=".PDF.MathViewPDF"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -439,7 +446,7 @@
         <activity
             android:name=".Preparatory.English.PreparatoryEnglishWatch"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -447,7 +454,7 @@
         <activity
             android:name=".Preparatory.English.PreparatoryEnglishQuiz"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -455,7 +462,7 @@
         <activity
             android:name=".Nursery.English.NurseryEnglishQuiz"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -463,7 +470,7 @@
         <activity
             android:name=".Nursery.English.NurseryEnglishWatch"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -471,7 +478,7 @@
         <activity
             android:name=".PDF.EnglishViewPDF"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -479,7 +486,7 @@
         <activity
             android:name=".PDF.EnglishPDF"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -487,7 +494,7 @@
         <activity
             android:name=".Nursery.Story.FourthStory"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -495,7 +502,7 @@
         <activity
             android:name=".Nursery.Story.ThirdStory"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -503,7 +510,7 @@
         <activity
             android:name=".Nursery.Story.SecondStory"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -511,7 +518,7 @@
         <activity
             android:name=".Nursery.Story.FirstStory"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -519,7 +526,7 @@
         <activity
             android:name=".PDF.MathPDF"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -527,7 +534,7 @@
         <activity
             android:name=".Nursery.Stories"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -535,7 +542,7 @@
         <activity
             android:name=".Preparatory.English.PreparatoryEnglish"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -543,7 +550,7 @@
         <activity
             android:name=".Kinder.English.KinderEnglish"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -551,7 +558,7 @@
         <activity
             android:name=".Nursery.English.NurseryEnglish"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -559,7 +566,7 @@
         <activity
             android:name=".Teacher.Announcement"
             android:exported="false"
-            android:noHistory="false" >
+            android:noHistory="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -567,7 +574,7 @@
         <activity
             android:name=".Teacher.TeacherView"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -575,7 +582,7 @@
         <activity
             android:name=".Parent.ParentSettings"
             android:exported="false"
-            android:noHistory="false" >
+            android:noHistory="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -583,7 +590,7 @@
         <activity
             android:name=".Parent.ParentView"
             android:exported="false"
-            android:noHistory="true" >
+            android:noHistory="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -631,7 +638,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:noHistory="false" >
+            android:noHistory="false">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

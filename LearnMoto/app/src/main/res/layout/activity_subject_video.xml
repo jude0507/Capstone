@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="@drawable/background"
+    tools:context=".SubjectVideo">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginVertical="10dp">
+
+        <ImageView
+            android:layout_marginVertical="10sp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:onClick="BackToTeacherView"
+            android:src="@drawable/ic_left_arrow" />
+
+        <TextView
+            android:id="@+id/txtSubject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="SUBJECT"
+            android:textColor="@color/fontColor"
+            android:fontFamily="@font/fingerpaint"
+            android:textAlignment="center"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:layout_marginVertical="10dp">
+        <VideoView
+            android:layout_width="380dp"
+            android:layout_height="200dp"
+            android:id="@+id/Video"/>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/VideoName"
+        android:padding="10dp"
+        android:drawablePadding="10dp"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/custom_icon_video"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="350dp"
+        android:hint="Video Name"
+        android:inputType="textCapWords"
+        android:layout_height="50dp"/>
+
+    <Button
+        android:id="@+id/ChooseVideo"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:background="@color/teal_200"
+        android:layout_marginVertical="10dp"
+        android:text="Choose Video"/>
+
+    <Button
+        android:id="@+id/UploadVideo"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:background="@color/green"
+        android:textColor="@color/white"
+        android:text="Upload Video"/>
+
+</LinearLayout>

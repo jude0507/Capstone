@@ -20,7 +20,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:background="@drawable/gradientbg"
+                android:background="@drawable/background1"
                 android:gravity="center|left"
                 android:orientation="horizontal"
                 android:paddingLeft="20dp">
@@ -53,7 +53,7 @@
                         android:text=""
                         android:layout_marginHorizontal="5dp"
                         android:textStyle="bold"
-                        android:textColor="@color/black"
+                        android:textColor="@color/white"
                         android:textSize="20dp" />
 
                     <LinearLayout
@@ -66,7 +66,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Advisory Class: "
-                            android:textColor="@color/black"
+                            android:textColor="@color/white"
                             android:textSize="15dp" />
 
                         <TextView
@@ -74,7 +74,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/level"
-                            android:textColor="@color/black"
+                            android:textColor="@color/white"
                             android:textSize="15sp" />
 
                     </LinearLayout>
@@ -126,8 +126,6 @@
                             android:layout_margin="5dp"
                             android:layout_marginLeft="50dp"
                             android:textSize="20dp" />
-
-
 
                     </LinearLayout>
 

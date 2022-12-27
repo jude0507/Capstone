@@ -1,6 +1,5 @@
 package com.example.learnmoto.Teacher;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,10 +12,7 @@ import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,26 +23,21 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.Adapter.LevelAdapter;
 import com.example.learnmoto.DisplayImage;
-import com.example.learnmoto.Model.StudentInfo;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Adapter.TranslateAnimatioUI;
 import com.example.learnmoto.SubjectArrayClass;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.example.learnmoto.SubjectVideo;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -65,7 +56,7 @@ public class TeacherView extends AppCompatActivity {
     AlertDialog.Builder builder;
     AlertDialog alertDialog;
     ArrayList<String> addLevel = new ArrayList<>();
-    ArrayList<String> addSubjectToList = new ArrayList<>();
+    public static ArrayList<String> addSubjectToList = new ArrayList<>();
     ArrayAdapter<String> arrayAdapter, arraySubjectsAdapter;
     List<String> levelArray, subjectArray;
     ListView ListLevel, listsubject, DisplaySubjectList;
@@ -621,17 +612,17 @@ public class TeacherView extends AppCompatActivity {
         });
 
         DisplaySubjectList.setOnItemClickListener((parent, view12, position, id) -> {
-            if (addSubjectToList.get(position).equals("Kinder Math")){
-                Toast.makeText(TeacherView.this, addSubjectToList.get(position), Toast.LENGTH_SHORT).show();
-            }else{
-                Toast.makeText(TeacherView.this, "False", Toast.LENGTH_SHORT).show();
-            }
+            String SubjectItem = addSubjectToList.get(position);
+            Toast.makeText(this, addSubjectToList.get(position), Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getApplicationContext(), SubjectVideo.class);
+            intent.putExtra("Subjects",SubjectItem);
+            startActivity(intent);
+            alertDialog.dismiss();
         });
 
-        showInformation.setOnClickListener(v -> Toast.makeText(TeacherView.this, "Delete Subject: Make a long press\n " +
+        showInformation.setOnClickListener(v -> Toast.makeText(TeacherView.this, "Delete Subject: Make a long press\n" +
                 "Open Subject: Single press\n\nNote: Always Save when you delete subjects ", Toast.LENGTH_SHORT).show());
         Close.setOnClickListener(v -> alertDialog.dismiss());
 
     }
-
 }
