@@ -59,7 +59,7 @@ public class TeacherView extends AppCompatActivity {
     TextView teacherName;
     CircleImageView ProfilePicture;
     RecyclerView rvAssignClass;
-    LinearLayout assignClassLayout, assignClassContainer, subjectContainer,expandSubjects,
+    LinearLayout assignClassLayout, assignClassContainer, subjectContainer, expandSubjects,
             advisoryClassContainer, expandClassAdvisory;
 
     AlertDialog.Builder builder;
@@ -124,23 +124,23 @@ public class TeacherView extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
 
             //Condition of what activity is selected
-            switch (item.getItemId()){
+            switch (item.getItemId()) {
                 case R.id.home:
                     return true;
 
                 case R.id.announcements:
                     startActivity(new Intent(getApplicationContext(), Announcement.class));
-                    overridePendingTransition(0,0);
+                    overridePendingTransition(0, 0);
                     return true;
 
                 case R.id.profile:
                     startActivity(new Intent(getApplicationContext(), TeacherProfile.class));
-                    overridePendingTransition(0,0);
+                    overridePendingTransition(0, 0);
                     return true;
 
                 case R.id.settings:
                     startActivity(new Intent(getApplicationContext(), TeacherSettings.class));
-                    overridePendingTransition(0,0);
+                    overridePendingTransition(0, 0);
                     return true;
             }
 
@@ -156,7 +156,7 @@ public class TeacherView extends AppCompatActivity {
             TransitionManager.beginDelayedTransition(assignClassContainer, new AutoTransition());
             assignClassLayout.setVisibility(View.VISIBLE);
             viewClassLevel.setBackgroundResource(R.drawable.ic_arrow_up);
-        }else{
+        } else {
             TransitionManager.beginDelayedTransition(assignClassContainer, new AutoTransition());
             assignClassLayout.setVisibility(View.GONE);
             viewClassLevel.setBackgroundResource(R.drawable.ic_arrow_down);
@@ -168,7 +168,7 @@ public class TeacherView extends AppCompatActivity {
             TransitionManager.beginDelayedTransition(subjectContainer, new AutoTransition());
             expandSubjects.setVisibility(View.VISIBLE);
             viewSubjects.setBackgroundResource(R.drawable.ic_arrow_up);
-        }else{
+        } else {
             TransitionManager.beginDelayedTransition(subjectContainer, new AutoTransition());
             expandSubjects.setVisibility(View.GONE);
             viewSubjects.setBackgroundResource(R.drawable.ic_arrow_down);
@@ -180,7 +180,7 @@ public class TeacherView extends AppCompatActivity {
             TransitionManager.beginDelayedTransition(advisoryClassContainer, new AutoTransition());
             expandClassAdvisory.setVisibility(View.VISIBLE);
             viewClassAdvisory.setBackgroundResource(R.drawable.ic_arrow_up);
-        }else{
+        } else {
             TransitionManager.beginDelayedTransition(advisoryClassContainer, new AutoTransition());
             expandClassAdvisory.setVisibility(View.GONE);
             viewClassAdvisory.setBackgroundResource(R.drawable.ic_arrow_down);
@@ -188,17 +188,20 @@ public class TeacherView extends AppCompatActivity {
     }
 
     public void AddAssignLevel(View view) {
+
+        addLevel.clear();
         AssignLevelWindow();
+
         //use the function on onClick
     }
 
     //function for add level window dialog
-    public void AssignLevelWindow(){
+    public void AssignLevelWindow() {
         builder = new AlertDialog.Builder(TeacherView.this);
-        final View view = getLayoutInflater().inflate(R.layout.assign_class_level,null);
+        final View view = getLayoutInflater().inflate(R.layout.assign_class_level, null);
 
         AssignLevelInput = view.findViewById(R.id.inputAssignLevel);
-        savebtn= view.findViewById(R.id.Save);
+        savebtn = view.findViewById(R.id.Save);
         AddLevelList = view.findViewById(R.id.AddLevelList);
         ListLevel = view.findViewById(R.id.listlevel);
 
@@ -209,67 +212,65 @@ public class TeacherView extends AppCompatActivity {
         //https://www.geeksforgeeks.org/java-program-to-merge-two-arrays/
 
         //check data list item from firestore then display in listview
-        try{
-            if (assignLevel.contains("Kinder") && assignLevel.contains("Preparatory") && assignLevel.contains("Nursery")){
+        try {
+            if (assignLevel.contains("Kinder") && assignLevel.contains("Preparatory") && assignLevel.contains("Nursery")) {
                 addLevel.add("Kinder");
                 addLevel.add("Nursery");
                 addLevel.add("Preparatory");
                 arrayAdapter = new ArrayAdapter<String>(TeacherView.this,
                         android.R.layout.simple_list_item_1, addLevel);
                 ListLevel.setAdapter(arrayAdapter);
-            }
-            else if (assignLevel.contains("Nursery") && assignLevel.contains("Kinder")){
+
+            } else if (assignLevel.contains("Nursery") && assignLevel.contains("Kinder")) {
                 addLevel.add("Kinder");
                 addLevel.add("Nursery");
                 arrayAdapter = new ArrayAdapter<String>(TeacherView.this,
                         android.R.layout.simple_list_item_1, addLevel);
                 ListLevel.setAdapter(arrayAdapter);
-            }
-            else if(assignLevel.contains("Kinder") && assignLevel.contains("Preparatory")){
+
+            } else if (assignLevel.contains("Kinder") && assignLevel.contains("Preparatory")) {
                 addLevel.add("Kinder");
                 addLevel.add("Preparatory");
                 arrayAdapter = new ArrayAdapter<String>(TeacherView.this,
                         android.R.layout.simple_list_item_1, addLevel);
-                ListLevel.setAdapter(arrayAdapter);
-            }
-            else if(assignLevel.contains("Nursery") && assignLevel.contains("Preparatory")){
+
+            } else if (assignLevel.contains("Nursery") && assignLevel.contains("Preparatory")) {
                 addLevel.add("Nursery");
                 addLevel.add("Preparatory");
                 arrayAdapter = new ArrayAdapter<String>(TeacherView.this,
                         android.R.layout.simple_list_item_1, addLevel);
                 ListLevel.setAdapter(arrayAdapter);
-            }
-            else if (assignLevel.contains("Kinder")){
+            } else if (assignLevel.contains("Kinder")) {
                 addLevel.add("Kinder");
                 arrayAdapter = new ArrayAdapter<String>(TeacherView.this,
                         android.R.layout.simple_list_item_1, addLevel);
                 ListLevel.setAdapter(arrayAdapter);
-            }
-            else if (assignLevel.contains("Nursery")){
+            } else if (assignLevel.contains("Nursery")) {
                 addLevel.add("Nursery");
                 arrayAdapter = new ArrayAdapter<String>(TeacherView.this,
                         android.R.layout.simple_list_item_1, addLevel);
                 ListLevel.setAdapter(arrayAdapter);
-            }
-            else if (assignLevel.contains("Preparatory")){
+
+            } else if (assignLevel.contains("Preparatory")) {
                 addLevel.add("Preparatory");
                 arrayAdapter = new ArrayAdapter<String>(TeacherView.this,
                         android.R.layout.simple_list_item_1, addLevel);
                 ListLevel.setAdapter(arrayAdapter);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
+
 
         //add data in list
         AddLevelList.setOnClickListener(v -> {
             String inputLevel = AssignLevelInput.getText().toString();
 
-            if (addLevel.contains(inputLevel)){
+            if (addLevel.contains(inputLevel)) {
                 Toast.makeText(TeacherView.this, "Already Added", Toast.LENGTH_SHORT).show();
-            }else if(inputLevel.isEmpty() || inputLevel.trim().equals("")){
+            } else if (inputLevel.isEmpty() || inputLevel.trim().equals("")) {
                 Toast.makeText(TeacherView.this, "NO value", Toast.LENGTH_SHORT).show();
-            }else if (inputLevel.equals("Nursery") || inputLevel.equals("Kinder") || inputLevel.equals("Preparatory")){
+            } else if (inputLevel.equals("Nursery") || inputLevel.equals("Kinder") || inputLevel.equals("Preparatory")) {
                 addLevel.add(inputLevel);
                 arrayAdapter = new ArrayAdapter<String>(TeacherView.this,
                         android.R.layout.simple_list_item_1, addLevel);
@@ -277,7 +278,7 @@ public class TeacherView extends AppCompatActivity {
                 AssignLevelInput.setText("");
 
 
-            }else{
+            } else {
                 Toast.makeText(TeacherView.this, "Invalid Input", Toast.LENGTH_SHORT).show();
 
             }
@@ -307,15 +308,15 @@ public class TeacherView extends AppCompatActivity {
 
         //save the list in firestore
         savebtn.setOnClickListener(v -> {
-            for (String item:addLevel){
+            for (String item : addLevel) {
                 DataAddLevel = DataAddLevel + "" + item + ",";
 
             }
-            if (DataAddLevel.equals("") || DataAddLevel.isEmpty()){
+            if (DataAddLevel.equals("") || DataAddLevel.isEmpty()) {
                 Toast.makeText(TeacherView.this, "no data", Toast.LENGTH_SHORT).show();
-            }else{
+            } else {
 
-                String [] dataArray = DataAddLevel.split("\\s*,\\s*");
+                String[] dataArray = DataAddLevel.split("\\s*,\\s*");
                 levelArray = Arrays.asList(dataArray);
 
                 DocumentReference documentReference = db.collection("Teacher")
@@ -331,20 +332,20 @@ public class TeacherView extends AppCompatActivity {
         });
     }
 
-    public void DisplayAssignedLevel(){
+    public void zDisplayAssignedLevel() {
         documentReference.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 DocumentSnapshot document = task.getResult();
                 if (document.exists()) {
-                    try{
+                    try {
                         assignLevel = (List<String>) document.get("assignLevel");
 
                         String[] arrayLevel = new String[assignLevel.size()];
-                        for (int i = 0; i < assignLevel.size(); i++){
+                        for (int i = 0; i < assignLevel.size(); i++) {
                             arrayLevel[i] = assignLevel.get(i);
 
                             DataAssignLevel += assignLevel.get(i);
-                            if (i < assignLevel.size() -1){
+                            if (i < assignLevel.size() - 1) {
                                 DataAssignLevel += ",";
                             }
                         }
@@ -355,44 +356,38 @@ public class TeacherView extends AppCompatActivity {
                         mImages = new ArrayList<>();
                         levelAdapter = new LevelAdapter(this, mImages);
 
-                        if (GetAssignedLevel != "null" && !GetAssignedLevel.isEmpty()){
-                            if (assignLevel.contains("Kinder") && assignLevel.contains("Preparatory") && assignLevel.contains("Nursery")){
+                        if (GetAssignedLevel != "null" && !GetAssignedLevel.isEmpty()) {
+                            if (assignLevel.contains("Kinder") && assignLevel.contains("Preparatory") && assignLevel.contains("Nursery")) {
                                 Toast.makeText(this, "NKP", Toast.LENGTH_SHORT).show();
                                 mImages.add(R.drawable.kinder_logo);
                                 mImages.add(R.drawable.nursery_logo);
                                 mImages.add(R.drawable.preparatory_logo);
-                            }
-                            else if (assignLevel.contains("Nursery") && assignLevel.contains("Kinder")){
+                            } else if (assignLevel.contains("Nursery") && assignLevel.contains("Kinder")) {
                                 Toast.makeText(this, "NK", Toast.LENGTH_SHORT).show();
                                 mImages.add(R.drawable.kinder_logo);
                                 mImages.add(R.drawable.nursery_logo);
-                            }
-                            else if(assignLevel.contains("Kinder") && assignLevel.contains("Preparatory")){
+                            } else if (assignLevel.contains("Kinder") && assignLevel.contains("Preparatory")) {
                                 Toast.makeText(this, "KP", Toast.LENGTH_SHORT).show();
                                 mImages.add(R.drawable.nursery_logo);
                                 mImages.add(R.drawable.preparatory_logo);
-                            }
-                            else if(assignLevel.contains("Nursery") && assignLevel.contains("Preparatory")){
+                            } else if (assignLevel.contains("Nursery") && assignLevel.contains("Preparatory")) {
                                 Toast.makeText(this, "NP", Toast.LENGTH_SHORT).show();
                                 mImages.add(R.drawable.nursery_logo);
                                 mImages.add(R.drawable.preparatory_logo);
-                            }
-                            else if (assignLevel.contains("Kinder")){
+                            } else if (assignLevel.contains("Kinder")) {
                                 Toast.makeText(this, "K", Toast.LENGTH_SHORT).show();
                                 mImages.add(R.drawable.kinder_logo);
-                            }
-                            else if (assignLevel.contains("Nursery")){
+                            } else if (assignLevel.contains("Nursery")) {
                                 Toast.makeText(this, "N", Toast.LENGTH_SHORT).show();
                                 mImages.add(R.drawable.nursery_logo);
-                            }
-                            else if (assignLevel.contains("Preparatory")){
+                            } else if (assignLevel.contains("Preparatory")) {
                                 Toast.makeText(this, "P", Toast.LENGTH_SHORT).show();
                                 mImages.add(R.drawable.preparatory_logo);
                             }
-                        }else{
+                        } else {
                             Toast.makeText(this, "NONE", Toast.LENGTH_SHORT).show();
                         }
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         Toast.makeText(this, "You have no assign level. Please add your assign level Thank you!", Toast.LENGTH_SHORT).show();
                         //e.printStackTrace();
                     }
@@ -406,8 +401,8 @@ public class TeacherView extends AppCompatActivity {
         });
     }
 
-    public void DisplayImage(){
-        DisplayImage.RetrieveImageTeacher(this, "Teacher", "teacher_ID" ,TeacherLogin.teacher_ID, ProfilePicture);
+    public void DisplayImage() {
+        DisplayImage.RetrieveImageTeacher(this, "Teacher", "teacher_ID", TeacherLogin.teacher_ID, ProfilePicture);
     }
 
     @Override
@@ -433,12 +428,12 @@ public class TeacherView extends AppCompatActivity {
         AssignSubject();
     }
 
-    public void AssignSubject(){
+    public void AssignSubject() {
 
         SubjectArrayClass subjectArrayClass = new SubjectArrayClass();
 
         builder = new AlertDialog.Builder(TeacherView.this);
-        final View view = getLayoutInflater().inflate(R.layout.add_assign_subject,null);
+        final View view = getLayoutInflater().inflate(R.layout.add_assign_subject, null);
 
         SaveSubjectBtn = view.findViewById(R.id.saveSubjects);
         listsubject = view.findViewById(R.id.listSubject);
@@ -448,60 +443,54 @@ public class TeacherView extends AppCompatActivity {
         alertDialog = builder.create();
         alertDialog.show();
 
-        try{
-            if (assignLevel.contains("Kinder") && assignLevel.contains("Preparatory") && assignLevel.contains("Nursery")){
+        try {
+            if (assignLevel.contains("Kinder") && assignLevel.contains("Preparatory") && assignLevel.contains("Nursery")) {
                 arraySubjectsAdapter = new ArrayAdapter<String>(TeacherView.this,
                         android.R.layout.simple_list_item_multiple_choice, SubjectArrayClass.CombineAll);
                 listsubject.setAdapter(arraySubjectsAdapter);
-            }
-            else if (assignLevel.contains("Nursery") && assignLevel.contains("Kinder")){
+            } else if (assignLevel.contains("Nursery") && assignLevel.contains("Kinder")) {
                 arraySubjectsAdapter = new ArrayAdapter<String>(TeacherView.this,
-                    android.R.layout.simple_list_item_multiple_choice,
+                        android.R.layout.simple_list_item_multiple_choice,
                         subjectArrayClass.Combine(SubjectArrayClass.NurserySubject, SubjectArrayClass.KinderSubject));
                 listsubject.setAdapter(arraySubjectsAdapter);
-            }
-            else if(assignLevel.contains("Kinder") && assignLevel.contains("Preparatory")){
+            } else if (assignLevel.contains("Kinder") && assignLevel.contains("Preparatory")) {
                 arraySubjectsAdapter = new ArrayAdapter<String>(TeacherView.this,
                         android.R.layout.simple_list_item_multiple_choice,
                         subjectArrayClass.Combine(SubjectArrayClass.KinderSubject, SubjectArrayClass.Preparatory));
                 listsubject.setAdapter(arraySubjectsAdapter);
-            }
-            else if(assignLevel.contains("Nursery") && assignLevel.contains("Preparatory")){
+            } else if (assignLevel.contains("Nursery") && assignLevel.contains("Preparatory")) {
                 arraySubjectsAdapter = new ArrayAdapter<String>(TeacherView.this,
                         android.R.layout.simple_list_item_multiple_choice,
                         subjectArrayClass.Combine(SubjectArrayClass.KinderSubject, SubjectArrayClass.Preparatory));
                 listsubject.setAdapter(arraySubjectsAdapter);
-            }
-            else if (assignLevel.contains("Kinder")){
+            } else if (assignLevel.contains("Kinder")) {
                 arraySubjectsAdapter = new ArrayAdapter<String>(TeacherView.this,
                         android.R.layout.simple_list_item_multiple_choice, SubjectArrayClass.KinderSubject);
                 listsubject.setAdapter(arraySubjectsAdapter);
-            }
-            else if (assignLevel.contains("Nursery")){
+            } else if (assignLevel.contains("Nursery")) {
                 arraySubjectsAdapter = new ArrayAdapter<String>(TeacherView.this,
                         android.R.layout.simple_list_item_multiple_choice, SubjectArrayClass.NurserySubject);
                 listsubject.setAdapter(arraySubjectsAdapter);
-            }
-            else if (assignLevel.contains("Preparatory")){
+            } else if (assignLevel.contains("Preparatory")) {
                 arraySubjectsAdapter = new ArrayAdapter<String>(TeacherView.this,
                         android.R.layout.simple_list_item_multiple_choice, SubjectArrayClass.Preparatory);
                 listsubject.setAdapter(arraySubjectsAdapter);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
         SaveSubjectBtn.setOnClickListener(v -> {
             String selectedItem = "";
-            for (int i = 0; i < listsubject.getCount(); i++){
-                if (listsubject.isItemChecked(i)){
+            for (int i = 0; i < listsubject.getCount(); i++) {
+                if (listsubject.isItemChecked(i)) {
                     selectedItem += listsubject.getItemAtPosition(i) + ",";
                 }
             }
-            if (selectedItem.equals("") || selectedItem == null){
+            if (selectedItem.equals("") || selectedItem == null) {
                 Toast.makeText(TeacherView.this, "Please select Data", Toast.LENGTH_SHORT).show();
-            }else{
-                String [] dataSubjectArray = selectedItem.split("\\s*,\\s*");
+            } else {
+                String[] dataSubjectArray = selectedItem.split("\\s*,\\s*");
                 subjectArray = Arrays.asList(dataSubjectArray);
                 DocumentReference documentReference = db.collection("Teacher")
                         .document(TeacherLogin.teacher_ID);
@@ -520,26 +509,26 @@ public class TeacherView extends AppCompatActivity {
 
     }
 
-    public void FetchSubjects(){
+    public void FetchSubjects() {
         //Get Data from Firestore (assignSubject field)
         documentReference.get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()){
+            if (task.isSuccessful()) {
                 DocumentSnapshot documentSnapshot = task.getResult();
-                try{
-                    if (documentSnapshot.exists()){
+                try {
+                    if (documentSnapshot.exists()) {
                         assignSubjects = (List<String>) documentSnapshot.get("assignSubject");
 
                         arraySubject = new String[assignSubjects.size()];
-                        for (int i = 0; i < assignSubjects.size(); i++){
+                        for (int i = 0; i < assignSubjects.size(); i++) {
                             arraySubject[i] = assignSubjects.get(i);
                             DataAssignSubject += assignSubjects.get(i);
-                            if (i < assignSubjects.size()){
+                            if (i < assignSubjects.size()) {
                                 DataAssignSubject += ",";
                             }
                         }
                         Toast.makeText(this, DataAssignSubject, Toast.LENGTH_SHORT).show();
                     }
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.getMessage();
                 }
             }
@@ -551,9 +540,9 @@ public class TeacherView extends AppCompatActivity {
         DisplaySubjectDialog();
     }
 
-    public void DisplaySubjectDialog(){
+    public void DisplaySubjectDialog() {
         builder = new AlertDialog.Builder(TeacherView.this);
-        final View view = getLayoutInflater().inflate(R.layout.display_subject_dialog,null);
+        final View view = getLayoutInflater().inflate(R.layout.display_subject_dialog, null);
 
         ImageView showInformation = view.findViewById(R.id.information);
         Button saveUpdateSubject = view.findViewById(R.id.UpdateNewSubjects);
@@ -564,33 +553,32 @@ public class TeacherView extends AppCompatActivity {
         alertDialog = builder.create();
         alertDialog.show();
 
-        try{
-            for (int i = 0; i < assignSubjects.size(); i++){
+        try {
+            for (int i = 0; i < assignSubjects.size(); i++) {
                 arraySubject[i] = assignSubjects.get(i);
                 DataAssignSubject += assignSubjects.get(i);
-                if (i < assignSubjects.size()){
+                if (i < assignSubjects.size()) {
                     DataAssignSubject += ",";
                 }
                 addSubjectToList.add(assignSubjects.get(i));
                 arraySubjectsAdapter = new ArrayAdapter<>(TeacherView.this, android.R.layout.simple_list_item_1, addSubjectToList);
                 DisplaySubjectList.setAdapter(arraySubjectsAdapter);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.getMessage();
         }
 
         saveUpdateSubject.setOnClickListener(v -> {
-            for (String item : addSubjectToList){
+            for (String item : addSubjectToList) {
                 DataAddSubjectToList = DataAddSubjectToList + "" + item + ",";
             }
 
-            if (DataAddSubjectToList.equals("") || DataAddSubjectToList.isEmpty()){
+            if (DataAddSubjectToList.equals("") || DataAddSubjectToList.isEmpty()) {
                 Toast.makeText(TeacherView.this, "no data", Toast.LENGTH_SHORT).show();
-            }else{
+            } else {
 
-                String [] dataSubjectArray = DataAddSubjectToList.split("\\s*,\\s*");
+                String[] dataSubjectArray = DataAddSubjectToList.split("\\s*,\\s*");
                 subjectArray = Arrays.asList(dataSubjectArray);
-
                 DocumentReference documentReference = db.collection("Teacher")
                         .document(TeacherLogin.teacher_ID);
                 documentReference.update("assignSubject", subjectArray);
@@ -621,9 +609,9 @@ public class TeacherView extends AppCompatActivity {
         });
 
         DisplaySubjectList.setOnItemClickListener((parent, view12, position, id) -> {
-            if (addSubjectToList.get(position).equals("Kinder Math")){
+            if (addSubjectToList.get(position).equals("Kinder Math")) {
                 Toast.makeText(TeacherView.this, addSubjectToList.get(position), Toast.LENGTH_SHORT).show();
-            }else{
+            } else {
                 Toast.makeText(TeacherView.this, "False", Toast.LENGTH_SHORT).show();
             }
         });
