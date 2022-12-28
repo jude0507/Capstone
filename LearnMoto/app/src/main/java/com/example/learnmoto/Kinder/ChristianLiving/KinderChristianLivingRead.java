@@ -90,4 +90,6 @@ public class KinderChristianLivingRead extends AppCompatActivity {
         super.onStop();
     }
 
+
+
 }

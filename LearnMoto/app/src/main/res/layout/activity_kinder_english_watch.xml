@@ -19,43 +19,13 @@
             android:layout_margin="10dp">
 
             <include layout="@layout/mytoolbar"/>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Watch"
-                    android:gravity="center"
-                    android:textSize="50dp"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/VideoRecyclerView"
+                android:layout_marginVertical="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
 
-                <!--                <LinearLayout-->
-                <!--                    android:layout_width="wrap_content"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:orientation="vertical"-->
-                <!--                    android:layout_marginHorizontal="20dp"-->
-                <!--                    android:id="@+id/pdf">-->
-
-                <!--                    <ImageView-->
-                <!--                        android:layout_width="100dp"-->
-                <!--                        android:layout_height="150dp"-->
-                <!--                        android:onClick="pdf"-->
-                <!--                        android:src="@drawable/ic_pdf"/>-->
-
-                <!--                    <TextView-->
-                <!--                        android:layout_width="wrap_content"-->
-                <!--                        android:layout_height="wrap_content"-->
-                <!--                        android:text="PDF"-->
-                <!--                        android:textColor="@color/black"-->
-                <!--                        android:layout_gravity="center"/>-->
-
-                <!--                </LinearLayout>-->
-
-            </LinearLayout>
         </LinearLayout>
 
     </ScrollView>

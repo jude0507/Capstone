@@ -3,6 +3,8 @@ package com.example.learnmoto.Preparatory.ChristianLiving;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,19 +14,40 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
+import com.example.learnmoto.Model.VideoInfo;
+import com.example.learnmoto.Nursery.English.NurseryEnglishWatch;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Student.StudentHomeView;
+import com.example.learnmoto.VideoAdapter;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.ArrayList;
 
 public class PreparatoryChristianLivingWatch extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
+    RecyclerView recyclerView;
+    VideoAdapter videoAdapter;
+    ArrayList<VideoInfo> videoNameArraylist;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    String subject = "Preparatory Christian Living";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preparatory_christian_living_watch);
         drawerLayout = findViewById(R.id.mydrawer_layout);
+        recyclerView = findViewById(R.id.VideoRecyclerView);
+
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+
+        videoNameArraylist = new ArrayList<>();
+        videoAdapter = new VideoAdapter(PreparatoryChristianLivingWatch.this, videoNameArraylist);
+        recyclerView.setAdapter(videoAdapter);
+        EventChangeListener();
     }
     public void clickmenu(View view) {
         openDrawer(drawerLayout);
@@ -85,5 +108,17 @@ public class PreparatoryChristianLivingWatch extends AppCompatActivity {
         unregisterReceiver(networkChangeListener);
         super.onStop();
     }
+    private void EventChangeListener() {
+        db.collection("Videos").whereEqualTo("videoSubject", subject)
+                .addSnapshotListener((value, error) -> {
 
+                    for (DocumentChange documentChange: value.getDocumentChanges()){
+                        if (documentChange.getType() == DocumentChange.Type.ADDED){
+                            videoNameArraylist.add(documentChange.getDocument().toObject(VideoInfo.class));
+                        }
+                        videoAdapter.notifyDataSetChanged();
+                    }
+
+                });
+    }
 }

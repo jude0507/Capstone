@@ -1,4 +1,4 @@
-package com.example.learnmoto;
+package com.example.learnmoto.Teacher;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,8 +21,7 @@ import android.widget.VideoView;
 
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.Model.VideoInfo;
-import com.example.learnmoto.Teacher.TeacherLogin;
-import com.example.learnmoto.Teacher.TeacherView;
+import com.example.learnmoto.R;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;

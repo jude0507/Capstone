@@ -30,7 +30,6 @@ import com.example.learnmoto.DisplayImage;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Adapter.TranslateAnimatioUI;
 import com.example.learnmoto.SubjectArrayClass;
-import com.example.learnmoto.SubjectVideo;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
