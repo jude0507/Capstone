@@ -1,11 +1,12 @@
 package com.example.learnmoto;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -13,36 +14,36 @@ import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.MediaController;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.example.learnmoto.CheckConnection.NetworkChangeListener;
+import com.example.learnmoto.Model.VideoInfo;
 import com.example.learnmoto.Teacher.TeacherLogin;
 import com.example.learnmoto.Teacher.TeacherView;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
 public class SubjectVideo extends AppCompatActivity {
 
+    private long backpressedTimes;
     TextView subject;
     EditText VideoName;
     Button ChooseVideo, UploadVideo;
     VideoView videoView;
     MediaController mediaController;
     Uri VideoUri;
+    ProgressBar progressBar;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     StorageReference storageReference;
     FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
     CollectionReference collectionReference = db.collection("Videos");
-    DocumentReference documentReference;
+    String getItem;
+    NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,7 @@ public class SubjectVideo extends AppCompatActivity {
         ChooseVideo = findViewById(R.id.ChooseVideo);
         UploadVideo = findViewById(R.id.UploadVideo);
         VideoName = findViewById(R.id.VideoName);
+        progressBar = findViewById(R.id.progress_bar);
 
         mediaController = new MediaController(this);
         storageReference = FirebaseStorage.getInstance().getReference("videos");
@@ -73,76 +75,13 @@ public class SubjectVideo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 UploadVideo();
+                UploadVideo.setVisibility(View.GONE);
+                VideoName.setVisibility(View.GONE);
             }
         });
 
-        String getItem = getIntent().getStringExtra("Subjects");
-        switch (getItem) {
-            case "Nursery English":
-                Toast.makeText(this, "Nursery English", Toast.LENGTH_SHORT).show();
-                subject.setText("Nursery English");
-                break;
-            case "Nursery Math":
-                Toast.makeText(this, "Nursery Math", Toast.LENGTH_SHORT).show();
-                subject.setText("Nursery Math");
-                break;
-            case "Nursery Science":
-                Toast.makeText(this, "Nursery Science", Toast.LENGTH_SHORT).show();
-                subject.setText("Nursery Science");
-                break;
-            case "Nursery Christian Living":
-                Toast.makeText(this, "Nursery Christian Living", Toast.LENGTH_SHORT).show();
-                subject.setText("Nursery Christian Living");
-                break;
-            case "Kinder English":
-                Toast.makeText(this, "Kinder English", Toast.LENGTH_SHORT).show();
-                subject.setText("Kinder English");
-                break;
-            case "Kinder Math":
-                Toast.makeText(this, "Kinder Math", Toast.LENGTH_SHORT).show();
-                subject.setText("Kinder Math");
-                break;
-            case "Kinder Science":
-                Toast.makeText(this, "Kinder Science", Toast.LENGTH_SHORT).show();
-                subject.setText("Kinder Science");
-                break;
-            case "Kinder Christian Living":
-                Toast.makeText(this, "Kinder Christian Living", Toast.LENGTH_SHORT).show();
-                subject.setText("Kinder Christian Living");
-                break;
-            case "Kinder Filipino":
-                Toast.makeText(this, "Kinder Filipino", Toast.LENGTH_SHORT).show();
-                subject.setText("Kinder Filipino");
-                break;
-            case "Preparatory English":
-                Toast.makeText(this, "Preparatory English", Toast.LENGTH_SHORT).show();
-                subject.setText("Preparatory English");
-                break;
-            case "Preparatory Math":
-                Toast.makeText(this, "Preparatory Math", Toast.LENGTH_SHORT).show();
-                subject.setText("Preparatory Math");
-                break;
-            case "Preparatory Science":
-                Toast.makeText(this, "Preparatory Science", Toast.LENGTH_SHORT).show();
-                subject.setText("Preparatory Science");
-                break;
-            case "Preparatory Christian Living":
-                Toast.makeText(this, "Preparatory Christian Living", Toast.LENGTH_SHORT).show();
-                subject.setText("Preparatory Christian Living");
-                break;
-            case "Preparatory Filipino":
-                Toast.makeText(this, "Preparatory Filipino", Toast.LENGTH_SHORT).show();
-                subject.setText("Preparatory Filipino");
-                break;
-            case "Preparatory Sibika at Kultura":
-                Toast.makeText(this, "Preparatory Sibika at Kultura", Toast.LENGTH_SHORT).show();
-                subject.setText("Preparatory Sibika at Kultura");
-                break;
-            default:
-                Toast.makeText(this, "Not Found", Toast.LENGTH_SHORT).show();
-                subject.setText("Nursery English");
-                break;
-        }
+        getItem = getIntent().getStringExtra("Subjects");
+        subject.setText(getItem);
 
     }
 
@@ -164,6 +103,8 @@ public class SubjectVideo extends AppCompatActivity {
         if (requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() !=null){
             VideoUri = data.getData();
             videoView.setVideoURI(VideoUri);
+            UploadVideo.setVisibility(View.VISIBLE);
+            VideoName.setVisibility(View.VISIBLE);
         }
     }
 
@@ -174,29 +115,79 @@ public class SubjectVideo extends AppCompatActivity {
     }
 
     public void UploadVideo() {
-        if (VideoUri != null){
-            storageReference = firebaseStorage.getReference().child(System.currentTimeMillis() +
-                    "," + getFileExt(VideoUri));
-            storageReference.putFile(VideoUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Toast.makeText(SubjectVideo.this, "Upload Sucesss", Toast.LENGTH_SHORT).show();
-                    String videoName = VideoName.getText().toString().trim();
-                    if (videoName.isEmpty()){
-                        VideoName.setError("Required");
-                    }else{
-                        VideoInfo videoInfo = new VideoInfo();
-                        videoInfo.setVideoUrl(taskSnapshot.toString());
-                        videoInfo.setVideoName(VideoUri.toString());
-                        videoInfo.setVideoName(videoName);
-                        collectionReference.add(videoInfo);
-                        Toast.makeText(SubjectVideo.this, "Success", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
 
+        int CurrentProgress = 0;
+        CurrentProgress += 10;
+        progressBar.setProgress(CurrentProgress);
+        progressBar.setMax(100);
+        progressBar.setVisibility(View.VISIBLE);
+        ChooseVideo.setEnabled(false);
+
+        Toast.makeText(this, "Start Uploading Please Wait", Toast.LENGTH_LONG).show();
+        String videoName = VideoName.getText().toString();
+        if (VideoUri != null){
+            if (!videoName.isEmpty()){
+                storageReference = firebaseStorage.getReference().child("videos/").child(System.currentTimeMillis() +
+                        "." + getFileExt(VideoUri));
+                storageReference.putFile(VideoUri).addOnCompleteListener(task -> {
+                    if (task.isSuccessful()){
+                        storageReference.getDownloadUrl().addOnSuccessListener(uri -> {
+                            VideoInfo videoInfo = new VideoInfo();
+                            if (getItem.contains("Nursery")){
+                                videoInfo.setVideoLevel("Nursery");
+                            }else if (getItem.contains("Kinder")){
+                                videoInfo.setVideoLevel("Kinder");
+                            }else{
+                                videoInfo.setVideoLevel("Preparatory");
+                            }
+                            videoInfo.setVideoName(videoName);
+                            videoInfo.setVideoUrl(uri.toString());
+                            videoInfo.setVideoSubject(subject.getText().toString());
+                            videoInfo.setUploadedBy(TeacherLogin.teacher_name);
+                            collectionReference.add(videoInfo);
+                            progressBar.setVisibility(View.GONE);
+                            Toast.makeText(SubjectVideo.this, "Uploaded Sucessfully", Toast.LENGTH_SHORT).show();
+                            ChooseVideo.setEnabled(true);
+                            VideoName.setText("");
+                        });
+                    }
+                });
+            }else{
+                progressBar.setVisibility(View.GONE);
+                ChooseVideo.setEnabled(true);
+                VideoName.setError("Required");
+            }
         }else{
+            progressBar.setVisibility(View.GONE);
+            ChooseVideo.setEnabled(true);
             Toast.makeText(this, "No video selected", Toast.LENGTH_SHORT).show();
         }
     }
+
+    @Override
+    protected void onStart() {
+        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeListener, intentFilter);
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(networkChangeListener);
+        super.onStop();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (backpressedTimes + 3000 > System.currentTimeMillis()){
+            super.onBackPressed();
+            return;
+        }else{
+            Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, TeacherLogin.class));
+        }
+        backpressedTimes = System.currentTimeMillis();
+
+    }
+
 }

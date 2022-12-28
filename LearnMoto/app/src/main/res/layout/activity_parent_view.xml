@@ -19,7 +19,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:background="@drawable/gradientbg"
+                android:background="@drawable/background3"
                 android:onClick="ParentSettings"
                 android:gravity="center"
                 android:orientation="horizontal"

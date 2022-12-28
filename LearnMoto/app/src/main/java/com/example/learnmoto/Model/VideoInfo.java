@@ -1,4 +1,4 @@
-package com.example.learnmoto;
+package com.example.learnmoto.Model;
 
 public class VideoInfo {
 
@@ -6,16 +6,18 @@ public class VideoInfo {
     String VideoUrl;
     String VideoLevel;
     String VideoSubject;
+    String UploadedBy;
 
     public VideoInfo(){
 
     }
 
-    public VideoInfo(String videoName, String videoUrl, String videoLevel, String videoSubject) {
+    public VideoInfo(String videoName, String videoUrl, String videoLevel, String videoSubject, String uploadedBy) {
         VideoName = videoName;
         VideoUrl = videoUrl;
         VideoLevel = videoLevel;
         VideoSubject = videoSubject;
+        UploadedBy = uploadedBy;
     }
 
     public String getVideoName() {
@@ -48,5 +50,13 @@ public class VideoInfo {
 
     public void setVideoSubject(String videoSubject) {
         VideoSubject = videoSubject;
+    }
+
+    public String getUploadedBy() {
+        return UploadedBy;
+    }
+
+    public void setUploadedBy(String uploadedBy) {
+        UploadedBy = uploadedBy;
     }
 }

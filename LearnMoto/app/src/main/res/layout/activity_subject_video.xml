@@ -47,6 +47,7 @@
     </LinearLayout>
 
     <EditText
+        android:visibility="gone"
         android:id="@+id/VideoName"
         android:padding="10dp"
         android:drawablePadding="10dp"
@@ -69,6 +70,7 @@
         android:text="Choose Video"/>
 
     <Button
+        android:visibility="gone"
         android:id="@+id/UploadVideo"
         android:layout_gravity="center_horizontal"
         android:layout_width="250dp"
@@ -76,5 +78,16 @@
         android:background="@color/green"
         android:textColor="@color/white"
         android:text="Upload Video"/>
+    
+    <ProgressBar
+        android:layout_gravity="center"
+        android:layout_marginTop="20sp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:progressDrawable="@drawable/custom_progress_bar"
+        android:id="@+id/progress_bar"/>
 
 </LinearLayout>

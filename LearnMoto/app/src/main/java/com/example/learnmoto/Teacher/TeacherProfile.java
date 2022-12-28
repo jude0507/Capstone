@@ -60,7 +60,7 @@ public class TeacherProfile extends AppCompatActivity {
     EditText TeacherName, Address, PhoneNumber, TeacherUserName, Password,
             NewPass, ConfirmNewPass;
     TextView NameUser, TxtEditProfile;
-    Button ProfileBtn, AccountBtn, ChangePassBtn, BasicInfoUpdateBtn, DoneUpdatePicture, ConfirmChangePassBtn;
+    Button ProfileBtn, AccountBtn, ChangePassBtn, BasicInfoUpdateBtn, DoneUpdatePicture;
     ImageView CameraBtn;
     ScrollView scrollView;
     CircleImageView ProfilePicture;

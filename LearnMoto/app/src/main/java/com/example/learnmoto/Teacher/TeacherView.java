@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -81,6 +82,7 @@ public class TeacherView extends AppCompatActivity {
 
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
+    @SuppressLint({"NonConstantResourceId", "ClickableViewAccessibility"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -179,7 +181,10 @@ public class TeacherView extends AppCompatActivity {
     }
 
     public void AddAssignLevel(View view) {
+
+        addLevel.clear();
         AssignLevelWindow();
+
         //use the function on onClick
     }
 
@@ -208,6 +213,7 @@ public class TeacherView extends AppCompatActivity {
                 arrayAdapter = new ArrayAdapter<String>(TeacherView.this,
                         android.R.layout.simple_list_item_1, addLevel);
                 ListLevel.setAdapter(arrayAdapter);
+
             }
             else if (assignLevel.contains("Nursery") && assignLevel.contains("Kinder")){
                 addLevel.add("Kinder");
@@ -215,13 +221,14 @@ public class TeacherView extends AppCompatActivity {
                 arrayAdapter = new ArrayAdapter<String>(TeacherView.this,
                         android.R.layout.simple_list_item_1, addLevel);
                 ListLevel.setAdapter(arrayAdapter);
+
             }
             else if(assignLevel.contains("Kinder") && assignLevel.contains("Preparatory")){
                 addLevel.add("Kinder");
                 addLevel.add("Preparatory");
                 arrayAdapter = new ArrayAdapter<String>(TeacherView.this,
                         android.R.layout.simple_list_item_1, addLevel);
-                ListLevel.setAdapter(arrayAdapter);
+
             }
             else if(assignLevel.contains("Nursery") && assignLevel.contains("Preparatory")){
                 addLevel.add("Nursery");
@@ -241,8 +248,9 @@ public class TeacherView extends AppCompatActivity {
                 arrayAdapter = new ArrayAdapter<String>(TeacherView.this,
                         android.R.layout.simple_list_item_1, addLevel);
                 ListLevel.setAdapter(arrayAdapter);
+
             }
-            else if (assignLevel.contains("Preparatory")){
+            else if (assignLevel.contains("Preparatory")) {
                 addLevel.add("Preparatory");
                 arrayAdapter = new ArrayAdapter<String>(TeacherView.this,
                         android.R.layout.simple_list_item_1, addLevel);
@@ -251,6 +259,7 @@ public class TeacherView extends AppCompatActivity {
         }catch (Exception e){
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
+
 
         //add data in list
         AddLevelList.setOnClickListener(v -> {
@@ -330,6 +339,7 @@ public class TeacherView extends AppCompatActivity {
                     try{
                         assignLevel = (List<String>) document.get("assignLevel");
 
+                        //assert assignLevel != null; (sanhi ng error)
                         String[] arrayLevel = new String[assignLevel.size()];
                         for (int i = 0; i < assignLevel.size(); i++){
                             arrayLevel[i] = assignLevel.get(i);
@@ -421,6 +431,7 @@ public class TeacherView extends AppCompatActivity {
     }*/
 
     public void AddSubject(View view) {
+        addSubjectToList.clear();
         AssignSubject();
     }
 
@@ -447,7 +458,7 @@ public class TeacherView extends AppCompatActivity {
             }
             else if (assignLevel.contains("Nursery") && assignLevel.contains("Kinder")){
                 arraySubjectsAdapter = new ArrayAdapter<String>(TeacherView.this,
-                    android.R.layout.simple_list_item_multiple_choice,
+                        android.R.layout.simple_list_item_multiple_choice,
                         subjectArrayClass.Combine(SubjectArrayClass.NurserySubject, SubjectArrayClass.KinderSubject));
                 listsubject.setAdapter(arraySubjectsAdapter);
             }
@@ -489,7 +500,7 @@ public class TeacherView extends AppCompatActivity {
                     selectedItem += listsubject.getItemAtPosition(i) + ",";
                 }
             }
-            if (selectedItem.equals("") || selectedItem == null){
+            if (selectedItem.equals("")){
                 Toast.makeText(TeacherView.this, "Please select Data", Toast.LENGTH_SHORT).show();
             }else{
                 String [] dataSubjectArray = selectedItem.split("\\s*,\\s*");
@@ -516,22 +527,27 @@ public class TeacherView extends AppCompatActivity {
         documentReference.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()){
                 DocumentSnapshot documentSnapshot = task.getResult();
-                try{
-                    if (documentSnapshot.exists()){
-                        assignSubjects = (List<String>) documentSnapshot.get("assignSubject");
+                if (documentSnapshot.exists()) {
+                    try{
+                        if (documentSnapshot.exists()){
+                            assignSubjects = (List<String>) documentSnapshot.get("assignSubject");
 
-                        arraySubject = new String[assignSubjects.size()];
-                        for (int i = 0; i < assignSubjects.size(); i++){
-                            arraySubject[i] = assignSubjects.get(i);
-                            DataAssignSubject += assignSubjects.get(i);
-                            if (i < assignSubjects.size()){
+                            //assert assignSubjects != null;
+                            arraySubject = new String[assignSubjects.size()];
+                            for (int i = 0; i < assignSubjects.size(); i++){
+                                arraySubject[i] = assignSubjects.get(i);
+                                DataAssignSubject += assignSubjects.get(i);
+                                assignSubjects.size();
                                 DataAssignSubject += ",";
                             }
+                            Toast.makeText(this, DataAssignSubject, Toast.LENGTH_SHORT).show();
                         }
-                        Toast.makeText(this, DataAssignSubject, Toast.LENGTH_SHORT).show();
+                    }catch (Exception e){
+                        Toast.makeText(this, "You have no subject. Please add your subject Thank you!", Toast.LENGTH_SHORT).show();
+
                     }
-                }catch (Exception e){
-                    e.getMessage();
+                }else{
+                    Toast.makeText(this, "No Subject Found. Please Add Subject", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -539,6 +555,7 @@ public class TeacherView extends AppCompatActivity {
     }
 
     public void ViewSubjects(View view) {
+        addSubjectToList.clear();
         DisplaySubjectDialog();
     }
 
@@ -559,9 +576,8 @@ public class TeacherView extends AppCompatActivity {
             for (int i = 0; i < assignSubjects.size(); i++){
                 arraySubject[i] = assignSubjects.get(i);
                 DataAssignSubject += assignSubjects.get(i);
-                if (i < assignSubjects.size()){
-                    DataAssignSubject += ",";
-                }
+                assignSubjects.size();
+                DataAssignSubject += ",";
                 addSubjectToList.add(assignSubjects.get(i));
                 arraySubjectsAdapter = new ArrayAdapter<>(TeacherView.this, android.R.layout.simple_list_item_1, addSubjectToList);
                 DisplaySubjectList.setAdapter(arraySubjectsAdapter);
@@ -581,7 +597,6 @@ public class TeacherView extends AppCompatActivity {
 
                 String [] dataSubjectArray = DataAddSubjectToList.split("\\s*,\\s*");
                 subjectArray = Arrays.asList(dataSubjectArray);
-
                 DocumentReference documentReference = db.collection("Teacher")
                         .document(TeacherLogin.teacher_ID);
                 documentReference.update("assignSubject", subjectArray);
@@ -626,3 +641,4 @@ public class TeacherView extends AppCompatActivity {
 
     }
 }
+
