@@ -15,8 +15,8 @@ import android.view.View;
 
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.Model.VideoInfo;
-import com.example.learnmoto.Nursery.ChristianLiving.NurseryChristianLivingWatch;
 import com.example.learnmoto.R;
+import com.example.learnmoto.RecyclerViewInterface;
 import com.example.learnmoto.Student.StudentHomeView;
 import com.example.learnmoto.VideoAdapter;
 import com.google.firebase.firestore.DocumentChange;
@@ -24,7 +24,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
-public class NurseryEnglishWatch extends AppCompatActivity {
+public class NurseryEnglishWatch extends AppCompatActivity implements RecyclerViewInterface {
 
     DrawerLayout drawerLayout;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
@@ -46,7 +46,7 @@ public class NurseryEnglishWatch extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
         videoNameArraylist = new ArrayList<>();
-        videoAdapter = new VideoAdapter(NurseryEnglishWatch.this, videoNameArraylist);
+        videoAdapter = new VideoAdapter(NurseryEnglishWatch.this, videoNameArraylist, this);
         recyclerView.setAdapter(videoAdapter);
         EventChangeListener();
 
@@ -126,4 +126,10 @@ public class NurseryEnglishWatch extends AppCompatActivity {
                 });
     }
 
+    @Override
+    public void onItemClick(int position) {
+        Intent intent = new Intent(this, NurseryEngVideoView.class);
+        intent.putExtra("VideoUrl", videoNameArraylist.get(position).getVideoUrl());
+        startActivity(intent);
+    }
 }

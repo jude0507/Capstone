@@ -46,7 +46,9 @@ public class KinderChristianLivingRead extends AppCompatActivity {
     }
 
     public void readme(View view){
+        overridePendingTransition(0, 0);
         recreate();
+        overridePendingTransition(0, 0);
     }
     public void watchme(View view){
         redirectActivity(this, KinderChristianLivingWatch.class);
