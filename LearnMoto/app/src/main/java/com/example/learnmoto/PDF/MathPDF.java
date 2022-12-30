@@ -19,6 +19,7 @@ import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.Nursery.Math.NurseryMathRead;
 import com.example.learnmoto.Preparatory.Math.PreparatoryMathRead;
 import com.example.learnmoto.R;
+import com.example.learnmoto.Student.StudentHomeView;
 import com.example.learnmoto.Student.StudentLogin;
 
 import java.util.ArrayList;
@@ -28,8 +29,6 @@ public class MathPDF extends AppCompatActivity {
     private ArrayList<PDFModel> pdfModel;
     private RecyclerView rv_pdf;
     private ItemClickListener listener;
-
-    String checkLevel = StudentLogin.sLevel;
 
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
@@ -47,10 +46,10 @@ public class MathPDF extends AppCompatActivity {
     }
 
     private void setPDFTitle() {
-        if (checkLevel.equals("Nursery")){
+        if (StudentHomeView.level.equals("Nursery")){
             pdfModel.add(new PDFModel("Let's Count"));
             pdfModel.add(new PDFModel("Different Shapes"));
-        }else if (checkLevel.equals("Kinder")){
+        }else if (StudentHomeView.level.equals("Kinder")){
             pdfModel.add(new PDFModel("Adding Dice"));
             pdfModel.add(new PDFModel("Counting Objects"));
         }else{
@@ -83,9 +82,9 @@ public class MathPDF extends AppCompatActivity {
     }
 
     public void BacktoMathClass(View view) {
-        if (checkLevel.equals("Nursery")){
+        if (StudentHomeView.level.equals("Nursery")){
             startActivity(new Intent(this, NurseryMathRead.class));
-        } else if (checkLevel.equals("Kinder")){
+        } else if (StudentHomeView.level.equals("Kinder")){
             startActivity(new Intent(this, KinderMathRead.class));
         }else{
             startActivity(new Intent(this, PreparatoryMathRead.class));

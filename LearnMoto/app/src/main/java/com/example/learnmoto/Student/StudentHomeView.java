@@ -47,17 +47,16 @@ public class StudentHomeView extends AppCompatActivity {
     StudentSubjectAdapter studentSubjectAdapter;
     ScrollView scrollView;
 
-    TextView textViewannounce, studentName, adviserName, textTitle;
+    TextView studentName, adviserName, displaylevel;
     LinearLayout linearLayouttexts, subjectslayout, containerMessage;
     CircleImageView StudPicture;
 
     SharedPreferences sharedPreferences;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    CollectionReference collectionReference = db.collection("Student");
-    CollectionReference teacherReference = db.collection("Teacher");
 
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
+    public static String level;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,12 +74,14 @@ public class StudentHomeView extends AppCompatActivity {
         studentName = findViewById(R.id.studentName);
         StudPicture = findViewById(R.id.profile);
         adviserName = findViewById(R.id.adviserName);
+        displaylevel = findViewById(R.id.level);
 
         sharedPreferences = getApplicationContext().getSharedPreferences("Preferences", MODE_PRIVATE);
         String name = sharedPreferences.getString(StudentLogin.StudentName, "");
-        String level = sharedPreferences.getString(StudentLogin.StudentLevel, "");
+        level = sharedPreferences.getString(StudentLogin.StudentLevel, "");
 
         studentName.setText(name);
+        displaylevel.setText(level);
 
         DisplayImage();
 
@@ -174,21 +175,6 @@ public class StudentHomeView extends AppCompatActivity {
         DisplayImage.RetrieveImageStudents(this, "Student", "sID", StudentLogin.studID, StudPicture);
     }
 
-//    public void DisplayAdviserName(){
-//        teacherReference.whereEqualTo("sID", StudentLogin.studID)
-//                .get().addOnSuccessListener(queryDocumentSnapshots -> {
-//                    String imageDiplay = "";
-//                    for (QueryDocumentSnapshot documentSnapshot: queryDocumentSnapshots){
-//                        StudentInfo studentInfo = documentSnapshot.toObject(StudentInfo.class);
-//                        studentInfo.setMyid(documentSnapshot.getId());
-//
-//                        imageDiplay += studentInfo.getImageurl();
-//
-//                    }
-//                    Glide.with(getApplicationContext()).load(imageDiplay).placeholder(R.drawable.ic_user_circle).into(StudPicture);
-//                });
-//    }
-
     public void expand(View view) {
         int v = (containerMessage.getVisibility() == View.GONE)? View.VISIBLE: View.GONE;
         TransitionManager.beginDelayedTransition(linearLayouttexts, new AutoTransition());
@@ -213,5 +199,4 @@ public class StudentHomeView extends AppCompatActivity {
         unregisterReceiver(networkChangeListener);
         super.onStop();
     }
-
 }

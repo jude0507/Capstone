@@ -63,7 +63,7 @@
         android:layout_width="300dp"
         android:layout_height="match_parent"
         android:layout_gravity="start">
-        <include layout="@layout/nav_english"/>
+        <include layout="@layout/nav_drawer"/>
     </RelativeLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>

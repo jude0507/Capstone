@@ -19,6 +19,7 @@ import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.Nursery.ChristianLiving.NurseryChristianLivingRead;
 import com.example.learnmoto.Preparatory.ChristianLiving.PreparatoryChristianLivingRead;
 import com.example.learnmoto.R;
+import com.example.learnmoto.Student.StudentHomeView;
 import com.example.learnmoto.Student.StudentLogin;
 
 import java.util.ArrayList;
@@ -28,7 +29,6 @@ public class ChristianLivingPDF extends AppCompatActivity {
     private ArrayList<PDFModel> pdfModel;
     private RecyclerView rv_pdf;
     private ItemClickListener listener;
-    String checkLevel = StudentLogin.sLevel;
 
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
@@ -42,10 +42,10 @@ public class ChristianLivingPDF extends AppCompatActivity {
         setAdapter();
     }
     private void setPDFTitle() {
-        if (checkLevel.equals("Nursery")){
+        if (StudentHomeView.level.equals("Nursery")){
             pdfModel.add(new PDFModel("The Creation"));
             pdfModel.add(new PDFModel("Who is God"));
-        }else if (checkLevel.equals("Kinder")){
+        }else if (StudentHomeView.level.equals("Kinder")){
             pdfModel.add(new PDFModel("John 316"));
             pdfModel.add(new PDFModel("Plasm 23"));
         }else{
@@ -78,9 +78,9 @@ public class ChristianLivingPDF extends AppCompatActivity {
     }
 
     public void BacktoChristianLivingClass(View view) {
-        if (checkLevel.equals("Nursery")){
+        if (StudentHomeView.level.equals("Nursery")){
             startActivity(new Intent(this, NurseryChristianLivingRead.class));
-        } else if (checkLevel.equals("Kinder")){
+        } else if (StudentHomeView.level.equals("Kinder")){
             startActivity(new Intent(this, KinderChristianLivingRead.class));
         }else{
             startActivity(new Intent(this, PreparatoryChristianLivingRead.class));

@@ -10,6 +10,7 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.R;
@@ -19,13 +20,16 @@ public class PreparatorySibKulQuiz extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
-
+    TextView subjectlevel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preparatory_sib_kul_quiz);
 
         drawerLayout = findViewById(R.id.mydrawer_layout);
+        subjectlevel = findViewById(R.id.SubjectLabel);
+
+        subjectlevel.setText("Sibika at Kultura");
 
     }
     public void clickmenu(View view) {

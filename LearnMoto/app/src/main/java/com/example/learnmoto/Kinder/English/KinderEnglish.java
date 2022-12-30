@@ -9,7 +9,12 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.transition.AutoTransition;
+import android.transition.TransitionManager;
 import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.PDF.EnglishPDF;
@@ -20,6 +25,9 @@ public class KinderEnglish extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
+    TextView subjectlevel;
+    LinearLayout expandableView2, expandableLinear2;
+    Button pdfArrow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +35,24 @@ public class KinderEnglish extends AppCompatActivity {
         setContentView(R.layout.activity_kinder_english);
 
         drawerLayout = findViewById(R.id.mydrawer_layout);
+        subjectlevel = findViewById(R.id.SubjectLabel);
+        pdfArrow = findViewById(R.id.arrow_pdf);
+        expandableView2 = findViewById(R.id.expandableLayout2);
+        expandableLinear2 = findViewById(R.id.layout2);
+
+        subjectlevel.setText("English");
+
+        pdfArrow.setOnClickListener(v -> {
+            if (expandableView2.getVisibility() == View.GONE) {
+                TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
+                expandableView2.setVisibility(View.VISIBLE);
+                pdfArrow.setBackgroundResource(R.drawable.ic_arrow_up);
+            }else{
+                TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
+                expandableView2.setVisibility(View.GONE);
+                pdfArrow.setBackgroundResource(R.drawable.ic_arrow_down);
+            }
+        });
 
     }
 

@@ -44,23 +44,6 @@ public class FirstStory extends AppCompatActivity {
         jtv.setText(Story1);
         TitleStory.setText("The Lion and The Mouse");
 
-//        Story2 ="One summer’s day, in a field, a Grasshopper was hopping about, chirping and singing to its heart's content. An Ant passed by, bearing along with great effort an ear of corn he was taking to his nest.\n" +
-//                "\"Why don’t you come and chat with me,\" asked the Grasshopper, \"instead of toiling your life away?\"\n" +
-//                "\"I am helping to store up food for the winter,\" said the Ant, \"and I recommend you to do the same.\"\n" +
-//                "\"Why bother about winter?\" said the Grasshopper. \"We have got plenty of food at present.\"\n" +
-//                "\n" +
-//                "But the Ant went on its way and continued its toil.\n" +
-//                "When winter came, the Grasshopper found itself dying of hunger, while it saw the ants distributing, every day, corn and grain from the stores they had collected in summer.\n" +
-//                "Then the Grasshopper knew...\n";
-//
-//        Story3= "On a hot scorching day of summer, an ant was walking around in search of water. After walking around for some time, she saw a river and was delighted to see it. She climbed up on a small rock to drink the water, but she slipped and fell into the river. She was drowning but a dove who was sitting on a nearby tree helped her. Seeing the ant in trouble, the dove quickly dropped a leaf into the water. The ant moved towards the leaf and climbed up on it. The dove then carefully pulled the leaf out and placed it on the land. This way, the ant’s life was saved and she was forever indebted to the dove.\n" +
-//                "\n" +
-//                "The ant and the dove became the best of friends and days passed happily. However, one day, a hunter arrived at the forest. He saw the beautiful dove sitting on the tree and aimed his gun at the dove. The ant, who was saved the dove saw this and bit on the heel of the hunter. He shouted from the pain and dropped the gun. The dove was alarmed by the voice of the hunter and realised what could have happened with him. He flew away!\n";
-//
-//        Story4 = "A boy named Raj was upset because he had done poorly in his English test. He was sitting in his room when his grandmother came and comforted him. His grandmother sat beside him and gave him a pencil. Raj looked at his grandma puzzled, and said he didn’t deserve a pencil after his performance in the test.\n" +
-//                "\n" +
-//                "His grandma explained, “You can learn many things from this pencil because it is just like you. It experiences a painful sharpening, just the way you have experienced the pain of not doing well on your test. However, it will help you be a better student. Just as all the good that comes from the pencil is from within itself, you will also find the strength to overcome this hurdle. And finally, just as this pencil will make its mark on any surface, you too shall leave your mark on anything you choose to.” Raj was immediately consoled and promised himself that he would do better.\n";
-
     }
 
     public void Play(View view) {

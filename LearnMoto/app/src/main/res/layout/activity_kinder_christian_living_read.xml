@@ -19,37 +19,87 @@
             android:layout_margin="10dp">
 
             <include layout="@layout/mytoolbar"/>
-            <LinearLayout
+
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Read Lesson"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                android:textStyle="bold"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="5dp"
+                app:cardBackgroundColor="@color/light_green"
+                app:contentPadding="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/layout2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/icon_logout"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/ic_pdf"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="PDF"
+                            android:layout_margin="5dp"
+                            android:textColor="@color/fontColor"
+                            android:fontFamily="@font/aloevera"
+                            android:layout_marginStart="50dp"
+                            android:textSize="20sp" />
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/arrow_pdf"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/ic_arrow_down" />
+
+                </RelativeLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:id="@+id/expandableLayout2"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
                     android:orientation="vertical"
-                    android:layout_marginHorizontal="20dp"
-                    android:id="@+id/pdf">
-
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="150dp"
-                        android:onClick="pdf"
-                        android:src="@drawable/ic_pdf"/>
+                    android:visibility="gone"
+                    android:padding="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Read in PDF"
-                        android:textSize="22sp"
-                        android:textColor="@color/black"
+                        android:text="Read Now"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:onClick="pdf"
+                        android:drawableEnd="@drawable/ic_reading"
                         android:layout_gravity="center"/>
 
                 </LinearLayout>
 
-            </LinearLayout>
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
 
     </ScrollView>
@@ -57,7 +107,7 @@
         android:layout_width="300dp"
         android:layout_height="match_parent"
         android:layout_gravity="start">
-        <include layout="@layout/nav_english"/>
+        <include layout="@layout/nav_drawer"/>
     </RelativeLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>

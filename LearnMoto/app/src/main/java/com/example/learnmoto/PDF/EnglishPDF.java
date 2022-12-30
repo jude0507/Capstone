@@ -19,6 +19,7 @@ import com.example.learnmoto.Nursery.English.NurseryEnglish;
 import com.example.learnmoto.Adapter.PDFAdapter;
 import com.example.learnmoto.Preparatory.English.PreparatoryEnglish;
 import com.example.learnmoto.R;
+import com.example.learnmoto.Student.StudentHomeView;
 import com.example.learnmoto.Student.StudentLogin;
 
 import java.util.ArrayList;
@@ -28,8 +29,6 @@ public class EnglishPDF extends AppCompatActivity {
     private ArrayList<PDFModel> pdfModel;
     private RecyclerView rv_pdf;
     private ItemClickListener listener;
-
-    String checkLevel = StudentLogin.sLevel;
 
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
@@ -47,10 +46,10 @@ public class EnglishPDF extends AppCompatActivity {
     }
 
     private void setPDFTitle() {
-        if (checkLevel.equals("Nursery")){
+        if (StudentHomeView.level.equals("Nursery")){
             pdfModel.add(new PDFModel("colors"));
             pdfModel.add(new PDFModel("Alphabets"));
-        }else if (checkLevel.equals("Kinder")){
+        }else if (StudentHomeView.level.equals("Kinder")){
             pdfModel.add(new PDFModel("Real or Make"));
             pdfModel.add(new PDFModel("Different Colors 2"));
             pdfModel.add(new PDFModel("Reading Objects"));
@@ -84,9 +83,9 @@ public class EnglishPDF extends AppCompatActivity {
     }
 
     public void BacktoEnglishClass(View view) {
-        if (checkLevel.equals("Nursery")){
+        if (StudentHomeView.level.equals("Nursery")){
             startActivity(new Intent(this, NurseryEnglish.class));
-        } else if (checkLevel.equals("Kinder")){
+        } else if (StudentHomeView.level.equals("Kinder")){
             startActivity(new Intent(this, KinderEnglish.class));
         }else{
             startActivity(new Intent(this, PreparatoryEnglish.class));

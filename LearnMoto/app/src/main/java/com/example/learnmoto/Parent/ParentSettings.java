@@ -21,6 +21,7 @@ import com.example.learnmoto.DisplayImage;
 import com.example.learnmoto.Model.ParentInfo;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.R;
+import com.example.learnmoto.ShowPassword;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
@@ -48,7 +49,6 @@ public class ParentSettings extends AppCompatActivity {
     StorageReference storageReference = firebaseStorage.getReference();
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    CollectionReference collectionReference = db.collection("Parent");
 
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
@@ -69,6 +69,8 @@ public class ParentSettings extends AppCompatActivity {
                 .maxResultSize(1080, 1080)
                 .start(101));
 
+        ShowPassword showPassword = new ShowPassword();
+        showPassword.ShowPassword(Et_Password);
 
         DisplayParentInfo();
         ReadTextOnly();

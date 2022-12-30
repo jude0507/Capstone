@@ -56,13 +56,13 @@ public class StudentSettings extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
         bottomNavigationView = findViewById(R.id.bottom_nav);
-        arrow_btn = findViewById(R.id.arrow_btn);
+        //arrow_btn = findViewById(R.id.arrow_btn);
         logoutbtn = findViewById(R.id.arrow_btn_logout);
         confirmLogout = findViewById(R.id.confirmLogout);
         studentName = findViewById(R.id.studentName);
-        expandableView1 = findViewById(R.id.expandableLayout1);
+        //expandableView1 = findViewById(R.id.expandableLayout1);
         expandableView2 = findViewById(R.id.expandableLayout2);
-        expandableLinear1 = findViewById(R.id.layout1);
+        //expandableLinear1 = findViewById(R.id.layout1);
         expandableLinear2 = findViewById(R.id.layout2);
         scrollView = findViewById(R.id.scroller);
         StudPicture = findViewById(R.id.profile);
@@ -74,7 +74,6 @@ public class StudentSettings extends AppCompatActivity {
 
         studentName.setText(name);
         DisplayImage();
-        //StudPicture.setImageURI(Uri.parse(image));
         //Glide.with(getApplicationContext()).load(StudentInfoSettings.imageDiplay).placeholder(R.drawable.ic_user_circle).into(StudPicture);
 
         bottomNavigationView.setSelectedItemId(R.id.settings);
@@ -105,17 +104,17 @@ public class StudentSettings extends AppCompatActivity {
 
         scrollView.setOnTouchListener(new TranslateAnimatioUI(this, bottomNavigationView));
     //Perform Expandable LAYOUT
-        arrow_btn.setOnClickListener(v -> {
-            if (expandableView1.getVisibility() == View.GONE) {
-                TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
-                expandableView1.setVisibility(View.VISIBLE);
-                arrow_btn.setBackgroundResource(R.drawable.ic_arrow_up);
-            }else{
-                TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
-                expandableView1.setVisibility(View.GONE);
-                arrow_btn.setBackgroundResource(R.drawable.ic_arrow_down);
-            }
-        });
+//        arrow_btn.setOnClickListener(v -> {
+//            if (expandableView1.getVisibility() == View.GONE) {
+//                TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
+//                expandableView1.setVisibility(View.VISIBLE);
+//                arrow_btn.setBackgroundResource(R.drawable.ic_arrow_up);
+//            }else{
+//                TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
+//                expandableView1.setVisibility(View.GONE);
+//                arrow_btn.setBackgroundResource(R.drawable.ic_arrow_down);
+//            }
+//        });
         //Perform Expandable LAYOUT
         logoutbtn.setOnClickListener(v -> {
             if (expandableView2.getVisibility() == View.GONE) {

@@ -10,6 +10,7 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.R;
@@ -19,14 +20,16 @@ public class KinderEnglishQuiz extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
-
+    TextView subjectlevel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kinder_english_quiz);
 
         drawerLayout = findViewById(R.id.mydrawer_layout);
+        subjectlevel = findViewById(R.id.SubjectLabel);
 
+        subjectlevel.setText("English");
     }
 
     public void clickmenu(View view) {

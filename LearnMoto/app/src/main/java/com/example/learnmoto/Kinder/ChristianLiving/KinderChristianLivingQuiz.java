@@ -10,6 +10,7 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.R;
@@ -18,12 +19,16 @@ import com.example.learnmoto.Student.StudentHomeView;
 public class KinderChristianLivingQuiz extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
+    TextView subjectlevel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kinder_christian_living_quiz);
         drawerLayout = findViewById(R.id.mydrawer_layout);
+        subjectlevel = findViewById(R.id.SubjectLabel);
+
+        subjectlevel.setText("Christian Living");
     }
     public void clickmenu(View view) {
         openDrawer(drawerLayout);

@@ -9,7 +9,12 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.transition.AutoTransition;
+import android.transition.TransitionManager;
 import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.Nursery.Stories;
@@ -21,6 +26,9 @@ public class NurseryEnglish extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
+    TextView subjectlevel;
+    LinearLayout expandableView1, expandableLinear1, expandableView2, expandableLinear2;
+    Button pdfArrow, storyArrow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +36,41 @@ public class NurseryEnglish extends AppCompatActivity {
         setContentView(R.layout.activity_nursery_english);
 
         drawerLayout = findViewById(R.id.mydrawer_layout);
+        subjectlevel = findViewById(R.id.SubjectLabel);
+
+        storyArrow = findViewById(R.id.arrow_story);
+        pdfArrow = findViewById(R.id.arrow_pdf);
+        expandableView1 = findViewById(R.id.expandableLayout1);
+        expandableLinear1 = findViewById(R.id.layout1);
+        expandableView2 = findViewById(R.id.expandableLayout2);
+        expandableLinear2 = findViewById(R.id.layout2);
+
+        subjectlevel.setText("English");
+
+        pdfArrow.setOnClickListener(v -> {
+            if (expandableView2.getVisibility() == View.GONE) {
+                TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
+                expandableView2.setVisibility(View.VISIBLE);
+                pdfArrow.setBackgroundResource(R.drawable.ic_arrow_up);
+            }else{
+                TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
+                expandableView2.setVisibility(View.GONE);
+                pdfArrow.setBackgroundResource(R.drawable.ic_arrow_down);
+            }
+        });
+
+        storyArrow.setOnClickListener(v -> {
+            if (expandableView1.getVisibility() == View.GONE) {
+                TransitionManager.beginDelayedTransition(expandableLinear1, new AutoTransition());
+                expandableView1.setVisibility(View.VISIBLE);
+                storyArrow.setBackgroundResource(R.drawable.ic_arrow_up);
+            }else{
+                TransitionManager.beginDelayedTransition(expandableLinear1, new AutoTransition());
+                expandableView1.setVisibility(View.GONE);
+                storyArrow.setBackgroundResource(R.drawable.ic_arrow_down);
+            }
+        });
+
 
     }
     public void clickmenu(View view) {

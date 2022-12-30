@@ -17,6 +17,7 @@ import com.example.learnmoto.Model.PDFModel;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.Preparatory.SibikaKultura.PreparatorySibKulRead;
 import com.example.learnmoto.R;
+import com.example.learnmoto.Student.StudentHomeView;
 import com.example.learnmoto.Student.StudentLogin;
 
 import java.util.ArrayList;
@@ -26,7 +27,6 @@ public class SibikaKulturaPDF extends AppCompatActivity {
     private ArrayList<PDFModel> pdfModel;
     private RecyclerView rv_pdf;
     private ItemClickListener listener;
-    String checkLevel = StudentLogin.sLevel;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
     @Override
@@ -41,7 +41,7 @@ public class SibikaKulturaPDF extends AppCompatActivity {
 
     }
     private void setPDFTitle() {
-        if (checkLevel.equals("Preparatory")){
+        if (StudentHomeView.level.equals("Preparatory")){
             pdfModel.add(new PDFModel("Anyong Tubig"));
             pdfModel.add(new PDFModel("Anyong Lupa"));
         }

@@ -1,5 +1,7 @@
 package com.example.learnmoto.Model;
 
+import com.google.firebase.firestore.Exclude;
+
 public class VideoInfo {
 
     String VideoName;
@@ -7,6 +9,7 @@ public class VideoInfo {
     String VideoLevel;
     String VideoSubject;
     String UploadedBy;
+    String myid;
 
     public VideoInfo(){
 
@@ -18,6 +21,15 @@ public class VideoInfo {
         VideoLevel = videoLevel;
         VideoSubject = videoSubject;
         UploadedBy = uploadedBy;
+    }
+
+    @Exclude
+    public String getMyid() {
+        return myid;
+    }
+
+    public void setMyid(String documentid) {
+        this.myid = myid;
     }
 
     public String getVideoName() {

@@ -27,6 +27,7 @@ import com.example.learnmoto.Preparatory.Math.PreparatoryMathRead;
 import com.example.learnmoto.Preparatory.Science.PreparatoryScienceRead;
 import com.example.learnmoto.Preparatory.SibikaKultura.PreparatorySibKulRead;
 import com.example.learnmoto.R;
+import com.example.learnmoto.Student.StudentHomeView;
 import com.example.learnmoto.Student.StudentLogin;
 
 import java.util.List;
@@ -64,17 +65,17 @@ public class StudentSubjectAdapter extends RecyclerView.Adapter<StudentSubjectAd
         public MyViewHolder(final View itemView) {
             super(itemView);
 
-            String studentLevel = StudentLogin.sLevel;
+            String level = StudentHomeView.level;
             mImage = itemView.findViewById(R.id.imgview);
             itemView.setOnClickListener(v -> {
                 //papunta sa bawat index ng recyclerview
                switch (getAdapterPosition()){
                    case 0:
                        Toast.makeText(v.getContext(), "English", Toast.LENGTH_SHORT).show();
-                        if (studentLevel.equals("Nursery")){
+                        if (level.equals("Nursery")){
                             Toast.makeText(v.getContext(), "Nursery", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), NurseryEnglish.class));
-                        }else if (studentLevel.equals("Kinder")){
+                        }else if (level.equals("Kinder")){
                             Toast.makeText(v.getContext(), "Kinder", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), KinderEnglish.class));
                         }else{
@@ -85,10 +86,10 @@ public class StudentSubjectAdapter extends RecyclerView.Adapter<StudentSubjectAd
                         break;
                     case 1:
                         Toast.makeText(v.getContext(), "Math", Toast.LENGTH_SHORT).show();
-                        if (studentLevel.equals("Nursery")){
+                        if (level.equals("Nursery")){
                             Toast.makeText(v.getContext(), "Nursery", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), NurseryMathRead.class));
-                        }else if (studentLevel.equals("Kinder")){
+                        }else if (level.equals("Kinder")){
                             Toast.makeText(v.getContext(), "Kinder", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), KinderMathRead.class));
                         }else{
@@ -99,10 +100,10 @@ public class StudentSubjectAdapter extends RecyclerView.Adapter<StudentSubjectAd
                         break;
                     case 2:
                         Toast.makeText(v.getContext(), "Science", Toast.LENGTH_SHORT).show();
-                        if (studentLevel.equals("Nursery")){
+                        if (level.equals("Nursery")){
                             Toast.makeText(v.getContext(), "Nursery", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), NurseryScienceRead.class));
-                        }else if (studentLevel.equals("Kinder")){
+                        }else if (level.equals("Kinder")){
                             Toast.makeText(v.getContext(), "Kinder", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), KinderScienceRead.class));
                         }else{
@@ -113,10 +114,10 @@ public class StudentSubjectAdapter extends RecyclerView.Adapter<StudentSubjectAd
                         break;
                     case 3:
                         Toast.makeText(v.getContext(), "Christian Living", Toast.LENGTH_SHORT).show();
-                        if (studentLevel.equals("Nursery")){
+                        if (level.equals("Nursery")){
                             Toast.makeText(v.getContext(), "Nursery", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), NurseryChristianLivingRead.class));
-                        }else if (studentLevel.equals("Kinder")){
+                        }else if (level.equals("Kinder")){
                             Toast.makeText(v.getContext(), "Kinder", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), KinderChristianLivingRead.class));
                         }else{
@@ -127,7 +128,7 @@ public class StudentSubjectAdapter extends RecyclerView.Adapter<StudentSubjectAd
                         break;
                     case 4:
                         Toast.makeText(v.getContext(), "Filipino", Toast.LENGTH_SHORT).show();
-                        if (studentLevel.equals("Kinder")){
+                        if (level.equals("Kinder")){
                             Toast.makeText(v.getContext(), "Kinder", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), KinderFilipinoRead.class));
                         }else{

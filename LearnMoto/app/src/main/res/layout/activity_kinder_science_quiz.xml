@@ -33,28 +33,6 @@
                     android:gravity="center"
                     android:textSize="50dp"/>
 
-                <!--                <LinearLayout-->
-                <!--                    android:layout_width="wrap_content"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:orientation="vertical"-->
-                <!--                    android:layout_marginHorizontal="20dp"-->
-                <!--                    android:id="@+id/pdf">-->
-
-                <!--                    <ImageView-->
-                <!--                        android:layout_width="100dp"-->
-                <!--                        android:layout_height="150dp"-->
-                <!--                        android:onClick="pdf"-->
-                <!--                        android:src="@drawable/ic_pdf"/>-->
-
-                <!--                    <TextView-->
-                <!--                        android:layout_width="wrap_content"-->
-                <!--                        android:layout_height="wrap_content"-->
-                <!--                        android:text="PDF"-->
-                <!--                        android:textColor="@color/black"-->
-                <!--                        android:layout_gravity="center"/>-->
-
-                <!--                </LinearLayout>-->
-
             </LinearLayout>
         </LinearLayout>
 
@@ -63,7 +41,7 @@
         android:layout_width="300dp"
         android:layout_height="match_parent"
         android:layout_gravity="start">
-        <include layout="@layout/nav_english"/>
+        <include layout="@layout/nav_drawer"/>
     </RelativeLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>

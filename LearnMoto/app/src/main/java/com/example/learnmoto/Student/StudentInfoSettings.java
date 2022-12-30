@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -25,6 +26,7 @@ import com.example.learnmoto.DisplayImage;
 import com.example.learnmoto.Model.StudentInfo;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.R;
+import com.example.learnmoto.ShowPassword;
 import com.example.learnmoto.Teacher.TeacherProfile;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -50,7 +52,7 @@ public class StudentInfoSettings extends AppCompatActivity {
     String ImageURLPath;
     EditText studName, studID, studPass, studAddress, studGuardian, studLevel, studBirthday, studGender;
     Button updateButton;
-    LinearLayout chooseFile;
+    ImageView Camera;
     CircleImageView StudPicture;
 
     SharedPreferences sharedPreferences;
@@ -61,7 +63,6 @@ public class StudentInfoSettings extends AppCompatActivity {
     StorageReference storageReference = firebaseStorage.getReference();
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    CollectionReference collectionReference = db.collection("Student");
 
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
@@ -79,13 +80,16 @@ public class StudentInfoSettings extends AppCompatActivity {
         studBirthday = findViewById(R.id.stBirthday);
         studGender = findViewById(R.id.stGender);
         updateButton = findViewById(R.id.updatebtn);
-        chooseFile = findViewById(R.id.choosefile);
         StudPicture = findViewById(R.id.picture);
+        Camera = findViewById(R.id.Camera);
 
-        chooseFile.setOnClickListener(v -> ImagePicker.Companion.with(StudentInfoSettings.this)
+        Camera.setOnClickListener(v -> ImagePicker.Companion.with(StudentInfoSettings.this)
                 .crop()
                 .maxResultSize(1080, 1080)
                 .start(101));
+
+        ShowPassword showPassword = new ShowPassword();
+        showPassword.ShowPassword(studPass);
 
         //fetch data from shared references
         sharedPreferences = getApplicationContext().getSharedPreferences("Preferences", MODE_PRIVATE);
@@ -142,8 +146,6 @@ public class StudentInfoSettings extends AppCompatActivity {
         studGender.setTextColor(ContextCompat.getColor(this, R.color.black));
         updateButton.setEnabled(false);
         updateButton.setTextColor(ContextCompat.getColor(this, R.color.white));
-        chooseFile.setEnabled(false);
-
 
     }
 
@@ -194,20 +196,13 @@ public class StudentInfoSettings extends AppCompatActivity {
                         documentReference.update("imagename", imageUri.toString());
                         progressDialog.dismiss();
                         Toast.makeText(StudentInfoSettings.this, "Uploaded Successfully Storage", Toast.LENGTH_LONG).show();
+                        Camera.setVisibility(View.GONE);
                     });
                 }
-            }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-                    double progress = (100.0 * snapshot.getBytesTransferred()) / snapshot.getTotalByteCount();
-                    progressDialog.setMessage(((int) progress) + "% Please Wait....");
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(StudentInfoSettings.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
+            }).addOnProgressListener(snapshot -> {
+                double progress = (100.0 * snapshot.getBytesTransferred()) / snapshot.getTotalByteCount();
+                progressDialog.setMessage(((int) progress) + "% Please Wait....");
+            }).addOnFailureListener(e -> Toast.makeText(StudentInfoSettings.this, e.getMessage(), Toast.LENGTH_SHORT).show());
         }else{
             Toast.makeText(this, "No image uploaded. Please Try Again!", Toast.LENGTH_SHORT).show();
         }
@@ -233,8 +228,6 @@ public class StudentInfoSettings extends AppCompatActivity {
             super.onBackPressed();
     }
 
-
-
     //Confirmation dialog for editing data
     public void EditData(View view) {
         AlertDialog.Builder alBuilder = new AlertDialog.Builder(this);
@@ -244,11 +237,9 @@ public class StudentInfoSettings extends AppCompatActivity {
         alBuilder.setPositiveButton("Confirm", (dialog, which) -> {
 
             studAddress.setEnabled(true);
-            //studLevel.setEnabled(true);
             studPass.setEnabled(true);
             updateButton.setEnabled(true);
-            chooseFile.setEnabled(true);
-
+            Camera.setVisibility(View.VISIBLE);
         });
         alBuilder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
         alBuilder.show();

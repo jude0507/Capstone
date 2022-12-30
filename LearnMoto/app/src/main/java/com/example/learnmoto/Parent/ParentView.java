@@ -88,7 +88,6 @@ public class ParentView extends AppCompatActivity {
             Parent_Name.setText(savedName);
         }
 
-
         EventChangeListener();
 
         arrow.setOnClickListener(v -> {

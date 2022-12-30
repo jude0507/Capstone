@@ -19,6 +19,7 @@ import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.Nursery.Science.NurseryScienceRead;
 import com.example.learnmoto.Preparatory.Science.PreparatoryScienceRead;
 import com.example.learnmoto.R;
+import com.example.learnmoto.Student.StudentHomeView;
 import com.example.learnmoto.Student.StudentLogin;
 
 import java.util.ArrayList;
@@ -28,7 +29,6 @@ public class SciencePDF extends AppCompatActivity {
     private ArrayList<PDFModel> pdfModel;
     private RecyclerView rv_pdf;
     private ItemClickListener listener;
-    String checkLevel = StudentLogin.sLevel;
 
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
@@ -44,10 +44,10 @@ public class SciencePDF extends AppCompatActivity {
         setAdapter();
     }
     private void setPDFTitle() {
-        if (checkLevel.equals("Nursery")){
+        if (StudentHomeView.level.equals("Nursery")){
             pdfModel.add(new PDFModel("About Dinosaurs"));
             pdfModel.add(new PDFModel("LifeCycle of Plants"));
-        }else if (checkLevel.equals("Kinder")){
+        }else if (StudentHomeView.level.equals("Kinder")){
             pdfModel.add(new PDFModel("About Galaxies"));
             pdfModel.add(new PDFModel("Solar System"));
         }else{
@@ -83,9 +83,9 @@ public class SciencePDF extends AppCompatActivity {
     }
 
     public void BacktoScienceClass(View view) {
-        if (checkLevel.equals("Nursery")){
+        if (StudentHomeView.level.equals("Nursery")){
             startActivity(new Intent(this, NurseryScienceRead.class));
-        } else if (checkLevel.equals("Kinder")){
+        } else if (StudentHomeView.level.equals("Kinder")){
             startActivity(new Intent(this, KinderScienceRead.class));
         }else{
             startActivity(new Intent(this, PreparatoryScienceRead.class));

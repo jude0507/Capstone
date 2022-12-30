@@ -12,13 +12,14 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.Model.VideoInfo;
 import com.example.learnmoto.R;
 import com.example.learnmoto.RecyclerViewInterface;
 import com.example.learnmoto.Student.StudentHomeView;
-import com.example.learnmoto.VideoAdapter;
+import com.example.learnmoto.Adapter.VideoAdapter;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -32,13 +33,17 @@ public class KinderChristianLivingWatch extends AppCompatActivity implements Rec
     ArrayList<VideoInfo> videoNameArraylist;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     String subject = "Kinder Christian Living";
-
+    TextView subjectlevel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kinder_christian_living_watch);
         drawerLayout = findViewById(R.id.mydrawer_layout);
         recyclerView = findViewById(R.id.VideoRecyclerView);
+
+        subjectlevel = findViewById(R.id.SubjectLabel);
+
+        subjectlevel.setText("Christian Living");
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));

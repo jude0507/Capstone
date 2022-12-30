@@ -18,23 +18,18 @@
             android:layout_height="wrap_content"
             android:text="Home"
             android:textColor="@color/black"
-            android:drawableLeft="@drawable/ic_leftarrow"
             android:onClick="BacktoStudentHome"
             android:layout_margin="15dp"
-            android:textSize="18dp"/>
+            android:textSize="18sp"
+            app:drawableLeftCompat="@drawable/ic_leftarrow" />
 
-        <!--        <ImageView-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_margin="15dp"-->
-        <!--            android:layout_marginVertical="10dp"-->
-        <!--            android:src="@drawable/ic_leftarrow"/>-->
 
         <TextView
+            android:id="@+id/SubjectLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Shapes"
-            android:textSize="30dp"
+            android:text="English"
+            android:textSize="25sp"
             android:layout_marginVertical="15dp"
             android:textColor="@color/black"
             android:fontFamily="@font/fingerpaint"
@@ -49,10 +44,11 @@
             android:layout_gravity="center">
 
             <ImageView
+                android:padding="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_shape"/>
+                android:src="@drawable/readme"/>
 
         </androidx.cardview.widget.CardView>
 
@@ -67,7 +63,7 @@
             android:background="@drawable/custom_login_button"
             android:text="READ"
             android:onClick="readme"
-            android:drawableRight="@drawable/ic_reading"/>
+            android:drawableEnd="@drawable/ic_reading"/>
 
         <androidx.cardview.widget.CardView
             android:layout_width="200dp"
@@ -78,10 +74,11 @@
             android:layout_gravity="center">
 
             <ImageView
+                android:padding="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_shape"/>
+                android:src="@drawable/watchme"/>
 
         </androidx.cardview.widget.CardView>
 
@@ -96,7 +93,7 @@
             android:fontFamily="@font/aloevera"
             android:textColor="@color/fontColor"
             android:onClick="watchme"
-            android:drawableRight="@drawable/ic_watching"/>
+            android:drawableEnd="@drawable/ic_watching"/>
 
         <androidx.cardview.widget.CardView
             android:layout_width="200dp"
@@ -107,10 +104,11 @@
             android:layout_gravity="center">
 
             <ImageView
+                android:padding="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_shape"/>
+                android:src="@drawable/quizme"/>
 
         </androidx.cardview.widget.CardView>
 
@@ -124,7 +122,7 @@
             android:fontFamily="@font/aloevera"
             android:textColor="@color/fontColor"
             android:background="@drawable/custom_login_button"
-            android:drawableRight="@drawable/ic_quiz"
+            android:drawableEnd="@drawable/ic_quiz"
             android:onClick="takeaquiz"/>
 
     </LinearLayout>
