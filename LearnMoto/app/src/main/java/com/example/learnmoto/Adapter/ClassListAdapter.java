@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.learnmoto.Model.StudentInfo;
+import com.example.learnmoto.Model.StudentModel;
 import com.example.learnmoto.R;
 
 import java.util.ArrayList;
@@ -16,9 +16,9 @@ import java.util.ArrayList;
 public class ClassListAdapter extends RecyclerView.Adapter<ClassListAdapter.MyViewHolder>{
 
     Context context;
-    ArrayList<StudentInfo> nameArraylist;
+    ArrayList<StudentModel> nameArraylist;
 
-    public ClassListAdapter(Context context, ArrayList<StudentInfo> nameArraylist) {
+    public ClassListAdapter(Context context, ArrayList<StudentModel> nameArraylist) {
         this.context = context;
         this.nameArraylist = nameArraylist;
     }
@@ -33,7 +33,7 @@ public class ClassListAdapter extends RecyclerView.Adapter<ClassListAdapter.MyVi
 
     @Override
     public void onBindViewHolder(@NonNull ClassListAdapter.MyViewHolder holder, int position) {
-        StudentInfo studentInfo = nameArraylist.get(position);
+        StudentModel studentInfo = nameArraylist.get(position);
         holder.sName.setText(studentInfo.sName);
         //holder.sName.setText(nameArraylist.get(position).getsName());
     }

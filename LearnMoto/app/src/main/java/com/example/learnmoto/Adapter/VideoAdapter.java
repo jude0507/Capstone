@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.learnmoto.Model.VideoInfo;
+import com.example.learnmoto.Model.VideoModel;
 import com.example.learnmoto.R;
 import com.example.learnmoto.RecyclerViewInterface;
 
@@ -18,10 +18,10 @@ import java.util.ArrayList;
 public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.MyViewHolder>{
 
     Context context;
-    ArrayList<VideoInfo> videoNameArraylist;
+    ArrayList<VideoModel> videoNameArraylist;
     private final RecyclerViewInterface recyclerViewInterface;
 
-    public VideoAdapter(Context context, ArrayList<VideoInfo> videoNameArraylist, RecyclerViewInterface recyclerViewInterface) {
+    public VideoAdapter(Context context, ArrayList<VideoModel> videoNameArraylist, RecyclerViewInterface recyclerViewInterface) {
         this.context = context;
         this.videoNameArraylist = videoNameArraylist;
         this.recyclerViewInterface = recyclerViewInterface;
@@ -37,7 +37,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.MyViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull VideoAdapter.MyViewHolder holder, int position) {
-        VideoInfo videoInfo = videoNameArraylist.get(position);
+        VideoModel videoInfo = videoNameArraylist.get(position);
         holder.videoName.setText(videoInfo.getVideoName());
     }
 

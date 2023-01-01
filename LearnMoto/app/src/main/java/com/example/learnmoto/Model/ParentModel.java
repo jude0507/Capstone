@@ -2,19 +2,17 @@ package com.example.learnmoto.Model;
 
 import com.google.firebase.firestore.Exclude;
 
-import java.util.List;
-
-public class ParentInfo {
+public class ParentModel {
 
     String myid;
     public String pName, pAddress, pPhoneNumber, pPassword, pID, pChildID,imageurl, imagename;
 
 
-    public ParentInfo(){
+    public ParentModel(){
 
     }
 
-    public ParentInfo(String pName, String pAddress, String pPassword, String pID, String pChildID, String imageurl, String imagename, String pPhoneNumber) {
+    public ParentModel(String pName, String pAddress, String pPassword, String pID, String pChildID, String imageurl, String imagename, String pPhoneNumber) {
         this.pName = pName;
         this.pAddress = pAddress;
         this.pPassword = pPassword;

@@ -17,14 +17,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.example.learnmoto.Adapter.ChildListAdapter;
 import com.example.learnmoto.DisplayImage;
-import com.example.learnmoto.Model.ParentInfo;
-import com.example.learnmoto.Model.StudentInfo;
+import com.example.learnmoto.Model.StudentModel;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.R;
-import com.example.learnmoto.Teacher.TeacherLogin;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -43,7 +40,7 @@ public class ParentView extends AppCompatActivity {
     RecyclerView recyclerView;
     ChildListAdapter childListAdapter;
     FirebaseFirestore firebaseFirestore;
-    ArrayList<StudentInfo> studentInfoArrayList;
+    ArrayList<StudentModel> studentInfoArrayList;
     CircleImageView ParentImage;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -127,7 +124,7 @@ public class ParentView extends AppCompatActivity {
                 .get().addOnSuccessListener(queryDocumentSnapshots -> {
 
                     for (QueryDocumentSnapshot documentSnapshot: queryDocumentSnapshots){
-                        studentInfoArrayList.add(documentSnapshot.toObject(StudentInfo.class));
+                        studentInfoArrayList.add(documentSnapshot.toObject(StudentModel.class));
                     }
                 });
     }

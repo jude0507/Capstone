@@ -2,19 +2,15 @@ package com.example.learnmoto.Teacher;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.text.method.HideReturnsTransformationMethod;
-import android.text.method.PasswordTransformationMethod;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.example.learnmoto.Model.TeacherInfo;
+import com.example.learnmoto.Model.TeacherModel;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.R;
 import com.example.learnmoto.ShowPassword;
@@ -70,7 +66,7 @@ public class TeacherRegistration extends AppCompatActivity {
                                 progressDialog.dismiss();
                                 Toast.makeText(TeacherRegistration.this, "Teacher ID has been registered", Toast.LENGTH_SHORT).show();
                             }else{
-                                TeacherInfo teacherInfo = new TeacherInfo();
+                                TeacherModel teacherInfo = new TeacherModel();
                                 teacherInfo.setTeacher_name(Teacher_Name);
                                 teacherInfo.setTeacher_address(Teacher_Address);
                                 teacherInfo.setTeacher_phone(Teacher_Phone);

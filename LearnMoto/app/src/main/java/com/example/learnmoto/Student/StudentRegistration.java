@@ -2,7 +2,6 @@ package com.example.learnmoto.Student;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
@@ -10,9 +9,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.text.method.HideReturnsTransformationMethod;
-import android.text.method.PasswordTransformationMethod;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -24,7 +20,7 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.learnmoto.Model.StudentInfo;
+import com.example.learnmoto.Model.StudentModel;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.R;
 import com.example.learnmoto.ShowPassword;
@@ -181,7 +177,7 @@ public class StudentRegistration extends AppCompatActivity {
                                 if (student_Level.equals("Choose Level")){
                                     Toast.makeText(this, "Chose your level", Toast.LENGTH_SHORT).show();
                                 }else{
-                                    StudentInfo studentInfo = new StudentInfo();
+                                    StudentModel studentInfo = new StudentModel();
                                     studentInfo.setsName(student_Name);
                                     studentInfo.setsAddress(student_Address);
                                     studentInfo.setsAge(student_age);

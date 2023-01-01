@@ -2,16 +2,16 @@ package com.example.learnmoto.Model;
 
 import com.google.firebase.firestore.Exclude;
 
-public class StudentInfo {
+public class StudentModel {
 
     String myid;
     public String sName, sAddress, sAge,sPassword, sID, sGender, sBirthday, sLevel, sGuardian, imageurl, imagename;
 
-    public StudentInfo(){
+    public StudentModel(){
 
     }
 
-    public StudentInfo(String sName, String sAddress, String sAge, String sGender, String sBirthday, String sLevel,String sID, String sPassword, String sGuardian) {
+    public StudentModel(String sName, String sAddress, String sAge, String sGender, String sBirthday, String sLevel, String sID, String sPassword, String sGuardian) {
         this.sName = sName;
         this.sAddress = sAddress;
         this.sAge = sAge;

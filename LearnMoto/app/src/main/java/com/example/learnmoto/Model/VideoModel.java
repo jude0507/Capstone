@@ -2,7 +2,7 @@ package com.example.learnmoto.Model;
 
 import com.google.firebase.firestore.Exclude;
 
-public class VideoInfo {
+public class VideoModel {
 
     String VideoName;
     String VideoUrl;
@@ -11,11 +11,11 @@ public class VideoInfo {
     String UploadedBy;
     String myid;
 
-    public VideoInfo(){
+    public VideoModel(){
 
     }
 
-    public VideoInfo(String videoName, String videoUrl, String videoLevel, String videoSubject, String uploadedBy) {
+    public VideoModel(String videoName, String videoUrl, String videoLevel, String videoSubject, String uploadedBy) {
         VideoName = videoName;
         VideoUrl = videoUrl;
         VideoLevel = videoLevel;

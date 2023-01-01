@@ -4,16 +4,16 @@ import com.google.firebase.firestore.Exclude;
 
 import java.util.List;
 
-public class TeacherInfo {
+public class TeacherModel {
 
     String myid;
     public String teacher_name, teacher_address, teacher_phone, teacher_ID, teacher_pass, myAdvisoryClass, imageurl, imagename;
     List<String> assignLevel;
     List<String> assignSubject;
-    public TeacherInfo() {
+    public TeacherModel() {
     }
 
-    public TeacherInfo(String teacher_name, String teacher_address, String teacher_phone, String teacher_ID, String teacher_pass, String myAdvisoryClass, String imageurl, String imagename, List<String> assignLevel, List<String> assignSubject) {
+    public TeacherModel(String teacher_name, String teacher_address, String teacher_phone, String teacher_ID, String teacher_pass, String myAdvisoryClass, String imageurl, String imagename, List<String> assignLevel, List<String> assignSubject) {
         this.teacher_name = teacher_name;
         this.teacher_address = teacher_address;
         this.teacher_phone = teacher_phone;

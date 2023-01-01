@@ -349,7 +349,7 @@ public class TeacherView extends AppCompatActivity {
                             }
                         }
 
-                        Toast.makeText(this, DataAssignLevel, Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(this, DataAssignLevel, Toast.LENGTH_SHORT).show();
                         GetAssignedLevel = String.valueOf(assignLevel);
 
                         mImages = new ArrayList<>();
@@ -357,40 +357,40 @@ public class TeacherView extends AppCompatActivity {
 
                         if (GetAssignedLevel != "null" && !GetAssignedLevel.isEmpty()){
                             if (assignLevel.contains("Kinder") && assignLevel.contains("Preparatory") && assignLevel.contains("Nursery")){
-                                Toast.makeText(this, "NKP", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(this, "NKP", Toast.LENGTH_SHORT).show();
                                 mImages.add(R.drawable.kinder_logo);
                                 mImages.add(R.drawable.nursery_logo);
                                 mImages.add(R.drawable.preparatory_logo);
                             }
                             else if (assignLevel.contains("Nursery") && assignLevel.contains("Kinder")){
-                                Toast.makeText(this, "NK", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(this, "NK", Toast.LENGTH_SHORT).show();
                                 mImages.add(R.drawable.kinder_logo);
                                 mImages.add(R.drawable.nursery_logo);
                             }
                             else if(assignLevel.contains("Kinder") && assignLevel.contains("Preparatory")){
-                                Toast.makeText(this, "KP", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(this, "KP", Toast.LENGTH_SHORT).show();
                                 mImages.add(R.drawable.nursery_logo);
                                 mImages.add(R.drawable.preparatory_logo);
                             }
                             else if(assignLevel.contains("Nursery") && assignLevel.contains("Preparatory")){
-                                Toast.makeText(this, "NP", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(this, "NP", Toast.LENGTH_SHORT).show();
                                 mImages.add(R.drawable.nursery_logo);
                                 mImages.add(R.drawable.preparatory_logo);
                             }
                             else if (assignLevel.contains("Kinder")){
-                                Toast.makeText(this, "K", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(this, "K", Toast.LENGTH_SHORT).show();
                                 mImages.add(R.drawable.kinder_logo);
                             }
                             else if (assignLevel.contains("Nursery")){
-                                Toast.makeText(this, "N", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(this, "N", Toast.LENGTH_SHORT).show();
                                 mImages.add(R.drawable.nursery_logo);
                             }
                             else if (assignLevel.contains("Preparatory")){
-                                Toast.makeText(this, "P", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(this, "P", Toast.LENGTH_SHORT).show();
                                 mImages.add(R.drawable.preparatory_logo);
                             }
                         }else{
-                            Toast.makeText(this, "NONE", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "No Level Found", Toast.LENGTH_SHORT).show();
                         }
                     }catch (Exception e){
                         Toast.makeText(this, "You have no assign level. Please add your assign level Thank you!", Toast.LENGTH_SHORT).show();
@@ -539,11 +539,10 @@ public class TeacherView extends AppCompatActivity {
                                 assignSubjects.size();
                                 DataAssignSubject += ",";
                             }
-                            Toast.makeText(this, DataAssignSubject, Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(this, DataAssignSubject, Toast.LENGTH_SHORT).show();
                         }
                     }catch (Exception e){
                         Toast.makeText(this, "You have no subject. Please add your subject Thank you!", Toast.LENGTH_SHORT).show();
-
                     }
                 }else{
                     Toast.makeText(this, "No Subject Found. Please Add Subject", Toast.LENGTH_SHORT).show();
@@ -627,7 +626,7 @@ public class TeacherView extends AppCompatActivity {
 
         DisplaySubjectList.setOnItemClickListener((parent, view12, position, id) -> {
             String SubjectItem = addSubjectToList.get(position);
-            Toast.makeText(this, addSubjectToList.get(position), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, addSubjectToList.get(position), Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(getApplicationContext(), SubjectVideo.class);
             intent.putExtra("Subjects",SubjectItem);
             startActivity(intent);

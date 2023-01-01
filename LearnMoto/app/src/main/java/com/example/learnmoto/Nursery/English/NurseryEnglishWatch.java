@@ -15,7 +15,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
-import com.example.learnmoto.Model.VideoInfo;
+import com.example.learnmoto.Model.VideoModel;
 import com.example.learnmoto.R;
 import com.example.learnmoto.RecyclerViewInterface;
 import com.example.learnmoto.Student.StudentHomeView;
@@ -31,7 +31,7 @@ public class NurseryEnglishWatch extends AppCompatActivity implements RecyclerVi
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     RecyclerView recyclerView;
     VideoAdapter videoAdapter;
-    ArrayList<VideoInfo> videoNameArraylist;
+    ArrayList<VideoModel> videoNameArraylist;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     String subject = "Nursery English";
     TextView subjectlevel;
@@ -122,7 +122,7 @@ public class NurseryEnglishWatch extends AppCompatActivity implements RecyclerVi
 
                     for (DocumentChange documentChange: value.getDocumentChanges()){
                         if (documentChange.getType() == DocumentChange.Type.ADDED){
-                            videoNameArraylist.add(documentChange.getDocument().toObject(VideoInfo.class));
+                            videoNameArraylist.add(documentChange.getDocument().toObject(VideoModel.class));
                         }
                         videoAdapter.notifyDataSetChanged();
                     }

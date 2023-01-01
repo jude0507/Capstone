@@ -30,7 +30,7 @@
           android:layout_height="wrap_content"
           android:textAlignment="center"
           android:textSize="25sp"
-          android:text="Nursery Class List"
+          android:text="Kinder Class List"
           android:fontFamily="@font/aloevera"
           android:textColor="@color/fontColor"/>
 

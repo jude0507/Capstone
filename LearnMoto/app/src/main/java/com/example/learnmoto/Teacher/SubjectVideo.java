@@ -1,5 +1,6 @@
 package com.example.learnmoto.Teacher;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,12 +26,11 @@ import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
-import com.example.learnmoto.Model.TeacherInfo;
-import com.example.learnmoto.Model.VideoInfo;
+import com.example.learnmoto.Model.VideoModel;
 import com.example.learnmoto.R;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -40,15 +40,13 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class SubjectVideo extends AppCompatActivity {
 
     private long backpressedTimes;
-    TextView subject;
+    TextView subject, NoDataFound;
     EditText VideoName;
     Button ChooseVideo, UploadVideo;
     VideoView videoView;
@@ -64,7 +62,9 @@ public class SubjectVideo extends AppCompatActivity {
     AlertDialog alertDialog;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     List<String> VideoNames = new ArrayList<>();
-    String getName;
+    //ArrayList<VideoModel> videoModelArrayList;
+    String getVideoName;
+    String videoName;
 
 
     @Override
@@ -78,6 +78,7 @@ public class SubjectVideo extends AppCompatActivity {
         UploadVideo = findViewById(R.id.UploadVideo);
         VideoName = findViewById(R.id.VideoName);
         progressBar = findViewById(R.id.progress_bar);
+
 
         mediaController = new MediaController(this);
         storageReference = FirebaseStorage.getInstance().getReference("videos");
@@ -146,7 +147,7 @@ public class SubjectVideo extends AppCompatActivity {
         ChooseVideo.setEnabled(false);
 
         Toast.makeText(this, "Start Uploading Please Wait", Toast.LENGTH_LONG).show();
-        String videoName = VideoName.getText().toString();
+        videoName = VideoName.getText().toString();
         if (VideoUri != null){
             if (!videoName.isEmpty()){
                 storageReference = firebaseStorage.getReference().child("videos/").child(System.currentTimeMillis() +
@@ -154,7 +155,7 @@ public class SubjectVideo extends AppCompatActivity {
                 storageReference.putFile(VideoUri).addOnCompleteListener(task -> {
                     if (task.isSuccessful()){
                         storageReference.getDownloadUrl().addOnSuccessListener(uri -> {
-                            VideoInfo videoInfo = new VideoInfo();
+                            VideoModel videoInfo = new VideoModel();
                             if (getItem.contains("Nursery")){
                                 videoInfo.setVideoLevel("Nursery");
                             }else if (getItem.contains("Kinder")){
@@ -209,7 +210,6 @@ public class SubjectVideo extends AppCompatActivity {
             startActivity(new Intent(this, TeacherLogin.class));
         }
         backpressedTimes = System.currentTimeMillis();
-
     }
 
     public void ViewListVideo(View view) {
@@ -221,28 +221,61 @@ public class SubjectVideo extends AppCompatActivity {
         final View view = getLayoutInflater().inflate(R.layout.view_list_video,null);
 
         ListView ListLevel = view.findViewById(R.id.listVideo);
+        NoDataFound = view.findViewById(R.id.NoDataFound);
         ImageView close = view.findViewById(R.id.close);
         builder.setView(view);
         alertDialog = builder.create();
         alertDialog.setCanceledOnTouchOutside(false);
         alertDialog.show();
 
-        collectionReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(QuerySnapshot value, FirebaseFirestoreException error) {
-                VideoNames.clear();
-                for (DocumentSnapshot documentSnapshot: value){
-                    VideoNames.add(documentSnapshot.getString("videoName"));
-                    getName = documentSnapshot.getString("videoName");
-                }
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
-                        android.R.layout.simple_list_item_1, VideoNames);
-                adapter.notifyDataSetChanged();
-                ListLevel.setAdapter(adapter);
-            }
-        });
+        db.collection("Videos").whereEqualTo("uploadedBy", TeacherLogin.teacher_name)
+                .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        if (!queryDocumentSnapshots.isEmpty()) {
+                            VideoNames.clear();
+                            for (QueryDocumentSnapshot documentSnapshot: queryDocumentSnapshots){
+                                VideoNames.add(documentSnapshot.getString("videoName"));
+                            }
+                            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
+                                    android.R.layout.simple_list_item_1, VideoNames);
+                            adapter.notifyDataSetChanged();
+                            ListLevel.setAdapter(adapter);
+                        }else{
+                            NoDataFound.setVisibility(View.VISIBLE);
+                            Toast.makeText(SubjectVideo.this, "No Data Found", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(SubjectVideo.this, "Error in getting data", Toast.LENGTH_SHORT).show();
+                    }
+                });
 
+//        collectionReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
+//            @Override
+//            public void onEvent(QuerySnapshot value, FirebaseFirestoreException error) {
+//                VideoNames.clear();
+//                for (DocumentSnapshot documentSnapshot: value){
+//                    VideoNames.add(documentSnapshot.getString("videoName"));
+//                }
+//                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
+//                        android.R.layout.simple_list_item_1, VideoNames);
+//                adapter.notifyDataSetChanged();
+//                ListLevel.setAdapter(adapter);
+//
+//            }
+//        });
 
+//        ListLevel.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                getVideoName = VideoNames.get(position);
+//            }
+//        });
+
+        //https://www.geeksforgeeks.org/how-to-read-data-from-firebase-firestore-in-android/
         close.setOnClickListener(v -> alertDialog.dismiss());
 
     }

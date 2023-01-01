@@ -125,4 +125,6 @@ public class Announcement extends AppCompatActivity {
         unregisterReceiver(networkChangeListener);
         super.onStop();
     }
+
+
 }

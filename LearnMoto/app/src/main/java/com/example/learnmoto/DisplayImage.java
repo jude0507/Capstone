@@ -2,18 +2,12 @@ package com.example.learnmoto;
 
 import android.content.Context;
 
-import androidx.lifecycle.ViewModel;
-
 import com.bumptech.glide.Glide;
-import com.example.learnmoto.Model.ParentInfo;
-import com.example.learnmoto.Model.StudentInfo;
-import com.example.learnmoto.Model.TeacherInfo;
-import com.example.learnmoto.Teacher.TeacherLogin;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.CollectionReference;
+import com.example.learnmoto.Model.ParentModel;
+import com.example.learnmoto.Model.StudentModel;
+import com.example.learnmoto.Model.TeacherModel;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -26,7 +20,7 @@ public class DisplayImage {
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     String imageDisplay = "";
                     for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
-                        TeacherInfo teacherInfo = documentSnapshot.toObject(TeacherInfo.class);
+                        TeacherModel teacherInfo = documentSnapshot.toObject(TeacherModel.class);
                         teacherInfo.setMyid(documentSnapshot.getId());
                         imageDisplay += teacherInfo.getImageurl();
 
@@ -44,7 +38,7 @@ public class DisplayImage {
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     String imageDisplay = "";
                     for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
-                        StudentInfo studentInfo = documentSnapshot.toObject(StudentInfo.class);
+                        StudentModel studentInfo = documentSnapshot.toObject(StudentModel.class);
                         studentInfo.setMyid(documentSnapshot.getId());
                         imageDisplay += studentInfo.getImageurl();
 
@@ -62,7 +56,7 @@ public class DisplayImage {
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     String imageDisplay = "";
                     for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
-                        ParentInfo parentInfo = documentSnapshot.toObject(ParentInfo.class);
+                        ParentModel parentInfo = documentSnapshot.toObject(ParentModel.class);
                         parentInfo.setMyid(documentSnapshot.getId());
                         imageDisplay += parentInfo.getImageurl();
 

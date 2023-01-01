@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.learnmoto.Model.StudentInfo;
+import com.example.learnmoto.Model.StudentModel;
 import com.example.learnmoto.R;
 
 import java.util.ArrayList;
@@ -17,9 +17,9 @@ import java.util.ArrayList;
 public class ChildListAdapter extends RecyclerView.Adapter<ChildListAdapter.MyViewHolder> {
 
     Context context;
-    ArrayList<StudentInfo> nameArraylist;
+    ArrayList<StudentModel> nameArraylist;
 
-    public ChildListAdapter(Context context, ArrayList<StudentInfo> nameArraylist) {
+    public ChildListAdapter(Context context, ArrayList<StudentModel> nameArraylist) {
         this.context = context;
         this.nameArraylist = nameArraylist;
     }

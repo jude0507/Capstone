@@ -1,6 +1,5 @@
 package com.example.learnmoto.Preparatory;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,20 +9,17 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.learnmoto.Adapter.ClassListAdapter;
-import com.example.learnmoto.Model.StudentInfo;
+import com.example.learnmoto.Model.StudentModel;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Teacher.TeacherView;
 import com.google.firebase.firestore.DocumentChange;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
 public class PreparatoryClassList extends AppCompatActivity {
 
-    ArrayList<StudentInfo> studentInfoArrayList;
+    ArrayList<StudentModel> studentInfoArrayList;
     ClassListAdapter classListAdapter;
     RecyclerView prepClassRV;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -50,7 +46,7 @@ public class PreparatoryClassList extends AppCompatActivity {
 
                     for (DocumentChange documentChange: value.getDocumentChanges()){
                         if (documentChange.getType() == DocumentChange.Type.ADDED){
-                            studentInfoArrayList.add(documentChange.getDocument().toObject(StudentInfo.class));
+                            studentInfoArrayList.add(documentChange.getDocument().toObject(StudentModel.class));
                         }
                         classListAdapter.notifyDataSetChanged();
                     }

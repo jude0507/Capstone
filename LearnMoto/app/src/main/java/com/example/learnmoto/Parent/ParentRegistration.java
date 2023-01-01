@@ -2,20 +2,16 @@ package com.example.learnmoto.Parent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.text.method.HideReturnsTransformationMethod;
-import android.text.method.PasswordTransformationMethod;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.learnmoto.Model.ParentInfo;
+import com.example.learnmoto.Model.ParentModel;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.R;
 import com.example.learnmoto.ShowPassword;
@@ -88,7 +84,7 @@ public class ParentRegistration extends AppCompatActivity {
                                             progressDialog.dismiss();
                                             Toast.makeText(ParentRegistration.this, "UserID already registered", Toast.LENGTH_SHORT).show();
                                         }else{
-                                            ParentInfo parentInfo = new ParentInfo();
+                                            ParentModel parentInfo = new ParentModel();
                                             parentInfo.setpName(Parent_Name);
                                             parentInfo.setpAddress(Parent_Address);
                                             parentInfo.setpChildID(Parent_ChildID);

@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.learnmoto.Adapter.ClassListAdapter;
-import com.example.learnmoto.Model.StudentInfo;
+import com.example.learnmoto.Model.StudentModel;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Teacher.TeacherView;
 import com.google.firebase.firestore.DocumentChange;
@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class NurseryClassList extends AppCompatActivity {
 
-    ArrayList<StudentInfo> studentInfoArrayList;
+    ArrayList<StudentModel> studentInfoArrayList;
     ClassListAdapter classListAdapter;
     RecyclerView nurseryClassRV;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -49,7 +49,7 @@ public class NurseryClassList extends AppCompatActivity {
 
                     for (DocumentChange documentChange: value.getDocumentChanges()){
                         if (documentChange.getType() == DocumentChange.Type.ADDED){
-                            studentInfoArrayList.add(documentChange.getDocument().toObject(StudentInfo.class));
+                            studentInfoArrayList.add(documentChange.getDocument().toObject(StudentModel.class));
                         }
                         classListAdapter.notifyDataSetChanged();
                     }
