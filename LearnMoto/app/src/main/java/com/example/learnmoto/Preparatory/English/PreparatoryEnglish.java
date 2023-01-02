@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.PDF.EnglishPDF;
+import com.example.learnmoto.PronounceAlphabet;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Student.StudentHomeView;
 
@@ -26,8 +27,8 @@ public class PreparatoryEnglish extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     TextView subjectlevel;
-    LinearLayout expandableView2, expandableLinear2;
-    Button pdfArrow;
+    LinearLayout expandableView2, expandableLinear2, expandableView3, expandableLinear3;
+    Button pdfArrow, pronounceArrow;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,8 +37,11 @@ public class PreparatoryEnglish extends AppCompatActivity {
         drawerLayout = findViewById(R.id.mydrawer_layout);
         subjectlevel = findViewById(R.id.SubjectLabel);
         pdfArrow = findViewById(R.id.arrow_pdf);
+        pronounceArrow = findViewById(R.id.arrow_pronounce);
         expandableView2 = findViewById(R.id.expandableLayout2);
         expandableLinear2 = findViewById(R.id.layout2);
+        expandableView3 = findViewById(R.id.expandableLayout3);
+        expandableLinear3 = findViewById(R.id.layout3);
 
         subjectlevel.setText("English");
         pdfArrow.setOnClickListener(v -> {
@@ -49,6 +53,18 @@ public class PreparatoryEnglish extends AppCompatActivity {
                 TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
                 expandableView2.setVisibility(View.GONE);
                 pdfArrow.setBackgroundResource(R.drawable.ic_arrow_down);
+            }
+        });
+
+        pronounceArrow.setOnClickListener(v -> {
+            if (expandableView3.getVisibility() == View.GONE) {
+                TransitionManager.beginDelayedTransition(expandableLinear3, new AutoTransition());
+                expandableView3.setVisibility(View.VISIBLE);
+                pronounceArrow.setBackgroundResource(R.drawable.ic_arrow_up);
+            }else{
+                TransitionManager.beginDelayedTransition(expandableLinear3, new AutoTransition());
+                expandableView3.setVisibility(View.GONE);
+                pronounceArrow.setBackgroundResource(R.drawable.ic_arrow_down);
             }
         });
 
@@ -118,4 +134,7 @@ public class PreparatoryEnglish extends AppCompatActivity {
         super.onStop();
     }
 
+    public void PronounceAlphabet(View view) {
+        startActivity(new Intent(this, PronounceAlphabet.class));
+    }
 }
