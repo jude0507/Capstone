@@ -3,7 +3,9 @@ package com.example.learnmoto.Teacher;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
@@ -67,49 +69,58 @@ public class TeacherRegistration extends AppCompatActivity {
                 if (!Teacher_Email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(Teacher_Email).matches()){
                     if (Teacher_Pass.length() >= 6){
                         if (ConfirmPass.equals(Teacher_Pass)){
-                            ProgressDialog progressDialog = new ProgressDialog(this);
-                            progressDialog.show();
-                            progressDialog.setCanceledOnTouchOutside(false);
-                            progressDialog.setContentView(R.layout.progress_dialog_registration);
-                            progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-                            final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-                            firebaseAuth.createUserWithEmailAndPassword(Teacher_Email, Teacher_Pass)
-                                    .addOnCompleteListener(task -> {
-                                        if (task.isSuccessful()){
-                                            firebaseAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(task1 -> {
-                                                if (task1.isSuccessful()){
-                                                    DocumentReference teacherReference = firestore.collection("Teacher").document(Teacher_ID);
-                                                    teacherReference.get().addOnSuccessListener(documentSnapshot -> {
-                                                        if (documentSnapshot.exists()){
-                                                            progressDialog.dismiss();
-                                                            Toast.makeText(TeacherRegistration.this, "Teacher ID has been registered", Toast.LENGTH_SHORT).show();
+                            AlertDialog.Builder alBuilder = new AlertDialog.Builder(this);
+                            alBuilder.setTitle("Confirmation Message")
+                                    .setMessage("All data has been filled correctly");
+                            alBuilder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    ProgressDialog progressDialog = new ProgressDialog(TeacherRegistration.this);
+                                    progressDialog.show();
+                                    progressDialog.setCanceledOnTouchOutside(false);
+                                    progressDialog.setContentView(R.layout.progress_dialog_registration);
+                                    progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+                                    final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+                                    firebaseAuth.createUserWithEmailAndPassword(Teacher_Email, Teacher_Pass)
+                                            .addOnCompleteListener(task -> {
+                                                if (task.isSuccessful()){
+                                                    firebaseAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(task1 -> {
+                                                        if (task1.isSuccessful()){
+                                                            DocumentReference teacherReference = firestore.collection("Teacher").document(Teacher_ID);
+                                                            teacherReference.get().addOnSuccessListener(documentSnapshot -> {
+                                                                if (documentSnapshot.exists()){
+                                                                    progressDialog.dismiss();
+                                                                    Toast.makeText(TeacherRegistration.this, "Teacher ID has been registered", Toast.LENGTH_SHORT).show();
+                                                                }else{
+                                                                    TeacherModel teacherInfo = new TeacherModel();
+                                                                    teacherInfo.setTeacher_name(Teacher_Name);
+                                                                    teacherInfo.setTeacher_address(Teacher_Address);
+                                                                    teacherInfo.setTeacher_phone(Teacher_Phone);
+                                                                    teacherInfo.setTeacher_email(Teacher_Email);
+                                                                    teacherInfo.setTeacher_ID(Teacher_ID);
+                                                                    teacherInfo.setTeacher_pass(Teacher_Pass);
+                                                                    firestore.collection("Teacher").document(Teacher_ID).set(teacherInfo);
+                                                                    progressDialog.dismiss();
+                                                                    Toast.makeText(TeacherRegistration.this, "User Registered Successfully! Please Verify your email", Toast.LENGTH_SHORT).show();
+                                                                    Toast.makeText(TeacherRegistration.this, "Please check your inbox/spam message", Toast.LENGTH_LONG).show();
+                                                                    startActivity(new Intent(TeacherRegistration.this, TeacherLogin.class));
+                                                                }
+                                                            });
                                                         }else{
-                                                            TeacherModel teacherInfo = new TeacherModel();
-                                                            teacherInfo.setTeacher_name(Teacher_Name);
-                                                            teacherInfo.setTeacher_address(Teacher_Address);
-                                                            teacherInfo.setTeacher_phone(Teacher_Phone);
-                                                            teacherInfo.setTeacher_email(Teacher_Email);
-                                                            teacherInfo.setTeacher_ID(Teacher_ID);
-                                                            teacherInfo.setTeacher_pass(Teacher_Pass);
-                                                            firestore.collection("Teacher").document(Teacher_ID).set(teacherInfo);
                                                             progressDialog.dismiss();
-                                                            Toast.makeText(TeacherRegistration.this, "User Registered Successfully! Please Verify your email", Toast.LENGTH_SHORT).show();
-                                                            Toast.makeText(TeacherRegistration.this, "Please check your inbox/spam message", Toast.LENGTH_LONG).show();
-                                                            startActivity(new Intent(TeacherRegistration.this, TeacherLogin.class));
+                                                            Toast.makeText(TeacherRegistration.this, task1.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                                         }
                                                     });
+
                                                 }else{
                                                     progressDialog.dismiss();
-                                                    Toast.makeText(TeacherRegistration.this, task1.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(TeacherRegistration.this, "Registration Failed! Try Again", Toast.LENGTH_SHORT).show();
                                                 }
                                             });
-
-                                        }else{
-                                            progressDialog.dismiss();
-                                            Toast.makeText(TeacherRegistration.this, "Registration Failed! Try Again", Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
-
+                                }
+                            });
+                            alBuilder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
+                            alBuilder.show();
                         }else{
                             confirmPass.requestFocus();
                             confirmPass.setError("Not Matched");

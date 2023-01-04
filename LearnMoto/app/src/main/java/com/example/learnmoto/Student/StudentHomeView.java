@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.learnmoto.Adapter.AnnouncementAdapter;
@@ -25,8 +26,10 @@ import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Adapter.StudentSubjectAdapter;
 import com.example.learnmoto.Adapter.TranslateAnimatioUI;
+import com.example.learnmoto.Teacher.TeacherLogin;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
@@ -81,6 +84,7 @@ public class StudentHomeView extends AppCompatActivity {
         displaylevel.setText(level);
 
         DisplayImage();
+
 
         linearLayouttexts.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
         subjectslayout.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
@@ -166,6 +170,8 @@ public class StudentHomeView extends AppCompatActivity {
                     }
                 });
     }
+
+
 
     //Dipslay Image for student user
     public void DisplayImage(){

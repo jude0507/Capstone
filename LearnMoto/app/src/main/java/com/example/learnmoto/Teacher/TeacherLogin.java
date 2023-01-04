@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.learnmoto.MainActivity;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
+import com.example.learnmoto.Model.TeacherModel;
 import com.example.learnmoto.R;
 import com.example.learnmoto.ShowPassword;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -82,8 +83,7 @@ public class TeacherLogin extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     if (firebaseAuth.getCurrentUser().isEmailVerified()){
                                         if (Teacher_ID.getText().toString().equals(teacher_ID) && Teacher_Pass.getText().toString().equals(teacher_pass)){
-                                            DocumentReference updateReference = db.collection("Teacher").document(TeacherLogin.teacher_ID);
-                                            updateReference.update("teacher_email_status", "Verified");
+                                            VerifiedStatus();
                                             progressDialog.dismiss();
                                             Toast.makeText(TeacherLogin.this, "Login Successfully", Toast.LENGTH_SHORT).show();
                                             startActivity(new Intent(TeacherLogin.this, TeacherView.class));
@@ -117,6 +117,13 @@ public class TeacherLogin extends AppCompatActivity {
 
         }
     }
+
+    public void VerifiedStatus(){
+        String Verified = "Verified";
+        DocumentReference updateReference = db.collection("Teacher").document(TeacherLogin.teacher_ID);
+        updateReference.update("teacher_email_status", Verified);
+    }
+
     @Override
     protected void onStart() {
         IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
