@@ -23,7 +23,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class StudentLogin extends AppCompatActivity {
 
-    public static String studID, studPass, sName, sBirthday, sGender, sLevel, sGuardian, sAddress;
+    public static String studID, studPass, sName, sBirthday, sGender, sLevel, sGuardian, sAddress, sImageURL;
     public static final String Username = "sID";
     public static final String Password = "sPassword";
     public static final String StudentName = "sName";
@@ -85,6 +85,7 @@ public class StudentLogin extends AppCompatActivity {
                     sGuardian = documentSnapshot.getString("sGuardian").toString();
                     sGender = documentSnapshot.getString("sGender").toString();
                     sAddress = documentSnapshot.getString("sAddress").toString();
+                    sImageURL = documentSnapshot.getString("imageurl").toString();
 
                     if (studentID.getText().toString().equals(studID) && studentPass.getText().toString().equals(studPass)){
                         editor = sharedPreferences.edit();

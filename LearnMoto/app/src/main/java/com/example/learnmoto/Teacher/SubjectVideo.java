@@ -229,29 +229,21 @@ public class SubjectVideo extends AppCompatActivity {
         alertDialog.show();
 
         db.collection("Videos").whereEqualTo("uploadedBy", TeacherLogin.teacher_name)
-                .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        if (!queryDocumentSnapshots.isEmpty()) {
-                            VideoNames.clear();
-                            for (QueryDocumentSnapshot documentSnapshot: queryDocumentSnapshots){
-                                VideoNames.add(documentSnapshot.getString("videoName"));
-                            }
-                            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
-                                    android.R.layout.simple_list_item_1, VideoNames);
-                            adapter.notifyDataSetChanged();
-                            ListLevel.setAdapter(adapter);
-                        }else{
-                            NoDataFound.setVisibility(View.VISIBLE);
-                            Toast.makeText(SubjectVideo.this, "No Data Found", Toast.LENGTH_SHORT).show();
+                .get().addOnSuccessListener(queryDocumentSnapshots -> {
+                    if (!queryDocumentSnapshots.isEmpty()) {
+                        VideoNames.clear();
+                        for (QueryDocumentSnapshot documentSnapshot: queryDocumentSnapshots){
+                            VideoNames.add(documentSnapshot.getString("videoName"));
                         }
+                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
+                                android.R.layout.simple_list_item_1, VideoNames);
+                        adapter.notifyDataSetChanged();
+                        ListLevel.setAdapter(adapter);
+                    }else{
+                        NoDataFound.setVisibility(View.VISIBLE);
+                        Toast.makeText(SubjectVideo.this, "No Data Found", Toast.LENGTH_SHORT).show();
                     }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(SubjectVideo.this, "Error in getting data", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                }).addOnFailureListener(e -> Toast.makeText(SubjectVideo.this, "Error in getting data", Toast.LENGTH_SHORT).show());
 
 //        collectionReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
 //            @Override

@@ -7,15 +7,20 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -101,10 +106,8 @@ public class StudentInfoSettings extends AppCompatActivity {
         studLevel.setText(level);
         studBirthday.setText(birthday);
         studGender.setText(gender);
-        DisplayImage();
-        //StudPicture.setImageURI(Uri.parse(image));
-        //Glide.with(getApplicationContext()).load(image).placeholder(R.drawable.ic_user_circle).into(StudPicture);
 
+        DisplayImage();
         ReadOnlyText();
 
     }
@@ -166,13 +169,14 @@ public class StudentInfoSettings extends AppCompatActivity {
         studPass.setText(password);
         studAddress.setText(address);
         UploadImageToStorage();
-        Toast.makeText(this, "Updated Successfully", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Updated Successfully", Toast.LENGTH_SHORT).show();
 
     }
 
     public void UploadImageToStorage(){
         if (imageUri != null) {
             ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setCanceledOnTouchOutside(false);
             progressDialog.setMessage("Setting your image");
             progressDialog.show();
             storageReference = firebaseStorage.getReference().child("images/").child(imageUri.getLastPathSegment());
@@ -185,8 +189,12 @@ public class StudentInfoSettings extends AppCompatActivity {
                         documentReference.update("imageurl", ImageURLPath);
                         documentReference.update("imagename", imageUri.toString());
                         progressDialog.dismiss();
-                        Toast.makeText(StudentInfoSettings.this, "Uploaded Successfully Storage", Toast.LENGTH_LONG).show();
+                        Toast.makeText(StudentInfoSettings.this, "Uploaded Successfully", Toast.LENGTH_LONG).show();
                         Camera.setVisibility(View.GONE);
+                        finish();
+                        overridePendingTransition(0, 0);
+                        startActivity(getIntent());
+                        overridePendingTransition(0, 0);
                     });
                 }
             }).addOnProgressListener(snapshot -> {
@@ -200,6 +208,7 @@ public class StudentInfoSettings extends AppCompatActivity {
 
     public void DisplayImage(){
         DisplayImage.RetrieveImageStudents(this, "Student", "sID", StudentLogin.studID, StudPicture);
+    //https://www.c-sharpcorner.com/article/how-to-store-and-retrieve-the-image-using-sharedpreferences-in-android/
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -207,6 +216,15 @@ public class StudentInfoSettings extends AppCompatActivity {
         if (requestCode == 101 && resultCode == Activity.RESULT_OK) {
             imageUri = data.getData();
             StudPicture.setImageURI(imageUri);
+
+//            Bitmap photo= (Bitmap) data.getExtras().get("data");
+//            StudPicture.setImageBitmap(photo);
+//            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//            photo.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+//            byte[] b = baos.toByteArray();
+//            String encodedImage = Base64.encodeToString(b, Base64.DEFAULT);
+//            preferenceManager.setString("image_data",encodedImage);
+//            Toast.makeText(this, "Image saved in SharedPreferences", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -257,5 +275,34 @@ public class StudentInfoSettings extends AppCompatActivity {
         unregisterReceiver(networkChangeListener);
         super.onStop();
     }
+
+//    private final static String CAPTURED_PHOTO_URI_KEY = "imageUri";
+//    private final static String CAPTURED_PHOTO_PATH_KEY = "ImageURLPath";
+//    @Override
+//    public void onSaveInstanceState(Bundle saveInstance){
+//
+//        if (ImageURLPath != null) {
+//
+//            saveInstance.putString(CAPTURED_PHOTO_PATH_KEY, ImageURLPath);
+//        }
+//        if (ImageURLPath != null) {
+//
+//            saveInstance.putString(CAPTURED_PHOTO_URI_KEY, imageUri.toString());
+//        }
+//
+//        super.onSaveInstanceState(saveInstance);
+//    }
+//
+//    @Override
+//    public void onRestoreInstanceState(Bundle savedInstanceState) {
+//        if (savedInstanceState.containsKey(CAPTURED_PHOTO_PATH_KEY)) {
+//
+//            ImageURLPath = savedInstanceState.getString(CAPTURED_PHOTO_PATH_KEY);
+//        }
+//        if (savedInstanceState.containsKey(CAPTURED_PHOTO_URI_KEY)) {
+//
+//            imageUri = Uri.parse(savedInstanceState.getString(CAPTURED_PHOTO_URI_KEY));    }
+//        super.onRestoreInstanceState(savedInstanceState);
+//    }
 
 }

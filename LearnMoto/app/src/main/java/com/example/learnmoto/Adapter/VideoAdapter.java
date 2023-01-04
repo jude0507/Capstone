@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.learnmoto.Model.VideoModel;
 import com.example.learnmoto.R;
-import com.example.learnmoto.RecyclerViewInterface;
+import com.example.learnmoto.Interface.RecyclerViewInterface;
 
 import java.util.ArrayList;
 

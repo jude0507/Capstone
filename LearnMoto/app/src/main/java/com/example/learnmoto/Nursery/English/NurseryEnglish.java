@@ -17,9 +17,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
-import com.example.learnmoto.Nursery.Stories;
+import com.example.learnmoto.Nursery.NStories;
 import com.example.learnmoto.PDF.EnglishPDF;
-import com.example.learnmoto.PronounceAlphabet;
+import com.example.learnmoto.Student.PronounceAlphabet;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Student.StudentHomeView;
 
@@ -138,7 +138,7 @@ public class NurseryEnglish extends AppCompatActivity {
     }
 
     public void story(View view) {
-        startActivity(new Intent(this, Stories.class));
+        startActivity(new Intent(this, NStories.class));
     }
 
     public void pdf(View view) {

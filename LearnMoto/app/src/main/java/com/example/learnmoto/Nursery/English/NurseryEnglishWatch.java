@@ -17,7 +17,7 @@ import android.widget.TextView;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.Model.VideoModel;
 import com.example.learnmoto.R;
-import com.example.learnmoto.RecyclerViewInterface;
+import com.example.learnmoto.Interface.RecyclerViewInterface;
 import com.example.learnmoto.Student.StudentHomeView;
 import com.example.learnmoto.Adapter.VideoAdapter;
 import com.google.firebase.firestore.DocumentChange;

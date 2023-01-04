@@ -22,14 +22,80 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".Alphabet"
+            android:name=".Kinder.KStories"
+            android:exported="false"
+            android:noHistory="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Kinder.Story.KThirdStory"
+            android:noHistory="true"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".PronounceAlphabet"
+            android:name=".Kinder.Story.KSecondStory"
+            android:noHistory="true"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Kinder.Story.KFirstStory"
+            android:noHistory="true"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Preparatory.Stories.PThirdStory"
+            android:noHistory="true"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Preparatory.Stories.PSecondStory"
+            android:noHistory="true"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Preparatory.Stories.PFirstStory"
+            android:noHistory="true"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Preparatory.PStories"
+            android:noHistory="true"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Student.Alphabet"
+            android:noHistory="true"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Student.PronounceAlphabet"
+            android:noHistory="true"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -640,7 +706,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Nursery.Story.FourthStory"
+            android:name=".Nursery.Story.NFourthStory"
             android:exported="false"
             android:noHistory="true">
             <meta-data
@@ -648,7 +714,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Nursery.Story.ThirdStory"
+            android:name=".Nursery.Story.NThirdStory"
             android:exported="false"
             android:noHistory="true">
             <meta-data
@@ -656,7 +722,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Nursery.Story.SecondStory"
+            android:name=".Nursery.Story.NSecondStory"
             android:exported="false"
             android:noHistory="true">
             <meta-data
@@ -664,7 +730,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Nursery.Story.FirstStory"
+            android:name=".Nursery.Story.NFirstStory"
             android:exported="false"
             android:noHistory="true">
             <meta-data
@@ -680,7 +746,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Nursery.Stories"
+            android:name=".Nursery.NStories"
             android:exported="false"
             android:noHistory="true">
             <meta-data

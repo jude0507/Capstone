@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.learnmoto.Adapter.AnnouncementAdapter;
 import com.example.learnmoto.DisplayImage;
 import com.example.learnmoto.Model.AnnouncementModel;

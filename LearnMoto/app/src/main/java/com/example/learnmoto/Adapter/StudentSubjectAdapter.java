@@ -71,74 +71,74 @@ public class StudentSubjectAdapter extends RecyclerView.Adapter<StudentSubjectAd
                 //papunta sa bawat index ng recyclerview
                switch (getAdapterPosition()){
                    case 0:
-                       Toast.makeText(v.getContext(), "English", Toast.LENGTH_SHORT).show();
+                       //Toast.makeText(v.getContext(), "English", Toast.LENGTH_SHORT).show();
                         if (level.equals("Nursery")){
-                            Toast.makeText(v.getContext(), "Nursery", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(v.getContext(), "Nursery", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), NurseryEnglish.class));
                         }else if (level.equals("Kinder")){
-                            Toast.makeText(v.getContext(), "Kinder", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(v.getContext(), "Kinder", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), KinderEnglish.class));
                         }else{
-                            Toast.makeText(v.getContext(), "Preparatory", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(v.getContext(), "Preparatory", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), PreparatoryEnglish.class));
                         }
                         //v.getContext().startActivity(new Intent(v.getContext(), AlphabetRead.class));
                         break;
                     case 1:
-                        Toast.makeText(v.getContext(), "Math", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(v.getContext(), "Math", Toast.LENGTH_SHORT).show();
                         if (level.equals("Nursery")){
-                            Toast.makeText(v.getContext(), "Nursery", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(v.getContext(), "Nursery", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), NurseryMathRead.class));
                         }else if (level.equals("Kinder")){
-                            Toast.makeText(v.getContext(), "Kinder", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(v.getContext(), "Kinder", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), KinderMathRead.class));
                         }else{
-                            Toast.makeText(v.getContext(), "Preparatory", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(v.getContext(), "Preparatory", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), PreparatoryMathRead.class));
                         }
                         //v.getContext().startActivity(new Intent(v.getContext(), CrayonsRead.class));
                         break;
                     case 2:
-                        Toast.makeText(v.getContext(), "Science", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(v.getContext(), "Science", Toast.LENGTH_SHORT).show();
                         if (level.equals("Nursery")){
-                            Toast.makeText(v.getContext(), "Nursery", Toast.LENGTH_SHORT).show();
+                           // Toast.makeText(v.getContext(), "Nursery", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), NurseryScienceRead.class));
                         }else if (level.equals("Kinder")){
-                            Toast.makeText(v.getContext(), "Kinder", Toast.LENGTH_SHORT).show();
+                           // Toast.makeText(v.getContext(), "Kinder", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), KinderScienceRead.class));
                         }else{
-                            Toast.makeText(v.getContext(), "Preparatory", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(v.getContext(), "Preparatory", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), PreparatoryScienceRead.class));
                         }
                         //v.getContext().startActivity(new Intent(v.getContext(), NumberRead.class));
                         break;
                     case 3:
-                        Toast.makeText(v.getContext(), "Christian Living", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(v.getContext(), "Christian Living", Toast.LENGTH_SHORT).show();
                         if (level.equals("Nursery")){
-                            Toast.makeText(v.getContext(), "Nursery", Toast.LENGTH_SHORT).show();
+                           // Toast.makeText(v.getContext(), "Nursery", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), NurseryChristianLivingRead.class));
                         }else if (level.equals("Kinder")){
-                            Toast.makeText(v.getContext(), "Kinder", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(v.getContext(), "Kinder", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), KinderChristianLivingRead.class));
                         }else{
-                            Toast.makeText(v.getContext(), "Preparatory", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(v.getContext(), "Preparatory", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), PreparatoryChristianLivingRead.class));
                         }
                         //v.getContext().startActivity(new Intent(v.getContext(), StoryRead.class));
                         break;
                     case 4:
-                        Toast.makeText(v.getContext(), "Filipino", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(v.getContext(), "Filipino", Toast.LENGTH_SHORT).show();
                         if (level.equals("Kinder")){
-                            Toast.makeText(v.getContext(), "Kinder", Toast.LENGTH_SHORT).show();
+                          //  Toast.makeText(v.getContext(), "Kinder", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), KinderFilipinoRead.class));
                         }else{
-                            Toast.makeText(v.getContext(), "Preparatory", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(v.getContext(), "Preparatory", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), PreparatoryFilipinoRead.class));
                         }
                         //v.getContext().startActivity(new Intent(v.getContext(), ShapesRead.class));
                         break;
                     case 5:
-                        Toast.makeText(v.getContext(), "Sibika at Kultura", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(v.getContext(), "Sibika at Kultura", Toast.LENGTH_SHORT).show();
                         v.getContext().startActivity(new Intent(v.getContext(), PreparatorySibKulRead.class));
                         break;
                 }

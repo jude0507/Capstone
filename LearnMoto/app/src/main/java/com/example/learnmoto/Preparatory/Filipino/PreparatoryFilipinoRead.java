@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.PDF.FilipinoPDF;
 import com.example.learnmoto.R;
+import com.example.learnmoto.Preparatory.PStories;
 import com.example.learnmoto.Student.StudentHomeView;
 
 public class PreparatoryFilipinoRead extends AppCompatActivity {
@@ -26,8 +27,8 @@ public class PreparatoryFilipinoRead extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     TextView subjectlevel;
-    LinearLayout expandableView2, expandableLinear2;
-    Button pdfArrow;
+    LinearLayout expandableView1, expandableLinear1, expandableView2, expandableLinear2;
+    Button pdfArrow, storyArrow;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +36,9 @@ public class PreparatoryFilipinoRead extends AppCompatActivity {
         drawerLayout = findViewById(R.id.mydrawer_layout);
         subjectlevel = findViewById(R.id.SubjectLabel);
         pdfArrow = findViewById(R.id.arrow_pdf);
+        storyArrow = findViewById(R.id.arrow_story);
+        expandableView1 = findViewById(R.id.expandableLayout1);
+        expandableLinear1 = findViewById(R.id.layout1);
         expandableView2 = findViewById(R.id.expandableLayout2);
         expandableLinear2 = findViewById(R.id.layout2);
 
@@ -49,6 +53,18 @@ public class PreparatoryFilipinoRead extends AppCompatActivity {
                 TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
                 expandableView2.setVisibility(View.GONE);
                 pdfArrow.setBackgroundResource(R.drawable.ic_arrow_down);
+            }
+        });
+
+        storyArrow.setOnClickListener(v -> {
+            if (expandableView1.getVisibility() == View.GONE) {
+                TransitionManager.beginDelayedTransition(expandableLinear1, new AutoTransition());
+                expandableView1.setVisibility(View.VISIBLE);
+                storyArrow.setBackgroundResource(R.drawable.ic_arrow_up);
+            }else{
+                TransitionManager.beginDelayedTransition(expandableLinear1, new AutoTransition());
+                expandableView1.setVisibility(View.GONE);
+                storyArrow.setBackgroundResource(R.drawable.ic_arrow_down);
             }
         });
 
@@ -117,4 +133,7 @@ public class PreparatoryFilipinoRead extends AppCompatActivity {
         super.onStop();
     }
 
+    public void story(View view) {
+        startActivity(new Intent(this, PStories.class));
+    }
 }

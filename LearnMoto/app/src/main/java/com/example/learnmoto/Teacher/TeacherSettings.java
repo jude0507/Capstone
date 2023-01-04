@@ -18,6 +18,7 @@ import com.example.learnmoto.Parent.ParentLogin;
 import com.example.learnmoto.Parent.ParentView;
 import com.example.learnmoto.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class TeacherSettings extends AppCompatActivity {
 
@@ -78,6 +79,7 @@ public class TeacherSettings extends AppCompatActivity {
 
         confirmLogout.setOnClickListener(v -> {
             Toast.makeText(TeacherSettings.this, "Logout Success", Toast.LENGTH_SHORT).show();
+            FirebaseAuth.getInstance().signOut();
             startActivity(new Intent(TeacherSettings.this, TeacherLogin.class));
         });
 

@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.PDF.EnglishPDF;
-import com.example.learnmoto.PronounceAlphabet;
+import com.example.learnmoto.Student.PronounceAlphabet;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Student.StudentHomeView;
 

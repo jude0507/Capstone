@@ -11,7 +11,7 @@ import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.learnmoto.ItemClickListener;
+import com.example.learnmoto.Interface.ItemClickListener;
 import com.example.learnmoto.Kinder.English.KinderEnglish;
 import com.example.learnmoto.Model.PDFModel;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
@@ -20,7 +20,6 @@ import com.example.learnmoto.Adapter.PDFAdapter;
 import com.example.learnmoto.Preparatory.English.PreparatoryEnglish;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Student.StudentHomeView;
-import com.example.learnmoto.Student.StudentLogin;
 
 import java.util.ArrayList;
 

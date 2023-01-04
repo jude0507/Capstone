@@ -1,0 +1,79 @@
+package com.example.learnmoto.Adapter;
+
+import android.content.Context;
+import android.content.Intent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.learnmoto.Kinder.Story.KFirstStory;
+import com.example.learnmoto.Kinder.Story.KSecondStory;
+import com.example.learnmoto.Kinder.Story.KThirdStory;
+import com.example.learnmoto.R;
+
+import java.util.List;
+
+public class KinderStoriesAdapter extends RecyclerView.Adapter<KinderStoriesAdapter.MyViewHolder> {
+
+    private final Context context;
+    private final List<String> storyTitles;
+    private final List<Integer> storyImages;
+
+    public KinderStoriesAdapter(Context context, List<String> storyTitles, List<Integer> storyImages) {
+        this.context = context;
+        this.storyTitles = storyTitles;
+        this.storyImages = storyImages;
+    }
+
+    @NonNull
+    @Override
+    public KinderStoriesAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.story_title_layout, parent,false);
+        return new KinderStoriesAdapter.MyViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull KinderStoriesAdapter.MyViewHolder holder, int position) {
+        holder.storyTitles.setText(storyTitles.get(position));
+        holder.storyImages.setImageResource(storyImages.get(position));
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return storyImages.size();
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+
+        TextView storyTitles;
+        ImageView storyImages;
+
+        public MyViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            storyTitles = itemView.findViewById(R.id.story_title);
+            storyImages = itemView.findViewById(R.id.story_Image);
+
+            itemView.setOnClickListener(view -> {
+                switch (getAdapterPosition()){
+                    case 0:
+                        view.getContext().startActivity(new Intent(view.getContext(), KFirstStory.class));
+                        break;
+                    case 1:
+                        view.getContext().startActivity(new Intent(view.getContext(), KSecondStory.class));
+                        break;
+                    case 2:
+                        view.getContext().startActivity(new Intent(view.getContext(), KThirdStory.class));
+                        break;
+                }
+            });
+
+        }
+    }
+}

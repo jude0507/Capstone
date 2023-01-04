@@ -98,18 +98,6 @@ public class StudentSettings extends AppCompatActivity {
         });
 
         scrollView.setOnTouchListener(new TranslateAnimatioUI(this, bottomNavigationView));
-    //Perform Expandable LAYOUT
-//        arrow_btn.setOnClickListener(v -> {
-//            if (expandableView1.getVisibility() == View.GONE) {
-//                TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
-//                expandableView1.setVisibility(View.VISIBLE);
-//                arrow_btn.setBackgroundResource(R.drawable.ic_arrow_up);
-//            }else{
-//                TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
-//                expandableView1.setVisibility(View.GONE);
-//                arrow_btn.setBackgroundResource(R.drawable.ic_arrow_down);
-//            }
-//        });
         //Perform Expandable LAYOUT
         logoutbtn.setOnClickListener(v -> {
             if (expandableView2.getVisibility() == View.GONE) {
@@ -162,6 +150,7 @@ public class StudentSettings extends AppCompatActivity {
     protected void onStart() {
         IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
         registerReceiver(networkChangeListener, intentFilter);
+        DisplayImage();
         super.onStart();
     }
 
@@ -171,4 +160,10 @@ public class StudentSettings extends AppCompatActivity {
         super.onStop();
     }
 
+    //    @Override
+//    protected void onDestroy() {
+//        editor.clear();
+//        editor.commit();
+//        super.onDestroy();
+//    }
 }

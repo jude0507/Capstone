@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.learnmoto.ItemClickListener;
+import com.example.learnmoto.Interface.ItemClickListener;
 import com.example.learnmoto.Model.PDFModel;
 import com.example.learnmoto.R;
 

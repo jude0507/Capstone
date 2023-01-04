@@ -7,15 +7,17 @@ import java.util.List;
 public class TeacherModel {
 
     String myid;
-    public String teacher_name, teacher_address, teacher_phone, teacher_ID, teacher_pass, myAdvisoryClass, imageurl, imagename;
+    public String teacher_name, teacher_address, teacher_phone, teacher_email, teacher_email_status, teacher_ID, teacher_pass, myAdvisoryClass, imageurl, imagename;
     List<String> assignLevel;
     List<String> assignSubject;
     public TeacherModel() {
     }
 
-    public TeacherModel(String teacher_name, String teacher_address, String teacher_phone, String teacher_ID, String teacher_pass, String myAdvisoryClass, String imageurl, String imagename, List<String> assignLevel, List<String> assignSubject) {
+    public TeacherModel(String teacher_name, String teacher_address, String teacher_phone, String teacher_email, String teacher_email_status, String teacher_ID, String teacher_pass, String myAdvisoryClass, String imageurl, String imagename, List<String> assignLevel, List<String> assignSubject) {
         this.teacher_name = teacher_name;
         this.teacher_address = teacher_address;
+        this.teacher_email = teacher_email;
+        this.teacher_email_status = teacher_email_status;
         this.teacher_phone = teacher_phone;
         this.teacher_ID = teacher_ID;
         this.teacher_pass = teacher_pass;
@@ -55,8 +57,24 @@ public class TeacherModel {
         return teacher_phone;
     }
 
+    public String getTeacher_email_status() {
+        return teacher_email_status;
+    }
+
+    public void setTeacher_email_status(String teacher_email_status) {
+        this.teacher_email_status = teacher_email_status;
+    }
+
     public void setTeacher_phone(String teacher_phone) {
         this.teacher_phone = teacher_phone;
+    }
+
+    public String getTeacher_email() {
+        return teacher_email;
+    }
+
+    public void setTeacher_email(String teacher_email) {
+        this.teacher_email = teacher_email;
     }
 
     public String getTeacher_ID() {

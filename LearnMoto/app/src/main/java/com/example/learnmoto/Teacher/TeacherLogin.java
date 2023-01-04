@@ -1,5 +1,6 @@
 package com.example.learnmoto.Teacher;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -16,13 +17,17 @@ import com.example.learnmoto.MainActivity;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.R;
 import com.example.learnmoto.ShowPassword;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class TeacherLogin extends AppCompatActivity {
 
     EditText Teacher_ID, Teacher_Pass;
-    public static String teacher_ID, teacher_pass, teacher_name, teacher_address, teacher_phone;
+    public static String teacher_ID, teacher_pass, teacher_name, teacher_address, teacher_phone, teacher_email_status, teacher_email;
     ProgressDialog progressDialog;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -59,6 +64,7 @@ public class TeacherLogin extends AppCompatActivity {
         if (!Teacher_ID.getText().toString().trim().isEmpty() && !Teacher_Pass.getText().toString().trim().isEmpty()){
             progressDialog = new ProgressDialog(this);
             progressDialog.setCanceledOnTouchOutside(false);
+            final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
             progressDialog.show();
             progressDialog.setContentView(R.layout.progress_dialog_account_checking);
             progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
@@ -70,14 +76,27 @@ public class TeacherLogin extends AppCompatActivity {
                     teacher_name = documentSnapshot.getString("teacher_name").toString();
                     teacher_address = documentSnapshot.getString("teacher_address").toString();
                     teacher_phone = documentSnapshot.getString("teacher_phone").toString();
-                    if (Teacher_ID.getText().toString().equals(teacher_ID) && Teacher_Pass.getText().toString().equals(teacher_pass)){
-                        progressDialog.dismiss();
-                        Toast.makeText(TeacherLogin.this, "Login Successfully", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(TeacherLogin.this, TeacherView.class));
-                    }else {
-                        progressDialog.dismiss();
-                        Toast.makeText(TeacherLogin.this, "Credential not match", Toast.LENGTH_SHORT).show();
-                    }
+                    teacher_email = documentSnapshot.getString("teacher_email").toString();
+                    firebaseAuth.signInWithEmailAndPassword(teacher_email, teacher_pass)
+                            .addOnCompleteListener(task -> {
+                                if (task.isSuccessful()) {
+                                    if (firebaseAuth.getCurrentUser().isEmailVerified()){
+                                        if (Teacher_ID.getText().toString().equals(teacher_ID) && Teacher_Pass.getText().toString().equals(teacher_pass)){
+                                            DocumentReference updateReference = db.collection("Teacher").document(TeacherLogin.teacher_ID);
+                                            updateReference.update("teacher_email_status", "Verified");
+                                            progressDialog.dismiss();
+                                            Toast.makeText(TeacherLogin.this, "Login Successfully", Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(TeacherLogin.this, TeacherView.class));
+                                        }else {
+                                            progressDialog.dismiss();
+                                            Toast.makeText(TeacherLogin.this, "Credential not match", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }else{
+                                        progressDialog.dismiss();
+                                        Toast.makeText(TeacherLogin.this, "Please verify your email", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
                 }else {
                     progressDialog.dismiss();
                     Toast.makeText(TeacherLogin.this, "You don't have an account", Toast.LENGTH_SHORT).show();
@@ -89,8 +108,10 @@ public class TeacherLogin extends AppCompatActivity {
                 Teacher_Pass.setError("Required Field");
                 Toast.makeText(TeacherLogin.this, "Username and Password Required", Toast.LENGTH_LONG).show();
             }else if (Teacher_ID.getText().toString().isEmpty()){
+                Teacher_ID.requestFocus();
                 Teacher_ID.setError("Required Field");
             }else{
+                Teacher_Pass.requestFocus();
                 Teacher_Pass.setError("Required Field");
             }
 

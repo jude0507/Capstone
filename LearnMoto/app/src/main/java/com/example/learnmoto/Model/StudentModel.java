@@ -11,7 +11,8 @@ public class StudentModel {
 
     }
 
-    public StudentModel(String sName, String sAddress, String sAge, String sGender, String sBirthday, String sLevel, String sID, String sPassword, String sGuardian) {
+    public StudentModel(String sName, String sAddress, String sAge, String sGender, String sBirthday, String sLevel, String sID, String sPassword, String sGuardian,
+                        String imageurl, String imagename) {
         this.sName = sName;
         this.sAddress = sAddress;
         this.sAge = sAge;
@@ -20,7 +21,8 @@ public class StudentModel {
         this.sLevel = sLevel;
         this.sPassword = sPassword;
         this.sID = sID;
-        this.sGuardian = sGuardian;
+        this.imageurl = imageurl;
+        this.imagename = imagename;
     }
 
     @Exclude

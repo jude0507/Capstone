@@ -17,9 +17,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
-import com.example.learnmoto.Nursery.English.NurseryEnglish;
+import com.example.learnmoto.Kinder.KStories;
 import com.example.learnmoto.PDF.EnglishPDF;
-import com.example.learnmoto.PronounceAlphabet;
+import com.example.learnmoto.Student.PronounceAlphabet;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Student.StudentHomeView;
 
@@ -28,8 +28,8 @@ public class KinderEnglish extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     TextView subjectlevel;
-    LinearLayout expandableView2, expandableLinear2, expandableView3, expandableLinear3;
-    Button pdfArrow, pronounceArrow;
+    LinearLayout expandableView1, expandableLinear1, expandableView2, expandableLinear2, expandableView3, expandableLinear3;
+    Button pdfArrow, pronounceArrow, storyArrow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +38,11 @@ public class KinderEnglish extends AppCompatActivity {
 
         drawerLayout = findViewById(R.id.mydrawer_layout);
         subjectlevel = findViewById(R.id.SubjectLabel);
+        storyArrow = findViewById(R.id.arrow_story);
         pdfArrow = findViewById(R.id.arrow_pdf);
         pronounceArrow = findViewById(R.id.arrow_pronounce);
+        expandableView1 = findViewById(R.id.expandableLayout1);
+        expandableLinear1 = findViewById(R.id.layout1);
         expandableView2 = findViewById(R.id.expandableLayout2);
         expandableLinear2 = findViewById(R.id.layout2);
         expandableView3 = findViewById(R.id.expandableLayout3);
@@ -58,6 +61,19 @@ public class KinderEnglish extends AppCompatActivity {
                 pdfArrow.setBackgroundResource(R.drawable.ic_arrow_down);
             }
         });
+
+        storyArrow.setOnClickListener(v -> {
+            if (expandableView1.getVisibility() == View.GONE) {
+                TransitionManager.beginDelayedTransition(expandableLinear1, new AutoTransition());
+                expandableView1.setVisibility(View.VISIBLE);
+                storyArrow.setBackgroundResource(R.drawable.ic_arrow_up);
+            }else{
+                TransitionManager.beginDelayedTransition(expandableLinear1, new AutoTransition());
+                expandableView1.setVisibility(View.GONE);
+                storyArrow.setBackgroundResource(R.drawable.ic_arrow_down);
+            }
+        });
+
 
         pronounceArrow.setOnClickListener(v -> {
             if (expandableView3.getVisibility() == View.GONE) {
@@ -118,6 +134,10 @@ public class KinderEnglish extends AppCompatActivity {
 
     public void BacktoStudentHome(View view){
         startActivity(new Intent(this, StudentHomeView.class));
+    }
+
+    public void story(View view) {
+        startActivity(new Intent(this, KStories.class));
     }
 
     public void pdf(View view) {
