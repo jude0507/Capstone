@@ -65,7 +65,7 @@ public class TeacherRegistration extends AppCompatActivity {
 
         if (!Teacher_Name.isEmpty() && !Teacher_Address.isEmpty() &&
                 !Teacher_ID.isEmpty() && !Teacher_Pass.isEmpty()){
-            if (Teacher_Phone.length() == 11) {
+            if (Teacher_Phone.length() == 11 && Teacher_Phone.matches("^(09)\\d{9}")){
                 if (!Teacher_Email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(Teacher_Email).matches()){
                     if (Teacher_Pass.length() >= 6){
                         if (ConfirmPass.equals(Teacher_Pass)){
@@ -135,7 +135,7 @@ public class TeacherRegistration extends AppCompatActivity {
                 }
             }else{
                 TeacherPhone.requestFocus();
-                TeacherPhone.setError("This field contain 11 digit");
+                TeacherPhone.setError("Invalid Phone Number");
             }
         }else{
             setErrors();

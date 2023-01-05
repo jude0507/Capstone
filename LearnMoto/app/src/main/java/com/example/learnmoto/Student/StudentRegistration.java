@@ -195,9 +195,11 @@ public class StudentRegistration extends AppCompatActivity {
                             }
                         });
                     }else{
+                        studentPass.requestFocus();
                         studentPass.setError("Atleast 6 characters required");
                     }
                 }else{
+                    confirmPass.requestFocus();
                     confirmPass.setError("Not Matched");
                 }
 
