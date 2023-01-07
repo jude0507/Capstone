@@ -108,7 +108,6 @@ public class TeacherView extends AppCompatActivity {
         DisplayAssignedLevel();
         DisplayImage();
         FetchSubjects();
-        //VerifiedStatus();
 
         bottomNavigationView.setSelectedItemId(R.id.home);
         teacherName.setText(TeacherName);
@@ -142,13 +141,6 @@ public class TeacherView extends AppCompatActivity {
 
         scrollView.setOnTouchListener(new TranslateAnimatioUI(this, bottomNavigationView));
 
-    }
-
-    public void VerifiedStatus(){
-        String Verified = "Verified";
-        DocumentReference updateReference = db.collection("Teacher").document(TeacherLogin.teacher_ID);
-        updateReference.update("teacher_email_status", Verified);
-        Toast.makeText(this, "Verified", Toast.LENGTH_SHORT).show();
     }
 
     public void ExpandAssignLevel(View view) {

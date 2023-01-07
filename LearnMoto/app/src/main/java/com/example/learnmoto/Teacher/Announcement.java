@@ -83,19 +83,16 @@ public class Announcement extends AppCompatActivity {
         String announce_msg = message.getText().toString();
         if (!announce_msg.isEmpty()){
             DocumentReference announcements = db.collection("Announcements").document(authorID);
-            announcements.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                @Override
-                public void onSuccess(DocumentSnapshot documentSnapshot) {
-                    AnnouncementModel announcementModel = new AnnouncementModel();
-                    announcementModel.setAuthorID(authorID);
-                    announcementModel.setAuthorName(authorName);
-                    announcementModel.setMessage(announce_msg);
-                    db.collection("Announcements").document(authorID).set(announcementModel);
-                    Toast.makeText(Announcement.this, "Announcement has been posted", Toast.LENGTH_SHORT).show();
-                    DisplayAnnouncement.setText(announce_msg);
-                    message.setText("");
+            announcements.get().addOnSuccessListener(documentSnapshot -> {
+                AnnouncementModel announcementModel = new AnnouncementModel();
+                announcementModel.setAuthorID(authorID);
+                announcementModel.setAuthorName(authorName);
+                announcementModel.setMessage(announce_msg);
+                db.collection("Announcements").document(authorID).set(announcementModel);
+                Toast.makeText(Announcement.this, "Announcement has been posted", Toast.LENGTH_SHORT).show();
+                DisplayAnnouncement.setText(announce_msg);
+                message.setText("");
 
-                }
             });
 
         }else{

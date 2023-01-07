@@ -87,20 +87,12 @@ public class SubjectVideo extends AppCompatActivity {
         mediaController.setAnchorView(videoView);
         videoView.start();
 
-        ChooseVideo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ChooseVideo();
-            }
-        });
+        ChooseVideo.setOnClickListener(v -> ChooseVideo());
 
-        UploadVideo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                UploadVideo();
-                UploadVideo.setVisibility(View.GONE);
-                VideoName.setVisibility(View.GONE);
-            }
+        UploadVideo.setOnClickListener(v -> {
+            UploadVideo();
+            UploadVideo.setVisibility(View.GONE);
+            VideoName.setVisibility(View.GONE);
         });
 
         getItem = getIntent().getStringExtra("Subjects");

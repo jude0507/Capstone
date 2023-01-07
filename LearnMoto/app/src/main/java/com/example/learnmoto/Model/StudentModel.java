@@ -2,9 +2,12 @@ package com.example.learnmoto.Model;
 
 import com.google.firebase.firestore.Exclude;
 
+import java.util.List;
+
 public class StudentModel {
 
     String myid;
+    List<String> todoList;
     public String sName, sAddress, sAge,sPassword, sID, sGender, sBirthday, sLevel, sGuardian, imageurl, imagename;
 
     public StudentModel(){
@@ -12,7 +15,7 @@ public class StudentModel {
     }
 
     public StudentModel(String sName, String sAddress, String sAge, String sGender, String sBirthday, String sLevel, String sID, String sPassword, String sGuardian,
-                        String imageurl, String imagename) {
+                        String imageurl, String imagename, List<String> todoList) {
         this.sName = sName;
         this.sAddress = sAddress;
         this.sAge = sAge;
@@ -23,6 +26,7 @@ public class StudentModel {
         this.sID = sID;
         this.imageurl = imageurl;
         this.imagename = imagename;
+        this.todoList = todoList;
     }
 
     @Exclude
@@ -120,5 +124,13 @@ public class StudentModel {
 
     public void setImagename(String imagename) {
         this.imagename = imagename;
+    }
+
+    public List<String> getTodoList() {
+        return todoList;
+    }
+
+    public void setTodoList(List<String> todoList) {
+        this.todoList = todoList;
     }
 }

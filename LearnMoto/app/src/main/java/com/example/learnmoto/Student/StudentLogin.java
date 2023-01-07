@@ -85,7 +85,7 @@ public class StudentLogin extends AppCompatActivity {
                     sGuardian = documentSnapshot.getString("sGuardian").toString();
                     sGender = documentSnapshot.getString("sGender").toString();
                     sAddress = documentSnapshot.getString("sAddress").toString();
-                    sImageURL = documentSnapshot.getString("imageurl").toString();
+                    //sImageURL = documentSnapshot.getString("imageurl").toString();
 
                     if (studentID.getText().toString().equals(studID) && studentPass.getText().toString().equals(studPass)){
                         editor = sharedPreferences.edit();
