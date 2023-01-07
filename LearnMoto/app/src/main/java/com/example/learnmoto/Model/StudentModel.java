@@ -7,15 +7,14 @@ import java.util.List;
 public class StudentModel {
 
     String myid;
-    List<String> todoList;
-    public String sName, sAddress, sAge,sPassword, sID, sGender, sBirthday, sLevel, sGuardian, imageurl, imagename;
+    public String sName, sAddress, sAge,sPassword, guardianPhone, sID, sGender, sBirthday, sLevel, sGuardian, imageurl, imagename;
 
     public StudentModel(){
 
     }
 
-    public StudentModel(String sName, String sAddress, String sAge, String sGender, String sBirthday, String sLevel, String sID, String sPassword, String sGuardian,
-                        String imageurl, String imagename, List<String> todoList) {
+    public StudentModel(String sName, String sAddress, String sAge, String sGender, String sBirthday, String sLevel, String sID, String sPassword, String guardianPhone,
+                        String imageurl, String imagename) {
         this.sName = sName;
         this.sAddress = sAddress;
         this.sAge = sAge;
@@ -24,9 +23,9 @@ public class StudentModel {
         this.sLevel = sLevel;
         this.sPassword = sPassword;
         this.sID = sID;
+        this.guardianPhone = guardianPhone;
         this.imageurl = imageurl;
         this.imagename = imagename;
-        this.todoList = todoList;
     }
 
     @Exclude
@@ -126,11 +125,11 @@ public class StudentModel {
         this.imagename = imagename;
     }
 
-    public List<String> getTodoList() {
-        return todoList;
+    public String getGuardianPhone() {
+        return guardianPhone;
     }
 
-    public void setTodoList(List<String> todoList) {
-        this.todoList = todoList;
+    public void setGuardianPhone(String guardianPhone) {
+        this.guardianPhone = guardianPhone;
     }
 }

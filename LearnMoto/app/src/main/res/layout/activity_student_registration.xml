@@ -170,6 +170,21 @@
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/guardianPhone"
+                    android:layout_width="300dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/custom_input"
+                    android:drawableLeft="@drawable/custom_icon_phone"
+                    android:drawablePadding="10dp"
+                    android:hint="Guardian Phone"
+                    android:maxLength="11"
+                    android:inputType="phone"
+                    android:padding="10dp"
+                    android:textSize="16sp" />
+
+                <EditText
                     android:id="@+id/studentID"
                     android:layout_width="300dp"
                     android:layout_height="45dp"

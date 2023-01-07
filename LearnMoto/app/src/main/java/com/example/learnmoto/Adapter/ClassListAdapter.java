@@ -1,6 +1,7 @@
 package com.example.learnmoto.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.learnmoto.DisplayStudentData;
 import com.example.learnmoto.Model.StudentModel;
 import com.example.learnmoto.R;
 
@@ -33,8 +36,19 @@ public class ClassListAdapter extends RecyclerView.Adapter<ClassListAdapter.MyVi
 
     @Override
     public void onBindViewHolder(@NonNull ClassListAdapter.MyViewHolder holder, int position) {
-        StudentModel studentInfo = nameArraylist.get(position);
+
+        final StudentModel studentInfo = nameArraylist.get(position);
         holder.sName.setText(studentInfo.sName);
+        holder.sID.setText(studentInfo.sID);
+
+        holder.sName.setOnClickListener(v -> {
+            Intent intent = new Intent(context, DisplayStudentData.class);
+            intent.putExtra("studentName", studentInfo.getsName());
+            intent.putExtra("studentID", studentInfo.getsID());
+            intent.putExtra("studentLevel", studentInfo.getsLevel());
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        });
         //holder.sName.setText(nameArraylist.get(position).getsName());
     }
 
@@ -46,10 +60,13 @@ public class ClassListAdapter extends RecyclerView.Adapter<ClassListAdapter.MyVi
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView sName;
+        TextView sID;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             sName = itemView.findViewById(R.id.Name);
+            sID = itemView.findViewById(R.id.studentID);
+
         }
     }
 }

@@ -18,4 +18,14 @@
         android:textSize="20sp"
         android:textColor="@color/white"/>
 
+    <TextView
+        android:id="@+id/studentID"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Id"
+        android:gravity="left"
+        android:visibility="invisible"
+        android:textSize="20sp"
+        android:textColor="@color/white"/>
+
 </androidx.cardview.widget.CardView>
