@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.learnmoto.DisplayStudentData;
+import com.example.learnmoto.Teacher.DisplayStudentData;
 import com.example.learnmoto.Model.StudentModel;
 import com.example.learnmoto.R;
 

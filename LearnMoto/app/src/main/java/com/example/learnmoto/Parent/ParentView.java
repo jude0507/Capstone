@@ -17,12 +17,15 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.learnmoto.Adapter.AnnouncementAdapter;
 import com.example.learnmoto.Adapter.ChildListAdapter;
 import com.example.learnmoto.DisplayImage;
+import com.example.learnmoto.Model.AnnouncementModel;
 import com.example.learnmoto.Model.StudentModel;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.R;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
@@ -33,14 +36,16 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ParentView extends AppCompatActivity {
 
     private long backpressedTimes;
-    Button arrow_btn, logoutbtn, confirmLogout, arrow;
+    Button logoutbtn, confirmLogout, arrow;
     TextView Parent_Name;
     RelativeLayout relativeLayout1;
-    LinearLayout expandableAnnounce,childrenLayout, expandableView2, expandableLinear2;
-    RecyclerView recyclerView;
+    LinearLayout expandableAnnounce, childrenLayout, expandableView2, expandableLinear2;
+    RecyclerView recyclerView, rv_announcement;
     ChildListAdapter childListAdapter;
+    AnnouncementAdapter announcementAdapter;
     FirebaseFirestore firebaseFirestore;
     ArrayList<StudentModel> studentInfoArrayList;
+    ArrayList<AnnouncementModel> announcementArray;
     CircleImageView ParentImage;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -56,7 +61,6 @@ public class ParentView extends AppCompatActivity {
         setContentView(R.layout.activity_parent_view);
 
         arrow = findViewById(R.id.arrow_btn);
-        arrow_btn = findViewById(R.id.arrow_btn);
         logoutbtn = findViewById(R.id.arrow_btn_logout);
         confirmLogout = findViewById(R.id.confirmLogout);
         Parent_Name = findViewById(R.id.parent_name);
@@ -64,6 +68,7 @@ public class ParentView extends AppCompatActivity {
         expandableAnnounce = findViewById(R.id.expandableAnnounce);
         childrenLayout = findViewById(R.id.childrenLayout);
         recyclerView = findViewById(R.id.childRecyclerview);
+        rv_announcement = findViewById(R.id.announcement_rv);
         expandableView2 = findViewById(R.id.expandableLayout2);
         expandableLinear2 = findViewById(R.id.layout2);
         ParentImage = findViewById(R.id.profile);
@@ -80,19 +85,25 @@ public class ParentView extends AppCompatActivity {
         Parent_Name.setText(ParentName);
         DisplayImage();
 
-        if(savedInstanceState != null){
+        if (savedInstanceState != null) {
             String savedName = savedInstanceState.getString(ParentName);
             Parent_Name.setText(savedName);
         }
 
         EventChangeListener();
+        rv_announcement.setHasFixedSize(true);
+        rv_announcement.setLayoutManager(new LinearLayoutManager(this));
+        announcementArray = new ArrayList<AnnouncementModel>();
+        announcementAdapter = new AnnouncementAdapter(this, announcementArray);
+        rv_announcement.setAdapter(announcementAdapter);
+        AnnouncementListener();
 
         arrow.setOnClickListener(v -> {
             if (expandableAnnounce.getVisibility() == View.GONE) {
                 TransitionManager.beginDelayedTransition(relativeLayout1, new AutoTransition());
                 expandableAnnounce.setVisibility(View.VISIBLE);
                 arrow.setBackgroundResource(R.drawable.ic_arrow_up);
-            }else{
+            } else {
                 TransitionManager.beginDelayedTransition(relativeLayout1, new AutoTransition());
                 expandableAnnounce.setVisibility(View.GONE);
                 arrow.setBackgroundResource(R.drawable.ic_arrow_down);
@@ -104,7 +115,7 @@ public class ParentView extends AppCompatActivity {
                 TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
                 expandableView2.setVisibility(View.VISIBLE);
                 logoutbtn.setBackgroundResource(R.drawable.ic_arrow_up);
-            }else{
+            } else {
                 TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
                 expandableView2.setVisibility(View.GONE);
                 logoutbtn.setBackgroundResource(R.drawable.ic_arrow_down);
@@ -118,12 +129,25 @@ public class ParentView extends AppCompatActivity {
 
     }
 
+    private void AnnouncementListener() {
+        db.collection("Announcements")
+                .addSnapshotListener((value, error) -> {
+                    for (DocumentChange documentChange : value.getDocumentChanges()) {
+                        if (documentChange.getType() == DocumentChange.Type.ADDED) {
+                            announcementArray.add(documentChange.getDocument().toObject(AnnouncementModel.class));
+                        }
+
+                        announcementAdapter.notifyDataSetChanged();
+                    }
+                });
+    }
+
     //display the name of the children
     private void EventChangeListener() {
         firebaseFirestore.collection("Student").whereEqualTo("sGuardian", ParentLogin.pName)
                 .get().addOnSuccessListener(queryDocumentSnapshots -> {
 
-                    for (QueryDocumentSnapshot documentSnapshot: queryDocumentSnapshots){
+                    for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
                         studentInfoArrayList.add(documentSnapshot.toObject(StudentModel.class));
                     }
                 });
@@ -134,7 +158,7 @@ public class ParentView extends AppCompatActivity {
     }
 
     public void Expand(View view) {
-        int children = (recyclerView.getVisibility() == View.GONE)? View.VISIBLE: View.GONE;
+        int children = (recyclerView.getVisibility() == View.GONE) ? View.VISIBLE : View.GONE;
         TransitionManager.beginDelayedTransition(childrenLayout, new AutoTransition());
         recyclerView.setVisibility(children);
     }
@@ -145,8 +169,8 @@ public class ParentView extends AppCompatActivity {
         logoutbtn.setBackgroundResource(R.drawable.ic_arrow_down);
     }
 
-    public void DisplayImage(){
-        DisplayImage.RetrieveImageParents(this, "Parent", "pID" , ParentLogin.pID, ParentImage);
+    public void DisplayImage() {
+        DisplayImage.RetrieveImageParents(this, "Parent", "pID", ParentLogin.pID, ParentImage);
     }
 
 
@@ -161,10 +185,10 @@ public class ParentView extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (backpressedTimes + 3000 > System.currentTimeMillis()){
+        if (backpressedTimes + 3000 > System.currentTimeMillis()) {
             super.onBackPressed();
             return;
-        }else{
+        } else {
             Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, ParentLogin.class));
         }

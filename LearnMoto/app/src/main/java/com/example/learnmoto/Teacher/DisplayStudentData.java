@@ -1,4 +1,4 @@
-package com.example.learnmoto;
+package com.example.learnmoto.Teacher;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,14 +13,9 @@ import com.example.learnmoto.Kinder.KinderClassList;
 import com.example.learnmoto.Model.StudentModel;
 import com.example.learnmoto.Nursery.NurseryClassList;
 import com.example.learnmoto.Preparatory.PreparatoryClassList;
-import com.example.learnmoto.Student.StudentLogin;
-import com.example.learnmoto.Teacher.TeacherView;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
+import com.example.learnmoto.R;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 

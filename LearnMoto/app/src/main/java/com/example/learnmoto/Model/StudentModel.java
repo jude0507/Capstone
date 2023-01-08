@@ -7,14 +7,14 @@ import java.util.List;
 public class StudentModel {
 
     String myid;
-    public String sName, sAddress, sAge,sPassword, guardianPhone, sID, sGender, sBirthday, sLevel, sGuardian, imageurl, imagename;
+    public String sName, sAddress, sAge,sPassword, guardianPhone, sID, sGender, sBirthday, sLevel, sGuardian, imageurl, imagename, mathScore, engScore;
 
     public StudentModel(){
 
     }
 
     public StudentModel(String sName, String sAddress, String sAge, String sGender, String sBirthday, String sLevel, String sID, String sPassword, String guardianPhone,
-                        String imageurl, String imagename) {
+                        String imageurl, String imagename, String mathScore, String engScore) {
         this.sName = sName;
         this.sAddress = sAddress;
         this.sAge = sAge;
@@ -26,6 +26,8 @@ public class StudentModel {
         this.guardianPhone = guardianPhone;
         this.imageurl = imageurl;
         this.imagename = imagename;
+        this.mathScore = mathScore;
+        this.engScore = engScore;
     }
 
     @Exclude
@@ -131,5 +133,21 @@ public class StudentModel {
 
     public void setGuardianPhone(String guardianPhone) {
         this.guardianPhone = guardianPhone;
+    }
+
+    public String getMathScore() {
+        return mathScore;
+    }
+
+    public void setMathScore(String mathScore) {
+        this.mathScore = mathScore;
+    }
+
+    public String getEngScore() {
+        return engScore;
+    }
+
+    public void setEngScore(String engScore) {
+        this.engScore = engScore;
     }
 }

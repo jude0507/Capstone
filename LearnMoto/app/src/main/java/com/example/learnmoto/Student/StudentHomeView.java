@@ -23,14 +23,18 @@ import com.example.learnmoto.Adapter.AnnouncementAdapter;
 import com.example.learnmoto.DisplayImage;
 import com.example.learnmoto.Model.AnnouncementModel;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
+import com.example.learnmoto.Model.TeacherModel;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Adapter.StudentSubjectAdapter;
 import com.example.learnmoto.Adapter.TranslateAnimatioUI;
 import com.example.learnmoto.Teacher.TeacherLogin;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,6 +88,7 @@ public class StudentHomeView extends AppCompatActivity {
         displaylevel.setText(level);
 
         DisplayImage();
+        DisplayAdviserName();
 
 
         linearLayouttexts.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
@@ -92,18 +97,18 @@ public class StudentHomeView extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
 
             //Condition of what activity is selected
-            switch (item.getItemId()){
+            switch (item.getItemId()) {
                 case R.id.home:
                     return true;
 
                 case R.id.todo:
                     startActivity(new Intent(getApplicationContext(), Todo.class));
-                    overridePendingTransition(0,0);
+                    overridePendingTransition(0, 0);
                     return true;
 
                 case R.id.settings:
                     startActivity(new Intent(getApplicationContext(), StudentSettings.class));
-                    overridePendingTransition(0,0);
+                    overridePendingTransition(0, 0);
                     return true;
             }
 
@@ -114,14 +119,14 @@ public class StudentHomeView extends AppCompatActivity {
 
         studentSubjectAdapter = new StudentSubjectAdapter(this, mImages);
 
-        if (level.equals("Nursery")){
+        if (level.equals("Nursery")) {
 
             mImages.add(R.drawable.logo_english);
             mImages.add(R.drawable.logo_math);
             mImages.add(R.drawable.logo_science);
             mImages.add(R.drawable.logo_cl);
 
-        }else if (level.equals("Kinder")){
+        } else if (level.equals("Kinder")) {
 
             mImages.add(R.drawable.logo_english);
             mImages.add(R.drawable.logo_math);
@@ -129,7 +134,7 @@ public class StudentHomeView extends AppCompatActivity {
             mImages.add(R.drawable.logo_cl);
             mImages.add(R.drawable.logo_filipino);
 
-        }else{
+        } else {
 
             mImages.add(R.drawable.logo_english);
             mImages.add(R.drawable.logo_math);
@@ -158,11 +163,28 @@ public class StudentHomeView extends AppCompatActivity {
         scrollView.setOnTouchListener(new TranslateAnimatioUI(this, bottomNavigationView));
     }
 
+    private void DisplayAdviserName() {
+        db.collection("Teacher").whereEqualTo("myAdvisoryClass", level).get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        String getAdvisoryLevel = "";
+                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                            TeacherModel teacherModel = documentSnapshot.toObject(TeacherModel.class);
+                            teacherModel.setMyid(documentSnapshot.getId());
+                            getAdvisoryLevel += teacherModel.getTeacher_name();
+                        }
+
+                        adviserName.setText(getAdvisoryLevel);
+                    }
+                });
+    }
+
     private void EventChangeListener() {
         db.collection("Announcements")
                 .addSnapshotListener((value, error) -> {
-                    for (DocumentChange documentChange : value.getDocumentChanges()){
-                        if (documentChange.getType() == DocumentChange.Type.ADDED){
+                    for (DocumentChange documentChange : value.getDocumentChanges()) {
+                        if (documentChange.getType() == DocumentChange.Type.ADDED) {
                             announcementArray.add(documentChange.getDocument().toObject(AnnouncementModel.class));
                         }
 
@@ -171,21 +193,19 @@ public class StudentHomeView extends AppCompatActivity {
                 });
     }
 
-
-
     //Dipslay Image for student user
-    public void DisplayImage(){
+    public void DisplayImage() {
         DisplayImage.RetrieveImageStudents(this, "Student", "sID", StudentLogin.studID, StudPicture);
     }
 
     public void expand(View view) {
-        int v = (containerMessage.getVisibility() == View.GONE)? View.VISIBLE: View.GONE;
+        int v = (containerMessage.getVisibility() == View.GONE) ? View.VISIBLE : View.GONE;
         TransitionManager.beginDelayedTransition(linearLayouttexts, new AutoTransition());
         containerMessage.setVisibility(v);
     }
 
     public void expandsubject(View view) {
-        int subjects = (recyclerView.getVisibility() == View.GONE)? View.VISIBLE: View.GONE;
+        int subjects = (recyclerView.getVisibility() == View.GONE) ? View.VISIBLE : View.GONE;
         TransitionManager.beginDelayedTransition(subjectslayout, new AutoTransition());
         recyclerView.setVisibility(subjects);
     }

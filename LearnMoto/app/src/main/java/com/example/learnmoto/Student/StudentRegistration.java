@@ -71,19 +71,16 @@ public class StudentRegistration extends AppCompatActivity {
         yearlvl.add("Preparatory");
 
         ArrayAdapter<String> yearlvlAdapter;
-        yearlvlAdapter = new ArrayAdapter<>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,yearlvl);
+        yearlvlAdapter = new ArrayAdapter<>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, yearlvl);
         yearlevelSpinner.setAdapter(yearlvlAdapter);
 
         //Spinner for Year Level
         yearlevelSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (parent.getItemAtPosition(position).equals("Choose Level"))
-                {
+                if (parent.getItemAtPosition(position).equals("Choose Level")) {
                     // nothing to do
-                }
-                else
-                {
+                } else {
                     //once item selected
                     String itemselect = parent.getItemAtPosition(position).toString();
                     Toast.makeText(StudentRegistration.this, itemselect, Toast.LENGTH_SHORT).show();
@@ -110,7 +107,7 @@ public class StudentRegistration extends AppCompatActivity {
 
     }
 
-    private final DatePickerDialog.OnDateSetListener datepickerListener = new DatePickerDialog.OnDateSetListener(){
+    private final DatePickerDialog.OnDateSetListener datepickerListener = new DatePickerDialog.OnDateSetListener() {
 
         @Override
         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -119,19 +116,19 @@ public class StudentRegistration extends AppCompatActivity {
             calendar.set(Calendar.YEAR, year);
             calendar.set(Calendar.MONTH, month);
             calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            String dateFormat = month+"/"+dayOfMonth+"/"+ year;
+            String dateFormat = month + "/" + dayOfMonth + "/" + year;
             studentBday.setText(dateFormat);
             age = CalculateAge(calendar.getTimeInMillis());
         }
     };
 
-    int CalculateAge(long date){
+    int CalculateAge(long date) {
         Calendar cal = Calendar.getInstance();
         cal.setTimeInMillis(date);
 
         Calendar today = Calendar.getInstance();
-        int computeAge = (today.get(Calendar.YEAR) - cal.get(Calendar.YEAR)) + 1;
-        if (today.get(Calendar.DAY_OF_MONTH) < cal.get(Calendar.DAY_OF_MONTH)){
+        int computeAge = (today.get(Calendar.YEAR) - cal.get(Calendar.YEAR));
+        if (today.get(Calendar.DAY_OF_MONTH) < cal.get(Calendar.DAY_OF_MONTH)) {
             computeAge--;
         }
         return computeAge;
@@ -161,25 +158,25 @@ public class StudentRegistration extends AppCompatActivity {
                 .setMessage("All data are set to register.");
         alBuilder.setPositiveButton("Confirm", (dialog, which) -> {
 
-            if(!student_Name.isEmpty() && !student_Address.isEmpty() && !student_Gender.isEmpty() &&
+            if (!student_Name.isEmpty() && !student_Address.isEmpty() && !student_Gender.isEmpty() &&
                     !student_Birthday.isEmpty() && !student_Level.isEmpty() && !student_guardian.isEmpty()
-                    && !student_ID.isEmpty() && !student_Pass.isEmpty()){
-                if (GuardianPhone.length() == 11 && GuardianPhone.matches("^(09)\\d{9}")){
-                    if (ConfirmPassword.equals(student_Pass)){
-                        if (student_Pass.length() >= 6){
+                    && !student_ID.isEmpty() && !student_Pass.isEmpty()) {
+                if (GuardianPhone.length() == 11 && GuardianPhone.matches("^(09)\\d{9}")) {
+                    if (ConfirmPassword.equals(student_Pass)) {
+                        if (student_Pass.length() >= 6) {
                             ProgressDialog progressDialog = new ProgressDialog(this);
                             progressDialog.show();
                             progressDialog.setContentView(R.layout.progress_dialog_registration);
                             progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
                             DocumentReference documentReference = firestore.collection("Student").document(student_ID);
                             documentReference.get().addOnSuccessListener(documentSnapshot -> {
-                                if (documentSnapshot.exists()){
+                                if (documentSnapshot.exists()) {
                                     progressDialog.dismiss();
                                     Toast.makeText(StudentRegistration.this, "Student ID has been registered", Toast.LENGTH_SHORT).show();
-                                }else{
-                                    if (student_Level.equals("Choose Level")){
+                                } else {
+                                    if (student_Level.equals("Choose Level")) {
                                         Toast.makeText(this, "Chose your level", Toast.LENGTH_SHORT).show();
-                                    }else{
+                                    } else {
                                         StudentModel studentInfo = new StudentModel();
                                         studentInfo.setsName(student_Name);
                                         studentInfo.setsAddress(student_Address);
@@ -190,6 +187,7 @@ public class StudentRegistration extends AppCompatActivity {
                                         studentInfo.setsGuardian(student_guardian);
                                         studentInfo.setsID(student_ID);
                                         studentInfo.setsPassword(student_Pass);
+                                        studentInfo.setGuardianPhone(GuardianPhone);
                                         firestore.collection("Student").document(student_ID).set(studentInfo);
                                         progressDialog.dismiss();
                                         Toast.makeText(StudentRegistration.this, "Registration Successfully", Toast.LENGTH_SHORT).show();
@@ -197,21 +195,21 @@ public class StudentRegistration extends AppCompatActivity {
                                     }
                                 }
                             });
-                        }else{
+                        } else {
                             studentPass.requestFocus();
                             studentPass.setError("Atleast 6 characters required");
                         }
-                    }else{
+                    } else {
                         confirmPass.requestFocus();
                         confirmPass.setError("Not Matched");
                     }
 
-                }else{
+                } else {
                     phoneNumber.requestFocus();
                     phoneNumber.setError("Invalid Phone Number");
                 }
 
-            }else{
+            } else {
                 studentName.setError("Required Field!");
                 studentAddress.setError("Required Field!");
                 studentBday.setError("Required Field!");

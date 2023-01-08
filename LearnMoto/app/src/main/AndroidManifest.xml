@@ -22,7 +22,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".DisplayStudentData"
+            android:name=".MathActivity"
+            android:exported="false"
+            android:noHistory="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Teacher.DisplayStudentData"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

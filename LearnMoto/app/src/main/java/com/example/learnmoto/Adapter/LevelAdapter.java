@@ -72,16 +72,16 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.MyViewHolder
                         case 1:
                             if (TeacherView.assignLevel.contains("Nursery")){
                                 v.getContext().startActivity(new Intent(v.getContext(), NurseryClassList.class));
-                                Toast.makeText(v.getContext(), "nursery 1", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(v.getContext(), "nursery 1", Toast.LENGTH_SHORT).show();
                             }else if (TeacherView.assignLevel.contains("Preparatory")){
                                 v.getContext().startActivity(new Intent(v.getContext(), PreparatoryClassList.class));
-                                Toast.makeText(v.getContext(), "preparatory 1", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(v.getContext(), "preparatory 1", Toast.LENGTH_SHORT).show();
                             }
                             break;
                         case 2:
                             if (TeacherView.assignLevel.contains("Preparatory")){
                                 v.getContext().startActivity(new Intent(v.getContext(), PreparatoryClassList.class));
-                                Toast.makeText(v.getContext(), "preparatory", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(v.getContext(), "preparatory", Toast.LENGTH_SHORT).show();
                             }
                             break;
                     }

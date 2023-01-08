@@ -56,7 +56,17 @@
                         android:textColor="@color/black"
                         android:textSize="18sp" />
 
+                    <TextView
+                        android:id="@+id/teacherLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Teacher"
+                        android:visibility="gone"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
                     <LinearLayout
+                        android:id="@+id/layoutAdvisory"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -328,15 +338,21 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
                     android:orientation="vertical"
-                    android:visibility="gone"
                     android:animateLayoutChanges="true"
+                    android:visibility="gone"
+                    android:background="@drawable/gradientbg"
                     android:padding="10dp">
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:padding="10dp"
+                    <TextView
+                        android:id="@+id/ClassLevelAdvisory"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/rvAdvisoryClass"/>
+                        android:textColor="@color/black"
+                        android:gravity="center_horizontal"
+                        android:textSize="20sp"
+                        android:text="" />
+
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 

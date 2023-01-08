@@ -9,10 +9,15 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.transition.AutoTransition;
+import android.transition.TransitionManager;
 import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
+import com.example.learnmoto.MathActivity;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Student.StudentHomeView;
 
@@ -21,6 +26,8 @@ public class PreparatoryMathQuiz extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     TextView subjectlevel;
+    LinearLayout expandableView2, expandableLinear2;
+    Button quizArrow;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,8 +35,23 @@ public class PreparatoryMathQuiz extends AppCompatActivity {
 
         drawerLayout = findViewById(R.id.mydrawer_layout);
         subjectlevel = findViewById(R.id.SubjectLabel);
+        quizArrow = findViewById(R.id.arrow_pdf);
+        expandableView2 = findViewById(R.id.expandableLayout2);
+        expandableLinear2 = findViewById(R.id.layout2);
 
         subjectlevel.setText("Math");
+
+        quizArrow.setOnClickListener(v -> {
+            if (expandableView2.getVisibility() == View.GONE) {
+                TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
+                expandableView2.setVisibility(View.VISIBLE);
+                quizArrow.setBackgroundResource(R.drawable.ic_arrow_up);
+            }else{
+                TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
+                expandableView2.setVisibility(View.GONE);
+                quizArrow.setBackgroundResource(R.drawable.ic_arrow_down);
+            }
+        });
     }
 
     public void clickmenu(View view) {
@@ -90,6 +112,10 @@ public class PreparatoryMathQuiz extends AppCompatActivity {
     protected void onStop() {
         unregisterReceiver(networkChangeListener);
         super.onStop();
+    }
+
+    public void MathQuiz(View view) {
+        startActivity(new Intent(this, MathActivity.class));
     }
 
 }

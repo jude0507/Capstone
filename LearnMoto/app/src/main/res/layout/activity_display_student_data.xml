@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="@drawable/background"
     android:padding="10dp"
-    tools:context=".DisplayStudentData">
+    tools:context=".Teacher.DisplayStudentData">
 
     <LinearLayout
         android:layout_width="match_parent"
