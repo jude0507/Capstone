@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
+import com.example.learnmoto.DisplayChildData;
 import com.example.learnmoto.MathActivity;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Student.StudentHomeView;
@@ -51,6 +52,7 @@ public class KinderMathQuiz extends AppCompatActivity {
                 quizArrow.setBackgroundResource(R.drawable.ic_arrow_down);
             }
         });
+
 
     }
 

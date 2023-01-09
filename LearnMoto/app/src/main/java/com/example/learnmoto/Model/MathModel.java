@@ -6,11 +6,11 @@ public class MathModel {
     int dice2;
     int outputDice;
 
-    public MathModel(int dice1, String operator, int dice2, int outputDice) {
+    public MathModel(int dice1, String operator, int dice2) {
         this.dice1 = dice1;
         this.operator = operator;
         this.dice2 = dice2;
-        this.outputDice = outputDice;
+        //this.outputDice = outputDice;
     }
 
     public MathModel(){}
@@ -39,11 +39,11 @@ public class MathModel {
         this.dice2 = dice2;
     }
 
-    public int getOutputDice() {
-        return outputDice;
-    }
-
-    public void setOutputDice(int outputDice) {
-        this.outputDice = outputDice;
-    }
+//    public int getOutputDice() {
+//        return outputDice;
+//    }
+//
+//    public void setOutputDice(int outputDice) {
+//        this.outputDice = outputDice;
+//    }
 }

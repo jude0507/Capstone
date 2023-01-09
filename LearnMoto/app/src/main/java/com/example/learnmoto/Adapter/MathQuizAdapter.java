@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -31,7 +32,8 @@ public class MathQuizAdapter extends RecyclerView.Adapter<MathQuizAdapter.MyView
     ArrayList<MathModel> mathModelArrayList;
 
     int dice1Val = 0, dice2Val = 0;
-    int score = 0;
+
+
 
     public MathQuizAdapter(Context context, ArrayList<MathModel> mathModelArrayList) {
         this.context = context;
@@ -54,66 +56,70 @@ public class MathQuizAdapter extends RecyclerView.Adapter<MathQuizAdapter.MyView
         holder.img2.setImageResource(mathModel.getDice2());
         holder.equal.setText("=");
 
-        holder.cardboard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        holder.cardboard.setOnClickListener(view -> {
 
-                if (mathModel.getDice1() == R.drawable.dice1) {
-                    dice1Val = 1;
-                } else if (mathModel.getDice1() == R.drawable.dice2) {
-                    dice1Val = 2;
-                } else if (mathModel.getDice1() == R.drawable.dice3) {
-                    dice1Val = 3;
-                } else if (mathModel.getDice1() == R.drawable.dice4) {
-                    dice1Val = 4;
-                } else if (mathModel.getDice1() == R.drawable.dice5) {
-                    dice1Val = 5;
-                } else if (mathModel.getDice1() == R.drawable.dice6) {
-                    dice1Val = 6;
-                }
+            if (mathModel.getDice1() == R.drawable.dice1) {
+                dice1Val = 1;
+            } else if (mathModel.getDice1() == R.drawable.dice2) {
+                dice1Val = 2;
+            } else if (mathModel.getDice1() == R.drawable.dice3) {
+                dice1Val = 3;
+            } else if (mathModel.getDice1() == R.drawable.dice4) {
+                dice1Val = 4;
+            } else if (mathModel.getDice1() == R.drawable.dice5) {
+                dice1Val = 5;
+            } else if (mathModel.getDice1() == R.drawable.dice6) {
+                dice1Val = 6;
+            }
 
-                if (mathModel.getDice2() == R.drawable.dice1) {
-                    dice2Val = 1;
-                } else if (mathModel.getDice2() == R.drawable.dice2) {
-                    dice2Val = 2;
-                } else if (mathModel.getDice2() == R.drawable.dice3) {
-                    dice2Val = 3;
-                } else if (mathModel.getDice2() == R.drawable.dice4) {
-                    dice2Val = 4;
-                } else if (mathModel.getDice2() == R.drawable.dice5) {
-                    dice2Val = 5;
-                } else if (mathModel.getDice2() == R.drawable.dice6) {
-                    dice2Val = 6;
-                }
+            if (mathModel.getDice2() == R.drawable.dice1) {
+                dice2Val = 1;
+            } else if (mathModel.getDice2() == R.drawable.dice2) {
+                dice2Val = 2;
+            } else if (mathModel.getDice2() == R.drawable.dice3) {
+                dice2Val = 3;
+            } else if (mathModel.getDice2() == R.drawable.dice4) {
+                dice2Val = 4;
+            } else if (mathModel.getDice2() == R.drawable.dice5) {
+                dice2Val = 5;
+            } else if (mathModel.getDice2() == R.drawable.dice6) {
+                dice2Val = 6;
+            }
 
-                MathActivity.textToSpeech.speak(dice1Val + " + " + dice2Val + "?", TextToSpeech.QUEUE_ADD, null);
+            MathActivity.textToSpeech.speak(dice1Val + " + " + dice2Val + "?", TextToSpeech.QUEUE_ADD, null);
 
-                final EditText inputDialog = new EditText(context);
-                inputDialog.setInputType(InputType.TYPE_CLASS_NUMBER);
-                inputDialog.setHint(dice1Val + " + " + dice2Val);
+            final EditText inputDialog = new EditText(context);
+            inputDialog.setInputType(InputType.TYPE_CLASS_NUMBER);
+            inputDialog.setHint(dice1Val + " + " + dice2Val);
 
-                AlertDialog dialog = builder.setTitle("ANSWER").setView(inputDialog).setCancelable(false).setPositiveButton("OK", (dialogInterface, i) -> {
-                }).show();
+            AlertDialog dialog = builder.setTitle("ANSWER").setView(inputDialog).setCancelable(false).setPositiveButton("OK", (dialogInterface, i) -> {
+            }).show();
 
-                Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
-                positiveButton.setOnClickListener(view1 -> {
-                    String answer = inputDialog.getText().toString();
-                    int key = dice1Val + dice2Val;
+            Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+            positiveButton.setOnClickListener(view1 -> {
+                String answer = inputDialog.getText().toString();
+                int key = dice1Val + dice2Val;
 
+                if (answer.isEmpty()){
+                    textToSpeech.speak("No answer found", TextToSpeech.QUEUE_ADD, null);
+                    inputDialog.setError("Required Field");
+                }else{
                     holder.answerInput.setText(answer);
                     dialog.dismiss();
                     if (key == Integer.parseInt(answer)) {
-                        score++;
-                        textToSpeech.speak("CORRECT! Current Score is: " + score, TextToSpeech.QUEUE_ADD, null);
+                        MathActivity.score++;
+                        textToSpeech.speak("CORRECT!", TextToSpeech.QUEUE_ADD, null);
+                        holder.cardboard.setEnabled(false);
                     } else {
-                        textToSpeech.speak("Wrong answer!", TextToSpeech.QUEUE_ADD, null);
+                        textToSpeech.speak("Incorrect answer!", TextToSpeech.QUEUE_ADD, null);
+                        holder.cardboard.setEnabled(false);
                     }
-                });
-            }
+                }
+            });
+
         });
 
     }
-
     @Override
     public int getItemCount() {
         return mathModelArrayList.size();

@@ -29,7 +29,7 @@
                 android:textStyle="bold"/>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/logout"
+                android:id="@+id/quiz"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="5dp"
@@ -47,7 +47,7 @@
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:id="@+id/icon_logout"
+                            android:id="@+id/icon_quiz"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:paddingTop="5dp"

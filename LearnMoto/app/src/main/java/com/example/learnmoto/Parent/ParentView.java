@@ -18,7 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.learnmoto.Adapter.AnnouncementAdapter;
-import com.example.learnmoto.Adapter.ChildListAdapter;
+import com.example.learnmoto.Adapter.ChildAdapter;
 import com.example.learnmoto.DisplayImage;
 import com.example.learnmoto.Model.AnnouncementModel;
 import com.example.learnmoto.Model.StudentModel;
@@ -41,7 +41,7 @@ public class ParentView extends AppCompatActivity {
     RelativeLayout relativeLayout1;
     LinearLayout expandableAnnounce, childrenLayout, expandableView2, expandableLinear2;
     RecyclerView recyclerView, rv_announcement;
-    ChildListAdapter childListAdapter;
+    ChildAdapter childListAdapter;
     AnnouncementAdapter announcementAdapter;
     FirebaseFirestore firebaseFirestore;
     ArrayList<StudentModel> studentInfoArrayList;
@@ -78,7 +78,7 @@ public class ParentView extends AppCompatActivity {
 
         firebaseFirestore = FirebaseFirestore.getInstance();
         studentInfoArrayList = new ArrayList<>();
-        childListAdapter = new ChildListAdapter(ParentView.this, studentInfoArrayList);
+        childListAdapter = new ChildAdapter(ParentView.this, studentInfoArrayList);
 
         recyclerView.setAdapter(childListAdapter);
 

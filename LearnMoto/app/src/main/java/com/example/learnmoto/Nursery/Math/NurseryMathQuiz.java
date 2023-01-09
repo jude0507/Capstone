@@ -17,9 +17,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
+import com.example.learnmoto.DisplayChildData;
 import com.example.learnmoto.MathActivity;
+import com.example.learnmoto.Model.StudentModel;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Student.StudentHomeView;
+import com.example.learnmoto.Student.StudentLogin;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class NurseryMathQuiz extends AppCompatActivity {
 
@@ -41,6 +48,8 @@ public class NurseryMathQuiz extends AppCompatActivity {
 
         subjectlevel.setText("Math");
 
+
+
         quizArrow.setOnClickListener(v -> {
             if (expandableView2.getVisibility() == View.GONE) {
                 TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
@@ -53,7 +62,9 @@ public class NurseryMathQuiz extends AppCompatActivity {
             }
         });
 
+
     }
+
 
     public void clickmenu(View view) {
         openDrawer(drawerLayout);

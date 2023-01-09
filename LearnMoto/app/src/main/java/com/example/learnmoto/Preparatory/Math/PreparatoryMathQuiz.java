@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
+import com.example.learnmoto.DisplayChildData;
 import com.example.learnmoto.MathActivity;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Student.StudentHomeView;
@@ -36,10 +37,12 @@ public class PreparatoryMathQuiz extends AppCompatActivity {
         drawerLayout = findViewById(R.id.mydrawer_layout);
         subjectlevel = findViewById(R.id.SubjectLabel);
         quizArrow = findViewById(R.id.arrow_pdf);
+
         expandableView2 = findViewById(R.id.expandableLayout2);
         expandableLinear2 = findViewById(R.id.layout2);
 
         subjectlevel.setText("Math");
+
 
         quizArrow.setOnClickListener(v -> {
             if (expandableView2.getVisibility() == View.GONE) {
@@ -52,6 +55,8 @@ public class PreparatoryMathQuiz extends AppCompatActivity {
                 quizArrow.setBackgroundResource(R.drawable.ic_arrow_down);
             }
         });
+
+
     }
 
     public void clickmenu(View view) {

@@ -1,4 +1,4 @@
-package com.example.learnmoto.Teacher;
+package com.example.learnmoto;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,30 +14,26 @@ import com.bumptech.glide.Glide;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.Kinder.KinderClassList;
 import com.example.learnmoto.Model.StudentModel;
-import com.example.learnmoto.Nursery.NurseryClassList;
 import com.example.learnmoto.Parent.ParentView;
-import com.example.learnmoto.Preparatory.PreparatoryClassList;
-import com.example.learnmoto.R;
+import com.example.learnmoto.Teacher.DisplayStudentData;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class DisplayStudentData extends AppCompatActivity {
+public class DisplayChildData extends AppCompatActivity {
 
     TextView name, level, guardianName, Phone, address, birthday, math, english;
     String id, getNameIntent;
-    String getSLevel;
     String getGuardianName, getBirthday, getAddress, imageStudent, phoneNumber, mathScore, engScore;
     CircleImageView StudPicture;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_display_student_data);
-
+        setContentView(R.layout.activity_display_child_data);
         name = findViewById(R.id.name);
         level = findViewById(R.id.level);
         math = findViewById(R.id.math);
@@ -50,11 +46,10 @@ public class DisplayStudentData extends AppCompatActivity {
 
         getNameIntent = getIntent().getStringExtra("studentName");
         id = getIntent().getStringExtra("studentID");
-        getSLevel = getIntent().getStringExtra("studentLevel");
-
         DisplayData();
 
     }
+
     @SuppressLint("NotConstructor")
     public void DisplayData(){
         db.collection("Student").whereEqualTo("sID", id).get()
@@ -75,11 +70,10 @@ public class DisplayStudentData extends AppCompatActivity {
                         getAddress += studentInfo.getsAddress();
                         imageStudent += studentInfo.getImageurl();
                         phoneNumber += studentInfo.getGuardianPhone();
-                        mathScore += studentInfo.getMathScore();
                         engScore += studentInfo.getEngScore();
+                        mathScore += studentInfo.getMathScore();
                     }
                     name.setText(getNameIntent);
-                    level.setText(getSLevel);
                     guardianName.setText(getGuardianName);
                     birthday.setText(getBirthday);
                     address.setText(getAddress);
@@ -87,20 +81,14 @@ public class DisplayStudentData extends AppCompatActivity {
                     math.setText(mathScore);
                     english.setText(engScore);
 
-                    Glide.with(DisplayStudentData.this).load(imageStudent).placeholder(R.drawable.ic_user_circle)
+                    Glide.with(DisplayChildData.this).load(imageStudent).placeholder(R.drawable.ic_user_circle)
                             .into(StudPicture);
 
                 });
     }
 
-    public void BackToTeacherView(View view) {
-        if (getSLevel.equals("Kinder")){
-            startActivity(new Intent(this, KinderClassList.class));
-        }else if (getSLevel.equals("Nursery")){
-            startActivity(new Intent(this, NurseryClassList.class));
-        }else{
-            startActivity(new Intent(this, PreparatoryClassList.class));
-        }
+    public void BackToParentView(View view) {
+        startActivity(new Intent(this, ParentView.class));
     }
 
     @Override
@@ -115,5 +103,4 @@ public class DisplayStudentData extends AppCompatActivity {
         unregisterReceiver(networkChangeListener);
         super.onStop();
     }
-
 }
