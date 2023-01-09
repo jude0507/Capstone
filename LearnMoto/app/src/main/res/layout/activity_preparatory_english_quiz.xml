@@ -14,48 +14,93 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_margin="10dp">
 
             <include layout="@layout/mytoolbar"/>
-            <LinearLayout
+
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:text="Pronounce Quiz"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
 
-                <TextView
+            <androidx.cardview.widget.CardView
+                android:id="@+id/pronounceCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="5dp"
+                app:cardBackgroundColor="@color/light_green"
+                app:contentPadding="10dp">
+
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="QUiZ"
-                    android:gravity="center"
-                    android:textSize="50dp"/>
+                    android:layout_height="wrap_content">
 
-<!--                <LinearLayout-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:layout_marginHorizontal="20dp"-->
-<!--                    android:id="@+id/pdf">-->
+                    <LinearLayout
+                        android:id="@+id/layout3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-<!--                    <ImageView-->
-<!--                        android:layout_width="100dp"-->
-<!--                        android:layout_height="150dp"-->
-<!--                        android:onClick="pdf"-->
-<!--                        android:src="@drawable/ic_pdf"/>-->
+                        <ImageView
+                            android:id="@+id/icon_pronounce"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/ic_pronounce"/>
 
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="PDF"-->
-<!--                        android:textColor="@color/black"-->
-<!--                        android:layout_gravity="center"/>-->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Start Now"
+                            android:layout_margin="5dp"
+                            android:textColor="@color/fontColor"
+                            android:fontFamily="@font/aloevera"
+                            android:layout_marginStart="50dp"
+                            android:textSize="20sp" />
 
-<!--                </LinearLayout>-->
+                    </LinearLayout>
 
-            </LinearLayout>
+                    <Button
+                        android:id="@+id/arrow_pronounce"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/ic_arrow_down" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/expandableLayout3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Take a Quiz"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:onClick="StartQuiz"
+                        android:drawableEnd="@drawable/ic_reading"
+                        android:layout_gravity="center"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
         </LinearLayout>
 
     </ScrollView>

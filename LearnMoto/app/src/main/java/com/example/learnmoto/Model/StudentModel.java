@@ -7,14 +7,15 @@ import java.util.List;
 public class StudentModel {
 
     String myid;
-    public String sName, sAddress, sAge,sPassword, guardianPhone, sID, sGender, sBirthday, sLevel, sGuardian, imageurl, imagename, mathScore, engScore;
+    public String sName, sAddress, sAge,sPassword, guardianPhone, sID, sGender, sBirthday,
+            sLevel, sGuardian, imageurl, imagename, mathScore, engScore, scienceScore, filipinoScore, clScore;
 
     public StudentModel(){
 
     }
 
     public StudentModel(String sName, String sAddress, String sAge, String sGender, String sBirthday, String sLevel, String sID, String sPassword, String guardianPhone,
-                        String imageurl, String imagename, String mathScore, String engScore) {
+                        String imageurl, String imagename, String mathScore, String engScore, String scienceScore, String filipinoScore, String clScore) {
         this.sName = sName;
         this.sAddress = sAddress;
         this.sAge = sAge;
@@ -28,6 +29,9 @@ public class StudentModel {
         this.imagename = imagename;
         this.mathScore = mathScore;
         this.engScore = engScore;
+        this.scienceScore = scienceScore;
+        this.filipinoScore = filipinoScore;
+        this.clScore = clScore;
     }
 
     @Exclude
@@ -149,5 +153,29 @@ public class StudentModel {
 
     public void setEngScore(String engScore) {
         this.engScore = engScore;
+    }
+
+    public String getScienceScore() {
+        return scienceScore;
+    }
+
+    public void setScienceScore(String scienceScore) {
+        this.scienceScore = scienceScore;
+    }
+
+    public String getFilipinoScore() {
+        return filipinoScore;
+    }
+
+    public void setFilipinoScore(String filipinoScore) {
+        this.filipinoScore = filipinoScore;
+    }
+
+    public String getClScore() {
+        return clScore;
+    }
+
+    public void setClScore(String clScore) {
+        this.clScore = clScore;
     }
 }

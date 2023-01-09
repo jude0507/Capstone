@@ -6,28 +6,34 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
+import android.content.SharedPreferences;
+
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
-import android.text.InputType;
+
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
+
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.learnmoto.Kinder.English.KinderEnglishQuiz;
 import com.example.learnmoto.Kinder.Math.KinderMathQuiz;
 import com.example.learnmoto.Nursery.English.NurseryEnglishQuiz;
+
 import com.example.learnmoto.Nursery.Math.NurseryMathQuiz;
 import com.example.learnmoto.Preparatory.English.PreparatoryEnglishQuiz;
+
 import com.example.learnmoto.Preparatory.Math.PreparatoryMathQuiz;
 import com.example.learnmoto.Student.StudentHomeView;
+import com.example.learnmoto.Student.StudentLogin;
+
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -47,6 +53,10 @@ public class EnglishQuiz extends AppCompatActivity {
     String[] arrayList = {"red", "fun", "joy", "sign", "color","leaves"
             ,"paper","bag","ball","bread","medal","paint","tape","shoes","slipper"};
 
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    SharedPreferences sharedPreferences;
+    String id = StudentLogin.studID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +72,9 @@ public class EnglishQuiz extends AppCompatActivity {
         txtInput.setEnabled(false);
         txtInput.setVisibility(View.INVISIBLE);
         speak.setVisibility(View.INVISIBLE);
+
+       //sharedPreferences = getApplicationContext().getSharedPreferences("Preferences", MODE_PRIVATE);
+        //id = sharedPreferences.getString(StudentLogin.studID, "");
 
         builder = new AlertDialog.Builder(this);
 
@@ -135,6 +148,21 @@ public class EnglishQuiz extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(EnglishQuiz.this, "Final Score: " + score, Toast.LENGTH_SHORT).show();
+                String engscore = String.valueOf(score);
+                Toast.makeText(EnglishQuiz.this, id, Toast.LENGTH_SHORT).show();
+                DocumentReference documentReference = db.collection("Student").document(id);
+                documentReference.update("engScore", engscore);
+                textToSpeech.speak("Your final score is " + engscore + "over six",TextToSpeech.QUEUE_ADD, null);
+                Toast.makeText(EnglishQuiz.this, "Score has been saved", Toast.LENGTH_SHORT).show();
+
+                if (StudentHomeView.level.equals("Kinder")){
+                    startActivity(new Intent(EnglishQuiz.this, KinderMathQuiz.class));
+                }else if (StudentHomeView.level.equals("Nursery")){
+                    startActivity(new Intent(EnglishQuiz.this, NurseryMathQuiz.class));
+                }else{
+                    startActivity(new Intent(EnglishQuiz.this, PreparatoryMathQuiz.class));
+                }
+
             }
         });
     }
@@ -147,10 +175,12 @@ public class EnglishQuiz extends AppCompatActivity {
                 ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                 if (txtRandom.getText().equals(result.get(0))) {
                     score++;
-                    Toast.makeText(this, "Score: "+score , Toast.LENGTH_SHORT).show();
+                    textToSpeech.speak("Correct! Current Score is " + score, TextToSpeech.QUEUE_ADD, null);
+                    onShuffle();
                 } else {
                     speak.setClickable(false);
-                    Toast.makeText(this, "Not Match, Please Shuffle the word", Toast.LENGTH_SHORT).show();
+                    textToSpeech.speak("Incorrect answer", TextToSpeech.QUEUE_ADD, null);
+                    onShuffle();
                 }
 
             }

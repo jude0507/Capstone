@@ -9,10 +9,16 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.transition.AutoTransition;
+import android.transition.TransitionManager;
 import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
+import com.example.learnmoto.ChristianLivingQuiz;
+import com.example.learnmoto.Nursery.ChristianLiving.NurseryChristianLivingQuiz;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Student.StudentHomeView;
 
@@ -20,6 +26,9 @@ public class PreparatoryChristianLivingQuiz extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     TextView subjectlevel;
+    LinearLayout expandableView1, expandableLinear1;
+    Button quizArrow;
+    public static String subjectName = "Preparatory Christian Living";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +36,19 @@ public class PreparatoryChristianLivingQuiz extends AppCompatActivity {
         drawerLayout = findViewById(R.id.mydrawer_layout);
         subjectlevel = findViewById(R.id.SubjectLabel);
 
-        subjectlevel.setText("Christian Living");
+        subjectlevel.setText(NurseryChristianLivingQuiz.subjectName);
+
+        quizArrow.setOnClickListener(v -> {
+            if (expandableView1.getVisibility() == View.GONE) {
+                TransitionManager.beginDelayedTransition(expandableLinear1, new AutoTransition());
+                expandableView1.setVisibility(View.VISIBLE);
+                quizArrow.setBackgroundResource(R.drawable.ic_arrow_up);
+            }else{
+                TransitionManager.beginDelayedTransition(expandableLinear1, new AutoTransition());
+                expandableView1.setVisibility(View.GONE);
+                quizArrow.setBackgroundResource(R.drawable.ic_arrow_down);
+            }
+        });
     }
     public void clickmenu(View view) {
         openDrawer(drawerLayout);
@@ -89,4 +110,7 @@ public class PreparatoryChristianLivingQuiz extends AppCompatActivity {
         super.onStop();
     }
 
+    public void StartQuiz(View view) {
+        startActivity(new Intent(this, ChristianLivingQuiz.class));
+    }
 }

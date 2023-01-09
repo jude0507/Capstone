@@ -21,641 +21,391 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".EnglishQuiz"
+            android:name=".FilipinoQuiz"
             android:exported="false">
-
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
         </activity>
+        <activity
+            android:name=".ScienceQuiz"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ChristianLivingQuiz"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".EnglishQuiz"
+            android:exported="false"
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".DisplayChildData"
-            android:exported="false">
-        </activity>
+            android:exported="false"
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".MathActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false"
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".Teacher.DisplayStudentData"
-            android:exported="false">
-        </activity>
+            android:exported="false"
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".Kinder.KStories"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".Kinder.Story.KThirdStory"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".Kinder.Story.KSecondStory"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".Kinder.Story.KFirstStory"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".Preparatory.Stories.PThirdStory"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".Preparatory.Stories.PSecondStory"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".Preparatory.Stories.PFirstStory"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".Preparatory.PStories"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".Student.Alphabet"
-            android:exported="false">
-        </activity>
+            android:exported="false"
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".Student.PronounceAlphabet"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".Preparatory.SibikaKultura.PrepSibKulVideoView"
             android:exported="false"
-            android:screenOrientation="landscape">
-        </activity>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Preparatory.Science.PrepSciVideoView"
             android:exported="false"
-            android:screenOrientation="landscape">
-        </activity>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Preparatory.Math.PrepMathVideoView"
             android:exported="false"
-            android:screenOrientation="landscape">
-        </activity>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Preparatory.Filipino.PrepFilVideoView"
             android:exported="false"
-            android:screenOrientation="landscape">
-        </activity>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Preparatory.English.PrepEngVideoView"
             android:exported="false"
-
-            android:screenOrientation="landscape">
-
-        </activity>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Preparatory.ChristianLiving.PrepCLVideoView"
             android:exported="false"
-
-            android:screenOrientation="landscape">
-
-        </activity>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Nursery.Science.NurserySciVideoView"
             android:exported="false"
-
-            android:screenOrientation="landscape">
-
-        </activity>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Nursery.Math.NurseryMathVideoView"
             android:exported="false"
-
-            android:screenOrientation="landscape">
-
-        </activity>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Nursery.English.NurseryEngVideoView"
             android:exported="false"
-
-            android:screenOrientation="landscape">
-
-        </activity>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Nursery.ChristianLiving.NurseryCLVideoView"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"
+            android:screenOrientation="fullSensor" />
         <activity
             android:name=".Kinder.Science.KinderSciVideoView"
             android:exported="false"
-
-            android:screenOrientation="landscape">
-
-        </activity>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Kinder.Math.KinderMathVideoView"
             android:exported="false"
-
-            android:screenOrientation="landscape">
-
-        </activity>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Kinder.Filipino.KinderFilVideoView"
             android:exported="false"
-
-            android:screenOrientation="landscape">
-
-        </activity>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Kinder.English.KinderEnglishVideoView"
             android:exported="false"
-
-            android:screenOrientation="landscape">
-
-        </activity>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Kinder.ChristianLiving.KinderCLVideoView"
             android:exported="false"
-
-            android:screenOrientation="landscape">
-
-        </activity>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".Teacher.SubjectVideo"
-            android:exported="false">
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Kinder.KinderClassList"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Preparatory.PreparatoryClassList"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Nursery.NurseryClassList"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Teacher.TeacherSettings"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Teacher.TeacherProfile"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Preparatory.SibikaKultura.PreparatorySibKulQuiz"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Preparatory.SibikaKultura.PreparatorySibKulWatch"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Preparatory.SibikaKultura.PreparatorySibKulRead"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".PDF.SibikaKulturaViewPDF"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".PDF.SibikaKulturaPDF"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Preparatory.Filipino.PreparatoryFilipinoQuiz"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Preparatory.Filipino.PreparatoryFilipinoWatch"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Preparatory.Filipino.PreparatoryFilipinoRead"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Kinder.Filipino.KinderFilipinoQuiz"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Kinder.Filipino.KinderFilipinoWatch"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Kinder.Filipino.KinderFilipinoRead"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".PDF.FilipinoViewPDF"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".PDF.FilipinoPDF"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Kinder.ChristianLiving.KinderChristianLivingQuiz"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Kinder.ChristianLiving.KinderChristianLivingWatch"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Kinder.ChristianLiving.KinderChristianLivingRead"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Nursery.ChristianLiving.NurseryChristianLivingQuiz"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Nursery.ChristianLiving.NurseryChristianLivingWatch"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Nursery.ChristianLiving.NurseryChristianLivingRead"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Preparatory.ChristianLiving.PreparatoryChristianLivingQuiz"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Preparatory.ChristianLiving.PreparatoryChristianLivingWatch"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Preparatory.ChristianLiving.PreparatoryChristianLivingRead"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".PDF.ChristianLivingViewPDF"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".PDF.ChristianLivingPDF"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Preparatory.Science.PreparatoryScienceQuiz"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Preparatory.Science.PreparatoryScienceWatch"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Preparatory.Science.PreparatoryScienceRead"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Nursery.Science.NurseryScienceQuiz"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Nursery.Science.NurseryScienceWatch"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Nursery.Science.NurseryScienceRead"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".PDF.ScienceViewPDF"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".PDF.SciencePDF"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Kinder.Science.KinderScienceQuiz"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Kinder.Science.KinderScienceWatch"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Kinder.Science.KinderScienceRead"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Preparatory.Math.PreparatoryMathQuiz"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Preparatory.Math.PreparatoryMathWatch"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Preparatory.Math.PreparatoryMathRead"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Kinder.Math.KinderMathQuiz"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Kinder.Math.KinderMathWatch"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Kinder.Math.KinderMathRead"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Kinder.English.KinderEnglishQuiz"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Kinder.English.KinderEnglishWatch"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Nursery.Math.NurseryMathQuiz"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Nursery.Math.NurseryMathWatch"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Nursery.Math.NurseryMathRead"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".PDF.MathViewPDF"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Preparatory.English.PreparatoryEnglishWatch"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Preparatory.English.PreparatoryEnglishQuiz"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Nursery.English.NurseryEnglishQuiz"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Nursery.English.NurseryEnglishWatch"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".PDF.EnglishViewPDF"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".PDF.EnglishPDF"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Nursery.Story.NFourthStory"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Nursery.Story.NThirdStory"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Nursery.Story.NSecondStory"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Nursery.Story.NFirstStory"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".PDF.MathPDF"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Nursery.NStories"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Preparatory.English.PreparatoryEnglish"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Kinder.English.KinderEnglish"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Nursery.English.NurseryEnglish"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Teacher.Announcement"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Teacher.TeacherView"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Parent.ParentSettings"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Parent.ParentView"
-            android:exported="false"
-            >
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".Student.Todo"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".Student.StudentSettings"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".Student.StudentHomeView"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".Teacher.TeacherRegistration"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".Student.StudentInfoSettings"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".Teacher.TeacherLogin"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".Student.StudentRegistration"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".Parent.ParentRegistration"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".Student.StudentLogin"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".Parent.ParentLogin"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"
-            >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

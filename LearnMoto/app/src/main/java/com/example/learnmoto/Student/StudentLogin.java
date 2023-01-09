@@ -102,14 +102,20 @@ public class StudentLogin extends AppCompatActivity {
                             progressDialog.dismiss();
                             Toast.makeText(this, "Nursery", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(this, StudentHomeView.class));
+                            clear();
+                            //finish();
                         }else if(sLevel.equals("Kinder")){
                             progressDialog.dismiss();
                             Toast.makeText(this, "Kinder", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(this, StudentHomeView.class));
+                            clear();
+                            //finish();
                         }else{
                             progressDialog.dismiss();
                             Toast.makeText(this, "Preparatory", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(this, StudentHomeView.class));
+                            clear();
+                            //finish();
                         }
 
 
@@ -135,6 +141,11 @@ public class StudentLogin extends AppCompatActivity {
 
         }
 
+    }
+
+    private void clear(){
+        studentID.setText("");
+        studentPass.setText("");
     }
 
     public void BacktoMain(View view) {

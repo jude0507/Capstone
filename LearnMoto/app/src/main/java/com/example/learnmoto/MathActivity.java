@@ -111,10 +111,13 @@ public class MathActivity extends AppCompatActivity {
     public void BackToQuiz(View view) {
         if (StudentHomeView.level.equals("Kinder")){
             startActivity(new Intent(this, KinderMathQuiz.class));
+            finish();
         }else if (StudentHomeView.level.equals("Nursery")){
             startActivity(new Intent(this, NurseryMathQuiz.class));
+            finish();
         }else{
             startActivity(new Intent(this, PreparatoryMathQuiz.class));
+            finish();
         }
 
     }

@@ -9,10 +9,15 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.transition.AutoTransition;
+import android.transition.TransitionManager;
 import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
+import com.example.learnmoto.EnglishQuiz;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Student.StudentHomeView;
 
@@ -21,6 +26,8 @@ public class NurseryEnglishQuiz extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     TextView subjectlevel;
+    LinearLayout expandableView1, expandableLinear1;
+    Button quizArrow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +36,23 @@ public class NurseryEnglishQuiz extends AppCompatActivity {
 
         drawerLayout = findViewById(R.id.mydrawer_layout);
         subjectlevel = findViewById(R.id.SubjectLabel);
+        quizArrow = findViewById(R.id.arrow_pronounce);
+        expandableView1 = findViewById(R.id.expandableLayout3);
+        expandableLinear1 = findViewById(R.id.layout3);
 
         subjectlevel.setText("English");
+
+        quizArrow.setOnClickListener(v -> {
+            if (expandableView1.getVisibility() == View.GONE) {
+                TransitionManager.beginDelayedTransition(expandableLinear1, new AutoTransition());
+                expandableView1.setVisibility(View.VISIBLE);
+                quizArrow.setBackgroundResource(R.drawable.ic_arrow_up);
+            }else{
+                TransitionManager.beginDelayedTransition(expandableLinear1, new AutoTransition());
+                expandableView1.setVisibility(View.GONE);
+                quizArrow.setBackgroundResource(R.drawable.ic_arrow_down);
+            }
+        });
 
     }
 
@@ -92,6 +114,10 @@ public class NurseryEnglishQuiz extends AppCompatActivity {
     protected void onStop() {
         unregisterReceiver(networkChangeListener);
         super.onStop();
+    }
+
+    public void StartQuiz(View view) {
+        startActivity(new Intent(this, EnglishQuiz.class));
     }
 
 }

@@ -62,14 +62,17 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "You've login as Teacher", Toast.LENGTH_SHORT).show();
                 alertDialog.dismiss();
                 startActivity(new Intent(MainActivity.this, TeacherLogin.class));
+                finish();
             }else if (radioid.getText().toString().equals("Student")){
                 Toast.makeText(MainActivity.this, "You've login as Student", Toast.LENGTH_SHORT).show();
                 alertDialog.dismiss();
                 startActivity(new Intent(MainActivity.this, StudentLogin.class));
+                finish();
             }else{
                 Toast.makeText(MainActivity.this, "You've login as Parent", Toast.LENGTH_SHORT).show();
                 alertDialog.dismiss();
                 startActivity(new Intent(MainActivity.this, ParentLogin.class));
+                finish();
             }
         });
     }
