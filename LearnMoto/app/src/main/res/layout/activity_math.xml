@@ -31,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="SUBJECT"
+                android:text="Quiz"
                 android:textColor="@color/black"
                 android:fontFamily="@font/fingerpaint"
                 android:textAlignment="center"

@@ -70,33 +70,9 @@ public class MathActivity extends AppCompatActivity {
             AddDices(i, 11, R.drawable.dice5, R.drawable.dice6);
             AddDices(i, 5, R.drawable.dice4, R.drawable.dice1);
             AddDices(i, 8, R.drawable.dice5, R.drawable.dice3);
-//            if (answers[i] == 2) {
-//                val1 = R.drawable.dice1;
-//                val2 = R.drawable.dice1;
-//                outputDice = answers[0];
-//            } else if (answers[i] == 10) {
-//                val1 = R.drawable.dice4;
-//                val2 = R.drawable.dice6;
-//                outputDice = answers[1];
-//            } else if (answers[i] == 7) {
-//                val1 = R.drawable.dice5;
-//                val2 = R.drawable.dice2;
-//                outputDice = answers[2];
-//            } else if (answers[i] == 11) {
-//                val1 = R.drawable.dice6;
-//                val2 = R.drawable.dice5;
-//                outputDice = answers[3];
-//            } else if (answers[i] == 5) {
-//                val1 = R.drawable.dice3;
-//                val2 = R.drawable.dice2;
-//                outputDice = answers[4];
-//            } else if (answers[i] == 8) {
-//                val1 = R.drawable.dice4;
-//                val2 = R.drawable.dice4;
-//                outputDice = answers[5];
-//            }
             mathModelArrayList.add(new MathModel(val1, "+", val2));
         }
+
         mathQuizAdapter.notifyDataSetChanged();
 
         Submit.setOnClickListener(v -> {
@@ -106,6 +82,13 @@ public class MathActivity extends AppCompatActivity {
             textToSpeech.speak("Your final score is " + mathscore + "over six",TextToSpeech.QUEUE_ADD, null);
             Toast.makeText(this, "Score has been saved", Toast.LENGTH_SHORT).show();
 
+            if (StudentHomeView.level.equals("Kinder")){
+                startActivity(new Intent(this, KinderMathQuiz.class));
+            }else if (StudentHomeView.level.equals("Nursery")){
+                startActivity(new Intent(this, NurseryMathQuiz.class));
+            }else{
+                startActivity(new Intent(this, PreparatoryMathQuiz.class));
+            }
         });
 
     }
