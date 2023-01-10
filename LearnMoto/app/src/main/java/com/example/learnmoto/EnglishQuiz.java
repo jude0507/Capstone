@@ -134,7 +134,7 @@ public class EnglishQuiz extends AppCompatActivity {
                                 textToSpeech.speak("Correct answer!", TextToSpeech.QUEUE_ADD, null);
                                 onShuffle();
                             }else{
-                                textToSpeech.speak("Incorrect answer!", TextToSpeech.QUEUE_ADD, null);
+                                textToSpeech.speak("Nice Try", TextToSpeech.QUEUE_ADD, null);
                                 onShuffle();
                             }
                         }

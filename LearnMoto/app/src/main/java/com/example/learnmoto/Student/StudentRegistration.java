@@ -161,54 +161,58 @@ public class StudentRegistration extends AppCompatActivity {
             if (!student_Name.isEmpty() && !student_Address.isEmpty() && !student_Gender.isEmpty() &&
                     !student_Birthday.isEmpty() && !student_Level.isEmpty() && !student_guardian.isEmpty()
                     && !student_ID.isEmpty() && !student_Pass.isEmpty()) {
-                if (GuardianPhone.length() == 11 && GuardianPhone.matches("^(09)\\d{9}")) {
-                    if (ConfirmPassword.equals(student_Pass)) {
-                        if (student_Pass.length() >= 6) {
-                            ProgressDialog progressDialog = new ProgressDialog(this);
-                            progressDialog.show();
-                            progressDialog.setContentView(R.layout.progress_dialog_registration);
-                            progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-                            DocumentReference documentReference = firestore.collection("Student").document(student_ID);
-                            documentReference.get().addOnSuccessListener(documentSnapshot -> {
-                                if (documentSnapshot.exists()) {
-                                    progressDialog.dismiss();
-                                    Toast.makeText(StudentRegistration.this, "Student ID has been registered", Toast.LENGTH_SHORT).show();
-                                } else {
-                                    if (student_Level.equals("Choose Level")) {
-                                        Toast.makeText(this, "Chose your level", Toast.LENGTH_SHORT).show();
-                                    } else {
-                                        StudentModel studentInfo = new StudentModel();
-                                        studentInfo.setsName(student_Name);
-                                        studentInfo.setsAddress(student_Address);
-                                        studentInfo.setsAge(student_age);
-                                        studentInfo.setsGender(student_Gender);
-                                        studentInfo.setsBirthday(student_Birthday);
-                                        studentInfo.setsLevel(student_Level);
-                                        studentInfo.setsGuardian(student_guardian);
-                                        studentInfo.setsID(student_ID);
-                                        studentInfo.setsPassword(student_Pass);
-                                        studentInfo.setGuardianPhone(GuardianPhone);
-                                        firestore.collection("Student").document(student_ID).set(studentInfo);
+                if (age >= 4 && age <= 6){
+                    if (GuardianPhone.length() == 11 && GuardianPhone.matches("^(09)\\d{9}")) {
+                        if (ConfirmPassword.equals(student_Pass)) {
+                            if (student_Pass.length() >= 6) {
+                                ProgressDialog progressDialog = new ProgressDialog(this);
+                                progressDialog.show();
+                                progressDialog.setContentView(R.layout.progress_dialog_registration);
+                                progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+                                DocumentReference documentReference = firestore.collection("Student").document(student_ID);
+                                documentReference.get().addOnSuccessListener(documentSnapshot -> {
+                                    if (documentSnapshot.exists()) {
                                         progressDialog.dismiss();
-                                        Toast.makeText(StudentRegistration.this, "Registration Successfully", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(StudentRegistration.this, StudentLogin.class));
+                                        Toast.makeText(StudentRegistration.this, "Student ID has been registered", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        if (student_Level.equals("Choose Level")) {
+                                            Toast.makeText(this, "Chose your level", Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            StudentModel studentInfo = new StudentModel();
+                                            studentInfo.setsName(student_Name);
+                                            studentInfo.setsAddress(student_Address);
+                                            studentInfo.setsAge(student_age);
+                                            studentInfo.setsGender(student_Gender);
+                                            studentInfo.setsBirthday(student_Birthday);
+                                            studentInfo.setsLevel(student_Level);
+                                            studentInfo.setsGuardian(student_guardian);
+                                            studentInfo.setsID(student_ID);
+                                            studentInfo.setsPassword(student_Pass);
+                                            studentInfo.setGuardianPhone(GuardianPhone);
+                                            firestore.collection("Student").document(student_ID).set(studentInfo);
+                                            progressDialog.dismiss();
+                                            Toast.makeText(StudentRegistration.this, "Registration Successfully", Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(StudentRegistration.this, StudentLogin.class));
+                                        }
                                     }
-                                }
-                            });
+                                });
+                            } else {
+                                studentPass.requestFocus();
+                                studentPass.setError("Atleast 6 characters required");
+                            }
                         } else {
-                            studentPass.requestFocus();
-                            studentPass.setError("Atleast 6 characters required");
+                            confirmPass.requestFocus();
+                            confirmPass.setError("Not Matched");
                         }
+
                     } else {
-                        confirmPass.requestFocus();
-                        confirmPass.setError("Not Matched");
+                        phoneNumber.requestFocus();
+                        phoneNumber.setError("Invalid Phone Number");
                     }
 
-                } else {
-                    phoneNumber.requestFocus();
-                    phoneNumber.setError("Invalid Phone Number");
+                }else{
+                    Toast.makeText(this, "Age is not qualified", Toast.LENGTH_SHORT).show();
                 }
-
             } else {
                 studentName.setError("Required Field!");
                 studentAddress.setError("Required Field!");

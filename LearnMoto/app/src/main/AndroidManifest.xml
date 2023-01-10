@@ -21,17 +21,19 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".FilipinoQuiz"
+            android:name=".Practice"
             android:exported="false">
+
         </activity>
+        <activity
+            android:name=".FilipinoQuiz"
+            android:exported="false" />
         <activity
             android:name=".ScienceQuiz"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".ChristianLivingQuiz"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".EnglishQuiz"
             android:exported="false"
@@ -87,8 +89,7 @@
         <activity
             android:name=".Student.PronounceAlphabet"
             android:exported="false"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".Preparatory.SibikaKultura.PrepSibKulVideoView"
             android:exported="false"
