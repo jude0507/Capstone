@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.animation.LayoutTransition;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -58,6 +59,7 @@ public class StudentHomeView extends AppCompatActivity {
     SharedPreferences sharedPreferences;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    SharedPreferences.Editor editor;
 
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     public static String level, userID;
@@ -213,6 +215,22 @@ public class StudentHomeView extends AppCompatActivity {
         recyclerView.setVisibility(subjects);
     }
 
+    private void BackPressed(){
+        AlertDialog.Builder alBuilder = new AlertDialog.Builder(this);
+        alBuilder.setTitle("Confirmation Message")
+                .setMessage("Do you want to logout");
+        alBuilder.setPositiveButton("Confirm", (dialog, which) -> {
+            editor = sharedPreferences.edit();
+            editor.clear();
+            editor.commit();
+            startActivity(new Intent(StudentHomeView.this, StudentLogin.class));
+            Toast.makeText(StudentHomeView.this, "Logout Success", Toast.LENGTH_SHORT).show();
+            finish();
+        });
+        alBuilder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
+        alBuilder.show();
+    }
+
     @Override
     protected void onStart() {
         IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
@@ -225,4 +243,10 @@ public class StudentHomeView extends AppCompatActivity {
         unregisterReceiver(networkChangeListener);
         super.onStop();
     }
+
+    @Override
+    public void onBackPressed() {
+        BackPressed();
+    }
 }
+

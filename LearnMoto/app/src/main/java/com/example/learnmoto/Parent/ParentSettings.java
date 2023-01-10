@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.learnmoto.DisplayImage;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
+import com.example.learnmoto.MainActivity;
 import com.example.learnmoto.R;
 import com.example.learnmoto.ShowPassword;
 import com.github.dhaval2404.imagepicker.ImagePicker;
@@ -172,4 +173,8 @@ public class ParentSettings extends AppCompatActivity {
         super.onStop();
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, ParentView.class));
+    }
 }

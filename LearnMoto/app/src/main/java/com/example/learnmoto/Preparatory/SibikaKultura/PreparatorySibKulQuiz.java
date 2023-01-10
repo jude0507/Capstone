@@ -92,4 +92,9 @@ public class PreparatorySibKulQuiz extends AppCompatActivity {
         super.onStop();
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, StudentHomeView.class));
+    }
+
 }

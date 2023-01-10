@@ -52,6 +52,11 @@ public class ScienceViewPDF extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, SciencePDF.class));
+    }
+
+    @Override
     protected void onStart() {
         IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
         registerReceiver(networkChangeListener, intentFilter);

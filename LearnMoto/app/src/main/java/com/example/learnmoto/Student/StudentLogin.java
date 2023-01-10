@@ -169,4 +169,8 @@ public class StudentLogin extends AppCompatActivity {
         super.onStop();
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(StudentLogin.this, MainActivity.class));
+    }
 }

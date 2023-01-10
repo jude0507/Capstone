@@ -81,6 +81,10 @@ public class MathPDF extends AppCompatActivity {
     }
 
     public void BacktoMathClass(View view) {
+        BackPressed();
+    }
+
+    private void BackPressed(){
         if (StudentHomeView.level.equals("Nursery")){
             startActivity(new Intent(this, NurseryMathRead.class));
         } else if (StudentHomeView.level.equals("Kinder")){
@@ -88,6 +92,11 @@ public class MathPDF extends AppCompatActivity {
         }else{
             startActivity(new Intent(this, PreparatoryMathRead.class));
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        BackPressed();
     }
 
     @Override

@@ -74,11 +74,20 @@ public class FilipinoPDF extends AppCompatActivity {
     }
 
     public void BacktoFilipinoClass(View view) {
+        BackPressed();
+    }
+
+    private void BackPressed(){
         if (StudentHomeView.level.equals("Kinder")){
             startActivity(new Intent(this, KinderFilipinoRead.class));
         }else{
             startActivity(new Intent(this, PreparatoryFilipinoRead.class));
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        BackPressed();
     }
 
     @Override

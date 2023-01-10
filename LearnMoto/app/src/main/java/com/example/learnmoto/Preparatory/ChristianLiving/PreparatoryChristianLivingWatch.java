@@ -132,4 +132,10 @@ public class PreparatoryChristianLivingWatch extends AppCompatActivity implement
         intent.putExtra("VideoUrl", videoNameArraylist.get(position).getVideoUrl());
         startActivity(intent);
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, StudentHomeView.class));
+    }
+
 }

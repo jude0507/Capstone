@@ -45,6 +45,11 @@ public class EnglishViewPDF extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, EnglishPDF.class));
+    }
+
+    @Override
     protected void onStart() {
         IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
         registerReceiver(networkChangeListener, intentFilter);

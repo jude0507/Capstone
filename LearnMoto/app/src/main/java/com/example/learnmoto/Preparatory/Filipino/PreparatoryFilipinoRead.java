@@ -133,6 +133,11 @@ public class PreparatoryFilipinoRead extends AppCompatActivity {
         super.onStop();
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, StudentHomeView.class));
+    }
+
     public void story(View view) {
         startActivity(new Intent(this, PStories.class));
     }

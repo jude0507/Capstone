@@ -119,6 +119,11 @@ public class PreparatoryMathQuiz extends AppCompatActivity {
         super.onStop();
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, StudentHomeView.class));
+    }
+
     public void MathQuiz(View view) {
         startActivity(new Intent(this, MathActivity.class));
     }

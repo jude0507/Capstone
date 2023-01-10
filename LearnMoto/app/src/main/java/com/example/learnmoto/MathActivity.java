@@ -110,6 +110,10 @@ public class MathActivity extends AppCompatActivity {
     }
 
     public void BackToQuiz(View view) {
+        BackPressed();
+    }
+
+    private void BackPressed(){
         if (StudentHomeView.level.equals("Kinder")){
             startActivity(new Intent(this, KinderMathQuiz.class));
             finish();
@@ -120,7 +124,11 @@ public class MathActivity extends AppCompatActivity {
             startActivity(new Intent(this, PreparatoryMathQuiz.class));
             finish();
         }
+    }
 
+    @Override
+    public void onBackPressed() {
+        BackPressed();
     }
 
     @Override

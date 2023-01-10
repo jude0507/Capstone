@@ -45,6 +45,10 @@ public class PronounceAlphabet extends AppCompatActivity {
     }
 
     public void English(View view) {
+        BackPressed();
+    }
+
+    private void BackPressed(){
         if (StudentHomeView.level.equals("Nursery")){
             startActivity(new Intent(this, NurseryEnglish.class));
         }else if (StudentHomeView.level.equals("Kinder")){
@@ -52,5 +56,10 @@ public class PronounceAlphabet extends AppCompatActivity {
         }else{
             startActivity(new Intent(this, PreparatoryEnglish.class));
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        BackPressed();
     }
 }

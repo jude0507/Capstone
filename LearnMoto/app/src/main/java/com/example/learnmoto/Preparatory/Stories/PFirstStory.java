@@ -92,4 +92,9 @@ public class PFirstStory extends AppCompatActivity {
     public void BackToStories(View view) {
         startActivity(new Intent(this, PStories.class));
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, PStories.class));
+    }
 }

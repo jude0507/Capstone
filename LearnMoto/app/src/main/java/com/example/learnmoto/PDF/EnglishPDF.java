@@ -82,6 +82,10 @@ public class EnglishPDF extends AppCompatActivity {
     }
 
     public void BacktoEnglishClass(View view) {
+        BackPressed();
+    }
+
+    private void BackPressed(){
         if (StudentHomeView.level.equals("Nursery")){
             startActivity(new Intent(this, NurseryEnglish.class));
         } else if (StudentHomeView.level.equals("Kinder")){
@@ -89,6 +93,11 @@ public class EnglishPDF extends AppCompatActivity {
         }else{
             startActivity(new Intent(this, PreparatoryEnglish.class));
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        BackPressed();
     }
 
     @Override

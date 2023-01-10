@@ -102,4 +102,10 @@ public class Todo extends AppCompatActivity {
         super.onStop();
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(Todo.this, StudentHomeView.class));
+
+    }
+
 }

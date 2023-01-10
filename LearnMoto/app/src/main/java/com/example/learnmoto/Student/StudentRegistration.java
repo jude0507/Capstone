@@ -238,5 +238,8 @@ public class StudentRegistration extends AppCompatActivity {
         super.onStop();
     }
 
-
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(StudentRegistration.this, StudentLogin.class));
+    }
 }

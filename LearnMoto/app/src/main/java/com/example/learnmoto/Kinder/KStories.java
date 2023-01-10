@@ -16,6 +16,7 @@ import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.Kinder.English.KinderEnglish;
 import com.example.learnmoto.Preparatory.Filipino.PreparatoryFilipinoRead;
 import com.example.learnmoto.R;
+import com.example.learnmoto.Student.StudentHomeView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,6 +70,11 @@ public class KStories extends AppCompatActivity {
     protected void onStop() {
         unregisterReceiver(networkChangeListener);
         super.onStop();
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, KinderEnglish.class));
     }
 
 }

@@ -118,4 +118,9 @@ public class PreparatoryChristianLivingRead extends AppCompatActivity {
         super.onStop();
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, StudentHomeView.class));
+    }
+
 }

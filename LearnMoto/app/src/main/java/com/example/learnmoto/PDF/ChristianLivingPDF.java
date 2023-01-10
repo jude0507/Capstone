@@ -77,6 +77,10 @@ public class ChristianLivingPDF extends AppCompatActivity {
     }
 
     public void BacktoChristianLivingClass(View view) {
+        BackPressed();
+    }
+
+    private void BackPressed(){
         if (StudentHomeView.level.equals("Nursery")){
             startActivity(new Intent(this, NurseryChristianLivingRead.class));
         } else if (StudentHomeView.level.equals("Kinder")){
@@ -84,6 +88,11 @@ public class ChristianLivingPDF extends AppCompatActivity {
         }else{
             startActivity(new Intent(this, PreparatoryChristianLivingRead.class));
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        BackPressed();
     }
 
     @Override

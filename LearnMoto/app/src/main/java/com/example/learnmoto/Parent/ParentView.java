@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
@@ -24,6 +25,8 @@ import com.example.learnmoto.Model.AnnouncementModel;
 import com.example.learnmoto.Model.StudentModel;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.R;
+import com.example.learnmoto.Student.StudentHomeView;
+import com.example.learnmoto.Student.StudentLogin;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -35,7 +38,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ParentView extends AppCompatActivity {
 
-    private long backpressedTimes;
     Button logoutbtn, confirmLogout, arrow;
     TextView Parent_Name;
     RelativeLayout relativeLayout1;
@@ -185,14 +187,16 @@ public class ParentView extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (backpressedTimes + 3000 > System.currentTimeMillis()) {
-            super.onBackPressed();
-            return;
-        } else {
-            Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this, ParentLogin.class));
-        }
-        backpressedTimes = System.currentTimeMillis();
+        AlertDialog.Builder alBuilder = new AlertDialog.Builder(this);
+        alBuilder.setTitle("Confirmation Message")
+                .setMessage("Do you want to logout");
+        alBuilder.setPositiveButton("Confirm", (dialog, which) -> {
+            startActivity(new Intent(ParentView.this, ParentLogin.class));
+            Toast.makeText(ParentView.this, "Logout Success", Toast.LENGTH_SHORT).show();
+            finish();
+        });
+        alBuilder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
+        alBuilder.show();
 
     }
 

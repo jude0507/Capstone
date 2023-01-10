@@ -119,5 +119,8 @@ public class PreparatoryFilipinoQuiz extends AppCompatActivity {
         startActivity(new Intent(this, FilipinoQuiz.class));
     }
 
-
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, StudentHomeView.class));
+    }
 }

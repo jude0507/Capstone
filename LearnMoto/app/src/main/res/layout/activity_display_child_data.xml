@@ -93,7 +93,7 @@
                 android:layout_height="40dp"
                 android:padding="5dp"
                 android:paddingStart="10dp"
-                android:text="Level"
+                android:text=""
                 android:textColor="@color/black"
                 android:textSize="18sp"/>
 
@@ -271,6 +271,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/filipinoLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">

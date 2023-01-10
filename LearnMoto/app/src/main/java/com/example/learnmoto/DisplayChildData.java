@@ -8,6 +8,7 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -26,10 +27,11 @@ public class DisplayChildData extends AppCompatActivity {
 
     TextView name, level, guardianName, Phone, address, birthday, math, english, fili, science, cl;
     String id, getNameIntent;
-    String getGuardianName, getBirthday, getAddress, imageStudent, phoneNumber, mathScore,
+    String getlevel, getGuardianName, getBirthday, getAddress, imageStudent, phoneNumber, mathScore,
             engScore, filiScore, sciScore, clScore;
     CircleImageView StudPicture;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+    LinearLayout filipinoLayout;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
     @Override
@@ -48,7 +50,9 @@ public class DisplayChildData extends AppCompatActivity {
         address = findViewById(R.id.Address);
         birthday = findViewById(R.id.bday);
         StudPicture = findViewById(R.id.picture);
+        filipinoLayout = findViewById(R.id.filipinoLayout);
 
+        filipinoLayout.setVisibility(View.GONE);
         getNameIntent = getIntent().getStringExtra("studentName");
         id = getIntent().getStringExtra("studentID");
         DisplayData();
@@ -69,6 +73,7 @@ public class DisplayChildData extends AppCompatActivity {
                     filiScore = "";
                     sciScore = "";
                     clScore = "";
+                    getlevel = "";
                     //imageDisplay = "";
                     for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
                         StudentModel studentInfo = documentSnapshot.toObject(StudentModel.class);
@@ -83,31 +88,35 @@ public class DisplayChildData extends AppCompatActivity {
                         filiScore += studentInfo.getFilipinoScore();
                         sciScore += studentInfo.getScienceScore();
                         clScore += studentInfo.getClScore();
+                        getlevel += studentInfo.getsLevel();
                     }
 
-                    if (!StudentHomeView.level.equals("Nursery")){
+                    if (!getlevel.equals("Nursery")){
                         name.setText(getNameIntent);
+                        level.setText(getlevel);
                         guardianName.setText(getGuardianName);
                         birthday.setText(getBirthday);
                         address.setText(getAddress);
                         Phone.setText(phoneNumber);
                         math.setText(mathScore + "/12");
                         english.setText(engScore + "/10");
-                        fili.setVisibility(View.GONE);
-                        //fili.setText(filiScore + "/10");
+                        filipinoLayout.setVisibility(View.VISIBLE);
+                        fili.setText(filiScore + "/10");
                         science.setText(sciScore + "/10");
                         cl.setText(clScore + "/10");
 
                     }else{
 
                         name.setText(getNameIntent);
+                        level.setText(getlevel);
                         guardianName.setText(getGuardianName);
                         birthday.setText(getBirthday);
                         address.setText(getAddress);
                         Phone.setText(phoneNumber);
                         math.setText(mathScore + "/12");
                         english.setText(engScore + "/10");
-                        fili.setText(filiScore + "/10");
+                        filipinoLayout.setVisibility(View.GONE);
+                        //fili.setText(filiScore + "/10");
                         science.setText(sciScore + "/10");
                         cl.setText(clScore + "/10");
 

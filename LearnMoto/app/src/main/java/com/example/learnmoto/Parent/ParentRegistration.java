@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.learnmoto.MainActivity;
 import com.example.learnmoto.Model.ParentModel;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.R;
@@ -145,5 +146,10 @@ public class ParentRegistration extends AppCompatActivity {
     protected void onStop() {
         unregisterReceiver(networkChangeListener);
         super.onStop();
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, ParentLogin.class));
     }
 }

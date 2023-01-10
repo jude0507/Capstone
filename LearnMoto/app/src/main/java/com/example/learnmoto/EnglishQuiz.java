@@ -216,6 +216,10 @@ public class EnglishQuiz extends AppCompatActivity {
     }
 
     public void BackToQuiz(View view) {
+        BackPressed();
+    }
+
+    private void BackPressed(){
         if (StudentHomeView.level.equals("Kinder")){
             startActivity(new Intent(this, KinderEnglishQuiz.class));
         }else if (StudentHomeView.level.equals("Nursery")){
@@ -223,7 +227,10 @@ public class EnglishQuiz extends AppCompatActivity {
         }else{
             startActivity(new Intent(this, PreparatoryEnglishQuiz.class));
         }
-
     }
 
+    @Override
+    public void onBackPressed() {
+        BackPressed();
+    }
 }

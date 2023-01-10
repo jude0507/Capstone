@@ -134,4 +134,8 @@ public class PSecondStory extends AppCompatActivity {
         super.onStop();
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, PStories.class));
+    }
 }

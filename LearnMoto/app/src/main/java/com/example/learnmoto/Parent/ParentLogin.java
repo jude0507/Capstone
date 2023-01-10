@@ -115,4 +115,9 @@ public class ParentLogin extends AppCompatActivity {
         unregisterReceiver(networkChangeListener);
         super.onStop();
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, MainActivity.class));
+    }
 }

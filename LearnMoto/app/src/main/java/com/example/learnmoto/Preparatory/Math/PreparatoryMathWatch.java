@@ -132,4 +132,10 @@ public class PreparatoryMathWatch extends AppCompatActivity implements RecyclerV
         intent.putExtra("VideoUrl", videoNameArraylist.get(position).getVideoUrl());
         startActivity(intent);
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, StudentHomeView.class));
+    }
+
 }

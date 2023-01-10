@@ -127,6 +127,11 @@ public class PreparatoryFilipinoWatch extends AppCompatActivity implements Recyc
     }
 
     @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, StudentHomeView.class));
+    }
+
+    @Override
     public void onItemClick(int position) {
         Intent intent = new Intent(this, PrepFilVideoView.class);
         intent.putExtra("VideoUrl", videoNameArraylist.get(position).getVideoUrl());

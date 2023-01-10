@@ -128,6 +128,11 @@ public class PreparatorySibKulWatch extends AppCompatActivity implements Recycle
     }
 
     @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, StudentHomeView.class));
+    }
+
+    @Override
     public void onItemClick(int position) {
         Intent intent = new Intent(this, PrepSibKulVideoView.class);
         intent.putExtra("VideoUrl", videoNameArraylist.get(position).getVideoUrl());

@@ -160,6 +160,11 @@ public class StudentSettings extends AppCompatActivity {
         super.onStop();
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(StudentSettings.this, StudentHomeView.class));
+    }
+
     //    @Override
 //    protected void onDestroy() {
 //        editor.clear();

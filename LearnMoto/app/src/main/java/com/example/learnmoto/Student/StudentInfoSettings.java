@@ -217,12 +217,10 @@ public class StudentInfoSettings extends AppCompatActivity {
         }
     }
 
-    int pressed = 0;
     @Override
     public void onBackPressed() {
-        pressed++;
-        if (pressed == 2)
-            super.onBackPressed();
+        startActivity(new Intent(StudentInfoSettings.this, StudentSettings.class));
+
     }
 
     //Confirmation dialog for editing data

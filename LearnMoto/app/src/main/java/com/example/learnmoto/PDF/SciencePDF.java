@@ -82,6 +82,10 @@ public class SciencePDF extends AppCompatActivity {
     }
 
     public void BacktoScienceClass(View view) {
+        BackPressed();
+    }
+
+    private void BackPressed(){
         if (StudentHomeView.level.equals("Nursery")){
             startActivity(new Intent(this, NurseryScienceRead.class));
         } else if (StudentHomeView.level.equals("Kinder")){
@@ -89,6 +93,11 @@ public class SciencePDF extends AppCompatActivity {
         }else{
             startActivity(new Intent(this, PreparatoryScienceRead.class));
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        BackPressed();
     }
 
     @Override

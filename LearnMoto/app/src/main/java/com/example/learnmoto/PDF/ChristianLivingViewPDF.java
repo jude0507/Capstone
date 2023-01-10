@@ -48,6 +48,11 @@ public class ChristianLivingViewPDF extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, ChristianLivingPDF.class));
+    }
+
+    @Override
     protected void onStart() {
         IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
         registerReceiver(networkChangeListener, intentFilter);

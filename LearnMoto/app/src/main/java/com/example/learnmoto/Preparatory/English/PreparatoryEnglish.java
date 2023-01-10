@@ -137,4 +137,9 @@ public class PreparatoryEnglish extends AppCompatActivity {
     public void PronounceAlphabet(View view) {
         startActivity(new Intent(this, PronounceAlphabet.class));
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, StudentHomeView.class));
+    }
 }
