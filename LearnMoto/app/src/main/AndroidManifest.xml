@@ -23,80 +23,72 @@
         <activity
             android:name=".FilipinoQuiz"
             android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
         </activity>
         <activity
             android:name=".ScienceQuiz"
             android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
         </activity>
         <activity
             android:name=".ChristianLivingQuiz"
             android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
         </activity>
         <activity
             android:name=".EnglishQuiz"
             android:exported="false"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".DisplayChildData"
             android:exported="false"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MathActivity"
             android:exported="false"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Teacher.DisplayStudentData"
             android:exported="false"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Kinder.KStories"
             android:exported="false"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Kinder.Story.KThirdStory"
             android:exported="false"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Kinder.Story.KSecondStory"
             android:exported="false"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Kinder.Story.KFirstStory"
             android:exported="false"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Preparatory.Stories.PThirdStory"
             android:exported="false"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Preparatory.Stories.PSecondStory"
             android:exported="false"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Preparatory.Stories.PFirstStory"
             android:exported="false"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Preparatory.PStories"
             android:exported="false"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Student.Alphabet"
             android:exported="false"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Student.PronounceAlphabet"
             android:exported="false"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="portrait">
+        </activity>
         <activity
             android:name=".Preparatory.SibikaKultura.PrepSibKulVideoView"
             android:exported="false"
