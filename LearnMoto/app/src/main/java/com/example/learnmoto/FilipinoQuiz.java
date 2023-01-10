@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -18,6 +19,8 @@ import com.example.learnmoto.Nursery.ChristianLiving.NurseryChristianLivingQuiz;
 import com.example.learnmoto.Preparatory.ChristianLiving.PreparatoryChristianLivingQuiz;
 import com.example.learnmoto.Preparatory.Filipino.PreparatoryFilipinoQuiz;
 import com.example.learnmoto.Student.StudentHomeView;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class FilipinoQuiz extends AppCompatActivity implements View.OnClickListener{
 
@@ -30,7 +33,7 @@ public class FilipinoQuiz extends AppCompatActivity implements View.OnClickListe
     int totalQuestion = FiliQuestionaire.questions.length;
     int currentQuestionIndex = 0;
     String selectedAnswer = "";
-
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,8 +91,13 @@ public class FilipinoQuiz extends AppCompatActivity implements View.OnClickListe
     }
 
     private void exitQuiz() {
-        score=0;
-        currentQuestionIndex=0;
+
+        String filiScore = String.valueOf(score);
+
+        DocumentReference documentReference = db.collection("Student").document(StudentHomeView.userID);
+        documentReference.update("filipinoScore", filiScore);
+        Toast.makeText(FilipinoQuiz.this, "Score has been saved", Toast.LENGTH_SHORT).show();
+
         if (StudentHomeView.level.equals("Kinder")){
             startActivity(new Intent(this, KinderFilipinoQuiz.class));
         }else if (StudentHomeView.level.equals("Preparatory")){

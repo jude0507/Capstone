@@ -28,6 +28,7 @@ public class StudentLogin extends AppCompatActivity {
     public static final String Password = "sPassword";
     public static final String StudentName = "sName";
     public static final String StudentLevel = "sLevel";
+    public static String getStudentID;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -68,6 +69,9 @@ public class StudentLogin extends AppCompatActivity {
     }
 
     private void LoginFunction(){
+
+        getStudentID = studentID.getText().toString();
+
         if (!studentID.getText().toString().trim().isEmpty() && !studentPass.getText().toString().trim().isEmpty()){
             ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.show();
@@ -89,7 +93,7 @@ public class StudentLogin extends AppCompatActivity {
 
                     if (studentID.getText().toString().equals(studID) && studentPass.getText().toString().equals(studPass)){
                         editor = sharedPreferences.edit();
-                        editor.putString(Username, studID);
+                        editor.putString(Username, studentID.getText().toString());
                         editor.putString(Password, studPass);
                         editor.putString(StudentName, sName);
                         editor.putString("sLevel", sLevel);

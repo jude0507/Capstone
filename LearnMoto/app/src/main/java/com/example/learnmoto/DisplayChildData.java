@@ -15,6 +15,7 @@ import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.Kinder.KinderClassList;
 import com.example.learnmoto.Model.StudentModel;
 import com.example.learnmoto.Parent.ParentView;
+import com.example.learnmoto.Student.StudentHomeView;
 import com.example.learnmoto.Teacher.DisplayStudentData;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -23,9 +24,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class DisplayChildData extends AppCompatActivity {
 
-    TextView name, level, guardianName, Phone, address, birthday, math, english;
+    TextView name, level, guardianName, Phone, address, birthday, math, english, fili, science, cl;
     String id, getNameIntent;
-    String getGuardianName, getBirthday, getAddress, imageStudent, phoneNumber, mathScore, engScore;
+    String getGuardianName, getBirthday, getAddress, imageStudent, phoneNumber, mathScore,
+            engScore, filiScore, sciScore, clScore;
     CircleImageView StudPicture;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
@@ -38,6 +40,9 @@ public class DisplayChildData extends AppCompatActivity {
         level = findViewById(R.id.level);
         math = findViewById(R.id.math);
         english = findViewById(R.id.english);
+        fili = findViewById(R.id.filipino);
+        science = findViewById(R.id.science);
+        cl = findViewById(R.id.cl);
         guardianName = findViewById(R.id.guardianName);
         Phone = findViewById(R.id.phone);
         address = findViewById(R.id.Address);
@@ -50,7 +55,7 @@ public class DisplayChildData extends AppCompatActivity {
 
     }
 
-    @SuppressLint("NotConstructor")
+    @SuppressLint({"NotConstructor", "SetTextI18n"})
     public void DisplayData(){
         db.collection("Student").whereEqualTo("sID", id).get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
@@ -61,6 +66,9 @@ public class DisplayChildData extends AppCompatActivity {
                     phoneNumber = "";
                     mathScore = "";
                     engScore = "";
+                    filiScore = "";
+                    sciScore = "";
+                    clScore = "";
                     //imageDisplay = "";
                     for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
                         StudentModel studentInfo = documentSnapshot.toObject(StudentModel.class);
@@ -72,15 +80,38 @@ public class DisplayChildData extends AppCompatActivity {
                         phoneNumber += studentInfo.getGuardianPhone();
                         engScore += studentInfo.getEngScore();
                         mathScore += studentInfo.getMathScore();
+                        filiScore += studentInfo.getFilipinoScore();
+                        sciScore += studentInfo.getScienceScore();
+                        clScore += studentInfo.getClScore();
                     }
-                    name.setText(getNameIntent);
-                    guardianName.setText(getGuardianName);
-                    birthday.setText(getBirthday);
-                    address.setText(getAddress);
-                    Phone.setText(phoneNumber);
-                    math.setText(mathScore);
-                    english.setText(engScore);
 
+                    if (!StudentHomeView.level.equals("Nursery")){
+                        name.setText(getNameIntent);
+                        guardianName.setText(getGuardianName);
+                        birthday.setText(getBirthday);
+                        address.setText(getAddress);
+                        Phone.setText(phoneNumber);
+                        math.setText(mathScore + "/12");
+                        english.setText(engScore + "/10");
+                        fili.setVisibility(View.GONE);
+                        //fili.setText(filiScore + "/10");
+                        science.setText(sciScore + "/10");
+                        cl.setText(clScore + "/10");
+
+                    }else{
+
+                        name.setText(getNameIntent);
+                        guardianName.setText(getGuardianName);
+                        birthday.setText(getBirthday);
+                        address.setText(getAddress);
+                        Phone.setText(phoneNumber);
+                        math.setText(mathScore + "/12");
+                        english.setText(engScore + "/10");
+                        fili.setText(filiScore + "/10");
+                        science.setText(sciScore + "/10");
+                        cl.setText(clScore + "/10");
+
+                    }
                     Glide.with(DisplayChildData.this).load(imageStudent).placeholder(R.drawable.ic_user_circle)
                             .into(StudPicture);
 

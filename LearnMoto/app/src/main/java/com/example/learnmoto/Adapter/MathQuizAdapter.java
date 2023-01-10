@@ -107,7 +107,7 @@ public class MathQuizAdapter extends RecyclerView.Adapter<MathQuizAdapter.MyView
                     holder.answerInput.setText(answer);
                     dialog.dismiss();
                     if (key == Integer.parseInt(answer)) {
-                        MathActivity.score++;
+                        MathActivity.score = MathActivity.score + 2;
                         textToSpeech.speak("CORRECT!", TextToSpeech.QUEUE_ADD, null);
                         holder.cardboard.setEnabled(false);
                     } else {

@@ -28,7 +28,8 @@ public class DisplayStudentData extends AppCompatActivity {
     TextView name, level, guardianName, Phone, address, birthday, math, english;
     String id, getNameIntent;
     String getSLevel;
-    String getGuardianName, getBirthday, getAddress, imageStudent, phoneNumber, mathScore, engScore;
+    String getGuardianName, getBirthday, getAddress, imageStudent, phoneNumber, mathScore,
+            engScore, filiScore, sciScore, clScore;
     CircleImageView StudPicture;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 

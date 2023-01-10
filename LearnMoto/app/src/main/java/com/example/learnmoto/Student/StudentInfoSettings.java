@@ -41,9 +41,6 @@ public class StudentInfoSettings extends AppCompatActivity {
     //public static final int CAMERA_REQUEST_CODE = 1;
     //public static final int GALLERY_REQUEST_CODE = 2;
     public static Uri imageUri;
-    public static Bitmap bitmap;
-    public static String displayImageURL = "";
-    public static String encodedString;
     String ImageURLPath;
     EditText studName, studID, studPass, studAddress, studGuardian, studLevel, studBirthday, studGender;
     Button updateButton;
@@ -156,7 +153,7 @@ public class StudentInfoSettings extends AppCompatActivity {
         String updateAddress = studAddress.getText().toString();
         String updatePassword = studPass.getText().toString();
         //update the data in the firestore
-        DocumentReference documentReference = db.collection("Student").document(StudentLogin.studID);
+        DocumentReference documentReference = db.collection("Student").document(StudentHomeView.userID);
         documentReference.update("sAddress", updateAddress);
         documentReference.update("sPassword", updatePassword);
 
@@ -185,7 +182,7 @@ public class StudentInfoSettings extends AppCompatActivity {
                     storageReference.getDownloadUrl().addOnSuccessListener(uri -> {
                         ImageURLPath = uri.toString();
                         //Upload URL&ImageName to firestore
-                        DocumentReference documentReference = db.collection("Student").document(StudentLogin.studID);
+                        DocumentReference documentReference = db.collection("Student").document(StudentHomeView.userID);
                         documentReference.update("imageurl", ImageURLPath);
                         documentReference.update("imagename", imageUri.toString());
                         progressDialog.dismiss();
@@ -217,14 +214,6 @@ public class StudentInfoSettings extends AppCompatActivity {
             imageUri = data.getData();
             StudPicture.setImageURI(imageUri);
 
-//            Bitmap photo= (Bitmap) data.getExtras().get("data");
-//            StudPicture.setImageBitmap(photo);
-//            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//            photo.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-//            byte[] b = baos.toByteArray();
-//            String encodedImage = Base64.encodeToString(b, Base64.DEFAULT);
-//            preferenceManager.setString("image_data",encodedImage);
-//            Toast.makeText(this, "Image saved in SharedPreferences", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -275,34 +264,6 @@ public class StudentInfoSettings extends AppCompatActivity {
         unregisterReceiver(networkChangeListener);
         super.onStop();
     }
-
-//    private final static String CAPTURED_PHOTO_URI_KEY = "imageUri";
-//    private final static String CAPTURED_PHOTO_PATH_KEY = "ImageURLPath";
-//    @Override
-//    public void onSaveInstanceState(Bundle saveInstance){
-//
-//        if (ImageURLPath != null) {
-//
-//            saveInstance.putString(CAPTURED_PHOTO_PATH_KEY, ImageURLPath);
-//        }
-//        if (ImageURLPath != null) {
-//
-//            saveInstance.putString(CAPTURED_PHOTO_URI_KEY, imageUri.toString());
-//        }
-//
-//        super.onSaveInstanceState(saveInstance);
-//    }
-//
-//    @Override
-//    public void onRestoreInstanceState(Bundle savedInstanceState) {
-//        if (savedInstanceState.containsKey(CAPTURED_PHOTO_PATH_KEY)) {
-//
-//            ImageURLPath = savedInstanceState.getString(CAPTURED_PHOTO_PATH_KEY);
-//        }
-//        if (savedInstanceState.containsKey(CAPTURED_PHOTO_URI_KEY)) {
-//
-//            imageUri = Uri.parse(savedInstanceState.getString(CAPTURED_PHOTO_URI_KEY));    }
-//        super.onRestoreInstanceState(savedInstanceState);
-//    }
+    
 
 }

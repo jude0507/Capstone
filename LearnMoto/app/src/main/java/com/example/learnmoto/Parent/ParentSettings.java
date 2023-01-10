@@ -111,6 +111,7 @@ public class ParentSettings extends AppCompatActivity {
         documentReference.update("pID", Et_ParentID.getText().toString());
         documentReference.update("pPassword", Et_Password.getText().toString());
         UploadImageToStorage();
+        Toast.makeText(ParentSettings.this, "Data has been updated", Toast.LENGTH_LONG).show();
         ReadTextOnly();
     }
 

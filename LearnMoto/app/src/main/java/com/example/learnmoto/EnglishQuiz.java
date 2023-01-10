@@ -131,10 +131,10 @@ public class EnglishQuiz extends AppCompatActivity {
 
                             if (inputmsg.equals(txtRandom.getText().toString())){
                                 score++;
-                                textToSpeech.speak("Correct! Current Score is " + score, TextToSpeech.QUEUE_ADD, null);
+                                textToSpeech.speak("Correct answer!", TextToSpeech.QUEUE_ADD, null);
                                 onShuffle();
                             }else{
-                                textToSpeech.speak("Incorrect answer", TextToSpeech.QUEUE_ADD, null);
+                                textToSpeech.speak("Incorrect answer!", TextToSpeech.QUEUE_ADD, null);
                                 onShuffle();
                             }
                         }
@@ -147,20 +147,22 @@ public class EnglishQuiz extends AppCompatActivity {
         btnsubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //String StudID = StudentLogin.studID;
                 Toast.makeText(EnglishQuiz.this, "Final Score: " + score, Toast.LENGTH_SHORT).show();
                 String engscore = String.valueOf(score);
-                Toast.makeText(EnglishQuiz.this, id, Toast.LENGTH_SHORT).show();
-                DocumentReference documentReference = db.collection("Student").document(id);
+                //Toast.makeText(EnglishQuiz.this, StudentHomeView.userID, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(EnglishQuiz.this, id, Toast.LENGTH_SHORT).show();
+                DocumentReference documentReference = db.collection("Student").document(StudentHomeView.userID);
                 documentReference.update("engScore", engscore);
-                textToSpeech.speak("Your final score is " + engscore + "over six",TextToSpeech.QUEUE_ADD, null);
+                textToSpeech.speak("Your final score is " + engscore + "over ten",TextToSpeech.QUEUE_ADD, null);
                 Toast.makeText(EnglishQuiz.this, "Score has been saved", Toast.LENGTH_SHORT).show();
 
                 if (StudentHomeView.level.equals("Kinder")){
-                    startActivity(new Intent(EnglishQuiz.this, KinderMathQuiz.class));
+                    startActivity(new Intent(EnglishQuiz.this, KinderEnglishQuiz.class));
                 }else if (StudentHomeView.level.equals("Nursery")){
-                    startActivity(new Intent(EnglishQuiz.this, NurseryMathQuiz.class));
+                    startActivity(new Intent(EnglishQuiz.this, NurseryEnglishQuiz.class));
                 }else{
-                    startActivity(new Intent(EnglishQuiz.this, PreparatoryMathQuiz.class));
+                    startActivity(new Intent(EnglishQuiz.this, PreparatoryEnglishQuiz.class));
                 }
 
             }

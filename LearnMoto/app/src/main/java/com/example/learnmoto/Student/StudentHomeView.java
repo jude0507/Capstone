@@ -60,7 +60,7 @@ public class StudentHomeView extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
-    public static String level;
+    public static String level, userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,9 +83,12 @@ public class StudentHomeView extends AppCompatActivity {
         sharedPreferences = getApplicationContext().getSharedPreferences("Preferences", MODE_PRIVATE);
         String name = sharedPreferences.getString(StudentLogin.StudentName, "");
         level = sharedPreferences.getString(StudentLogin.StudentLevel, "");
+        userID = sharedPreferences.getString(StudentLogin.Username, "");
 
         studentName.setText(name);
         displaylevel.setText(level);
+
+        //Toast.makeText(this, "ID: " + userID, Toast.LENGTH_SHORT).show();
 
         DisplayImage();
         DisplayAdviserName();

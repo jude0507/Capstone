@@ -19,6 +19,8 @@ import com.example.learnmoto.Nursery.Science.NurseryScienceQuiz;
 import com.example.learnmoto.Preparatory.ChristianLiving.PreparatoryChristianLivingQuiz;
 import com.example.learnmoto.Preparatory.Science.PreparatoryScienceQuiz;
 import com.example.learnmoto.Student.StudentHomeView;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class ScienceQuiz extends AppCompatActivity implements View.OnClickListener{
 
@@ -31,6 +33,7 @@ public class ScienceQuiz extends AppCompatActivity implements View.OnClickListen
     int totalQuestion = ScienceQuestionaire.questions.length;
     int currentQuestionIndex = 0;
     String selectedAnswer = "";
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,8 +91,10 @@ public class ScienceQuiz extends AppCompatActivity implements View.OnClickListen
     }
 
     private void exitQuiz() {
-        score=0;
-        currentQuestionIndex=0;
+        String sciScore = String.valueOf(score);
+        DocumentReference documentReference = db.collection("Student").document(StudentHomeView.userID);
+        documentReference.update("scienceScore", sciScore);
+        Toast.makeText(ScienceQuiz.this, "Score has been saved", Toast.LENGTH_SHORT).show();
         if (StudentHomeView.level.equals("Kinder")){
             startActivity(new Intent(this, KinderScienceQuiz.class));
         }else if (StudentHomeView.level.equals("Nursery")){

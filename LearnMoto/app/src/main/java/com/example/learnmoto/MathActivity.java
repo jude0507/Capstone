@@ -77,9 +77,10 @@ public class MathActivity extends AppCompatActivity {
 
         Submit.setOnClickListener(v -> {
             String mathscore = String.valueOf(score);
-            DocumentReference documentReference = db.collection("Student").document(StudentLogin.studID);
+            //Toast.makeText(this, StudentLogin.studID, Toast.LENGTH_SHORT).show();
+            DocumentReference documentReference = db.collection("Student").document(StudentHomeView.userID);
             documentReference.update("mathScore", mathscore);
-            textToSpeech.speak("Your final score is " + mathscore + "over six",TextToSpeech.QUEUE_ADD, null);
+            textToSpeech.speak("Your final score is " + mathscore + "over twelve",TextToSpeech.QUEUE_ADD, null);
             Toast.makeText(this, "Score has been saved", Toast.LENGTH_SHORT).show();
 
             if (StudentHomeView.level.equals("Kinder")){
