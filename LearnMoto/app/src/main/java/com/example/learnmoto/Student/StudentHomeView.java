@@ -1,15 +1,11 @@
 package com.example.learnmoto.Student;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.animation.LayoutTransition;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.transition.AutoTransition;
@@ -20,20 +16,22 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.learnmoto.Adapter.AnnouncementAdapter;
-import com.example.learnmoto.DisplayImage;
-import com.example.learnmoto.Model.AnnouncementModel;
-import com.example.learnmoto.CheckConnection.NetworkChangeListener;
-import com.example.learnmoto.Model.TeacherModel;
-import com.example.learnmoto.R;
 import com.example.learnmoto.Adapter.StudentSubjectAdapter;
 import com.example.learnmoto.Adapter.TranslateAnimatioUI;
-import com.example.learnmoto.Teacher.TeacherLogin;
+import com.example.learnmoto.CheckConnection.NetworkChangeListener;
+import com.example.learnmoto.DisplayImage;
+import com.example.learnmoto.Model.AnnouncementModel;
+import com.example.learnmoto.Model.TeacherModel;
+import com.example.learnmoto.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.DocumentChange;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -44,7 +42,7 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class StudentHomeView extends AppCompatActivity {
-
+    private MediaPlayer mediaPlayer;
     ArrayList<AnnouncementModel> announcementArray;
     AnnouncementAdapter announcementAdapter;
     BottomNavigationView bottomNavigationView;
@@ -90,6 +88,9 @@ public class StudentHomeView extends AppCompatActivity {
 
         studentName.setText(name);
         displaylevel.setText(level);
+        mediaPlayer= MediaPlayer.create(getApplicationContext(),R.raw.background);
+        mediaPlayer.setLooping(true);
+        mediaPlayer.start();
 
         //Toast.makeText(this, "ID: " + userID, Toast.LENGTH_SHORT).show();
 
