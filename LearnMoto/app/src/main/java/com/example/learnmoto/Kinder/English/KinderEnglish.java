@@ -50,42 +50,42 @@ public class KinderEnglish extends AppCompatActivity {
 
         subjectlevel.setText("English");
 
-        pdfArrow.setOnClickListener(v -> {
-            if (expandableView2.getVisibility() == View.GONE) {
-                TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
-                expandableView2.setVisibility(View.VISIBLE);
-                pdfArrow.setBackgroundResource(R.drawable.ic_arrow_up);
-            }else{
-                TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
-                expandableView2.setVisibility(View.GONE);
-                pdfArrow.setBackgroundResource(R.drawable.ic_arrow_down);
-            }
-        });
+//        pdfArrow.setOnClickListener(v -> {
+//            if (expandableView2.getVisibility() == View.GONE) {
+//                TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
+//                expandableView2.setVisibility(View.VISIBLE);
+//                pdfArrow.setBackgroundResource(R.drawable.ic_arrow_up);
+//            }else{
+//                TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
+//                expandableView2.setVisibility(View.GONE);
+//                pdfArrow.setBackgroundResource(R.drawable.ic_arrow_down);
+//            }
+//        });
 
-        storyArrow.setOnClickListener(v -> {
-            if (expandableView1.getVisibility() == View.GONE) {
-                TransitionManager.beginDelayedTransition(expandableLinear1, new AutoTransition());
-                expandableView1.setVisibility(View.VISIBLE);
-                storyArrow.setBackgroundResource(R.drawable.ic_arrow_up);
-            }else{
-                TransitionManager.beginDelayedTransition(expandableLinear1, new AutoTransition());
-                expandableView1.setVisibility(View.GONE);
-                storyArrow.setBackgroundResource(R.drawable.ic_arrow_down);
-            }
-        });
+//        storyArrow.setOnClickListener(v -> {
+//            if (expandableView1.getVisibility() == View.GONE) {
+//                TransitionManager.beginDelayedTransition(expandableLinear1, new AutoTransition());
+//                expandableView1.setVisibility(View.VISIBLE);
+//                storyArrow.setBackgroundResource(R.drawable.ic_arrow_up);
+//            }else{
+//                TransitionManager.beginDelayedTransition(expandableLinear1, new AutoTransition());
+//                expandableView1.setVisibility(View.GONE);
+//                storyArrow.setBackgroundResource(R.drawable.ic_arrow_down);
+//            }
+//        });
 
 
-        pronounceArrow.setOnClickListener(v -> {
-            if (expandableView3.getVisibility() == View.GONE) {
-                TransitionManager.beginDelayedTransition(expandableLinear3, new AutoTransition());
-                expandableView3.setVisibility(View.VISIBLE);
-                pronounceArrow.setBackgroundResource(R.drawable.ic_arrow_up);
-            }else{
-                TransitionManager.beginDelayedTransition(expandableLinear3, new AutoTransition());
-                expandableView3.setVisibility(View.GONE);
-                pronounceArrow.setBackgroundResource(R.drawable.ic_arrow_down);
-            }
-        });
+//        pronounceArrow.setOnClickListener(v -> {
+//            if (expandableView3.getVisibility() == View.GONE) {
+//                TransitionManager.beginDelayedTransition(expandableLinear3, new AutoTransition());
+//                expandableView3.setVisibility(View.VISIBLE);
+//                pronounceArrow.setBackgroundResource(R.drawable.ic_arrow_up);
+//            }else{
+//                TransitionManager.beginDelayedTransition(expandableLinear3, new AutoTransition());
+//                expandableView3.setVisibility(View.GONE);
+//                pronounceArrow.setBackgroundResource(R.drawable.ic_arrow_down);
+//            }
+//        });
 
     }
 

@@ -1,9 +1,5 @@
 package com.example.learnmoto;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
@@ -13,6 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.learnmoto.Adapter.MathQuizAdapter;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.Kinder.Math.KinderMathQuiz;
@@ -20,7 +20,6 @@ import com.example.learnmoto.Model.MathModel;
 import com.example.learnmoto.Nursery.Math.NurseryMathQuiz;
 import com.example.learnmoto.Preparatory.Math.PreparatoryMathQuiz;
 import com.example.learnmoto.Student.StudentHomeView;
-import com.example.learnmoto.Student.StudentLogin;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 

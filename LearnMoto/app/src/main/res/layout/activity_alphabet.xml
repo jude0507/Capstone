@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             android:textSize="25sp"
-            android:text="Pronounce the word"
+            android:text="Pronounce Letters"
             android:fontFamily="@font/aloevera"
             android:textColor="@color/black"/>
 
