@@ -26,6 +26,7 @@ import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
+import com.example.learnmoto.DeleteVideo;
 import com.example.learnmoto.Model.VideoModel;
 import com.example.learnmoto.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -78,7 +79,6 @@ public class SubjectVideo extends AppCompatActivity {
         UploadVideo = findViewById(R.id.UploadVideo);
         VideoName = findViewById(R.id.VideoName);
         progressBar = findViewById(R.id.progress_bar);
-
 
         mediaController = new MediaController(this);
         storageReference = FirebaseStorage.getInstance().getReference("videos");
@@ -213,8 +213,9 @@ public class SubjectVideo extends AppCompatActivity {
         final View view = getLayoutInflater().inflate(R.layout.view_list_video,null);
 
         ListView ListLevel = view.findViewById(R.id.listVideo);
+        Button Close = view.findViewById(R.id.Close);
         NoDataFound = view.findViewById(R.id.NoDataFound);
-        ImageView close = view.findViewById(R.id.close);
+        ImageView Info = view.findViewById(R.id.close);
         builder.setView(view);
         alertDialog = builder.create();
         alertDialog.setCanceledOnTouchOutside(false);
@@ -237,30 +238,28 @@ public class SubjectVideo extends AppCompatActivity {
                     }
                 }).addOnFailureListener(e -> Toast.makeText(SubjectVideo.this, "Error in getting data", Toast.LENGTH_SHORT).show());
 
-//        collectionReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
-//            @Override
-//            public void onEvent(QuerySnapshot value, FirebaseFirestoreException error) {
-//                VideoNames.clear();
-//                for (DocumentSnapshot documentSnapshot: value){
-//                    VideoNames.add(documentSnapshot.getString("videoName"));
-//                }
-//                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(),
-//                        android.R.layout.simple_list_item_1, VideoNames);
-//                adapter.notifyDataSetChanged();
-//                ListLevel.setAdapter(adapter);
-//
-//            }
-//        });
+        ListLevel.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String VideoName = VideoNames.get(position);
+                Intent intent = new Intent(getApplicationContext(), DeleteVideo.class);
+                intent.putExtra("VideoName", VideoName);
+                startActivity(intent);
+                alertDialog.dismiss();
+            }
+        });
 
-//        ListLevel.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                getVideoName = VideoNames.get(position);
-//            }
-//        });
+        ListLevel.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                return false;
+            }
+        });
 
-        //https://www.geeksforgeeks.org/how-to-read-data-from-firebase-firestore-in-android/
-        close.setOnClickListener(v -> alertDialog.dismiss());
+        Info.setOnClickListener(v -> {
+            Toast.makeText(this, "Delete Video: Make a long press", Toast.LENGTH_SHORT).show();
+        });
+        Close.setOnClickListener(v -> alertDialog.dismiss());
 
     }
 }

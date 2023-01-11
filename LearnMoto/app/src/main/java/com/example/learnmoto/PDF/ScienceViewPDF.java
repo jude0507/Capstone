@@ -27,7 +27,7 @@ public class ScienceViewPDF extends AppCompatActivity {
         String getItem = getIntent().getStringExtra("SciencePDF");
 
         if (getItem.equals("About Dinosaurs")){
-            pdfviewer.fromAsset("It's all about Dinosaurs.pdf").load();
+            pdfviewer.fromAsset("ITS ALL ABOUT DINOSAURS.pdf").load();
         }
         if (getItem.equals("About Galaxies")){
             pdfviewer.fromAsset("About Galaxies.pdf").load();

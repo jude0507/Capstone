@@ -7,6 +7,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
@@ -336,6 +337,7 @@ public class Alphabet extends AppCompatActivity {
         builder.setView(view);
         alertDialog = builder.create();
         alertDialog.show();
+        alertDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
     }
 
     private void Delay(){
