@@ -1,12 +1,12 @@
 package com.example.learnmoto.PDF;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.R;
@@ -39,7 +39,7 @@ public class MathViewPDF extends AppCompatActivity {
             pdfviewer.fromAsset("HUGIS.pdf").load();
         }
         if (getItem.equals("Add and Subtract")){
-            pdfviewer.fromAsset("Let's Add and Subtract.pdf").load();
+            pdfviewer.fromAsset("Addition and Subtraction.pdf").load();
         }
         if (getItem.equals("Learn to subtract")){
             pdfviewer.fromAsset("Learn to subtract.pdf").load();

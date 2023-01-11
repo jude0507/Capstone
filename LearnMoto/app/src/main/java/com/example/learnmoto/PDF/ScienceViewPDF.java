@@ -1,12 +1,12 @@
 package com.example.learnmoto.PDF;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.R;
@@ -33,7 +33,7 @@ public class ScienceViewPDF extends AppCompatActivity {
             pdfviewer.fromAsset("About Galaxies.pdf").load();
         }
         if (getItem.equals("Body Parts")){
-            pdfviewer.fromAsset("Body Parts.pdf").load();
+            pdfviewer.fromAsset("PARTS OF THE BODY.pdf").load();
         }
         if (getItem.equals("Weather")){
             pdfviewer.fromAsset("Weather.pdf").load();

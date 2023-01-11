@@ -1,12 +1,12 @@
 package com.example.learnmoto.PDF;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.R;
@@ -27,8 +27,8 @@ public class FilipinoViewPDF extends AppCompatActivity {
         if (getItem.equals("Katinig at Patinig")){
             pdfviewer.fromAsset("mga patinig at katinig.pdf").load();
         }
-        if (getItem.equals("Mga halimbawa nito")){
-            pdfviewer.fromAsset("Mga halimbawa ng Katinig at Patinig.pdf").load();
+        if (getItem.equals("Mga Halimbawa")){
+            pdfviewer.fromAsset("halimbawa.pdf").load();
         }
     }
     public void BacktoPDF(View view) {
