@@ -27,16 +27,16 @@ public class MathViewPDF extends AppCompatActivity {
         String getItem = getIntent().getStringExtra("MathPDF");
 
         if (getItem.equals("Adding Dice")){
-            pdfviewer.fromAsset("Adding Dice.pdf").load();
+            pdfviewer.fromAsset("Adding dice.pdf").load();
         }
         if (getItem.equals("Counting Objects")){
-            pdfviewer.fromAsset("Counting Objects.pdf").load();
+            pdfviewer.fromAsset("counting objects.pdf").load();
         }
-        if (getItem.equals("Let's Count")){
-            pdfviewer.fromAsset("Let's Count.pdf").load();
+        if (getItem.equals("Bilang")){
+            pdfviewer.fromAsset("BILANG.pdf").load();
         }
-        if (getItem.equals("Different Shapes")){
-            pdfviewer.fromAsset("Different Shapes.pdf").load();
+        if (getItem.equals("Iba't- ibang hugis")){
+            pdfviewer.fromAsset("HUGIS.pdf").load();
         }
         if (getItem.equals("Add and Subtract")){
             pdfviewer.fromAsset("Let's Add and Subtract.pdf").load();

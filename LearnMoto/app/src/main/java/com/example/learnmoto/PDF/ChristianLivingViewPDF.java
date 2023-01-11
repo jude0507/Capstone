@@ -37,7 +37,7 @@ public class ChristianLivingViewPDF extends AppCompatActivity {
             pdfviewer.fromAsset("PLASM 23.pdf").load();
         }
         if (getItem.equals("Faith")){
-            pdfviewer.fromAsset("FAITH.pdf").load();
+            pdfviewer.fromAsset("FaithPrep.pdf").load();
         }
         if (getItem.equals("How to Pray")){
             pdfviewer.fromAsset("How to Pray.pdf").load();

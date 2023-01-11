@@ -45,17 +45,11 @@ public class SciencePDF extends AppCompatActivity {
     private void setPDFTitle() {
         if (StudentHomeView.level.equals("Nursery")){
             pdfModel.add(new PDFModel("About Dinosaurs"));
-            pdfModel.add(new PDFModel("LifeCycle of Plants"));
         }else if (StudentHomeView.level.equals("Kinder")){
-            pdfModel.add(new PDFModel("About Galaxies"));
             pdfModel.add(new PDFModel("Solar System"));
         }else{
-            pdfModel.add(new PDFModel("About Dinosaurs"));
-            pdfModel.add(new PDFModel("About Galaxies"));
-            pdfModel.add(new PDFModel("LifeCycle of Plants"));
-            pdfModel.add(new PDFModel("Solar System"));
             pdfModel.add(new PDFModel("Body Parts"));
-            pdfModel.add(new PDFModel("Know about Seasons"));
+            pdfModel.add(new PDFModel("Weather"));
         }
 
     }

@@ -46,16 +46,15 @@ public class EnglishPDF extends AppCompatActivity {
 
     private void setPDFTitle() {
         if (StudentHomeView.level.equals("Nursery")){
-            pdfModel.add(new PDFModel("colors"));
+            pdfModel.add(new PDFModel("Different Colors"));
+            pdfModel.add(new PDFModel("Rhyming Words"));
             pdfModel.add(new PDFModel("Alphabets"));
         }else if (StudentHomeView.level.equals("Kinder")){
             pdfModel.add(new PDFModel("Real or Make"));
-            pdfModel.add(new PDFModel("Different Colors 2"));
             pdfModel.add(new PDFModel("Reading Objects"));
         }else{
-            pdfModel.add(new PDFModel("Alphabets"));
-            pdfModel.add(new PDFModel("Real or Make"));
-            pdfModel.add(new PDFModel("Reading Objects"));
+            pdfModel.add(new PDFModel("Noun"));
+            pdfModel.add(new PDFModel("Verb"));
         }
 
     }

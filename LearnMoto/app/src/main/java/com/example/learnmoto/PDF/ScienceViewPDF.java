@@ -29,17 +29,14 @@ public class ScienceViewPDF extends AppCompatActivity {
         if (getItem.equals("About Dinosaurs")){
             pdfviewer.fromAsset("It's all about Dinosaurs.pdf").load();
         }
-        if (getItem.equals("LifeCycle of Plants")){
-            pdfviewer.fromAsset("LifeCycle of Plants.pdf").load();
-        }
         if (getItem.equals("About Galaxies")){
             pdfviewer.fromAsset("About Galaxies.pdf").load();
         }
         if (getItem.equals("Body Parts")){
             pdfviewer.fromAsset("Body Parts.pdf").load();
         }
-        if (getItem.equals("Know about Seasons")){
-            pdfviewer.fromAsset("Seasons.pdf").load();
+        if (getItem.equals("Weather")){
+            pdfviewer.fromAsset("Weather.pdf").load();
         }
         if (getItem.equals("Solar System")){
             pdfviewer.fromAsset("Solar System.pdf").load();

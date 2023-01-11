@@ -40,10 +40,6 @@ public class SibikaKulturaPDF extends AppCompatActivity {
 
     }
     private void setPDFTitle() {
-        if (StudentHomeView.level.equals("Preparatory")){
-            pdfModel.add(new PDFModel("Anyong Tubig"));
-            pdfModel.add(new PDFModel("Anyong Lupa"));
-        }
 
     }
 

@@ -25,10 +25,10 @@ public class FilipinoViewPDF extends AppCompatActivity {
         String getItem = getIntent().getStringExtra("FilipinoPDF");
 
         if (getItem.equals("Katinig at Patinig")){
-            pdfviewer.fromAsset("Katinig at Patinig.pdf").load();
+            pdfviewer.fromAsset("mga patinig at katinig.pdf").load();
         }
-        if (getItem.equals("Mga Halimbawa")){
-            pdfviewer.fromAsset("Mga halimbawa.pdf").load();
+        if (getItem.equals("Mga halimbawa nito")){
+            pdfviewer.fromAsset("Mga halimbawa ng Katinig at Patinig.pdf").load();
         }
     }
     public void BacktoPDF(View view) {

@@ -42,10 +42,7 @@ public class FilipinoPDF extends AppCompatActivity {
     }
 
     private void setPDFTitle() {
-        if (StudentHomeView.level.equals("Nursery")){
-            pdfModel.add(new PDFModel("Katinig at Patinig"));
-            pdfModel.add(new PDFModel("Mga Halimbawa"));
-        }else{
+        if (!StudentHomeView.level.equals("Nursery")){
             pdfModel.add(new PDFModel("Katinig at Patinig"));
             pdfModel.add(new PDFModel("Mga Halimbawa"));
         }

@@ -46,8 +46,8 @@ public class MathPDF extends AppCompatActivity {
 
     private void setPDFTitle() {
         if (StudentHomeView.level.equals("Nursery")){
-            pdfModel.add(new PDFModel("Let's Count"));
-            pdfModel.add(new PDFModel("Different Shapes"));
+            pdfModel.add(new PDFModel("Bilang"));
+            pdfModel.add(new PDFModel("Iba't- ibang hugis"));
         }else if (StudentHomeView.level.equals("Kinder")){
             pdfModel.add(new PDFModel("Adding Dice"));
             pdfModel.add(new PDFModel("Counting Objects"));

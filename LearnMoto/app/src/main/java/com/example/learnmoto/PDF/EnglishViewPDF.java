@@ -26,16 +26,28 @@ public class EnglishViewPDF extends AppCompatActivity {
         String getItem = getIntent().getStringExtra("EnglishPDF");
 
         if (getItem.equals("Alphabets")){
-            pdfviewer.fromAsset("Alphabet 1.pdf").load();
+            pdfviewer.fromAsset("Alphabets.pdf").load();
         }
         if (getItem.equals("Real or Make")){
             pdfviewer.fromAsset("Real or Make.pdf").load();
         }
-        if (getItem.equals("Different Colors 2")){
-            pdfviewer.fromAsset("Different Colors 2.pdf").load();
+        if (getItem.equals("Different Colors")){
+            pdfviewer.fromAsset("different colors.pdf").load();
         }
+        if (getItem.equals("Rhyming Words")){
+            pdfviewer.fromAsset("english(rhyming words).pdf").load();
+        }
+
         if (getItem.equals("Reading Objects")){
-            pdfviewer.fromAsset("Reading Objects.pdf").load();
+            pdfviewer.fromAsset("Reading objects.pdf").load();
+        }
+
+        if (getItem.equals("Noun")){
+            pdfviewer.fromAsset("noun.pdf").load();
+        }
+
+        if (getItem.equals("Verb")){
+            pdfviewer.fromAsset("verb.pdf").load();
         }
 
     }

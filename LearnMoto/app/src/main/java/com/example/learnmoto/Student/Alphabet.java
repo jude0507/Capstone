@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -35,6 +36,8 @@ public class Alphabet extends AppCompatActivity {
     AlertDialog alertDialog;
     TextView output;
     ImageView mic;
+    int outputSpeak;
+    TextToSpeech textToSpeech;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +48,24 @@ public class Alphabet extends AppCompatActivity {
         output = findViewById(R.id.resultSpeach);
         letters = getIntent().getStringExtra("alphabets").toLowerCase(Locale.ROOT);
 
+        textToSpeech();
+
         int drawableLetter = getResources().getIdentifier(letters,"drawable",getPackageName());
         imageLetters.setImageResource(drawableLetter);
 
         int SoundLetter = getResources().getIdentifier(letters,"raw",getPackageName());
         MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), SoundLetter);
         mediaPlayer.start();
+
+
+    }
+
+    private void textToSpeech() {
+        textToSpeech = new TextToSpeech(this, i -> {
+            if (i == TextToSpeech.SUCCESS) {
+                outputSpeak = textToSpeech.setLanguage(Locale.ENGLISH);
+            }
+        });
     }
     
     private void checkLetters(){
@@ -58,25 +73,27 @@ public class Alphabet extends AppCompatActivity {
             case "a":
                 if (output.getText().toString().equalsIgnoreCase("apple")){
                     GreatJobDialog();
-                    Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    textToSpeech.speak("Great Job", TextToSpeech.QUEUE_ADD,null);
                     Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
+                    textToSpeech.speak("Keep Going! Good Try", TextToSpeech.QUEUE_ADD,null);
                 }
                 break;
             case "b":
                 if (output.getText().toString().equalsIgnoreCase("bicycle")){
                     GreatJobDialog();
-                    Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    textToSpeech.speak("Great Job", TextToSpeech.QUEUE_ADD,null);
                     Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
-                }
+                    textToSpeech.speak("Keep Going! Good Try", TextToSpeech.QUEUE_ADD,null);                }
                 break;
             case "c":
                 if (output.getText().toString().equalsIgnoreCase("car")){
                     GreatJobDialog();
-                    Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    textToSpeech.speak("Great Job", TextToSpeech.QUEUE_ADD,null);
                     Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
@@ -86,7 +103,7 @@ public class Alphabet extends AppCompatActivity {
             case "d":
                 if (output.getText().toString().equalsIgnoreCase("dog")){
                     GreatJobDialog();
-                    Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    textToSpeech.speak("Great Job", TextToSpeech.QUEUE_ADD,null);
                     Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
@@ -95,7 +112,7 @@ public class Alphabet extends AppCompatActivity {
             case "e":
                 if (output.getText().toString().equalsIgnoreCase("eyes")){
                     GreatJobDialog();
-                    Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    textToSpeech.speak("Great Job", TextToSpeech.QUEUE_ADD,null);
                     Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
@@ -105,7 +122,7 @@ public class Alphabet extends AppCompatActivity {
             case "f":
                 if (output.getText().toString().equalsIgnoreCase("frog")){
                     GreatJobDialog();
-                    Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    textToSpeech.speak("Great Job", TextToSpeech.QUEUE_ADD,null);
                     Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
@@ -115,7 +132,7 @@ public class Alphabet extends AppCompatActivity {
             case "g":
                 if (output.getText().toString().equalsIgnoreCase("gizmo")){
                     GreatJobDialog();
-                    Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    textToSpeech.speak("Great Job", TextToSpeech.QUEUE_ADD,null);
                     Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
@@ -125,7 +142,7 @@ public class Alphabet extends AppCompatActivity {
             case "h":
                 if (output.getText().toString().equalsIgnoreCase("horse")){
                     GreatJobDialog();
-                    Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    textToSpeech.speak("Great Job", TextToSpeech.QUEUE_ADD,null);
                     Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
@@ -135,7 +152,7 @@ public class Alphabet extends AppCompatActivity {
             case "i":
                 if (output.getText().toString().equalsIgnoreCase("ice cream")){
                     GreatJobDialog();
-                    Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    textToSpeech.speak("Great Job", TextToSpeech.QUEUE_ADD,null);
                     Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
@@ -145,7 +162,7 @@ public class Alphabet extends AppCompatActivity {
             case "j":
                 if (output.getText().toString().equalsIgnoreCase("jeepney")){
                     GreatJobDialog();
-                    Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    textToSpeech.speak("Great Job", TextToSpeech.QUEUE_ADD,null);
                     Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
@@ -155,160 +172,160 @@ public class Alphabet extends AppCompatActivity {
             case "k":
                 if (output.getText().toString().equalsIgnoreCase("kangaroo")){
                     GreatJobDialog();
-                    Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    textToSpeech.speak("Great Job", TextToSpeech.QUEUE_ADD,null);
                     Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
-                }
+                    textToSpeech.speak("Keep Going! Good Try", TextToSpeech.QUEUE_ADD,null);                }
                 break;
 
             case "l":
                 if (output.getText().toString().equalsIgnoreCase("lion")){
                     GreatJobDialog();
-                    Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    textToSpeech.speak("Great Job", TextToSpeech.QUEUE_ADD,null);
                     Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
-                }
+                    textToSpeech.speak("Keep Going! Good Try", TextToSpeech.QUEUE_ADD,null);                }
                 break;
 
             case "m":
                 if (output.getText().toString().equalsIgnoreCase("moon")){
                     GreatJobDialog();
-                    Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    textToSpeech.speak("Great Job", TextToSpeech.QUEUE_ADD,null);
                     Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
-                }
+                    textToSpeech.speak("Keep Going! Good Try", TextToSpeech.QUEUE_ADD,null);                }
                 break;
 
             case "n":
                 if (output.getText().toString().equalsIgnoreCase("nose")){
                     GreatJobDialog();
-                    Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    textToSpeech.speak("Great Job", TextToSpeech.QUEUE_ADD,null);
                     Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
-                }
+                    textToSpeech.speak("Keep Going! Good Try", TextToSpeech.QUEUE_ADD,null);                }
                 break;
 
 
             case "o":
                 if (output.getText().toString().equalsIgnoreCase("orange")){
                     GreatJobDialog();
-                    Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    textToSpeech.speak("Great Job", TextToSpeech.QUEUE_ADD,null);
                     Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
-                }
+                    textToSpeech.speak("Keep Going! Good Try", TextToSpeech.QUEUE_ADD,null);                }
                 break;
 
             case "p":
                 if (output.getText().toString().equalsIgnoreCase("pancake") ||
                         output.getText().toString().equalsIgnoreCase("pancakes")){
                     GreatJobDialog();
-                    Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    textToSpeech.speak("Great Job", TextToSpeech.QUEUE_ADD,null);
                     Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
-                }
+                    textToSpeech.speak("Keep Going! Good Try", TextToSpeech.QUEUE_ADD,null);                }
                 break;
 
             case "q":
                 if (output.getText().toString().equalsIgnoreCase("queen")){
                     GreatJobDialog();
-                    Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    textToSpeech.speak("Great Job", TextToSpeech.QUEUE_ADD,null);
                     Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
-                }
+                    textToSpeech.speak("Keep Going! Good Try", TextToSpeech.QUEUE_ADD,null);                }
                 break;
 
             case "r":
-                if (output.getText().toString().equalsIgnoreCase("rat")){
+                if (output.getText().toString().equalsIgnoreCase("rabbit")){
                     GreatJobDialog();
-                    Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    textToSpeech.speak("Great Job", TextToSpeech.QUEUE_ADD,null);
                     Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
-                }
+                    textToSpeech.speak("Keep Going! Good Try", TextToSpeech.QUEUE_ADD,null);                }
                 break;
 
             case "s":
                 if (output.getText().toString().equalsIgnoreCase("spoon")){
                     GreatJobDialog();
-                    Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    textToSpeech.speak("Great Job", TextToSpeech.QUEUE_ADD,null);
                     Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
-                }
+                    textToSpeech.speak("Keep Going! Good Try", TextToSpeech.QUEUE_ADD,null);                }
                 break;
 
             case "t":
                 if (output.getText().toString().equalsIgnoreCase("tongue")){
                     GreatJobDialog();
-                    Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    textToSpeech.speak("Great Job", TextToSpeech.QUEUE_ADD,null);
                     Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
-                }
+                    textToSpeech.speak("Keep Going! Good Try", TextToSpeech.QUEUE_ADD,null);                }
                 break;
 
             case "u":
                 if (output.getText().toString().equalsIgnoreCase("umbrella")){
                     GreatJobDialog();
-                    Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    textToSpeech.speak("Great Job", TextToSpeech.QUEUE_ADD,null);
                     Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
-                }
+                    textToSpeech.speak("Keep Going! Good Try", TextToSpeech.QUEUE_ADD,null);                }
                 break;
             case "v":
                 if (output.getText().toString().equalsIgnoreCase("violin")){
                     GreatJobDialog();
-                    Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    textToSpeech.speak("Great Job", TextToSpeech.QUEUE_ADD,null);
                     Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
-                }
+                    textToSpeech.speak("Keep Going! Good Try", TextToSpeech.QUEUE_ADD,null);                }
                 break;
 
             case "w":
                 if (output.getText().toString().equalsIgnoreCase("window")){
                     GreatJobDialog();
-                    Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    textToSpeech.speak("Great Job", TextToSpeech.QUEUE_ADD,null);
                     Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
-                }
+                    textToSpeech.speak("Keep Going! Good Try", TextToSpeech.QUEUE_ADD,null);                }
                 break;
             case "x":
                 if (output.getText().toString().equalsIgnoreCase("x-ray")){
                     GreatJobDialog();
-                    Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    textToSpeech.speak("Great Job", TextToSpeech.QUEUE_ADD,null);
                     Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
-                }
+                    textToSpeech.speak("Keep Going! Good Try", TextToSpeech.QUEUE_ADD,null);                }
                 break;
 
             case "y":
                 if (output.getText().toString().equalsIgnoreCase("yarn")){
                     GreatJobDialog();
-                    Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    textToSpeech.speak("Great Job", TextToSpeech.QUEUE_ADD,null);
                     Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
-                }
+                    textToSpeech.speak("Keep Going! Good Try", TextToSpeech.QUEUE_ADD,null);                }
                 break;
             case "z":
                 if (output.getText().toString().equalsIgnoreCase("zebra")){
                     GreatJobDialog();
-                    Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    textToSpeech.speak("Great Job", TextToSpeech.QUEUE_ADD,null);
                     Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
-                }
+                    textToSpeech.speak("Keep Going! Good Try", TextToSpeech.QUEUE_ADD,null);                }
                 break;
         }
     }
