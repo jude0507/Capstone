@@ -116,6 +116,11 @@ public class KinderChristianLivingWatch extends AppCompatActivity implements Rec
         super.onStop();
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, StudentHomeView.class));
+    }
+
     private void EventChangeListener() {
         db.collection("Videos").whereEqualTo("videoSubject", subject)
                 .addSnapshotListener((value, error) -> {

@@ -99,16 +99,6 @@ public class Announcement extends AppCompatActivity {
             message.setError("Required Field");
         }
 
-
-//        if (!title.getText().toString().isEmpty() && !message.getText().toString().isEmpty()){
-//            FcmNotificationsSender notificationSender = new FcmNotificationsSender("/topics/All",
-//                    title.getText().toString(),message.getText().toString(),getApplicationContext(),
-//                    Announcement.this);
-//            notificationSender.SendNotifications();
-//
-//        }else{
-//            Toast.makeText(this, "NO DATA PLEASE INPUT", Toast.LENGTH_SHORT).show();
-//        }
     }
     @Override
     protected void onStart() {

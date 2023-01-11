@@ -136,4 +136,9 @@ public class KinderMathWatch extends AppCompatActivity implements RecyclerViewIn
         intent.putExtra("VideoUrl", videoNameArraylist.get(position).getVideoUrl());
         startActivity(intent);
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, StudentHomeView.class));
+    }
 }

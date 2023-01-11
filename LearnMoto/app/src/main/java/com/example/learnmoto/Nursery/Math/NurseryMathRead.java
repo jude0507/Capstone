@@ -102,6 +102,11 @@ public class NurseryMathRead extends AppCompatActivity {
         startActivity(new Intent(this, StudentHomeView.class));
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, StudentHomeView.class));
+    }
+
     public void pdf(View view) {
         startActivity(new Intent(this, MathPDF.class));
     }

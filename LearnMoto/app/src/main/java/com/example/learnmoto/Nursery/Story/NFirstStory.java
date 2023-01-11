@@ -95,4 +95,8 @@ public class NFirstStory extends AppCompatActivity {
         startActivity(new Intent(this, NStories.class));
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, NStories.class));
+    }
 }

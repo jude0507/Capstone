@@ -133,4 +133,10 @@ public class NurseryScienceWatch extends AppCompatActivity implements RecyclerVi
         intent.putExtra("VideoUrl", videoNameArraylist.get(position).getVideoUrl());
         startActivity(intent);
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, StudentHomeView.class));
+    }
+
 }

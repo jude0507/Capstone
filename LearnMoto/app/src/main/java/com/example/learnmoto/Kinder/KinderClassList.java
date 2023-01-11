@@ -121,4 +121,9 @@ public class KinderClassList extends AppCompatActivity {
             todoMsg.setError("Required Field");
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, TeacherView.class));
+    }
 }

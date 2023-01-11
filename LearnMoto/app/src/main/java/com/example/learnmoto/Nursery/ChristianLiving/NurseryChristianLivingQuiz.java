@@ -20,6 +20,7 @@ import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.ChristianLivingQuiz;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Student.StudentHomeView;
+import com.example.learnmoto.Teacher.TeacherView;
 
 public class NurseryChristianLivingQuiz extends AppCompatActivity {
     DrawerLayout drawerLayout;
@@ -98,6 +99,11 @@ public class NurseryChristianLivingQuiz extends AppCompatActivity {
     }
 
     public void BacktoStudentHome(View view){
+        startActivity(new Intent(this, StudentHomeView.class));
+    }
+
+    @Override
+    public void onBackPressed() {
         startActivity(new Intent(this, StudentHomeView.class));
     }
 

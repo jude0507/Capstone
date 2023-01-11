@@ -97,4 +97,9 @@ public class NFourthStory extends AppCompatActivity {
     public void BackToStories(View view) {
         startActivity(new Intent(this, NStories.class));
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, NStories.class));
+    }
 }

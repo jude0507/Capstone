@@ -76,6 +76,11 @@ public class PreparatoryClassList extends AppCompatActivity {
         startActivity(new Intent(this, TeacherView.class));
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, TeacherView.class));
+    }
+
     public void ExpandToDo(View view) {
         if (expandLayout1.getVisibility() == View.GONE) {
             TransitionManager.beginDelayedTransition(Layout1, new AutoTransition());

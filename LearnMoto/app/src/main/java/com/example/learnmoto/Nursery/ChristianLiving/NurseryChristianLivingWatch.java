@@ -115,6 +115,11 @@ public class NurseryChristianLivingWatch extends AppCompatActivity implements Re
         super.onStop();
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, StudentHomeView.class));
+    }
+
     private void EventChangeListener() {
         db.collection("Videos").whereEqualTo("videoSubject", subject)
                 .addSnapshotListener((value, error) -> {

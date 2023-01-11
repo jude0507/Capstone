@@ -100,6 +100,8 @@ public class KinderFilipinoRead extends AppCompatActivity {
         startActivity(new Intent(this, StudentHomeView.class));
     }
 
+
+
     public void pdf(View view) {
         startActivity(new Intent(this, FilipinoPDF.class));
     }
@@ -117,4 +119,8 @@ public class KinderFilipinoRead extends AppCompatActivity {
         super.onStop();
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, StudentHomeView.class));
+    }
 }

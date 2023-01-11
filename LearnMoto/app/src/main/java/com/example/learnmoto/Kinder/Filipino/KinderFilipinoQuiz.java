@@ -100,6 +100,12 @@ public class KinderFilipinoQuiz extends AppCompatActivity {
     public void BacktoStudentHome(View view){
         startActivity(new Intent(this, StudentHomeView.class));
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, StudentHomeView.class));
+    }
+
     @Override
     protected void onStart() {
         IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);

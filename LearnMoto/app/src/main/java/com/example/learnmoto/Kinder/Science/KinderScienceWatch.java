@@ -137,4 +137,9 @@ public class KinderScienceWatch extends AppCompatActivity implements RecyclerVie
         intent.putExtra("VideoUrl", videoNameArraylist.get(position).getVideoUrl());
         startActivity(intent);
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, StudentHomeView.class));
+    }
 }

@@ -114,6 +114,11 @@ public class KinderScienceQuiz extends AppCompatActivity {
         super.onStop();
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, StudentHomeView.class));
+    }
+
     public void StartQuiz(View view) {
         startActivity(new Intent(this, ScienceQuiz.class));
     }

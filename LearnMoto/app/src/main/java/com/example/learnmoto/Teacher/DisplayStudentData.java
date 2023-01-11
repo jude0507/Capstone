@@ -95,6 +95,15 @@ public class DisplayStudentData extends AppCompatActivity {
     }
 
     public void BackToTeacherView(View view) {
+        BackPressed();
+    }
+
+    @Override
+    public void onBackPressed() {
+        BackPressed();
+    }
+
+    private void BackPressed(){
         if (getSLevel.equals("Kinder")){
             startActivity(new Intent(this, KinderClassList.class));
         }else if (getSLevel.equals("Nursery")){
