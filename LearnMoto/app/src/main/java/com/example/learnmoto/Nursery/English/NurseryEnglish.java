@@ -52,7 +52,7 @@ public class NurseryEnglish extends AppCompatActivity {
 
         subjectlevel.setText("English");
 
-        pdfArrow.setOnClickListener(v -> {
+        expandableLinear2.setOnClickListener(v -> {
             if (expandableView2.getVisibility() == View.GONE) {
                 TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
                 expandableView2.setVisibility(View.VISIBLE);
@@ -64,7 +64,7 @@ public class NurseryEnglish extends AppCompatActivity {
             }
         });
 
-        storyArrow.setOnClickListener(v -> {
+        expandableLinear1.setOnClickListener(v -> {
             if (expandableView1.getVisibility() == View.GONE) {
                 TransitionManager.beginDelayedTransition(expandableLinear1, new AutoTransition());
                 expandableView1.setVisibility(View.VISIBLE);
@@ -76,7 +76,7 @@ public class NurseryEnglish extends AppCompatActivity {
             }
         });
 
-        pronounceArrow.setOnClickListener(v -> {
+        expandableLinear3.setOnClickListener(v -> {
             if (expandableView3.getVisibility() == View.GONE) {
                 TransitionManager.beginDelayedTransition(expandableLinear3, new AutoTransition());
                 expandableView3.setVisibility(View.VISIBLE);

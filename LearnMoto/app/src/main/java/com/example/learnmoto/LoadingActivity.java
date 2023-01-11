@@ -9,7 +9,7 @@ import android.os.Handler;
 
 public class LoadingActivity extends Activity {
 
-    public static final int SPLASH_LOADING_DELAY = 3000;
+    public static final int SPLASH_LOADING_DELAY = 5000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.speech.RecognizerIntent;
 import android.speech.SpeechRecognizer;
 import android.util.Log;
@@ -17,6 +18,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.learnmoto.LoadingActivity;
+import com.example.learnmoto.MainActivity;
 import com.example.learnmoto.R;
 
 import java.util.ArrayList;
@@ -56,6 +59,7 @@ public class Alphabet extends AppCompatActivity {
                 if (output.getText().toString().equalsIgnoreCase("apple")){
                     GreatJobDialog();
                     Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
                 }
@@ -64,6 +68,7 @@ public class Alphabet extends AppCompatActivity {
                 if (output.getText().toString().equalsIgnoreCase("bicycle")){
                     GreatJobDialog();
                     Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
                 }
@@ -72,14 +77,17 @@ public class Alphabet extends AppCompatActivity {
                 if (output.getText().toString().equalsIgnoreCase("car")){
                     GreatJobDialog();
                     Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
+                    Delay();
                 }
                 break;
             case "d":
                 if (output.getText().toString().equalsIgnoreCase("dog")){
                     GreatJobDialog();
                     Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
                 }
@@ -88,6 +96,7 @@ public class Alphabet extends AppCompatActivity {
                 if (output.getText().toString().equalsIgnoreCase("eyes")){
                     GreatJobDialog();
                     Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
                 }
@@ -97,6 +106,7 @@ public class Alphabet extends AppCompatActivity {
                 if (output.getText().toString().equalsIgnoreCase("frog")){
                     GreatJobDialog();
                     Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
                 }
@@ -106,6 +116,7 @@ public class Alphabet extends AppCompatActivity {
                 if (output.getText().toString().equalsIgnoreCase("gizmo")){
                     GreatJobDialog();
                     Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
                 }
@@ -115,6 +126,7 @@ public class Alphabet extends AppCompatActivity {
                 if (output.getText().toString().equalsIgnoreCase("horse")){
                     GreatJobDialog();
                     Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
                 }
@@ -124,6 +136,7 @@ public class Alphabet extends AppCompatActivity {
                 if (output.getText().toString().equalsIgnoreCase("ice cream")){
                     GreatJobDialog();
                     Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
                 }
@@ -133,6 +146,7 @@ public class Alphabet extends AppCompatActivity {
                 if (output.getText().toString().equalsIgnoreCase("jeepney")){
                     GreatJobDialog();
                     Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
                 }
@@ -142,6 +156,7 @@ public class Alphabet extends AppCompatActivity {
                 if (output.getText().toString().equalsIgnoreCase("kangaroo")){
                     GreatJobDialog();
                     Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
                 }
@@ -151,6 +166,7 @@ public class Alphabet extends AppCompatActivity {
                 if (output.getText().toString().equalsIgnoreCase("lion")){
                     GreatJobDialog();
                     Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
                 }
@@ -160,6 +176,7 @@ public class Alphabet extends AppCompatActivity {
                 if (output.getText().toString().equalsIgnoreCase("moon")){
                     GreatJobDialog();
                     Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
                 }
@@ -169,6 +186,7 @@ public class Alphabet extends AppCompatActivity {
                 if (output.getText().toString().equalsIgnoreCase("nose")){
                     GreatJobDialog();
                     Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
                 }
@@ -179,6 +197,7 @@ public class Alphabet extends AppCompatActivity {
                 if (output.getText().toString().equalsIgnoreCase("orange")){
                     GreatJobDialog();
                     Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
                 }
@@ -189,6 +208,7 @@ public class Alphabet extends AppCompatActivity {
                         output.getText().toString().equalsIgnoreCase("pancakes")){
                     GreatJobDialog();
                     Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
                 }
@@ -198,6 +218,7 @@ public class Alphabet extends AppCompatActivity {
                 if (output.getText().toString().equalsIgnoreCase("queen")){
                     GreatJobDialog();
                     Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
                 }
@@ -207,6 +228,7 @@ public class Alphabet extends AppCompatActivity {
                 if (output.getText().toString().equalsIgnoreCase("rat")){
                     GreatJobDialog();
                     Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
                 }
@@ -216,6 +238,7 @@ public class Alphabet extends AppCompatActivity {
                 if (output.getText().toString().equalsIgnoreCase("spoon")){
                     GreatJobDialog();
                     Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
                 }
@@ -225,6 +248,7 @@ public class Alphabet extends AppCompatActivity {
                 if (output.getText().toString().equalsIgnoreCase("tongue")){
                     GreatJobDialog();
                     Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
                 }
@@ -234,6 +258,7 @@ public class Alphabet extends AppCompatActivity {
                 if (output.getText().toString().equalsIgnoreCase("umbrella")){
                     GreatJobDialog();
                     Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
                 }
@@ -242,6 +267,7 @@ public class Alphabet extends AppCompatActivity {
                 if (output.getText().toString().equalsIgnoreCase("violin")){
                     GreatJobDialog();
                     Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
                 }
@@ -251,6 +277,7 @@ public class Alphabet extends AppCompatActivity {
                 if (output.getText().toString().equalsIgnoreCase("window")){
                     GreatJobDialog();
                     Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
                 }
@@ -259,6 +286,7 @@ public class Alphabet extends AppCompatActivity {
                 if (output.getText().toString().equalsIgnoreCase("x-ray")){
                     GreatJobDialog();
                     Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
                 }
@@ -268,6 +296,7 @@ public class Alphabet extends AppCompatActivity {
                 if (output.getText().toString().equalsIgnoreCase("yarn")){
                     GreatJobDialog();
                     Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
                 }
@@ -276,6 +305,7 @@ public class Alphabet extends AppCompatActivity {
                 if (output.getText().toString().equalsIgnoreCase("zebra")){
                     GreatJobDialog();
                     Toast.makeText(this, "Excellent", Toast.LENGTH_SHORT).show();
+                    Delay();
                 }else{
                     Toast.makeText(this, "Keep Going! Good Try!", Toast.LENGTH_SHORT).show();
                 }
@@ -289,6 +319,16 @@ public class Alphabet extends AppCompatActivity {
         builder.setView(view);
         alertDialog = builder.create();
         alertDialog.show();
+    }
+
+    private void Delay(){
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                startActivity(new Intent(Alphabet.this, PronounceAlphabet.class));
+                finish();
+            }
+        }, 2000);
     }
 
 

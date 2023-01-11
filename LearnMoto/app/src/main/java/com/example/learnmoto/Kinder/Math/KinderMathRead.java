@@ -41,7 +41,7 @@ public class KinderMathRead extends AppCompatActivity {
         expandableLinear2 = findViewById(R.id.layout2);
 
         subjectlevel.setText("Math");
-        pdfArrow.setOnClickListener(v -> {
+        expandableLinear2.setOnClickListener(v -> {
             if (expandableView2.getVisibility() == View.GONE) {
                 TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
                 expandableView2.setVisibility(View.VISIBLE);

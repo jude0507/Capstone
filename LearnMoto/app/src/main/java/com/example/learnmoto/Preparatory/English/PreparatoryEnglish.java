@@ -44,7 +44,7 @@ public class PreparatoryEnglish extends AppCompatActivity {
         expandableLinear3 = findViewById(R.id.layout3);
 
         subjectlevel.setText("English");
-        pdfArrow.setOnClickListener(v -> {
+        expandableLinear2.setOnClickListener(v -> {
             if (expandableView2.getVisibility() == View.GONE) {
                 TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
                 expandableView2.setVisibility(View.VISIBLE);
