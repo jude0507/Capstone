@@ -1,9 +1,5 @@
 package com.example.learnmoto.Nursery.Science;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -16,9 +12,13 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
-import com.example.learnmoto.R;
 import com.example.learnmoto.PDF.SciencePDF;
+import com.example.learnmoto.R;
 import com.example.learnmoto.Student.StudentHomeView;
 
 public class NurseryScienceRead extends AppCompatActivity {
@@ -51,6 +51,19 @@ public class NurseryScienceRead extends AppCompatActivity {
                 pdfArrow.setBackgroundResource(R.drawable.ic_arrow_down);
             }
         });
+
+        pdfArrow.setOnClickListener(v -> {
+            if (expandableView2.getVisibility() == View.GONE) {
+                TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
+                expandableView2.setVisibility(View.VISIBLE);
+                pdfArrow.setBackgroundResource(R.drawable.ic_arrow_up);
+            }else{
+                TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
+                expandableView2.setVisibility(View.GONE);
+                pdfArrow.setBackgroundResource(R.drawable.ic_arrow_down);
+            }
+        });
+
     }
     public void clickmenu(View view) {
         openDrawer(drawerLayout);

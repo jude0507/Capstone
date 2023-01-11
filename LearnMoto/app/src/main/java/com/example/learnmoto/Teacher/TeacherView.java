@@ -1,10 +1,5 @@
 package com.example.learnmoto.Teacher;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -24,24 +19,27 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.learnmoto.CheckConnection.NetworkChangeListener;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.learnmoto.Adapter.LevelAdapter;
+import com.example.learnmoto.Adapter.TranslateAnimatioUI;
+import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.DisplayImage;
 import com.example.learnmoto.Kinder.KinderClassList;
 import com.example.learnmoto.Model.TeacherModel;
 import com.example.learnmoto.Nursery.NurseryClassList;
 import com.example.learnmoto.Preparatory.PreparatoryClassList;
 import com.example.learnmoto.R;
-import com.example.learnmoto.Adapter.TranslateAnimatioUI;
 import com.example.learnmoto.SubjectArrayClass;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -668,5 +666,18 @@ public class TeacherView extends AppCompatActivity {
                 });
     }
 
+    @Override
+    public void onBackPressed() {
+        android.app.AlertDialog.Builder alBuilder = new android.app.AlertDialog.Builder(this);
+        alBuilder.setTitle("Confirmation Message")
+                .setMessage("Do you want to logout");
+        alBuilder.setPositiveButton("Confirm", (dialog, which) -> {
+            startActivity(new Intent(TeacherView.this, TeacherLogin.class));
+            Toast.makeText(TeacherView.this, "Logout Success", Toast.LENGTH_SHORT).show();
+            finish();
+        });
+        alBuilder.setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss());
+        alBuilder.show();
+    }
 }
 

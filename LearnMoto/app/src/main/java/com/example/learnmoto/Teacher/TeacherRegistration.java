@@ -1,8 +1,5 @@
 package com.example.learnmoto.Teacher;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -14,17 +11,15 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-import com.example.learnmoto.Model.TeacherModel;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
+import com.example.learnmoto.Model.TeacherModel;
 import com.example.learnmoto.R;
 import com.example.learnmoto.ShowPassword;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class TeacherRegistration extends AppCompatActivity {
@@ -143,6 +138,11 @@ public class TeacherRegistration extends AppCompatActivity {
     }
 
     public void TeacherLogin(View view) {
+        startActivity(new Intent(this, TeacherLogin.class));
+    }
+
+    @Override
+    public void onBackPressed() {
         startActivity(new Intent(this, TeacherLogin.class));
     }
 

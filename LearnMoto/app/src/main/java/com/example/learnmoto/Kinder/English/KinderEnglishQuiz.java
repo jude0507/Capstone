@@ -1,9 +1,5 @@
 package com.example.learnmoto.Kinder.English;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -15,6 +11,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.EnglishQuiz;
@@ -40,6 +40,18 @@ public class KinderEnglishQuiz extends AppCompatActivity {
         expandableLinear1 = findViewById(R.id.layout3);
 
         subjectlevel.setText("English");
+
+        expandableLinear1.setOnClickListener(v -> {
+            if (expandableView1.getVisibility() == View.GONE) {
+                TransitionManager.beginDelayedTransition(expandableLinear1, new AutoTransition());
+                expandableView1.setVisibility(View.VISIBLE);
+                quizArrow.setBackgroundResource(R.drawable.ic_arrow_up);
+            }else{
+                TransitionManager.beginDelayedTransition(expandableLinear1, new AutoTransition());
+                expandableView1.setVisibility(View.GONE);
+                quizArrow.setBackgroundResource(R.drawable.ic_arrow_down);
+            }
+        });
 
         quizArrow.setOnClickListener(v -> {
             if (expandableView1.getVisibility() == View.GONE) {

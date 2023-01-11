@@ -1,9 +1,5 @@
 package com.example.learnmoto.Nursery.English;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -16,11 +12,15 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.Nursery.NStories;
 import com.example.learnmoto.PDF.EnglishPDF;
-import com.example.learnmoto.Student.PronounceAlphabet;
 import com.example.learnmoto.R;
+import com.example.learnmoto.Student.PronounceAlphabet;
 import com.example.learnmoto.Student.StudentHomeView;
 
 public class NurseryEnglish extends AppCompatActivity {
@@ -52,6 +52,18 @@ public class NurseryEnglish extends AppCompatActivity {
 
         subjectlevel.setText("English");
 
+        pdfArrow.setOnClickListener(v -> {
+            if (expandableView2.getVisibility() == View.GONE) {
+                TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
+                expandableView2.setVisibility(View.VISIBLE);
+                pdfArrow.setBackgroundResource(R.drawable.ic_arrow_up);
+            }else{
+                TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
+                expandableView2.setVisibility(View.GONE);
+                pdfArrow.setBackgroundResource(R.drawable.ic_arrow_down);
+            }
+        });
+
         expandableLinear2.setOnClickListener(v -> {
             if (expandableView2.getVisibility() == View.GONE) {
                 TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
@@ -76,7 +88,31 @@ public class NurseryEnglish extends AppCompatActivity {
             }
         });
 
+        storyArrow.setOnClickListener(v -> {
+            if (expandableView1.getVisibility() == View.GONE) {
+                TransitionManager.beginDelayedTransition(expandableLinear1, new AutoTransition());
+                expandableView1.setVisibility(View.VISIBLE);
+                storyArrow.setBackgroundResource(R.drawable.ic_arrow_up);
+            }else{
+                TransitionManager.beginDelayedTransition(expandableLinear1, new AutoTransition());
+                expandableView1.setVisibility(View.GONE);
+                storyArrow.setBackgroundResource(R.drawable.ic_arrow_down);
+            }
+        });
+
         expandableLinear3.setOnClickListener(v -> {
+            if (expandableView3.getVisibility() == View.GONE) {
+                TransitionManager.beginDelayedTransition(expandableLinear3, new AutoTransition());
+                expandableView3.setVisibility(View.VISIBLE);
+                pronounceArrow.setBackgroundResource(R.drawable.ic_arrow_up);
+            }else{
+                TransitionManager.beginDelayedTransition(expandableLinear3, new AutoTransition());
+                expandableView3.setVisibility(View.GONE);
+                pronounceArrow.setBackgroundResource(R.drawable.ic_arrow_down);
+            }
+        });
+
+        pronounceArrow.setOnClickListener(v -> {
             if (expandableView3.getVisibility() == View.GONE) {
                 TransitionManager.beginDelayedTransition(expandableLinear3, new AutoTransition());
                 expandableView3.setVisibility(View.VISIBLE);

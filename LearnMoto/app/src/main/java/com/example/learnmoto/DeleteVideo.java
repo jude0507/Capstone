@@ -1,17 +1,19 @@
 package com.example.learnmoto;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
-import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.learnmoto.Model.VideoModel;
+import com.example.learnmoto.Teacher.SubjectVideo;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -24,6 +26,8 @@ public class DeleteVideo extends AppCompatActivity {
     String getNameVideo;
     String VideoURL;
     Uri uri;
+    ProgressDialog progressDialog;
+
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
@@ -38,7 +42,19 @@ public class DeleteVideo extends AppCompatActivity {
         getNameVideo = getIntent().getStringExtra("VideoName");
         textView.setText(getNameVideo);
 
-        Video();
+        RemoveVideo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                videoView.start();
+            }
+        });
+
+
+//        progressDialog = new ProgressDialog(this);
+//        progressDialog.setMessage("Loading....");
+//        progressDialog.setCanceledOnTouchOutside(false);
+//        progressDialog.show();
+
 
     }
 
@@ -56,13 +72,26 @@ public class DeleteVideo extends AppCompatActivity {
 
                         uri = Uri.parse(VideoURL);
                         videoView.setVideoURI(uri);
-                        videoView.start();
-                        MediaController mediaController = new MediaController(DeleteVideo.this);
-                        mediaController.setAnchorView(videoView);
-                        videoView.setMediaController(mediaController);
+                        videoView.requestFocus();
+
 
                     }
                 });
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        Video();
+    }
+
+    public void BackToTeacherView(View view) {
+        startActivity(new Intent(DeleteVideo.this, SubjectVideo.class));
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(DeleteVideo.this, SubjectVideo.class));
+    }
 }

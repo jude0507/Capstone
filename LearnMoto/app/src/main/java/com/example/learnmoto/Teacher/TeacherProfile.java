@@ -1,8 +1,5 @@
 package com.example.learnmoto.Teacher;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -21,6 +18,9 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.example.learnmoto.Adapter.TranslateAnimatioUI;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
@@ -243,12 +243,9 @@ public class TeacherProfile extends AppCompatActivity {
         super.onStop();
     }
 
-    int pressed = 0;
     @Override
     public void onBackPressed() {
-        pressed++;
-        if (pressed == 2)
-            super.onBackPressed();
+        startActivity(new Intent(TeacherProfile.this, TeacherView.class));
     }
 
     public void UpdateImage(View view) {

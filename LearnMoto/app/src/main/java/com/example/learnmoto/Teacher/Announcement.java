@@ -1,7 +1,5 @@
 package com.example.learnmoto.Teacher;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
@@ -11,15 +9,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.learnmoto.Model.AnnouncementModel;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
+import com.example.learnmoto.Model.AnnouncementModel;
 import com.example.learnmoto.R;
-import com.example.learnmoto.Student.StudentHomeView;
-import com.example.learnmoto.Student.StudentSettings;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Announcement extends AppCompatActivity {
@@ -113,5 +109,8 @@ public class Announcement extends AppCompatActivity {
         super.onStop();
     }
 
-
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(Announcement.this, TeacherView.class));
+    }
 }

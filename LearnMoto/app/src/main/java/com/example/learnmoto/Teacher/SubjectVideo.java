@@ -1,10 +1,5 @@
 package com.example.learnmoto.Teacher;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -25,19 +20,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.DeleteVideo;
 import com.example.learnmoto.Model.VideoModel;
 import com.example.learnmoto.R;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -199,7 +192,7 @@ public class SubjectVideo extends AppCompatActivity {
             return;
         }else{
             Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this, TeacherLogin.class));
+            startActivity(new Intent(this, TeacherView.class));
         }
         backpressedTimes = System.currentTimeMillis();
     }

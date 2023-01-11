@@ -1,7 +1,5 @@
 package com.example.learnmoto.Teacher;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
@@ -13,9 +11,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
-import com.example.learnmoto.Parent.ParentLogin;
-import com.example.learnmoto.Parent.ParentView;
 import com.example.learnmoto.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -89,6 +87,11 @@ public class TeacherSettings extends AppCompatActivity {
         IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
         registerReceiver(networkChangeListener, intentFilter);
         super.onStart();
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(TeacherSettings.this, TeacherView.class));
     }
 
     @Override
