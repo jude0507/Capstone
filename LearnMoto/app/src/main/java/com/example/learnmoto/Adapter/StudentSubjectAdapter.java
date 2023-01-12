@@ -2,6 +2,7 @@ package com.example.learnmoto.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.speech.tts.TextToSpeech;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +30,8 @@ import com.example.learnmoto.Preparatory.SibikaKultura.PreparatorySibKulRead;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Student.StudentHomeView;
 import com.example.learnmoto.Student.StudentLogin;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -72,6 +75,7 @@ public class StudentSubjectAdapter extends RecyclerView.Adapter<StudentSubjectAd
                switch (getAdapterPosition()){
                    case 0:
                        //Toast.makeText(v.getContext(), "English", Toast.LENGTH_SHORT).show();
+                       StudentHomeView.textToSpeech.speak("English", TextToSpeech.QUEUE_ADD, null);
                         if (level.equals("Nursery")){
                             //Toast.makeText(v.getContext(), "Nursery", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), NurseryEnglish.class));
@@ -86,6 +90,7 @@ public class StudentSubjectAdapter extends RecyclerView.Adapter<StudentSubjectAd
                         break;
                     case 1:
                         //Toast.makeText(v.getContext(), "Math", Toast.LENGTH_SHORT).show();
+                        StudentHomeView.textToSpeech.speak("Math", TextToSpeech.QUEUE_ADD, null);
                         if (level.equals("Nursery")){
                             //Toast.makeText(v.getContext(), "Nursery", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), NurseryMathRead.class));
@@ -100,6 +105,7 @@ public class StudentSubjectAdapter extends RecyclerView.Adapter<StudentSubjectAd
                         break;
                     case 2:
                         //Toast.makeText(v.getContext(), "Science", Toast.LENGTH_SHORT).show();
+                        StudentHomeView.textToSpeech.speak("Science", TextToSpeech.QUEUE_ADD, null);
                         if (level.equals("Nursery")){
                            // Toast.makeText(v.getContext(), "Nursery", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), NurseryScienceRead.class));
@@ -113,6 +119,7 @@ public class StudentSubjectAdapter extends RecyclerView.Adapter<StudentSubjectAd
                         //v.getContext().startActivity(new Intent(v.getContext(), NumberRead.class));
                         break;
                     case 3:
+                        StudentHomeView.textToSpeech.speak("Christian Living", TextToSpeech.QUEUE_ADD, null);
                         //Toast.makeText(v.getContext(), "Christian Living", Toast.LENGTH_SHORT).show();
                         if (level.equals("Nursery")){
                            // Toast.makeText(v.getContext(), "Nursery", Toast.LENGTH_SHORT).show();
@@ -127,6 +134,7 @@ public class StudentSubjectAdapter extends RecyclerView.Adapter<StudentSubjectAd
                         //v.getContext().startActivity(new Intent(v.getContext(), StoryRead.class));
                         break;
                     case 4:
+                        StudentHomeView.textToSpeech.speak("Filipino", TextToSpeech.QUEUE_ADD, null);
                         //Toast.makeText(v.getContext(), "Filipino", Toast.LENGTH_SHORT).show();
                         if (level.equals("Kinder")){
                           //  Toast.makeText(v.getContext(), "Kinder", Toast.LENGTH_SHORT).show();
@@ -138,6 +146,7 @@ public class StudentSubjectAdapter extends RecyclerView.Adapter<StudentSubjectAd
                         //v.getContext().startActivity(new Intent(v.getContext(), ShapesRead.class));
                         break;
                     case 5:
+                        StudentHomeView.textToSpeech.speak("Hekasi", TextToSpeech.QUEUE_ADD, null);
                         //Toast.makeText(v.getContext(), "Sibika at Kultura", Toast.LENGTH_SHORT).show();
                         v.getContext().startActivity(new Intent(v.getContext(), PreparatorySibKulRead.class));
                         break;

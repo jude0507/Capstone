@@ -112,7 +112,31 @@ public class ParentView extends AppCompatActivity {
             }
         });
 
+        relativeLayout1.setOnClickListener(v -> {
+            if (expandableAnnounce.getVisibility() == View.GONE) {
+                TransitionManager.beginDelayedTransition(relativeLayout1, new AutoTransition());
+                expandableAnnounce.setVisibility(View.VISIBLE);
+                arrow.setBackgroundResource(R.drawable.ic_arrow_up);
+            } else {
+                TransitionManager.beginDelayedTransition(relativeLayout1, new AutoTransition());
+                expandableAnnounce.setVisibility(View.GONE);
+                arrow.setBackgroundResource(R.drawable.ic_arrow_down);
+            }
+        });
+
         logoutbtn.setOnClickListener(v -> {
+            if (expandableView2.getVisibility() == View.GONE) {
+                TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
+                expandableView2.setVisibility(View.VISIBLE);
+                logoutbtn.setBackgroundResource(R.drawable.ic_arrow_up);
+            } else {
+                TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
+                expandableView2.setVisibility(View.GONE);
+                logoutbtn.setBackgroundResource(R.drawable.ic_arrow_down);
+            }
+        });
+
+        expandableLinear2.setOnClickListener(v -> {
             if (expandableView2.getVisibility() == View.GONE) {
                 TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
                 expandableView2.setVisibility(View.VISIBLE);

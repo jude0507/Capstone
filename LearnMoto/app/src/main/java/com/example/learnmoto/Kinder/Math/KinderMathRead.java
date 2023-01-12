@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
 import android.view.View;
@@ -42,6 +43,7 @@ public class KinderMathRead extends AppCompatActivity {
 
         subjectlevel.setText("Math");
         expandableLinear2.setOnClickListener(v -> {
+            StudentHomeView.textToSpeech.speak("Lessons", TextToSpeech.QUEUE_ADD, null);
             if (expandableView2.getVisibility() == View.GONE) {
                 TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
                 expandableView2.setVisibility(View.VISIBLE);
@@ -54,6 +56,7 @@ public class KinderMathRead extends AppCompatActivity {
         });
 
         pdfArrow.setOnClickListener(v -> {
+            StudentHomeView.textToSpeech.speak("Lessons", TextToSpeech.QUEUE_ADD, null);
             if (expandableView2.getVisibility() == View.GONE) {
                 TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
                 expandableView2.setVisibility(View.VISIBLE);

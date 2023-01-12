@@ -9,7 +9,7 @@
         android:id="@+id/close"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_information"
+        android:src="@drawable/ic_close"
         android:layout_gravity="right"
         android:layout_margin="10dp"/>
 
@@ -35,32 +35,32 @@
         android:textColor="@color/black"
         android:textAlignment="center"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_marginVertical="10dp">
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:gravity="center"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_marginVertical="10dp">-->
 
-        <Button
-            android:id="@+id/UpdateNewSubjects"
-            android:layout_width="150dp"
-            android:layout_marginHorizontal="5sp"
-            android:layout_height="wrap_content"
-            android:background="@color/green"
-            android:textColor="@color/white"
-            android:text="Update"/>
+<!--        <Button-->
+<!--            android:id="@+id/UpdateNewSubjects"-->
+<!--            android:layout_width="150dp"-->
+<!--            android:layout_marginHorizontal="5sp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@color/green"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:text="Update"/>-->
 
-        <Button
-            android:id="@+id/Close"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="5sp"
-            android:background="@color/red"
-            android:textColor="@color/white"
-            android:text="Close"/>
+<!--        <Button-->
+<!--            android:id="@+id/Close"-->
+<!--            android:layout_width="150dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginHorizontal="5sp"-->
+<!--            android:background="@color/red"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:text="Close"/>-->
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
 
     <ListView

@@ -14,9 +14,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.Model.AnnouncementModel;
 import com.example.learnmoto.R;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class Announcement extends AppCompatActivity {
 
@@ -41,9 +44,10 @@ public class Announcement extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.announcements);
         //title = findViewById(R.id.notification_title);
         message = findViewById(R.id.notification_message);
-        DisplayAnnouncement = findViewById(R.id.displayAnnouncement);
+        //DisplayAnnouncement = findViewById(R.id.displayAnnouncement);
 
-
+        //DisplayLatestAnnouncement();
+        
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
 
             //Condition of what activity is selected
@@ -86,7 +90,7 @@ public class Announcement extends AppCompatActivity {
                 announcementModel.setMessage(announce_msg);
                 db.collection("Announcements").document(authorID).set(announcementModel);
                 Toast.makeText(Announcement.this, "Announcement has been posted", Toast.LENGTH_SHORT).show();
-                DisplayAnnouncement.setText(announce_msg);
+                //DisplayAnnouncement.setText(announce_msg);
                 message.setText("");
 
             });
@@ -96,6 +100,24 @@ public class Announcement extends AppCompatActivity {
         }
 
     }
+    
+//    private void DisplayLatestAnnouncement(){
+//        db.collection("Annnnounmcents").whereEqualTo("authorID", authorID).get()
+//                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+//                        String latestAnnounce = "";
+//                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
+//                            AnnouncementModel announcementModel = documentSnapshot.toObject(AnnouncementModel.class);
+//                            announcementModel.setMyID(documentSnapshot.getId());
+//                            latestAnnounce += announcementModel.getMessage();
+//                        }
+//
+//                        DisplayAnnouncement.setText(latestAnnounce);
+//                    }
+//                });
+//    }
+    
     @Override
     protected void onStart() {
         IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);

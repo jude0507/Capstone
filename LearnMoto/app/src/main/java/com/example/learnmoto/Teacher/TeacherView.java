@@ -153,6 +153,36 @@ public class TeacherView extends AppCompatActivity {
 
         scrollView.setOnTouchListener(new TranslateAnimatioUI(this, bottomNavigationView));
 
+        subjectContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (expandSubjects.getVisibility() == View.GONE){
+                    TransitionManager.beginDelayedTransition(subjectContainer, new AutoTransition());
+                    expandSubjects.setVisibility(View.VISIBLE);
+                    viewSubjects.setBackgroundResource(R.drawable.ic_arrow_up);
+                }else {
+                    TransitionManager.beginDelayedTransition(subjectContainer, new AutoTransition());
+                    expandSubjects.setVisibility(View.GONE);
+                    viewSubjects.setBackgroundResource(R.drawable.ic_arrow_down);
+                }
+            }
+        });
+
+        assignClassContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (assignClassLayout.getVisibility() == View.GONE){
+                    TransitionManager.beginDelayedTransition(subjectContainer, new AutoTransition());
+                    assignClassLayout.setVisibility(View.VISIBLE);
+                    viewClassLevel.setBackgroundResource(R.drawable.ic_arrow_up);
+                }else {
+                    TransitionManager.beginDelayedTransition(assignClassContainer, new AutoTransition());
+                    assignClassLayout.setVisibility(View.GONE);
+                    viewClassLevel.setBackgroundResource(R.drawable.ic_arrow_down);
+                }
+            }
+        });
+
     }
 
     public void ExpandAssignLevel(View view) {

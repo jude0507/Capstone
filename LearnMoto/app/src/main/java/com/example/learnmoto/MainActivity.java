@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.Parent.ParentLogin;
+import com.example.learnmoto.Student.StudentHomeView;
 import com.example.learnmoto.Student.StudentLogin;
 import com.example.learnmoto.Teacher.TeacherLogin;
 

@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 
+import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -47,7 +48,6 @@ public class StudentLogin extends AppCompatActivity {
         studentID = findViewById(R.id.my_studID);
         studentPass = findViewById(R.id.my_studpass);
         loginBtn = findViewById(R.id.studentHome);
-
 
         sharedPreferences = getSharedPreferences("Preferences", MODE_PRIVATE);
         ShowPassword showPassword = new ShowPassword();

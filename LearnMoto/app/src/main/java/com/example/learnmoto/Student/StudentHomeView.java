@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
 import android.view.View;
@@ -38,6 +39,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -59,6 +61,8 @@ public class StudentHomeView extends AppCompatActivity {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     SharedPreferences.Editor editor;
+    public static TextToSpeech textToSpeech;
+    int output;
 
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     public static String level, userID;
@@ -88,14 +92,15 @@ public class StudentHomeView extends AppCompatActivity {
 
         studentName.setText(name);
         displaylevel.setText(level);
-        mediaPlayer= MediaPlayer.create(getApplicationContext(),R.raw.background);
-        mediaPlayer.setLooping(true);
-        mediaPlayer.start();
+//        mediaPlayer= MediaPlayer.create(getApplicationContext(),R.raw.background);
+//        mediaPlayer.setLooping(true);
+//        mediaPlayer.start();
 
         //Toast.makeText(this, "ID: " + userID, Toast.LENGTH_SHORT).show();
 
         DisplayImage();
         DisplayAdviserName();
+        textSpeech();
 
 
         linearLayouttexts.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
@@ -148,7 +153,7 @@ public class StudentHomeView extends AppCompatActivity {
             mImages.add(R.drawable.logo_science);
             mImages.add(R.drawable.logo_cl);
             mImages.add(R.drawable.logo_filipino);
-            mImages.add(R.drawable.logo_sibkul);
+            //mImages.add(R.drawable.logo_sibkul);
 
         }
 
@@ -169,6 +174,13 @@ public class StudentHomeView extends AppCompatActivity {
         //Access translateAnimUI Class for animation
         scrollView.setOnTouchListener(new TranslateAnimatioUI(this, bottomNavigationView));
     }
+
+    private void textSpeech(){
+        textToSpeech = new TextToSpeech(this, i -> {
+            if (i == TextToSpeech.SUCCESS) {
+                output = textToSpeech.setLanguage(Locale.ENGLISH);
+            }
+        });    }
 
     private void DisplayAdviserName() {
         db.collection("Teacher").whereEqualTo("myAdvisoryClass", level).get()

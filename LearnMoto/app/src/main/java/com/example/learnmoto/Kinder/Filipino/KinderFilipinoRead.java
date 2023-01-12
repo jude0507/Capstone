@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
 import android.view.View;

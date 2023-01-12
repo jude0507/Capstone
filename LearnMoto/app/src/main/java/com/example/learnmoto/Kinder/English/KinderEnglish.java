@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
 import android.view.View;
@@ -51,6 +52,7 @@ public class KinderEnglish extends AppCompatActivity {
         subjectlevel.setText("English");
 
         expandableLinear2.setOnClickListener(v -> {
+            StudentHomeView.textToSpeech.speak("Lessons", TextToSpeech.QUEUE_ADD, null);
             if (expandableView2.getVisibility() == View.GONE) {
                 TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
                 expandableView2.setVisibility(View.VISIBLE);
@@ -63,6 +65,7 @@ public class KinderEnglish extends AppCompatActivity {
         });
 
         pdfArrow.setOnClickListener(v -> {
+            StudentHomeView.textToSpeech.speak("Lessons", TextToSpeech.QUEUE_ADD, null);
             if (expandableView2.getVisibility() == View.GONE) {
                 TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
                 expandableView2.setVisibility(View.VISIBLE);
@@ -75,6 +78,7 @@ public class KinderEnglish extends AppCompatActivity {
         });
 
         expandableLinear1.setOnClickListener(v -> {
+            StudentHomeView.textToSpeech.speak("Story", TextToSpeech.QUEUE_ADD, null);
             if (expandableView1.getVisibility() == View.GONE) {
                 TransitionManager.beginDelayedTransition(expandableLinear1, new AutoTransition());
                 expandableView1.setVisibility(View.VISIBLE);
@@ -87,6 +91,7 @@ public class KinderEnglish extends AppCompatActivity {
         });
 
         storyArrow.setOnClickListener(v -> {
+            StudentHomeView.textToSpeech.speak("Story", TextToSpeech.QUEUE_ADD, null);
             if (expandableView1.getVisibility() == View.GONE) {
                 TransitionManager.beginDelayedTransition(expandableLinear1, new AutoTransition());
                 expandableView1.setVisibility(View.VISIBLE);
@@ -100,6 +105,7 @@ public class KinderEnglish extends AppCompatActivity {
 
 
         expandableLinear3.setOnClickListener(v -> {
+            StudentHomeView.textToSpeech.speak("Pronounce Alphabet", TextToSpeech.QUEUE_ADD, null);
             if (expandableView3.getVisibility() == View.GONE) {
                 TransitionManager.beginDelayedTransition(expandableLinear3, new AutoTransition());
                 expandableView3.setVisibility(View.VISIBLE);
@@ -112,6 +118,7 @@ public class KinderEnglish extends AppCompatActivity {
         });
 
         pronounceArrow.setOnClickListener(v -> {
+            StudentHomeView.textToSpeech.speak("Pronounce Alphabet", TextToSpeech.QUEUE_ADD, null);
             if (expandableView3.getVisibility() == View.GONE) {
                 TransitionManager.beginDelayedTransition(expandableLinear3, new AutoTransition());
                 expandableView3.setVisibility(View.VISIBLE);

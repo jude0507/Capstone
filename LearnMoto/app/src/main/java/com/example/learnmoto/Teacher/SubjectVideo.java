@@ -199,7 +199,7 @@ public class SubjectVideo extends AppCompatActivity {
         final View view = getLayoutInflater().inflate(R.layout.view_list_video,null);
 
         ListView ListLevel = view.findViewById(R.id.listVideo);
-        Button Close = view.findViewById(R.id.Close);
+        //Button Close = view.findViewById(R.id.Close);
         NoDataFound = view.findViewById(R.id.NoDataFound);
         ImageView Info = view.findViewById(R.id.close);
         builder.setView(view);
@@ -224,16 +224,16 @@ public class SubjectVideo extends AppCompatActivity {
                     }
                 }).addOnFailureListener(e -> Toast.makeText(SubjectVideo.this, "Error in getting data", Toast.LENGTH_SHORT).show());
 
-        ListLevel.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String VideoName = VideoNames.get(position);
-                Intent intent = new Intent(getApplicationContext(), DeleteVideo.class);
-                intent.putExtra("VideoName", VideoName);
-                startActivity(intent);
-                alertDialog.dismiss();
-            }
-        });
+//        ListLevel.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                String VideoName = VideoNames.get(position);
+//                Intent intent = new Intent(getApplicationContext(), DeleteVideo.class);
+//                intent.putExtra("VideoName", VideoName);
+//                startActivity(intent);
+//                alertDialog.dismiss();
+//            }
+//        });
 
         ListLevel.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -243,9 +243,9 @@ public class SubjectVideo extends AppCompatActivity {
         });
 
         Info.setOnClickListener(v -> {
-            Toast.makeText(this, "Delete Video: Make a long press", Toast.LENGTH_SHORT).show();
+            alertDialog.dismiss();
         });
-        Close.setOnClickListener(v -> alertDialog.dismiss());
+        //Close.setOnClickListener(v -> alertDialog.dismiss());
 
     }
 }

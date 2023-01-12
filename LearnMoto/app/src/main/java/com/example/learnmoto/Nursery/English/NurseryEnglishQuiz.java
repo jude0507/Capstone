@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
 import android.view.View;
@@ -43,6 +44,8 @@ public class NurseryEnglishQuiz extends AppCompatActivity {
         subjectlevel.setText("English");
 
         quizArrow.setOnClickListener(v -> {
+            StudentHomeView.textToSpeech.speak("Quiz", TextToSpeech.QUEUE_ADD, null);
+
             if (expandableView1.getVisibility() == View.GONE) {
                 TransitionManager.beginDelayedTransition(expandableLinear1, new AutoTransition());
                 expandableView1.setVisibility(View.VISIBLE);
@@ -55,6 +58,8 @@ public class NurseryEnglishQuiz extends AppCompatActivity {
         });
 
         expandableLinear1.setOnClickListener(v -> {
+            StudentHomeView.textToSpeech.speak("Quiz", TextToSpeech.QUEUE_ADD, null);
+
             if (expandableView1.getVisibility() == View.GONE) {
                 TransitionManager.beginDelayedTransition(expandableLinear1, new AutoTransition());
                 expandableView1.setVisibility(View.VISIBLE);
