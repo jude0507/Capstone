@@ -1,9 +1,5 @@
 package com.example.learnmoto.Preparatory.Filipino;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -16,9 +12,12 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
-import com.example.learnmoto.ChristianLivingQuiz;
-import com.example.learnmoto.FilipinoQuiz;
+import com.example.learnmoto.FilQuiz;
 import com.example.learnmoto.Kinder.Filipino.KinderFilipinoQuiz;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Student.StudentHomeView;
@@ -44,6 +43,17 @@ public class PreparatoryFilipinoQuiz extends AppCompatActivity {
         subjectlevel.setText(KinderFilipinoQuiz.subjectName);
 
         quizArrow.setOnClickListener(v -> {
+            if (expandableView1.getVisibility() == View.GONE) {
+                TransitionManager.beginDelayedTransition(expandableLinear1, new AutoTransition());
+                expandableView1.setVisibility(View.VISIBLE);
+                quizArrow.setBackgroundResource(R.drawable.ic_arrow_up);
+            }else{
+                TransitionManager.beginDelayedTransition(expandableLinear1, new AutoTransition());
+                expandableView1.setVisibility(View.GONE);
+                quizArrow.setBackgroundResource(R.drawable.ic_arrow_down);
+            }
+        });
+        expandableLinear1.setOnClickListener(v -> {
             if (expandableView1.getVisibility() == View.GONE) {
                 TransitionManager.beginDelayedTransition(expandableLinear1, new AutoTransition());
                 expandableView1.setVisibility(View.VISIBLE);
@@ -116,7 +126,7 @@ public class PreparatoryFilipinoQuiz extends AppCompatActivity {
     }
 
     public void StartQuiz(View view) {
-        startActivity(new Intent(this, FilipinoQuiz.class));
+        startActivity(new Intent(this, FilQuiz.class));
     }
 
     @Override

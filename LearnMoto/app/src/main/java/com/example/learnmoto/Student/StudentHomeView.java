@@ -97,7 +97,6 @@ public class StudentHomeView extends AppCompatActivity {
 //        mediaPlayer.start();
 
         //Toast.makeText(this, "ID: " + userID, Toast.LENGTH_SHORT).show();
-
         DisplayImage();
         DisplayAdviserName();
         textSpeech();

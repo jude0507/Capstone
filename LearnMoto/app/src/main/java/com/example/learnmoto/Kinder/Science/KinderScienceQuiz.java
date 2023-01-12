@@ -20,7 +20,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.Nursery.Science.NurseryScienceQuiz;
 import com.example.learnmoto.R;
-import com.example.learnmoto.ScienceQuiz;
+import com.example.learnmoto.SciQuiz;
 import com.example.learnmoto.Student.StudentHomeView;
 
 public class KinderScienceQuiz extends AppCompatActivity {
@@ -136,6 +136,6 @@ public class KinderScienceQuiz extends AppCompatActivity {
     }
 
     public void StartQuiz(View view) {
-        startActivity(new Intent(this, ScienceQuiz.class));
+        startActivity(new Intent(this, SciQuiz.class));
     }
 }

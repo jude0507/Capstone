@@ -1,9 +1,5 @@
 package com.example.learnmoto.Preparatory.Math;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -17,9 +13,12 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
-import com.example.learnmoto.DisplayChildData;
-import com.example.learnmoto.MathActivity;
+import com.example.learnmoto.MathQuizChoices;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Student.StudentHomeView;
 
@@ -142,7 +141,7 @@ public class PreparatoryMathQuiz extends AppCompatActivity {
     }
 
     public void MathQuiz(View view) {
-        startActivity(new Intent(this, MathActivity.class));
+        startActivity(new Intent(this, MathQuizChoices.class));
     }
 
 }

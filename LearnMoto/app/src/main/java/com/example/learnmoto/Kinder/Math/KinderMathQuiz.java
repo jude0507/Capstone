@@ -18,7 +18,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
-import com.example.learnmoto.MathActivity;
+import com.example.learnmoto.MathQuizChoices;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Student.StudentHomeView;
 
@@ -137,6 +137,6 @@ public class KinderMathQuiz extends AppCompatActivity {
     }
 
     public void MathQuiz(View view) {
-        startActivity(new Intent(this, MathActivity.class));
+        startActivity(new Intent(this, MathQuizChoices.class));
     }
 }

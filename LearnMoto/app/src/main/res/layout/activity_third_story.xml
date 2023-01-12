@@ -5,9 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Nursery.Story.NThirdStory"
-    android:background="@drawable/background">
+    android:background="@drawable/blackboard">
 
     <LinearLayout
+        android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -18,6 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:tint="@color/white"
             android:onClick="BackToStories"
             android:src="@drawable/ic_arrowback"/>
 
@@ -35,6 +37,7 @@
             android:textSize="20dp"
             android:capitalize="characters"
             android:id="@+id/TitleStory"
+            android:textColor="@color/white"
             android:layout_gravity="center"/>
 
         <me.biubiubiu.justifytext.library.JustifyTextView
@@ -45,7 +48,7 @@
             android:paddingStart="15dp"
             android:layout_marginTop="16dp"
             android:padding="10dp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="18dp"
             android:text="Story"/>
 

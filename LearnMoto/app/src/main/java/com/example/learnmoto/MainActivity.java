@@ -1,13 +1,10 @@
 package com.example.learnmoto;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.speech.tts.TextToSpeech;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -16,19 +13,23 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.Parent.ParentLogin;
-import com.example.learnmoto.Student.StudentHomeView;
 import com.example.learnmoto.Student.StudentLogin;
 import com.example.learnmoto.Teacher.TeacherLogin;
 
 public class MainActivity extends AppCompatActivity {
-
     LinearLayout clickableLayout;
     Button cancel,ok;
     RadioGroup radioGroup;
     RadioButton  radioid;
+    androidx.appcompat.app.AlertDialog.Builder builder;
+    androidx.appcompat.app.AlertDialog alertDialog;
     //Button tryagain;
+    ViewPager viewPager;
 
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
@@ -101,4 +102,11 @@ public class MainActivity extends AppCompatActivity {
             super.onBackPressed();
     }
 
+    public void guideBtn(View view) {
+        viewPager();
+    }
+
+    private void viewPager(){
+        startActivity(new Intent(getApplicationContext(),UserGuide.class));
+    }
 }
