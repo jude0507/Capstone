@@ -187,14 +187,7 @@ public class SubjectVideo extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (backpressedTimes + 3000 > System.currentTimeMillis()){
-            super.onBackPressed();
-            return;
-        }else{
-            Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this, TeacherView.class));
-        }
-        backpressedTimes = System.currentTimeMillis();
+        startActivity(new Intent(this, TeacherView.class));
     }
 
     public void ViewListVideo(View view) {

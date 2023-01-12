@@ -2,10 +2,12 @@ package com.example.learnmoto;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
 
@@ -42,23 +44,10 @@ public class DeleteVideo extends AppCompatActivity {
         getNameVideo = getIntent().getStringExtra("VideoName");
         textView.setText(getNameVideo);
 
-        RemoveVideo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                videoView.start();
-            }
-        });
+        MediaController mediaController = new MediaController(this);
+        mediaController.setAnchorView(videoView);
+        videoView.setMediaController(mediaController);
 
-
-//        progressDialog = new ProgressDialog(this);
-//        progressDialog.setMessage("Loading....");
-//        progressDialog.setCanceledOnTouchOutside(false);
-//        progressDialog.show();
-
-
-    }
-
-    private void Video() {
         db.collection("Videos").whereEqualTo("videoName", getNameVideo)
                 .get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
@@ -70,13 +59,20 @@ public class DeleteVideo extends AppCompatActivity {
                             VideoURL += videoModel.getVideoUrl();
                         }
 
-                        uri = Uri.parse(VideoURL);
-                        videoView.setVideoURI(uri);
-                        videoView.requestFocus();
-
-
+                        videoView.setBackgroundColor(Color.TRANSPARENT);
+                        videoView.setVideoURI(Uri.parse(VideoURL));
+                        videoView.start();
                     }
                 });
+
+
+
+
+
+    }
+
+    private void Video() {
+
     }
 
     @Override
