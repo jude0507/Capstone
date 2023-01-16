@@ -3,6 +3,7 @@ package com.example.learnmoto.Nursery.Science;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
@@ -17,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.learnmoto.AudioService;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.PDF.SciencePDF;
 import com.example.learnmoto.R;
@@ -40,11 +42,13 @@ public class NurseryScienceRead extends AppCompatActivity {
         expandableLinear2 = findViewById(R.id.layout2);
 
         subjectlevel.setText("Science");
+        stopService(new Intent(this, AudioService.class));
 
         expandableLinear2.setOnClickListener(v -> {
-            StudentHomeView.textToSpeech.speak("Lessons", TextToSpeech.QUEUE_ADD, null);
 
             if (expandableView2.getVisibility() == View.GONE) {
+                MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.story);
+                mediaPlayer.start();
                 TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
                 expandableView2.setVisibility(View.VISIBLE);
                 pdfArrow.setBackgroundResource(R.drawable.ic_arrow_up);
@@ -56,9 +60,10 @@ public class NurseryScienceRead extends AppCompatActivity {
         });
 
         pdfArrow.setOnClickListener(v -> {
-            StudentHomeView.textToSpeech.speak("Lessons", TextToSpeech.QUEUE_ADD, null);
 
             if (expandableView2.getVisibility() == View.GONE) {
+                MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.story);
+                mediaPlayer.start();
                 TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
                 expandableView2.setVisibility(View.VISIBLE);
                 pdfArrow.setBackgroundResource(R.drawable.ic_arrow_up);
@@ -119,6 +124,7 @@ public class NurseryScienceRead extends AppCompatActivity {
 
     public void pdf(View view) {
         startActivity(new Intent(this, SciencePDF.class));
+        stopService(new Intent(this, AudioService.class));
     }
 
     @Override

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
 import android.view.View;
@@ -16,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.learnmoto.AudioService;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.EnglishQuiz;
 import com.example.learnmoto.R;
@@ -47,6 +49,7 @@ public class KinderEnglishQuiz extends AppCompatActivity {
                 expandableView1.setVisibility(View.VISIBLE);
                 quizArrow.setBackgroundResource(R.drawable.ic_arrow_up);
             }else{
+                StudentHomeView.textToSpeech.speak("Quiz", TextToSpeech.QUEUE_ADD, null);
                 TransitionManager.beginDelayedTransition(expandableLinear1, new AutoTransition());
                 expandableView1.setVisibility(View.GONE);
                 quizArrow.setBackgroundResource(R.drawable.ic_arrow_down);
@@ -59,6 +62,7 @@ public class KinderEnglishQuiz extends AppCompatActivity {
                 expandableView1.setVisibility(View.VISIBLE);
                 quizArrow.setBackgroundResource(R.drawable.ic_arrow_up);
             }else{
+                StudentHomeView.textToSpeech.speak("Quiz", TextToSpeech.QUEUE_ADD, null);
                 TransitionManager.beginDelayedTransition(expandableLinear1, new AutoTransition());
                 expandableView1.setVisibility(View.GONE);
                 quizArrow.setBackgroundResource(R.drawable.ic_arrow_down);
@@ -130,5 +134,6 @@ public class KinderEnglishQuiz extends AppCompatActivity {
 
     public void StartQuiz(View view) {
         startActivity(new Intent(this, EnglishQuiz.class));
+        stopService(new Intent(this, AudioService.class));
     }
 }

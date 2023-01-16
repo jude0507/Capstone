@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.learnmoto.AudioService;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.MathQuizChoices;
 import com.example.learnmoto.R;
@@ -42,12 +43,13 @@ public class KinderMathQuiz extends AppCompatActivity {
         subjectlevel.setText("Math");
 
         quizArrow.setOnClickListener(v -> {
-            StudentHomeView.textToSpeech.speak("Lessons", TextToSpeech.QUEUE_ADD, null);
+
             if (expandableView2.getVisibility() == View.GONE) {
                 TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
                 expandableView2.setVisibility(View.VISIBLE);
                 quizArrow.setBackgroundResource(R.drawable.ic_arrow_up);
             }else{
+                StudentHomeView.textToSpeech.speak("Quiz", TextToSpeech.QUEUE_ADD, null);
                 TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
                 expandableView2.setVisibility(View.GONE);
                 quizArrow.setBackgroundResource(R.drawable.ic_arrow_down);
@@ -55,12 +57,12 @@ public class KinderMathQuiz extends AppCompatActivity {
         });
 
         expandableLinear2.setOnClickListener(v -> {
-            StudentHomeView.textToSpeech.speak("Lessons", TextToSpeech.QUEUE_ADD, null);
             if (expandableView2.getVisibility() == View.GONE) {
                 TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
                 expandableView2.setVisibility(View.VISIBLE);
                 quizArrow.setBackgroundResource(R.drawable.ic_arrow_up);
             }else{
+                StudentHomeView.textToSpeech.speak("Quiz", TextToSpeech.QUEUE_ADD, null);
                 TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
                 expandableView2.setVisibility(View.GONE);
                 quizArrow.setBackgroundResource(R.drawable.ic_arrow_down);
@@ -138,5 +140,6 @@ public class KinderMathQuiz extends AppCompatActivity {
 
     public void MathQuiz(View view) {
         startActivity(new Intent(this, MathQuizChoices.class));
+        stopService(new Intent(this, AudioService.class));
     }
 }

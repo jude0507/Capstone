@@ -2,6 +2,7 @@ package com.example.learnmoto.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.speech.tts.TextToSpeech;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.learnmoto.AudioService;
 import com.example.learnmoto.Kinder.ChristianLiving.KinderChristianLivingRead;
 import com.example.learnmoto.Kinder.English.KinderEnglish;
 import com.example.learnmoto.Kinder.Filipino.KinderFilipinoRead;
@@ -40,7 +42,7 @@ public class StudentSubjectAdapter extends RecyclerView.Adapter<StudentSubjectAd
     private Context context;
     private List<Integer> images;
 
-    public StudentSubjectAdapter(Context context, List<Integer> images){
+    public StudentSubjectAdapter(Context context, List<Integer> images) {
         this.context = context;
         this.images = images;
     }
@@ -48,7 +50,7 @@ public class StudentSubjectAdapter extends RecyclerView.Adapter<StudentSubjectAd
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.mylayout, parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.mylayout, parent, false);
         return new MyViewHolder(view);
     }
 
@@ -62,7 +64,7 @@ public class StudentSubjectAdapter extends RecyclerView.Adapter<StudentSubjectAd
         return images.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView mImage;
 
         public MyViewHolder(final View itemView) {
@@ -72,17 +74,18 @@ public class StudentSubjectAdapter extends RecyclerView.Adapter<StudentSubjectAd
             mImage = itemView.findViewById(R.id.imgview);
             itemView.setOnClickListener(v -> {
                 //papunta sa bawat index ng recyclerview
-               switch (getAdapterPosition()){
-                   case 0:
-                       //Toast.makeText(v.getContext(), "English", Toast.LENGTH_SHORT).show();
-                       StudentHomeView.textToSpeech.speak("English", TextToSpeech.QUEUE_ADD, null);
-                        if (level.equals("Nursery")){
+                switch (getAdapterPosition()) {
+                    case 0:
+                        //Toast.makeText(v.getContext(), "English", Toast.LENGTH_SHORT).show();
+                        MediaPlayer eng = MediaPlayer.create(v.getContext(), R.raw.eng);
+                        eng.start();
+                        if (level.equals("Nursery")) {
                             //Toast.makeText(v.getContext(), "Nursery", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), NurseryEnglish.class));
-                        }else if (level.equals("Kinder")){
+                        } else if (level.equals("Kinder")) {
                             //Toast.makeText(v.getContext(), "Kinder", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), KinderEnglish.class));
-                        }else{
+                        } else {
                             //Toast.makeText(v.getContext(), "Preparatory", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), PreparatoryEnglish.class));
                         }
@@ -90,14 +93,15 @@ public class StudentSubjectAdapter extends RecyclerView.Adapter<StudentSubjectAd
                         break;
                     case 1:
                         //Toast.makeText(v.getContext(), "Math", Toast.LENGTH_SHORT).show();
-                        StudentHomeView.textToSpeech.speak("Math", TextToSpeech.QUEUE_ADD, null);
-                        if (level.equals("Nursery")){
+                        MediaPlayer math = MediaPlayer.create(v.getContext(), R.raw.math);
+                        math.start();
+                        if (level.equals("Nursery")) {
                             //Toast.makeText(v.getContext(), "Nursery", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), NurseryMathRead.class));
-                        }else if (level.equals("Kinder")){
+                        } else if (level.equals("Kinder")) {
                             //Toast.makeText(v.getContext(), "Kinder", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), KinderMathRead.class));
-                        }else{
+                        } else {
                             //Toast.makeText(v.getContext(), "Preparatory", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), PreparatoryMathRead.class));
                         }
@@ -105,41 +109,44 @@ public class StudentSubjectAdapter extends RecyclerView.Adapter<StudentSubjectAd
                         break;
                     case 2:
                         //Toast.makeText(v.getContext(), "Science", Toast.LENGTH_SHORT).show();
-                        StudentHomeView.textToSpeech.speak("Science", TextToSpeech.QUEUE_ADD, null);
-                        if (level.equals("Nursery")){
-                           // Toast.makeText(v.getContext(), "Nursery", Toast.LENGTH_SHORT).show();
+                        MediaPlayer sci = MediaPlayer.create(v.getContext(), R.raw.sci);
+                        sci.start();
+                        if (level.equals("Nursery")) {
+                            // Toast.makeText(v.getContext(), "Nursery", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), NurseryScienceRead.class));
-                        }else if (level.equals("Kinder")){
-                           // Toast.makeText(v.getContext(), "Kinder", Toast.LENGTH_SHORT).show();
+                        } else if (level.equals("Kinder")) {
+                            // Toast.makeText(v.getContext(), "Kinder", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), KinderScienceRead.class));
-                        }else{
+                        } else {
                             //Toast.makeText(v.getContext(), "Preparatory", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), PreparatoryScienceRead.class));
                         }
                         //v.getContext().startActivity(new Intent(v.getContext(), NumberRead.class));
                         break;
                     case 3:
-                        StudentHomeView.textToSpeech.speak("Christian Living", TextToSpeech.QUEUE_ADD, null);
+                        MediaPlayer cl = MediaPlayer.create(v.getContext(), R.raw.chris);
+                        cl.start();
                         //Toast.makeText(v.getContext(), "Christian Living", Toast.LENGTH_SHORT).show();
-                        if (level.equals("Nursery")){
-                           // Toast.makeText(v.getContext(), "Nursery", Toast.LENGTH_SHORT).show();
+                        if (level.equals("Nursery")) {
+                            // Toast.makeText(v.getContext(), "Nursery", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), NurseryChristianLivingRead.class));
-                        }else if (level.equals("Kinder")){
+                        } else if (level.equals("Kinder")) {
                             //Toast.makeText(v.getContext(), "Kinder", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), KinderChristianLivingRead.class));
-                        }else{
+                        } else {
                             //Toast.makeText(v.getContext(), "Preparatory", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), PreparatoryChristianLivingRead.class));
                         }
                         //v.getContext().startActivity(new Intent(v.getContext(), StoryRead.class));
                         break;
                     case 4:
-                        StudentHomeView.textToSpeech.speak("Filipino", TextToSpeech.QUEUE_ADD, null);
+                        MediaPlayer fil = MediaPlayer.create(v.getContext(), R.raw.fil);
+                        fil.start();
                         //Toast.makeText(v.getContext(), "Filipino", Toast.LENGTH_SHORT).show();
-                        if (level.equals("Kinder")){
-                          //  Toast.makeText(v.getContext(), "Kinder", Toast.LENGTH_SHORT).show();
+                        if (level.equals("Kinder")) {
+                            //  Toast.makeText(v.getContext(), "Kinder", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), KinderFilipinoRead.class));
-                        }else{
+                        } else {
                             //Toast.makeText(v.getContext(), "Preparatory", Toast.LENGTH_SHORT).show();
                             v.getContext().startActivity(new Intent(v.getContext(), PreparatoryFilipinoRead.class));
                         }
@@ -153,14 +160,5 @@ public class StudentSubjectAdapter extends RecyclerView.Adapter<StudentSubjectAd
                 }
             });
         }
-
-//        @Override
-//        public void onClick(View v) {
-//          //  listener.onClick();
-//        }
     }
-
-//    public interface itemClickListener{
-//        void clickListener(View view, int position);
-//    }
 }

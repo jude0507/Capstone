@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.learnmoto.AudioService;
 import com.example.learnmoto.MainActivity;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.R;
@@ -39,6 +40,8 @@ public class StudentLogin extends AppCompatActivity {
     SharedPreferences.Editor editor;
 
     LinearLayout loginBtn;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,19 +110,19 @@ public class StudentLogin extends AppCompatActivity {
                             Toast.makeText(this, "Nursery", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(this, StudentHomeView.class));
                             clear();
-                            //finish();
+                            finish();
                         }else if(sLevel.equals("Kinder")){
                             progressDialog.dismiss();
                             Toast.makeText(this, "Kinder", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(this, StudentHomeView.class));
                             clear();
-                            //finish();
+                            finish();
                         }else{
                             progressDialog.dismiss();
                             Toast.makeText(this, "Preparatory", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(this, StudentHomeView.class));
                             clear();
-                            //finish();
+                            finish();
                         }
 
 
@@ -171,6 +174,7 @@ public class StudentLogin extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        stopService(new Intent(this, AudioService.class));
         startActivity(new Intent(StudentLogin.this, MainActivity.class));
     }
 }

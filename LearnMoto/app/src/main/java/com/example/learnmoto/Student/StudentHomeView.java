@@ -25,6 +25,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.learnmoto.Adapter.AnnouncementAdapter;
 import com.example.learnmoto.Adapter.StudentSubjectAdapter;
 import com.example.learnmoto.Adapter.TranslateAnimatioUI;
+import com.example.learnmoto.AudioService;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.DisplayImage;
 import com.example.learnmoto.Model.AnnouncementModel;
@@ -92,15 +93,15 @@ public class StudentHomeView extends AppCompatActivity {
 
         studentName.setText(name);
         displaylevel.setText(level);
+
 //        mediaPlayer= MediaPlayer.create(getApplicationContext(),R.raw.background);
-//        mediaPlayer.setLooping(true);
+//        mediaPlayer.setLooping(false);
 //        mediaPlayer.start();
 
         //Toast.makeText(this, "ID: " + userID, Toast.LENGTH_SHORT).show();
         DisplayImage();
         DisplayAdviserName();
         textSpeech();
-
 
         linearLayouttexts.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
         subjectslayout.getLayoutTransition().enableTransitionType(LayoutTransition.CHANGING);
@@ -255,6 +256,13 @@ public class StudentHomeView extends AppCompatActivity {
     protected void onStop() {
         unregisterReceiver(networkChangeListener);
         super.onStop();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        stopService(new Intent(getApplicationContext(), AudioService.class));
+        startService(new Intent(getApplicationContext(), AudioService.class));
     }
 
     @Override

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.learnmoto.Adapter.KinderStoriesAdapter;
 import com.example.learnmoto.Adapter.PrepStoriesAdapter;
+import com.example.learnmoto.AudioService;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.Kinder.English.KinderEnglish;
 import com.example.learnmoto.Preparatory.Filipino.PreparatoryFilipinoRead;
@@ -75,6 +76,7 @@ public class KStories extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         startActivity(new Intent(this, KinderEnglish.class));
+        startService(new Intent(this, AudioService.class));
     }
 
 }

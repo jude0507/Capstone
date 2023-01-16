@@ -10,6 +10,7 @@ import android.widget.MediaController;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.example.learnmoto.AudioService;
 import com.example.learnmoto.Kinder.ChristianLiving.KinderChristianLivingWatch;
 import com.example.learnmoto.Nursery.ChristianLiving.NurseryChristianLivingWatch;
 import com.example.learnmoto.R;
@@ -54,6 +55,7 @@ public class NurseryCLVideoView extends AppCompatActivity {
             Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show();
         }else{
             startActivity(new Intent(this, NurseryChristianLivingWatch.class));
+            startService(new Intent(this, AudioService.class));
         }
     }
 }

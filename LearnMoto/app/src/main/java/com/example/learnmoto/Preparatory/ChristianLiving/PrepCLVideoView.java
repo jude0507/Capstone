@@ -10,6 +10,7 @@ import android.widget.MediaController;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.example.learnmoto.AudioService;
 import com.example.learnmoto.Nursery.Science.NurseryScienceWatch;
 import com.example.learnmoto.Preparatory.ChristianLiving.PreparatoryChristianLivingWatch;
 import com.example.learnmoto.R;
@@ -54,6 +55,7 @@ public class PrepCLVideoView extends AppCompatActivity {
         if (pressed == 1){
             Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show();
         }else{
+            startService(new Intent(this, AudioService.class));
             startActivity(new Intent(this, PreparatoryChristianLivingWatch.class));
         }
     }

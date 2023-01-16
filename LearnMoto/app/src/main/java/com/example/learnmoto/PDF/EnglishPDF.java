@@ -11,6 +11,7 @@ import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.learnmoto.AudioService;
 import com.example.learnmoto.Interface.ItemClickListener;
 import com.example.learnmoto.Kinder.English.KinderEnglish;
 import com.example.learnmoto.Model.PDFModel;
@@ -85,6 +86,7 @@ public class EnglishPDF extends AppCompatActivity {
     }
 
     private void BackPressed(){
+        startService(new Intent(this, AudioService.class));
         if (StudentHomeView.level.equals("Nursery")){
             startActivity(new Intent(this, NurseryEnglish.class));
         } else if (StudentHomeView.level.equals("Kinder")){

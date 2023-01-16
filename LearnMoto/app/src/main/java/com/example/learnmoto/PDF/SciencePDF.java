@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.learnmoto.Adapter.PDFAdapter;
+import com.example.learnmoto.AudioService;
 import com.example.learnmoto.Interface.ItemClickListener;
 import com.example.learnmoto.Kinder.Science.KinderScienceRead;
 import com.example.learnmoto.Model.PDFModel;
@@ -80,6 +81,7 @@ public class SciencePDF extends AppCompatActivity {
     }
 
     private void BackPressed(){
+        startService(new Intent(this, AudioService.class));
         if (StudentHomeView.level.equals("Nursery")){
             startActivity(new Intent(this, NurseryScienceRead.class));
         } else if (StudentHomeView.level.equals("Kinder")){

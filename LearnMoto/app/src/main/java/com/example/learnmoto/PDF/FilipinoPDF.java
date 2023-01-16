@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.learnmoto.Adapter.PDFAdapter;
+import com.example.learnmoto.AudioService;
 import com.example.learnmoto.Interface.ItemClickListener;
 import com.example.learnmoto.Kinder.Filipino.KinderFilipinoRead;
 import com.example.learnmoto.Model.PDFModel;
@@ -75,6 +76,7 @@ public class FilipinoPDF extends AppCompatActivity {
     }
 
     private void BackPressed(){
+        startService(new Intent(this, AudioService.class));
         if (StudentHomeView.level.equals("Kinder")){
             startActivity(new Intent(this, KinderFilipinoRead.class));
         }else{

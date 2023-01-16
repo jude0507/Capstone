@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.learnmoto.AudioService;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.MathQuizChoices;
 import com.example.learnmoto.R;
@@ -142,6 +143,7 @@ public class PreparatoryMathQuiz extends AppCompatActivity {
 
     public void MathQuiz(View view) {
         startActivity(new Intent(this, MathQuizChoices.class));
+        stopService(new Intent(this, AudioService.class));
     }
 
 }

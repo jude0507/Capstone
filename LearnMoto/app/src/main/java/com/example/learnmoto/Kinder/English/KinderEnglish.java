@@ -3,6 +3,7 @@ package com.example.learnmoto.Kinder.English;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
@@ -17,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.learnmoto.AudioService;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.Kinder.KStories;
 import com.example.learnmoto.PDF.EnglishPDF;
@@ -51,9 +53,12 @@ public class KinderEnglish extends AppCompatActivity {
 
         subjectlevel.setText("English");
 
+        stopService(new Intent(this, AudioService.class));
+
         expandableLinear2.setOnClickListener(v -> {
-            StudentHomeView.textToSpeech.speak("Lessons", TextToSpeech.QUEUE_ADD, null);
             if (expandableView2.getVisibility() == View.GONE) {
+                MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.lessons);
+                mediaPlayer.start();
                 TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
                 expandableView2.setVisibility(View.VISIBLE);
                 pdfArrow.setBackgroundResource(R.drawable.ic_arrow_up);
@@ -65,8 +70,9 @@ public class KinderEnglish extends AppCompatActivity {
         });
 
         pdfArrow.setOnClickListener(v -> {
-            StudentHomeView.textToSpeech.speak("Lessons", TextToSpeech.QUEUE_ADD, null);
             if (expandableView2.getVisibility() == View.GONE) {
+                MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.lessons);
+                mediaPlayer.start();
                 TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
                 expandableView2.setVisibility(View.VISIBLE);
                 pdfArrow.setBackgroundResource(R.drawable.ic_arrow_up);
@@ -78,8 +84,10 @@ public class KinderEnglish extends AppCompatActivity {
         });
 
         expandableLinear1.setOnClickListener(v -> {
-            StudentHomeView.textToSpeech.speak("Story", TextToSpeech.QUEUE_ADD, null);
+
             if (expandableView1.getVisibility() == View.GONE) {
+                MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.story);
+                mediaPlayer.start();
                 TransitionManager.beginDelayedTransition(expandableLinear1, new AutoTransition());
                 expandableView1.setVisibility(View.VISIBLE);
                 storyArrow.setBackgroundResource(R.drawable.ic_arrow_up);
@@ -91,8 +99,9 @@ public class KinderEnglish extends AppCompatActivity {
         });
 
         storyArrow.setOnClickListener(v -> {
-            StudentHomeView.textToSpeech.speak("Story", TextToSpeech.QUEUE_ADD, null);
             if (expandableView1.getVisibility() == View.GONE) {
+                MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.story);
+                mediaPlayer.start();
                 TransitionManager.beginDelayedTransition(expandableLinear1, new AutoTransition());
                 expandableView1.setVisibility(View.VISIBLE);
                 storyArrow.setBackgroundResource(R.drawable.ic_arrow_up);
@@ -105,8 +114,9 @@ public class KinderEnglish extends AppCompatActivity {
 
 
         expandableLinear3.setOnClickListener(v -> {
-            StudentHomeView.textToSpeech.speak("Pronounce Alphabet", TextToSpeech.QUEUE_ADD, null);
             if (expandableView3.getVisibility() == View.GONE) {
+                MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.pronounce);
+                mediaPlayer.start();
                 TransitionManager.beginDelayedTransition(expandableLinear3, new AutoTransition());
                 expandableView3.setVisibility(View.VISIBLE);
                 pronounceArrow.setBackgroundResource(R.drawable.ic_arrow_up);
@@ -118,8 +128,9 @@ public class KinderEnglish extends AppCompatActivity {
         });
 
         pronounceArrow.setOnClickListener(v -> {
-            StudentHomeView.textToSpeech.speak("Pronounce Alphabet", TextToSpeech.QUEUE_ADD, null);
             if (expandableView3.getVisibility() == View.GONE) {
+                MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.lessons);
+                mediaPlayer.start();
                 TransitionManager.beginDelayedTransition(expandableLinear3, new AutoTransition());
                 expandableView3.setVisibility(View.VISIBLE);
                 pronounceArrow.setBackgroundResource(R.drawable.ic_arrow_up);
@@ -181,10 +192,12 @@ public class KinderEnglish extends AppCompatActivity {
 
     public void story(View view) {
         startActivity(new Intent(this, KStories.class));
+        stopService(new Intent(this, AudioService.class));
     }
 
     public void pdf(View view) {
         startActivity(new Intent(this, EnglishPDF.class));
+        stopService(new Intent(this, AudioService.class));
     }
 
     @Override
@@ -202,6 +215,7 @@ public class KinderEnglish extends AppCompatActivity {
 
     public void PronounceAlphabet(View view) {
         startActivity(new Intent(this, PronounceAlphabet.class));
+        stopService(new Intent(this, AudioService.class));
     }
 
     @Override

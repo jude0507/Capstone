@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.learnmoto.AudioService;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.PDF.FilipinoPDF;
 import com.example.learnmoto.R;
@@ -40,6 +41,8 @@ public class KinderFilipinoRead extends AppCompatActivity {
         expandableLinear2 = findViewById(R.id.layout2);
 
         subjectlevel.setText("Filipino");
+
+        stopService(new Intent(this, AudioService.class));
 
         expandableLinear2.setOnClickListener(v -> {
             if (expandableView2.getVisibility() == View.GONE) {
@@ -116,6 +119,7 @@ public class KinderFilipinoRead extends AppCompatActivity {
 
 
     public void pdf(View view) {
+        stopService(new Intent(this, AudioService.class));
         startActivity(new Intent(this, FilipinoPDF.class));
     }
 

@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.learnmoto.AudioService;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.FilQuiz;
 import com.example.learnmoto.R;
@@ -135,6 +136,7 @@ public class KinderFilipinoQuiz extends AppCompatActivity {
     }
 
     public void StartQuiz(View view) {
+        stopService(new Intent(this, AudioService.class));
         startActivity(new Intent(this, FilQuiz.class));
     }
 }

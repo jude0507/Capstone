@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.learnmoto.AudioService;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.MainActivity;
 import com.example.learnmoto.R;
@@ -123,12 +124,14 @@ public class TeacherLogin extends AppCompatActivity {
     protected void onStart() {
         IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
         registerReceiver(networkChangeListener, intentFilter);
+        startService(new Intent(getApplicationContext(), AudioService.class));
         super.onStart();
     }
 
     @Override
     protected void onStop() {
         unregisterReceiver(networkChangeListener);
+        stopService(new Intent(getApplicationContext(), AudioService.class));
         super.onStop();
     }
 

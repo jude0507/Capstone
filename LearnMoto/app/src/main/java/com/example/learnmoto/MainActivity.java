@@ -64,16 +64,19 @@ public class MainActivity extends AppCompatActivity {
             if (radioid.getText().toString().equals("Teacher")){
                 Toast.makeText(MainActivity.this, "You've login as Teacher", Toast.LENGTH_SHORT).show();
                 alertDialog.dismiss();
+                stopService(new Intent(this, AudioService.class));
                 startActivity(new Intent(MainActivity.this, TeacherLogin.class));
                 finish();
             }else if (radioid.getText().toString().equals("Student")){
                 Toast.makeText(MainActivity.this, "You've login as Student", Toast.LENGTH_SHORT).show();
                 alertDialog.dismiss();
+                startService(new Intent(MainActivity.this, AudioService.class));
                 startActivity(new Intent(MainActivity.this, StudentLogin.class));
                 finish();
             }else{
                 Toast.makeText(MainActivity.this, "You've login as Parent", Toast.LENGTH_SHORT).show();
                 alertDialog.dismiss();
+                stopService(new Intent(this, AudioService.class));
                 startActivity(new Intent(MainActivity.this, ParentLogin.class));
                 finish();
             }
@@ -84,12 +87,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
         registerReceiver(networkChangeListener, intentFilter);
-        clickableLayout.setOnClickListener(v -> UserType());
+        clickableLayout.setOnClickListener(v -> {
+            UserType();
+
+        });
+        //startService(new Intent(getApplicationContext(), AudioService.class));
         super.onStart();
     }
 
     @Override
     protected void onStop() {
+        //stopService(new Intent(getApplicationContext(), AudioService.class));
         unregisterReceiver(networkChangeListener);
         super.onStop();
     }

@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.learnmoto.AudioService;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.ChristianLivingQuiz;
 import com.example.learnmoto.Nursery.ChristianLiving.NurseryChristianLivingQuiz;
@@ -133,6 +134,7 @@ public class PreparatoryChristianLivingQuiz extends AppCompatActivity {
     }
 
     public void StartQuiz(View view) {
+        stopService(new Intent(this, AudioService.class));
         startActivity(new Intent(this, ChristianLivingQuiz.class));
     }
 }

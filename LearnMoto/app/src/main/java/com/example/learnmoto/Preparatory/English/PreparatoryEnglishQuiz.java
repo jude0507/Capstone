@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.learnmoto.AudioService;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.EnglishQuiz;
 import com.example.learnmoto.R;
@@ -138,6 +139,7 @@ public class PreparatoryEnglishQuiz extends AppCompatActivity {
     }
 
     public void StartQuiz(View view) {
+        stopService(new Intent(this, AudioService.class));
         startActivity(new Intent(this, EnglishQuiz.class));
     }
 }

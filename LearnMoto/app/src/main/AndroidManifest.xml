@@ -556,6 +556,11 @@
             android:name=".MainActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
+
+        <service
+            android:enabled="true"
+            android:name=".AudioService"/>
+
     </application>
 
 </manifest>

@@ -69,6 +69,7 @@ public class StudentSettings extends AppCompatActivity {
 
         studentName.setText(name);
         DisplayImage();
+
         //Glide.with(getApplicationContext()).load(StudentInfoSettings.imageDiplay).placeholder(R.drawable.ic_user_circle).into(StudPicture);
 
         bottomNavigationView.setSelectedItemId(R.id.settings);

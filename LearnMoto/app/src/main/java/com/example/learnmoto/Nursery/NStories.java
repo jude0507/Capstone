@@ -10,6 +10,7 @@ import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.learnmoto.AudioService;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.Nursery.English.NurseryEnglish;
 import com.example.learnmoto.R;
@@ -64,6 +65,7 @@ public class NStories extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        startService(new Intent(this, AudioService.class));
         startActivity(new Intent(this, NurseryEnglish.class));
     }
 

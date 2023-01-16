@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.learnmoto.AudioService;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.R;
 import com.example.learnmoto.SciQuiz;
@@ -42,13 +43,12 @@ public class NurseryScienceQuiz extends AppCompatActivity {
         subjectlevel.setText(subjectName);
 
         quizArrow.setOnClickListener(v -> {
-            StudentHomeView.textToSpeech.speak("Quiz", TextToSpeech.QUEUE_ADD, null);
-
             if (expandableView1.getVisibility() == View.GONE) {
                 TransitionManager.beginDelayedTransition(expandableLinear1, new AutoTransition());
                 expandableView1.setVisibility(View.VISIBLE);
                 quizArrow.setBackgroundResource(R.drawable.ic_arrow_up);
             }else{
+                StudentHomeView.textToSpeech.speak("Quiz", TextToSpeech.QUEUE_ADD, null);
                 TransitionManager.beginDelayedTransition(expandableLinear1, new AutoTransition());
                 expandableView1.setVisibility(View.GONE);
                 quizArrow.setBackgroundResource(R.drawable.ic_arrow_down);
@@ -56,13 +56,13 @@ public class NurseryScienceQuiz extends AppCompatActivity {
         });
 
         expandableLinear1.setOnClickListener(v -> {
-            StudentHomeView.textToSpeech.speak("Quiz", TextToSpeech.QUEUE_ADD, null);
 
             if (expandableView1.getVisibility() == View.GONE) {
                 TransitionManager.beginDelayedTransition(expandableLinear1, new AutoTransition());
                 expandableView1.setVisibility(View.VISIBLE);
                 quizArrow.setBackgroundResource(R.drawable.ic_arrow_up);
             }else{
+                StudentHomeView.textToSpeech.speak("Quiz", TextToSpeech.QUEUE_ADD, null);
                 TransitionManager.beginDelayedTransition(expandableLinear1, new AutoTransition());
                 expandableView1.setVisibility(View.GONE);
                 quizArrow.setBackgroundResource(R.drawable.ic_arrow_down);
@@ -137,6 +137,7 @@ public class NurseryScienceQuiz extends AppCompatActivity {
 
     public void StartQuiz(View view) {
         startActivity(new Intent(this, SciQuiz.class));
+        stopService(new Intent(this, AudioService.class));
     }
 
 }

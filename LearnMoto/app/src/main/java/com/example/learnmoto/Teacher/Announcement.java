@@ -101,23 +101,6 @@ public class Announcement extends AppCompatActivity {
 
     }
     
-//    private void DisplayLatestAnnouncement(){
-//        db.collection("Annnnounmcents").whereEqualTo("authorID", authorID).get()
-//                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-//                    @Override
-//                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-//                        String latestAnnounce = "";
-//                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
-//                            AnnouncementModel announcementModel = documentSnapshot.toObject(AnnouncementModel.class);
-//                            announcementModel.setMyID(documentSnapshot.getId());
-//                            latestAnnounce += announcementModel.getMessage();
-//                        }
-//
-//                        DisplayAnnouncement.setText(latestAnnounce);
-//                    }
-//                });
-//    }
-    
     @Override
     protected void onStart() {
         IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);

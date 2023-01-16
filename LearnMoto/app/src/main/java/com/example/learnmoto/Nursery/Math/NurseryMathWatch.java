@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.learnmoto.AudioService;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.Model.VideoModel;
 import com.example.learnmoto.R;
@@ -140,5 +141,6 @@ public class NurseryMathWatch extends AppCompatActivity implements RecyclerViewI
         Intent intent = new Intent(this, NurseryMathVideoView.class);
         intent.putExtra("VideoUrl", videoNameArraylist.get(position).getVideoUrl());
         startActivity(intent);
+        stopService(new Intent(this, AudioService.class));
     }
 }

@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.learnmoto.AudioService;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.PDF.FilipinoPDF;
 import com.example.learnmoto.Preparatory.PStories;
@@ -140,6 +141,7 @@ public class PreparatoryFilipinoRead extends AppCompatActivity {
 
     public void pdf(View view) {
         startActivity(new Intent(this, FilipinoPDF.class));
+        stopService(new Intent(this, AudioService.class));
     }
 
     @Override
