@@ -118,11 +118,13 @@ public class PreparatoryEnglishQuiz extends AppCompatActivity {
 
     public void BacktoStudentHome(View view){
         startActivity(new Intent(this, StudentHomeView.class));
+        startService(new Intent(this, AudioService.class));
     }
 
     @Override
     public void onBackPressed() {
         startActivity(new Intent(this, StudentHomeView.class));
+        startService(new Intent(this, AudioService.class));
     }
 
     @Override

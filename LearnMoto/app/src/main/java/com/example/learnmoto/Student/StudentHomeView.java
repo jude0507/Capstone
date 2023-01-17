@@ -259,13 +259,6 @@ public class StudentHomeView extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        stopService(new Intent(getApplicationContext(), AudioService.class));
-        startService(new Intent(getApplicationContext(), AudioService.class));
-    }
-
-    @Override
     public void onBackPressed() {
         BackPressed();
     }

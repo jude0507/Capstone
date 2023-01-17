@@ -102,6 +102,7 @@ public class PreparatoryEnglishWatch extends AppCompatActivity implements Recycl
 
     public void BacktoStudentHome(View view){
         startActivity(new Intent(this, StudentHomeView.class));
+        startService(new Intent(this, AudioService.class));
     }
 
     @Override
@@ -141,5 +142,6 @@ public class PreparatoryEnglishWatch extends AppCompatActivity implements Recycl
     @Override
     public void onBackPressed() {
         startActivity(new Intent(this, StudentHomeView.class));
+        startService(new Intent(this, AudioService.class));
     }
 }

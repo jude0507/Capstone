@@ -187,6 +187,7 @@ public class NurseryEnglish extends AppCompatActivity {
 
     public void BacktoStudentHome(View view){
         startActivity(new Intent(this, StudentHomeView.class));
+        startService(new Intent(this, AudioService.class));
     }
 
     public void story(View view) {
@@ -220,6 +221,7 @@ public class NurseryEnglish extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         startActivity(new Intent(this, StudentHomeView.class));
+        startService(new Intent(this, AudioService.class));
     }
 
 }

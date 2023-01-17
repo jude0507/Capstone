@@ -113,6 +113,7 @@ public class PreparatoryChristianLivingQuiz extends AppCompatActivity {
 
     public void BacktoStudentHome(View view){
         startActivity(new Intent(this, StudentHomeView.class));
+        startService(new Intent(this, AudioService.class));
     }
 
     @Override
@@ -131,6 +132,7 @@ public class PreparatoryChristianLivingQuiz extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         startActivity(new Intent(this, StudentHomeView.class));
+        startService(new Intent(this, AudioService.class));
     }
 
     public void StartQuiz(View view) {

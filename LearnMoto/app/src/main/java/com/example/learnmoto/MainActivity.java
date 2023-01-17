@@ -14,7 +14,6 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
 
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
 import com.example.learnmoto.Parent.ParentLogin;
@@ -26,10 +25,7 @@ public class MainActivity extends AppCompatActivity {
     Button cancel,ok;
     RadioGroup radioGroup;
     RadioButton  radioid;
-    androidx.appcompat.app.AlertDialog.Builder builder;
-    androidx.appcompat.app.AlertDialog alertDialog;
-    //Button tryagain;
-    ViewPager viewPager;
+    long pressed;
 
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
@@ -87,10 +83,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
         registerReceiver(networkChangeListener, intentFilter);
-        clickableLayout.setOnClickListener(v -> {
-            UserType();
-
-        });
+        clickableLayout.setOnClickListener(v -> UserType());
         //startService(new Intent(getApplicationContext(), AudioService.class));
         super.onStart();
     }
@@ -102,12 +95,19 @@ public class MainActivity extends AppCompatActivity {
         super.onStop();
     }
 
-    int pressed = 0;
     @Override
     public void onBackPressed() {
-        pressed++;
-        if (pressed == 1)
-            super.onBackPressed();
+        if (pressed + 2000 > System.currentTimeMillis()) {
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
+            startActivity(intent);
+            finish();
+            System.exit(0);
+        } else {
+            Toast.makeText(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT).show();
+        }
+        pressed = System.currentTimeMillis();
     }
 
     public void guideBtn(View view) {

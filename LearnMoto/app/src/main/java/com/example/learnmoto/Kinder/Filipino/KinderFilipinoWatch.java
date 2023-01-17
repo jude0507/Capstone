@@ -99,6 +99,7 @@ public class KinderFilipinoWatch extends AppCompatActivity implements RecyclerVi
 
     public void BacktoStudentHome(View view){
         startActivity(new Intent(this, StudentHomeView.class));
+        startService(new Intent(this, AudioService.class));
     }
     @Override
     protected void onStart() {
@@ -138,5 +139,6 @@ public class KinderFilipinoWatch extends AppCompatActivity implements RecyclerVi
     @Override
     public void onBackPressed() {
         startActivity(new Intent(this, StudentHomeView.class));
+        startService(new Intent(this, AudioService.class));
     }
 }

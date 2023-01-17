@@ -99,6 +99,7 @@ public class PreparatoryChristianLivingWatch extends AppCompatActivity implement
 
     public void BacktoStudentHome(View view){
         startActivity(new Intent(this, StudentHomeView.class));
+        startService(new Intent(this, AudioService.class));
     }
 
     @Override
@@ -138,6 +139,7 @@ public class PreparatoryChristianLivingWatch extends AppCompatActivity implement
     @Override
     public void onBackPressed() {
         startActivity(new Intent(this, StudentHomeView.class));
+        startService(new Intent(this, AudioService.class));
     }
 
 }

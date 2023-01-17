@@ -2,6 +2,7 @@ package com.example.learnmoto.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +35,7 @@ public class KinderStoriesAdapter extends RecyclerView.Adapter<KinderStoriesAdap
     @Override
     public KinderStoriesAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.story_title_layout, parent,false);
-        return new KinderStoriesAdapter.MyViewHolder(view);
+        return new MyViewHolder(view);
     }
 
     @Override
@@ -49,7 +50,7 @@ public class KinderStoriesAdapter extends RecyclerView.Adapter<KinderStoriesAdap
         return storyImages.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView storyTitles;
         ImageView storyImages;
@@ -63,12 +64,18 @@ public class KinderStoriesAdapter extends RecyclerView.Adapter<KinderStoriesAdap
             itemView.setOnClickListener(view -> {
                 switch (getAdapterPosition()){
                     case 0:
+                        MediaPlayer mediaPlayer1 = MediaPlayer.create(view.getContext(),R.raw.kstory1_title);
+                        mediaPlayer1.start();
                         view.getContext().startActivity(new Intent(view.getContext(), KFirstStory.class));
                         break;
                     case 1:
+                        MediaPlayer mediaPlayer2 = MediaPlayer.create(view.getContext(),R.raw.kstory2_title);
+                        mediaPlayer2.start();
                         view.getContext().startActivity(new Intent(view.getContext(), KSecondStory.class));
                         break;
                     case 2:
+                        MediaPlayer mediaPlayer3 = MediaPlayer.create(view.getContext(),R.raw.kstory3_title);
+                        mediaPlayer3.start();
                         view.getContext().startActivity(new Intent(view.getContext(), KThirdStory.class));
                         break;
                 }

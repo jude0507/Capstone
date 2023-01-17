@@ -99,6 +99,7 @@ public class PreparatoryFilipinoWatch extends AppCompatActivity implements Recyc
 
     public void BacktoStudentHome(View view){
         startActivity(new Intent(this, StudentHomeView.class));
+        startService(new Intent(this, AudioService.class));
     }
 
     @Override
@@ -130,6 +131,7 @@ public class PreparatoryFilipinoWatch extends AppCompatActivity implements Recyc
     @Override
     public void onBackPressed() {
         startActivity(new Intent(this, StudentHomeView.class));
+        startService(new Intent(this, AudioService.class));
     }
 
     @Override

@@ -48,7 +48,7 @@ public class NurseryMathRead extends AppCompatActivity {
 
         expandableLinear2.setOnClickListener(v -> {
             if (expandableView2.getVisibility() == View.GONE) {
-                MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.story);
+                MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.lessons);
                 mediaPlayer.start();
                 TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
                 expandableView2.setVisibility(View.VISIBLE);
@@ -64,7 +64,7 @@ public class NurseryMathRead extends AppCompatActivity {
         pdfArrow.setOnClickListener(v -> {
 
             if (expandableView2.getVisibility() == View.GONE) {
-                MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.story);
+                MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.lessons);
                 mediaPlayer.start();
                 TransitionManager.beginDelayedTransition(expandableLinear2, new AutoTransition());
                 expandableView2.setVisibility(View.VISIBLE);
@@ -122,11 +122,13 @@ public class NurseryMathRead extends AppCompatActivity {
 
     public void BacktoStudentHome(View view){
         startActivity(new Intent(this, StudentHomeView.class));
+        startService(new Intent(this, AudioService.class));
     }
 
     @Override
     public void onBackPressed() {
         startActivity(new Intent(this, StudentHomeView.class));
+        startService(new Intent(this, AudioService.class));
     }
 
     public void pdf(View view) {

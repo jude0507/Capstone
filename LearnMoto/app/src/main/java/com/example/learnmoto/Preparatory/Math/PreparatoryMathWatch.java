@@ -99,6 +99,7 @@ public class PreparatoryMathWatch extends AppCompatActivity implements RecyclerV
 
     public void BacktoStudentHome(View view){
         startActivity(new Intent(this, StudentHomeView.class));
+        startService(new Intent(this, AudioService.class));
     }
 
     @Override
@@ -138,6 +139,7 @@ public class PreparatoryMathWatch extends AppCompatActivity implements RecyclerV
     @Override
     public void onBackPressed() {
         startActivity(new Intent(this, StudentHomeView.class));
+        startService(new Intent(this, AudioService.class));
     }
 
 }

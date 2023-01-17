@@ -101,6 +101,7 @@ public class NurseryChristianLivingWatch extends AppCompatActivity implements Re
 
     public void BacktoStudentHome(View view){
         startActivity(new Intent(this, StudentHomeView.class));
+        startService(new Intent(this, AudioService.class));
     }
 
     @Override
@@ -119,6 +120,7 @@ public class NurseryChristianLivingWatch extends AppCompatActivity implements Re
     @Override
     public void onBackPressed() {
         startActivity(new Intent(this, StudentHomeView.class));
+        startService(new Intent(this, AudioService.class));
     }
 
     private void EventChangeListener() {

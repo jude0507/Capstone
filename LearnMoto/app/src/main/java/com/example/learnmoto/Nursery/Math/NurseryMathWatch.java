@@ -102,6 +102,7 @@ public class NurseryMathWatch extends AppCompatActivity implements RecyclerViewI
 
     public void BacktoStudentHome(View view){
         startActivity(new Intent(this, StudentHomeView.class));
+        startService(new Intent(this, AudioService.class));
     }
 
     @Override
@@ -120,6 +121,7 @@ public class NurseryMathWatch extends AppCompatActivity implements RecyclerViewI
     @Override
     public void onBackPressed() {
         startActivity(new Intent(this, StudentHomeView.class));
+        startService(new Intent(this, AudioService.class));
     }
 
     private void EventChangeListener() {

@@ -194,7 +194,7 @@
                     android:drawableStart="@drawable/custom_icon_user"
                     android:drawablePadding="10dp"
                     android:hint="Student ID"
-                    android:maxLength="9"
+                    android:maxLength="12"
                     android:inputType="number"
                     android:padding="10dp"
                     android:textSize="16sp" />

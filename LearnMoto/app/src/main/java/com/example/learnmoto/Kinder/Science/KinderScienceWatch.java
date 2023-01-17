@@ -102,6 +102,7 @@ public class KinderScienceWatch extends AppCompatActivity implements RecyclerVie
 
     public void BacktoStudentHome(View view){
         startActivity(new Intent(this, StudentHomeView.class));
+        startService(new Intent(this, AudioService.class));
     }
 
     @Override
@@ -143,5 +144,6 @@ public class KinderScienceWatch extends AppCompatActivity implements RecyclerVie
     @Override
     public void onBackPressed() {
         startActivity(new Intent(this, StudentHomeView.class));
+        startService(new Intent(this, AudioService.class));
     }
 }

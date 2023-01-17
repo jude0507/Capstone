@@ -102,6 +102,7 @@ public class NurseryEnglishWatch extends AppCompatActivity implements RecyclerVi
 
     public void BacktoStudentHome(View view){
         startActivity(new Intent(this, StudentHomeView.class));
+        startService(new Intent(this, AudioService.class));
     }
 
     @Override
@@ -142,5 +143,6 @@ public class NurseryEnglishWatch extends AppCompatActivity implements RecyclerVi
     @Override
     public void onBackPressed() {
         startActivity(new Intent(this, StudentHomeView.class));
+        startService(new Intent(this, AudioService.class));
     }
 }

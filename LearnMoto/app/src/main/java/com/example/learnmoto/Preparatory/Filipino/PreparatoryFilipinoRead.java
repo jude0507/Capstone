@@ -137,6 +137,7 @@ public class PreparatoryFilipinoRead extends AppCompatActivity {
 
     public void BacktoStudentHome(View view){
         startActivity(new Intent(this, StudentHomeView.class));
+        startService(new Intent(this, AudioService.class));
     }
 
     public void pdf(View view) {
@@ -160,6 +161,7 @@ public class PreparatoryFilipinoRead extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         startActivity(new Intent(this, StudentHomeView.class));
+        startService(new Intent(this, AudioService.class));
     }
 
     public void story(View view) {
