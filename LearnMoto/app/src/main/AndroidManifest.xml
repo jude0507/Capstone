@@ -20,6 +20,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".FinalResultQuiz"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".SciQuizStart"
             android:exported="false">
             <meta-data
@@ -28,8 +35,7 @@
         </activity>
         <activity
             android:name=".UserGuide"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".SciQuiz"
             android:exported="false">
@@ -558,9 +564,8 @@
             android:screenOrientation="portrait" />
 
         <service
-            android:enabled="true"
-            android:name=".AudioService"/>
-
+            android:name=".AudioService"
+            android:enabled="true" />
     </application>
 
 </manifest>
