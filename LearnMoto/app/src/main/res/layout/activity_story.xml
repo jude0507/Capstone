@@ -31,8 +31,8 @@
                 android:textAlignment="center"
                 android:textSize="25sp"
                 android:text="Stories"
-                android:fontFamily="@font/aloevera"
-                android:textColor="@color/fontColor"/>
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@color/black"/>
 
         </LinearLayout>
 

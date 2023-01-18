@@ -146,6 +146,9 @@ public class FilQuizStart extends AppCompatActivity {
         if (qCounter < totalQuestions) {
             nextBtn.setText("Next");
         } else {
+
+
+
             String filscore = String.valueOf(score);
             //Toast.makeText(this, StudentLogin.studID, Toast.LENGTH_SHORT).show();
             DocumentReference documentReference = db.collection("Student").document(StudentHomeView.userID);
