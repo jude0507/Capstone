@@ -292,7 +292,7 @@
                         android:layout_width="300dp"
                         android:layout_height="40dp"
                         android:padding="5dp"
-                        android:paddingStart="10dp"
+                        android:paddingStart="5dp"
                         android:fontFamily="@font/roboto_regular"
                         android:text=""
                         android:textColor="@color/black"
@@ -322,15 +322,17 @@
                         android:layout_width="300dp"
                         android:layout_height="40dp"
                         android:padding="5dp"
-                        android:paddingStart="10dp"
+                        android:paddingStart="5dp"
                         android:fontFamily="@font/roboto_regular"
                         android:text=""
                         android:textColor="@color/black"
-                        android:textSize="18sp"/>
+                        android:textSize="18sp"
+                        tools:ignore="RtlSymmetry" />
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/filLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -350,7 +352,7 @@
                         android:layout_width="300dp"
                         android:layout_height="40dp"
                         android:padding="5dp"
-                        android:paddingStart="10dp"
+                        android:paddingStart="5dp"
                         android:fontFamily="@font/roboto_regular"
                         android:text=""
                         android:textColor="@color/black"
@@ -378,7 +380,35 @@
                         android:layout_width="300dp"
                         android:layout_height="40dp"
                         android:padding="5dp"
-                        android:paddingStart="10dp"
+                        android:paddingStart="5dp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="18sp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Science:"
+                        android:padding="5dp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textSize="18sp"/>
+
+                    <TextView
+                        android:id="@+id/science"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_width="300dp"
+                        android:layout_height="40dp"
+                        android:padding="5dp"
+                        android:paddingStart="5dp"
                         android:fontFamily="@font/roboto_regular"
                         android:text=""
                         android:textColor="@color/black"

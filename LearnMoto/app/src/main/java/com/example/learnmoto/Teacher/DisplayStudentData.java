@@ -8,6 +8,7 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -25,12 +26,13 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class DisplayStudentData extends AppCompatActivity {
 
-    TextView name, level, guardianName, Phone, address, birthday, math, english;
+    TextView name, level, guardianName, Phone, address, birthday, math, english, science, filipino, cl;
     String id, getNameIntent;
     String getSLevel;
     String getGuardianName, getBirthday, getAddress, imageStudent, phoneNumber, mathScore,
             engScore, filiScore, sciScore, clScore;
     CircleImageView StudPicture;
+    LinearLayout filLayout;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -43,6 +45,10 @@ public class DisplayStudentData extends AppCompatActivity {
         level = findViewById(R.id.level);
         math = findViewById(R.id.math);
         english = findViewById(R.id.english);
+        filLayout = findViewById(R.id.filLayout);
+        science = findViewById(R.id.science);
+        cl = findViewById(R.id.cl);
+        filipino = findViewById(R.id.filipino);
         guardianName = findViewById(R.id.guardianName);
         Phone = findViewById(R.id.phone);
         address = findViewById(R.id.Address);
@@ -67,6 +73,9 @@ public class DisplayStudentData extends AppCompatActivity {
                     phoneNumber = "";
                     mathScore = "";
                     engScore = "";
+                    sciScore = "";
+                    filiScore = "";
+                    clScore = "";
                     //imageDisplay = "";
                     for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
                         StudentModel studentInfo = documentSnapshot.toObject(StudentModel.class);
@@ -78,6 +87,10 @@ public class DisplayStudentData extends AppCompatActivity {
                         phoneNumber += studentInfo.getGuardianPhone();
                         mathScore += studentInfo.getMathScore();
                         engScore += studentInfo.getEngScore();
+                        sciScore += studentInfo.getScienceScore();
+                        filiScore += studentInfo.getScienceScore();
+                        clScore += studentInfo.getScienceScore();
+
                     }
 
                     name.setText(getNameIntent);
@@ -86,11 +99,65 @@ public class DisplayStudentData extends AppCompatActivity {
                     birthday.setText(getBirthday);
                     address.setText(getAddress);
                     Phone.setText(phoneNumber);
-                    if (mathScore.equals("null")){
-                        math.setText("Not Available");
+                    if (!getSLevel.equals("Nursery")){
+                        filLayout.setVisibility(View.VISIBLE);
+                        if (mathScore.equals("null")){
+                            math.setText("Not yet taken");
+                        }if(engScore.equals("null")){
+                            english.setText("Not yet taken");
+                        }if(filiScore.equals("null")){
+                            filipino.setText("Not yet taken");
+                        }if(sciScore.equals("null")){
+                            science.setText("Not yet taken");
+                        }if(clScore.equals("null")){
+                            cl.setText("Take the quiz");
+                        }if (!mathScore.equals("null")){
+                            math.setText(mathScore + "/10");
+                        }if(!engScore.equals("null")){
+                            english.setText(engScore + "/10");
+                        }if(!filiScore.equals("null")){
+                            filipino.setText(filiScore + "/10");
+                        }if(!sciScore.equals("null")){
+                            science.setText(sciScore + "/10");
+                        }if(!clScore.equals("null")){
+                            cl.setText(clScore + "/10");
+                        }
+
+
+                    }else {
+                        filLayout.setVisibility(View.GONE);
+                        if (mathScore.equals("null")) {
+                            math.setText("Not yet taken");
+                        }
+                        if (engScore.equals("null")) {
+                            english.setText("Not yet taken");
+                        }
+                        if (filiScore.equals("null")) {
+                            filipino.setText("Not yet taken");
+                        }
+                        if (sciScore.equals("null")) {
+                            science.setText("Not yet taken");
+                        }
+                        if (clScore.equals("null")) {
+                            cl.setText("Not yet taken");
+                        }
+                        if (!mathScore.equals("null")) {
+                            math.setText(mathScore + "/10");
+                        }
+                        if (!engScore.equals("null")) {
+                            english.setText(engScore + "/10");
+                        }
+                        if (!filiScore.equals("null")) {
+                            filipino.setText(filiScore + "/10");
+                        }
+                        if (!sciScore.equals("null")) {
+                            science.setText(sciScore + "/10");
+                        }
+                        if (!clScore.equals("null")) {
+                            cl.setText(clScore + "/10");
+                        }
+
                     }
-                    math.setText(mathScore);
-                    english.setText(engScore);
 
                     Glide.with(DisplayStudentData.this).load(imageStudent).placeholder(R.drawable.ic_user_circle)
                             .into(StudPicture);

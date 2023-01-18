@@ -91,35 +91,68 @@ public class DisplayChildData extends AppCompatActivity {
                         getlevel += studentInfo.getsLevel();
                     }
 
+                    name.setText(getNameIntent);
+                    level.setText(getlevel);
+                    guardianName.setText(getGuardianName);
+                    birthday.setText(getBirthday);
+                    address.setText(getAddress);
+                    Phone.setText(phoneNumber);
+
                     if (!getlevel.equals("Nursery")){
-                        name.setText(getNameIntent);
-                        level.setText(getlevel);
-                        guardianName.setText(getGuardianName);
-                        birthday.setText(getBirthday);
-                        address.setText(getAddress);
-                        Phone.setText(phoneNumber);
-                        math.setText(mathScore + "/12");
-                        english.setText(engScore + "/10");
-                        filipinoLayout.setVisibility(View.VISIBLE);
-                        fili.setText(filiScore + "/10");
-                        science.setText(sciScore + "/10");
-                        cl.setText(clScore + "/10");
+                        if (mathScore.equals("null")){
+                            math.setText("Not yet taken");
+                        }if(engScore.equals("null")){
+                            english.setText("Not yet taken");
+                        }if(filiScore.equals("null")){
+                            fili.setText("Not yet taken");
+                        }if(sciScore.equals("null")){
+                            science.setText("Not yet taken");
+                        }if(clScore.equals("null")){
+                            cl.setText("Not yet taken");
+                        }if (!mathScore.equals("null")){
+                            math.setText(mathScore + "/10");
+                        }if(!engScore.equals("null")){
+                            english.setText(engScore + "/10");
+                        }if(!filiScore.equals("null")){
+                            filipinoLayout.setVisibility(View.VISIBLE);
+                            fili.setText(filiScore + "/10");
+                        }if(!sciScore.equals("null")){
+                            science.setText(sciScore + "/10");
+                        }if(!clScore.equals("null")){
+                            cl.setText(clScore + "/10");
+                        }
+
 
                     }else{
-
-                        name.setText(getNameIntent);
-                        level.setText(getlevel);
-                        guardianName.setText(getGuardianName);
-                        birthday.setText(getBirthday);
-                        address.setText(getAddress);
-                        Phone.setText(phoneNumber);
-                        math.setText(mathScore + "/10");
-                        english.setText(engScore + "/10");
                         filipinoLayout.setVisibility(View.GONE);
-                        //fili.setText(filiScore + "/10");
-                        science.setText(sciScore + "/10");
-                        cl.setText(clScore + "/10");
+                        if (mathScore.equals("null")){
+                            math.setText("Not yet taken");
+                        }if(engScore.equals("null")){
+                            english.setText("Not yet taken");
+                        }if(filiScore.equals("null")){
+                            fili.setText("Not yet taken");
+                        }if(sciScore.equals("null")){
+                            science.setText("Not yet taken");
+                        }if(clScore.equals("null")){
+                            cl.setText("Not yet taken");
+                        }if (!mathScore.equals("null")){
+                            math.setText(mathScore + "/10");
+                        }if(!engScore.equals("null")){
+                            english.setText(engScore + "/10");
+                        }if(!filiScore.equals("null")){
+                            fili.setText(filiScore + "/10");
+                        }if(!sciScore.equals("null")){
+                            science.setText(sciScore + "/10");
+                        }if(!clScore.equals("null")){
+                            cl.setText(clScore + "/10");
+                        }
 
+//                        name.setText(getNameIntent);
+//                        level.setText(getlevel);
+//                        guardianName.setText(getGuardianName);
+//                        birthday.setText(getBirthday);
+//                        address.setText(getAddress);
+//                        Phone.setText(phoneNumber);
                     }
                     Glide.with(DisplayChildData.this).load(imageStudent).placeholder(R.drawable.ic_user_circle)
                             .into(StudPicture);
