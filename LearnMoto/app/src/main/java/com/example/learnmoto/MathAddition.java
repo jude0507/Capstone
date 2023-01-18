@@ -141,9 +141,11 @@ public class MathAddition extends AppCompatActivity {
         FinalScoreTextView.setText(Integer.toString(points) + "/10");
         constraintLayout.setVisibility(View.INVISIBLE);
         lastLayout.setVisibility(View.VISIBLE);
-        mediaPlayer= MediaPlayer.create(getApplicationContext(),R.raw.yehey);
-        mediaPlayer.setLooping(false);
-        mediaPlayer.start();
+        if(points>=5){
+            mediaPlayer= MediaPlayer.create(getApplicationContext(),R.raw.yehey);
+            mediaPlayer.setLooping(false);
+            mediaPlayer.start();
+        }
     }
 
     public void playAgain(View view) {

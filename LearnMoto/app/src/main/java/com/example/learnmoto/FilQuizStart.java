@@ -158,11 +158,10 @@ public class FilQuizStart extends AppCompatActivity {
             } else if (StudentHomeView.level.equals("Kinder")) {
                 startActivity(new Intent(this, KinderFilipinoQuiz.class));
             }
-            mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.yehey);
-            mediaPlayer.setLooping(false);
-            mediaPlayer.start();
             nextBtn.setText("Finish");
-
+            Intent intent= new Intent(getApplicationContext(),FinalResultQuiz.class);
+            intent.putExtra("score",score);
+            startActivity(intent);
         }
 
     }
