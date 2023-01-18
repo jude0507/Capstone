@@ -32,7 +32,7 @@ public class PStories extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_story);
+        setContentView(R.layout.activity_pstory);
         rvStory = findViewById(R.id.stories);
         storyTitles = new ArrayList<>();
         storyImages = new ArrayList<>();

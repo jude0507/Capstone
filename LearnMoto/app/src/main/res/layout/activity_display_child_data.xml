@@ -32,8 +32,8 @@
                 android:textAlignment="center"
                 android:textSize="25sp"
                 android:text="Child Information"
-                android:fontFamily="@font/aloevera"
-                android:textColor="@color/fontColor"/>
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/black"/>
 
         </LinearLayout>
 
@@ -47,308 +47,380 @@
             app:civ_border_color="@color/white"
             app:civ_border_width="2dp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Name:"
-                android:padding="5dp"
-                android:textColor="@color/black"
-                android:textSize="18sp"/>
-
-            <TextView
-                android:id="@+id/name"
-                android:layout_marginHorizontal="10dp"
-                android:layout_width="300dp"
-                android:layout_height="40dp"
-                android:padding="5dp"
-                android:paddingStart="10dp"
-                android:text="Name"
-                android:textColor="@color/black"
-                android:textSize="18sp"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Level:"
-                android:padding="5dp"
-                android:textColor="@color/black"
-                android:textSize="18sp"/>
-
-            <TextView
-                android:id="@+id/level"
-                android:layout_marginHorizontal="10dp"
-                android:layout_width="300dp"
-                android:layout_height="40dp"
-                android:padding="5dp"
-                android:paddingStart="10dp"
-                android:text=""
-                android:textColor="@color/black"
-                android:textSize="18sp"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Birthday:"
-                android:padding="5dp"
-                android:textColor="@color/black"
-                android:textSize="18sp"/>
-
-            <TextView
-                android:id="@+id/bday"
-                android:layout_marginHorizontal="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:padding="5dp"
-                android:paddingStart="10dp"
-                android:text="Birthday"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                tools:ignore="RtlSymmetry" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Address:"
-                android:padding="5dp"
-                android:textColor="@color/black"
-                android:textSize="18sp"/>
-
-            <TextView
-                android:id="@+id/Address"
-                android:layout_marginHorizontal="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:padding="5dp"
-                android:paddingStart="10dp"
-                android:text="Name"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                tools:ignore="RtlSymmetry" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Guardian:"
-                android:padding="5dp"
-                android:textColor="@color/black"
-                android:textSize="18sp"/>
-
-            <TextView
-                android:id="@+id/guardianName"
-                android:layout_marginHorizontal="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:padding="5dp"
-                android:paddingStart="10dp"
-                android:text="Name"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                tools:ignore="RtlSymmetry" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Phone:"
-                android:padding="5dp"
-                android:textColor="@color/black"
-                android:textSize="18sp"/>
-
-            <TextView
-                android:id="@+id/phone"
-                android:layout_marginHorizontal="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:padding="5dp"
-                android:paddingStart="10dp"
-                android:text="Phone"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                tools:ignore="RtlSymmetry" />
-
-        </LinearLayout>
-
-        <TextView
+        <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Quiz Score"
-            android:layout_gravity="center_horizontal"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:layout_marginVertical="15dp"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="6dp"
+            android:layout_gravity="center_horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="English :"
-                android:padding="5dp"
+                android:text="Information"
+                android:layout_margin="5dp"
+                android:layout_gravity="center_horizontal"
+                android:textSize="22sp"
                 android:textColor="@color/black"
-                android:textSize="18sp"/>
+                android:fontFamily="@font/roboto_bold"/>
 
-            <TextView
-                android:id="@+id/english"
-                android:layout_marginHorizontal="10dp"
-                android:layout_width="300dp"
-                android:layout_height="40dp"
-                android:padding="5dp"
-                android:paddingStart="10dp"
-                android:text=""
-                android:textColor="@color/black"
-                android:textSize="18sp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="5dp"
+                android:padding="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Name:"
+                        android:padding="5dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"/>
+
+                    <TextView
+                        android:id="@+id/name"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_width="300dp"
+                        android:layout_height="40dp"
+                        android:padding="5dp"
+                        android:paddingStart="10dp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="Name"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Level:"
+                        android:padding="5dp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textSize="18sp"/>
+
+                    <TextView
+                        android:id="@+id/level"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_width="300dp"
+                        android:layout_height="40dp"
+                        android:padding="5dp"
+                        android:paddingStart="10dp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="18sp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Birthday:"
+                        android:padding="5dp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textSize="18sp"/>
+
+                    <TextView
+                        android:id="@+id/bday"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:padding="5dp"
+                        android:paddingStart="10dp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="Birthday"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        tools:ignore="RtlSymmetry" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Address:"
+                        android:padding="5dp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textSize="18sp"/>
+
+                    <TextView
+                        android:id="@+id/Address"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:padding="5dp"
+                        android:paddingStart="10dp"
+                        android:text="Name"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/roboto_regular"
+                        android:textSize="18sp"
+                        tools:ignore="RtlSymmetry" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Guardian:"
+                        android:padding="5dp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textSize="18sp"/>
+
+                    <TextView
+                        android:id="@+id/guardianName"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:padding="5dp"
+                        android:paddingStart="10dp"
+                        android:text="Name"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/roboto_regular"
+                        android:textSize="18sp"
+                        tools:ignore="RtlSymmetry" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Phone:"
+                        android:padding="5dp"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textSize="18sp"/>
+
+                    <TextView
+                        android:id="@+id/phone"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:padding="5dp"
+                        android:paddingStart="10dp"
+                        android:text="Phone"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/roboto_regular"
+                        android:textSize="18sp"
+                        tools:ignore="RtlSymmetry" />
+
+                </LinearLayout>
 
 
+            </LinearLayout>
 
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:layout_margin="5dp"
+            app:cardElevation="6dp"
+            app:cardCornerRadius="6dp"
+            android:layout_height="match_parent">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Math:"
-                android:padding="5dp"
+                android:text="Quiz Score"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/roboto_bold"
                 android:textColor="@color/black"
-                android:textSize="18sp"/>
+                android:textSize="20sp"
+                android:layout_marginVertical="15dp"/>
 
-            <TextView
-                android:id="@+id/math"
-                android:layout_marginHorizontal="10dp"
-                android:layout_width="300dp"
-                android:layout_height="40dp"
-                android:padding="5dp"
-                android:paddingStart="30dp"
-                android:text=""
-                android:textColor="@color/black"
-                android:textSize="18sp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="5dp"
+                android:padding="10dp"
+                android:orientation="vertical">
 
-        </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-        <LinearLayout
-            android:id="@+id/filipinoLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="English :"
+                        android:padding="5dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Filipino:"
-                android:padding="5dp"
-                android:textColor="@color/black"
-                android:textSize="18sp"/>
-
-            <TextView
-                android:id="@+id/filipino"
-                android:layout_marginHorizontal="10dp"
-                android:layout_width="300dp"
-                android:layout_height="40dp"
-                android:padding="5dp"
-                android:paddingStart="20dp"
-                android:text=""
-                android:textColor="@color/black"
-                android:textSize="18sp"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Science:"
-                android:padding="5dp"
-                android:textColor="@color/black"
-                android:textSize="18sp"/>
-
-            <TextView
-                android:id="@+id/science"
-                android:layout_marginHorizontal="10dp"
-                android:layout_width="300dp"
-                android:layout_height="40dp"
-                android:padding="5dp"
-                android:paddingStart="20dp"
-                android:text=""
-                android:textColor="@color/black"
-                android:textSize="18sp"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Christian Living:"
-                android:padding="5dp"
-                android:textColor="@color/black"
-                android:textSize="18sp"/>
-
-            <TextView
-                android:id="@+id/cl"
-                android:layout_marginHorizontal="10dp"
-                android:layout_width="200dp"
-                android:layout_height="40dp"
-                android:padding="5dp"
-                android:paddingStart="20dp"
-                android:text=""
-                android:textColor="@color/black"
-                android:textSize="18sp"/>
-
-        </LinearLayout>
+                    <TextView
+                        android:id="@+id/english"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_width="300dp"
+                        android:layout_height="40dp"
+                        android:padding="5dp"
+                        android:paddingStart="10dp"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="18sp"/>
 
 
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Math:"
+                        android:fontFamily="@font/roboto_bold"
+                        android:padding="5dp"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"/>
+
+                    <TextView
+                        android:id="@+id/math"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_width="300dp"
+                        android:layout_height="40dp"
+                        android:padding="5dp"
+                        android:paddingStart="30dp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="18sp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/filipinoLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Filipino:"
+                        android:fontFamily="@font/roboto_bold"
+                        android:padding="5dp"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"/>
+
+                    <TextView
+                        android:id="@+id/filipino"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_width="300dp"
+                        android:layout_height="40dp"
+                        android:padding="5dp"
+                        android:paddingStart="20dp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="18sp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Science:"
+                        android:fontFamily="@font/roboto_bold"
+                        android:padding="5dp"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"/>
+
+                    <TextView
+                        android:id="@+id/science"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_width="300dp"
+                        android:layout_height="40dp"
+                        android:padding="5dp"
+                        android:paddingStart="20dp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="18sp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Christian Living:"
+                        android:fontFamily="@font/roboto_bold"
+                        android:padding="5dp"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"/>
+
+                    <TextView
+                        android:id="@+id/cl"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_width="200dp"
+                        android:layout_height="40dp"
+                        android:padding="5dp"
+                        android:paddingStart="20dp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="18sp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
 </ScrollView>

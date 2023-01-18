@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Nursery.NStories"
+    tools:context=".Preparatory.PStories"
     android:background="@drawable/readingbg">
 
     <LinearLayout
@@ -20,7 +20,7 @@
             android:layout_marginVertical="15dp">
 
             <ImageView
-                android:onClick="BacktoEnglishClass"
+                android:onClick="BacktoClass"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_arrowback"/>
