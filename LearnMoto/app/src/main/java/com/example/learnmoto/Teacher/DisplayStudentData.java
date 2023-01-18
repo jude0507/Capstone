@@ -56,7 +56,7 @@ public class DisplayStudentData extends AppCompatActivity {
         DisplayData();
 
     }
-    @SuppressLint("NotConstructor")
+    @SuppressLint({"NotConstructor", "SetTextI18n"})
     public void DisplayData(){
         db.collection("Student").whereEqualTo("sID", id).get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
@@ -79,12 +79,16 @@ public class DisplayStudentData extends AppCompatActivity {
                         mathScore += studentInfo.getMathScore();
                         engScore += studentInfo.getEngScore();
                     }
+
                     name.setText(getNameIntent);
                     level.setText(getSLevel);
                     guardianName.setText(getGuardianName);
                     birthday.setText(getBirthday);
                     address.setText(getAddress);
                     Phone.setText(phoneNumber);
+                    if (mathScore.equals("null")){
+                        math.setText("Not Available");
+                    }
                     math.setText(mathScore);
                     english.setText(engScore);
 

@@ -113,7 +113,7 @@ public class DisplayChildData extends AppCompatActivity {
                         birthday.setText(getBirthday);
                         address.setText(getAddress);
                         Phone.setText(phoneNumber);
-                        math.setText(mathScore + "/12");
+                        math.setText(mathScore + "/10");
                         english.setText(engScore + "/10");
                         filipinoLayout.setVisibility(View.GONE);
                         //fili.setText(filiScore + "/10");
