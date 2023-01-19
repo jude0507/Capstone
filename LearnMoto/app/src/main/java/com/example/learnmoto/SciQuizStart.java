@@ -1,5 +1,6 @@
 package com.example.learnmoto;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.ColorStateList;
@@ -112,6 +113,7 @@ public class SciQuizStart extends AppCompatActivity {
         });
     }
 
+    @SuppressLint("SetTextI18n")
     private void checkAnswer() {
         answered = true;
         RadioButton rbSelected = findViewById(radioGroup.getCheckedRadioButtonId());
@@ -147,14 +149,13 @@ public class SciQuizStart extends AppCompatActivity {
         if (qCounter < totalQuestions) {
             nextBtn.setText("Next");
         } else {
-            String sciscore = String.valueOf(score);
-            //Toast.makeText(this, StudentLogin.studID, Toast.LENGTH_SHORT).show();
+            String sciScore = String.valueOf(score);
             DocumentReference documentReference = db.collection("Student").document(StudentHomeView.userID);
-            documentReference.update("scienceScore", sciscore);
-            textToSpeech.speak("Your final score is " + sciscore + "over 5", TextToSpeech.QUEUE_ADD, null);
+            documentReference.update("scienceScoreQuiz", sciScore);
+            textToSpeech.speak("Your final score is " + sciScore + "over 10", TextToSpeech.QUEUE_ADD, null);
             Toast.makeText(this, "Score has been saved", Toast.LENGTH_SHORT).show();
 
-            if (StudentHomeView.level.equals("Preperatory")) {
+            if (StudentHomeView.level.equals("Preparatory")) {
                 startActivity(new Intent(this, PreparatoryScienceQuiz.class));
             } else if (StudentHomeView.level.equals("Kinder")) {
                 startActivity(new Intent(this, KinderScienceQuiz.class));

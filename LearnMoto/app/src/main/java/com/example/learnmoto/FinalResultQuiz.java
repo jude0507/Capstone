@@ -52,9 +52,9 @@ public class FinalResultQuiz extends AppCompatActivity {
 
     private void exitActivity() {
         if(StudentHomeView.level.equals("Preparatory")){
-            startActivity(new Intent(getApplicationContext(), PreparatoryFilipinoQuiz.class));
+            startActivity(new Intent(getApplicationContext(), StudentHomeView.class));
         }else if(StudentHomeView.level.equals("Kinder")){
-            startActivity(new Intent(getApplicationContext(), KinderFilipinoQuiz.class));
+            startActivity(new Intent(getApplicationContext(), StudentHomeView.class));
         }
     }
 

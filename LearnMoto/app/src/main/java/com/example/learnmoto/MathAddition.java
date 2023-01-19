@@ -245,7 +245,7 @@ public class MathAddition extends AppCompatActivity {
     private void closeChoices() {
         //Toast.makeText(this, StudentLogin.studID, Toast.LENGTH_SHORT).show();
         DocumentReference documentReference = db.collection("Student").document(StudentHomeView.userID);
-        documentReference.update("mathScore", String.valueOf(points));
+        documentReference.update("mathScoreQuiz", String.valueOf(points));
         textToSpeech.speak("Your final score is " + points + "over ten",TextToSpeech.QUEUE_ADD, null);
         Toast.makeText(this, "Score has been saved", Toast.LENGTH_SHORT).show();
         if(StudentHomeView.level.equals("Nursery")){

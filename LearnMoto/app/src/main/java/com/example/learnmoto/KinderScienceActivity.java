@@ -9,21 +9,26 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
+import com.example.learnmoto.Kinder.English.KinderEnglishQuiz;
 import com.example.learnmoto.Kinder.Filipino.KinderFilipinoQuiz;
+import com.example.learnmoto.Kinder.Science.KinderScienceQuiz;
+import com.example.learnmoto.Preparatory.English.PreparatoryEnglish;
+import com.example.learnmoto.Preparatory.English.PreparatoryEnglishQuiz;
 import com.example.learnmoto.Preparatory.Filipino.PreparatoryFilipinoQuiz;
+import com.example.learnmoto.Preparatory.Science.PreparatoryScienceQuiz;
 import com.example.learnmoto.Student.StudentHomeView;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class KinderEngActivity extends AppCompatActivity {
+public class KinderScienceActivity extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_kinder_eng);
+        setContentView(R.layout.activity_kinder_science_acitivity);
     }
     public void btnStart(View view) {
-        startActivity(new Intent(getApplicationContext(),KinderEngStart.class));
+        startActivity(new Intent(getApplicationContext(),KinderSciStart.class));
     }
     @Override
     protected void onStart() {
@@ -41,9 +46,9 @@ public class KinderEngActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if(StudentHomeView.level.equals("Preparatory")){
-            startActivity(new Intent(getApplicationContext(), PreparatoryFilipinoQuiz.class));
+            startActivity(new Intent(getApplicationContext(), PreparatoryScienceQuiz.class));
         }else if(StudentHomeView.level.equals("Kinder")){
-            startActivity(new Intent(getApplicationContext(), KinderFilipinoQuiz.class));
+            startActivity(new Intent(getApplicationContext(), KinderScienceQuiz.class));
         }
     }
 }

@@ -1,11 +1,13 @@
 package com.example.learnmoto;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -18,13 +20,11 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
-import com.example.learnmoto.Kinder.Filipino.KinderFilipinoQuiz;
+import com.example.learnmoto.Kinder.Science.KinderScienceQuiz;
 import com.example.learnmoto.Model.QuizzesModel;
-import com.example.learnmoto.Preparatory.Filipino.PreparatoryFilipinoQuiz;
+import com.example.learnmoto.Nursery.Science.NurseryScienceQuiz;
+import com.example.learnmoto.Preparatory.Science.PreparatoryScienceQuiz;
 import com.example.learnmoto.Student.StudentHomeView;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -33,8 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class FilQuizStart extends AppCompatActivity {
-    private MediaPlayer mediaPlayer;
+public class KinderSciStart extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     private List<QuizzesModel> quizzesModelList;
@@ -54,10 +53,11 @@ public class FilQuizStart extends AppCompatActivity {
     AlertDialog.Builder builder;
     AlertDialog alertDialog;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fil_quiz_start);
+        setContentView(R.layout.activity_kinder_sci_start);
         questionnaireView = findViewById(R.id.questionnaireView);
         questionView = findViewById(R.id.questionView);
         scoreView = findViewById(R.id.scoreView);
@@ -69,11 +69,7 @@ public class FilQuizStart extends AppCompatActivity {
         rb4 = findViewById(R.id.ansD);
         nextBtn = findViewById(R.id.nextBtn);
         dfRbColor = rb1.getTextColors();
-
-
         textSpeak();
-
-
         quizzesModelList = new ArrayList<>();
 
         addQuestions();
@@ -83,12 +79,12 @@ public class FilQuizStart extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (answered == false) {
+                if (!answered) {
                     if (rb1.isChecked() || rb2.isChecked() || rb3.isChecked() || rb4.isChecked()) {
                         checkAnswer();
                         countDownTimer.cancel();
                     } else {
-                        Toast.makeText(FilQuizStart.this, "Please Select an option", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(KinderSciStart.this, "Please Select an option", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     showNextQuestions();
@@ -112,6 +108,7 @@ public class FilQuizStart extends AppCompatActivity {
         });
     }
 
+    @SuppressLint("SetTextI18n")
     private void checkAnswer() {
         answered = true;
         RadioButton rbSelected = findViewById(radioGroup.getCheckedRadioButtonId());
@@ -147,28 +144,30 @@ public class FilQuizStart extends AppCompatActivity {
         if (qCounter < totalQuestions) {
             nextBtn.setText("Next");
         } else {
-            String filScore = String.valueOf(score);
+            String engScore = String.valueOf(score);
             //Toast.makeText(this, StudentLogin.studID, Toast.LENGTH_SHORT).show();
             DocumentReference documentReference = db.collection("Student").document(StudentHomeView.userID);
-            documentReference.update("filipinoScoreQuiz", filScore);
-            textToSpeech.speak("Your final score is " + filScore + "over 10", TextToSpeech.QUEUE_ADD, null);
+            documentReference.update("scienceScoreAct", engScore);
+            textToSpeech.speak("Your final score is " + engScore + "over 5", TextToSpeech.QUEUE_ADD, null);
             Toast.makeText(this, "Score has been saved", Toast.LENGTH_SHORT).show();
 
             if (StudentHomeView.level.equals("Preparatory")) {
-                startActivity(new Intent(this, PreparatoryFilipinoQuiz.class));
+                startActivity(new Intent(this, PreparatoryScienceQuiz.class));
             } else if (StudentHomeView.level.equals("Kinder")) {
-                startActivity(new Intent(this, KinderFilipinoQuiz.class));
+                startActivity(new Intent(this, KinderScienceQuiz.class));
+            } else {
+                startActivity(new Intent(this, NurseryScienceQuiz.class));
             }
             nextBtn.setText("Finish");
-            Intent intent= new Intent(getApplicationContext(),FinalResultQuiz.class);
-            intent.putExtra("score",score);
+            Intent intent = new Intent(getApplicationContext(), FinalResultQuiz.class);
+            intent.putExtra("score", score);
             startActivity(intent);
         }
 
     }
 
     private void incorrectDialog() {
-        builder = new AlertDialog.Builder(FilQuizStart.this);
+        builder = new AlertDialog.Builder(KinderSciStart.this);
         final View view = getLayoutInflater().inflate(R.layout.incorrect_model, null);
         builder.setView(view);
         alertDialog = builder.create();
@@ -184,7 +183,7 @@ public class FilQuizStart extends AppCompatActivity {
     }
 
     private void correctDialog() {
-        builder = new AlertDialog.Builder(FilQuizStart.this);
+        builder = new AlertDialog.Builder(KinderSciStart.this);
         final View view = getLayoutInflater().inflate(R.layout.dialog_model, null);
         builder.setView(view);
         alertDialog = builder.create();
@@ -242,16 +241,11 @@ public class FilQuizStart extends AppCompatActivity {
     }
 
     private void addQuestions() {
-        quizzesModelList.add(new QuizzesModel("Alin sa mga sumusunod na salita ang nagsisimula sa Patinig?", "Dagat", "Ibon", "Halaman", "Kasuy", 2));
-        quizzesModelList.add(new QuizzesModel("Alin sa mga sumusunod na salita ang nagsisimula sa Katinig", "Aso", "Bata", "Ibon", "Oso", 2));
-        quizzesModelList.add(new QuizzesModel("Ano ang kulang sa mga Patinig? A,E,_,O,U", "A", "R", "I", "O", 3));
-        quizzesModelList.add(new QuizzesModel("Ano sa mga halimbawa ng katinig ang naiba? K,L,P,Y,A", "K", "A", "Y", "P", 2));
-        quizzesModelList.add(new QuizzesModel("Ano sa mga halimbawa ng patinig ang naiba? G,A,I,O,U", "G", "A", "O", "U", 1));
-        quizzesModelList.add(new QuizzesModel("Magbigay ng halimbawa ng bagay na nagsisimula sa katinig at nagtatapos sa patinig.", "Baso", "Bahay", "Telibisyon", "Punit", 1));
-        quizzesModelList.add(new QuizzesModel("Ano ang pinagkaiba ng mga letra?,A,B,E,I,O,U", "May pagkakapareho", "May pagkakapantay", "May katinig na kasama sa patinig", "May patinig na nasama sa patinig", 3));
-        quizzesModelList.add(new QuizzesModel("Magbigay ng patinig. A,B,C,D", "B", "C", "D", "A", 4));
-        quizzesModelList.add(new QuizzesModel("Magbigay ng katinig, A,E,I,O,N", "E", "C", "D", "N", 4));
-        quizzesModelList.add(new QuizzesModel("Magbigay ng patinig. B,A,E,I", "A", "B", "C", "G", 1));
+        quizzesModelList.add(new QuizzesModel("What does a caterpillar change into?  ", "Butterfly", "Bee", "Fly", "Dragonfly", 1));
+        quizzesModelList.add(new QuizzesModel("About how many eggs does a queen bee lay each day? ", "1-2", "1000-3000", "5000-7000", "10000", 2));
+        quizzesModelList.add(new QuizzesModel("How fast do bees wings beat? ", "5 beats for second", "10 beats for second", "200 beats for second", "500 beats per second", 3));
+        quizzesModelList.add(new QuizzesModel("What is the name of the gas in the air that keeps us alive? ", "Petrol", "Oxygen", "Carbon Dioxide", "Poison", 2));
+        quizzesModelList.add(new QuizzesModel("What happens if you melt a solid such as ice? ", "Change to water", "change to rock", "Change to air", "change to door", 1));
     }
 
     @Override

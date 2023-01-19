@@ -14,16 +14,16 @@ import com.example.learnmoto.Preparatory.Filipino.PreparatoryFilipinoQuiz;
 import com.example.learnmoto.Student.StudentHomeView;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class KinderEngActivity extends AppCompatActivity {
+public class KinderFilipinoActivity extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_kinder_eng);
+        setContentView(R.layout.activity_kinder_filipino);
     }
     public void btnStart(View view) {
-        startActivity(new Intent(getApplicationContext(),KinderEngStart.class));
+        startActivity(new Intent(getApplicationContext(),KinderFilStart.class));
     }
     @Override
     protected void onStart() {
