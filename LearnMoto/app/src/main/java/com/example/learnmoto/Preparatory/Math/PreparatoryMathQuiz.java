@@ -148,4 +148,7 @@ public class PreparatoryMathQuiz extends AppCompatActivity {
         stopService(new Intent(this, AudioService.class));
     }
 
+    public void mathActivity(View view) {
+        startActivity(new Intent(this, mathActivity().class));
+    }
 }

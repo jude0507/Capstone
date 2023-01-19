@@ -60,7 +60,7 @@ public class MathActivity extends AppCompatActivity {
 
         textToSpeech();
 
-        answers = new int[]{2, 10, 7, 11, 5, 8};
+        answers = new int[]{2, 10, 7, 11, 5};
 
         for (int i = 0; i < answers.length; i++) {
             AddDices(i, 2, R.drawable.dice1, R.drawable.dice2);
@@ -68,7 +68,6 @@ public class MathActivity extends AppCompatActivity {
             AddDices(i, 7, R.drawable.dice3, R.drawable.dice4);
             AddDices(i, 11, R.drawable.dice5, R.drawable.dice6);
             AddDices(i, 5, R.drawable.dice4, R.drawable.dice1);
-            AddDices(i, 8, R.drawable.dice5, R.drawable.dice3);
             mathModelArrayList.add(new MathModel(val1, "+", val2));
         }
 

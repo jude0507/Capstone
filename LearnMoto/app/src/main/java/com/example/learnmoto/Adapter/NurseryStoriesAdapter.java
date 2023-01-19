@@ -2,6 +2,7 @@ package com.example.learnmoto.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,12 +65,18 @@ public class NurseryStoriesAdapter extends RecyclerView.Adapter<NurseryStoriesAd
             itemView.setOnClickListener(view -> {
                 switch (getAdapterPosition()){
                     case 0:
+                        MediaPlayer mediaPlayer1 = MediaPlayer.create(view.getContext(),R.raw.title_lion);
+                        mediaPlayer1.start();
                         view.getContext().startActivity(new Intent(view.getContext(), NFirstStory.class));
                         break;
                     case 1:
+                        MediaPlayer mediaPlayer2 = MediaPlayer.create(view.getContext(),R.raw.title_ant_dove);
+                        mediaPlayer2.start();
                         view.getContext().startActivity(new Intent(view.getContext(), NSecondStory.class));
                         break;
                     case 2:
+                        MediaPlayer mediaPlayer3 = MediaPlayer.create(view.getContext(),R.raw.title_ant);
+                        mediaPlayer3.start();
                         view.getContext().startActivity(new Intent(view.getContext(), NThirdStory.class));
                         break;
                     case 3:
