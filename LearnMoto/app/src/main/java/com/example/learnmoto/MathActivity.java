@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -20,6 +21,7 @@ import com.example.learnmoto.Model.MathModel;
 import com.example.learnmoto.Nursery.Math.NurseryMathQuiz;
 import com.example.learnmoto.Preparatory.Math.PreparatoryMathQuiz;
 import com.example.learnmoto.Student.StudentHomeView;
+import com.example.learnmoto.Teacher.TeacherView;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -38,6 +40,9 @@ public class MathActivity extends AppCompatActivity {
     public static TextToSpeech textToSpeech;
     public static int score;
     public static AlertDialog.Builder builder;
+    String mathscore;
+    AlertDialog.Builder mybuilder;
+    AlertDialog alertDialog;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
@@ -74,20 +79,21 @@ public class MathActivity extends AppCompatActivity {
         mathQuizAdapter.notifyDataSetChanged();
 
         Submit.setOnClickListener(v -> {
-            String mathscore = String.valueOf(score);
-            //Toast.makeText(this, StudentLogin.studID, Toast.LENGTH_SHORT).show();
-            DocumentReference documentReference = db.collection("Student").document(StudentHomeView.userID);
-            documentReference.update("mathScore", mathscore);
-            textToSpeech.speak("Your final score is " + mathscore + "over twelve",TextToSpeech.QUEUE_ADD, null);
-            Toast.makeText(this, "Score has been saved", Toast.LENGTH_SHORT).show();
 
+            mathscore = String.valueOf(score);
+            DocumentReference documentReference = db.collection("Student").document(StudentHomeView.userID);
+            documentReference.update("mathScoreAct", mathscore);
+            textToSpeech.speak("Your final score is " + mathscore + "over five",TextToSpeech.QUEUE_ADD, null);
+            Toast.makeText(v.getContext(), "Score has been saved", Toast.LENGTH_SHORT).show();
             if (StudentHomeView.level.equals("Kinder")){
-                startActivity(new Intent(this, KinderMathQuiz.class));
+                startActivity(new Intent(v.getContext(), KinderMathQuiz.class));
             }else if (StudentHomeView.level.equals("Nursery")){
-                startActivity(new Intent(this, NurseryMathQuiz.class));
+                startActivity(new Intent(v.getContext(), NurseryMathQuiz.class));
             }else{
-                startActivity(new Intent(this, PreparatoryMathQuiz.class));
+                startActivity(new Intent(v.getContext(), PreparatoryMathQuiz.class));
             }
+
+
         });
 
     }

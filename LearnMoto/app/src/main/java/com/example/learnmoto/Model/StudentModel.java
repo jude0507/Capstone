@@ -8,7 +8,7 @@ public class StudentModel {
 
     String myId;
     public String sName, sAddress, sAge,sPassword, guardianPhone, sID, sGender, sBirthday,
-            sLevel, sGuardian, imageUrl, imageName, mathScoreQuiz, engScoreQuiz, scienceScoreQuiz, filipinoScoreQuiz, clScoreQuiz,
+            sLevel, sGuardian, imageurl, imagename, mathScoreQuiz, engScoreQuiz, scienceScoreQuiz, filipinoScoreQuiz, clScoreQuiz,
             mathScoreAct,engScoreAct,scienceScoreAct,filipinoScoreAct,clScoreAct;
 
     public StudentModel(){
@@ -16,8 +16,8 @@ public class StudentModel {
     }
 
     public StudentModel(String myId, String sName, String sAddress, String sAge, String sPassword, String guardianPhone,
-                        String sID, String sGender, String sBirthday, String sLevel, String sGuardian, String imageUrl,
-                        String imageName, String mathScoreQuiz, String engScoreQuiz, String scienceScoreQuiz, String filipinoScoreQuiz,
+                        String sID, String sGender, String sBirthday, String sLevel, String sGuardian, String imageurl,
+                        String imagename, String mathScoreQuiz, String engScoreQuiz, String scienceScoreQuiz, String filipinoScoreQuiz,
                         String clScoreQuiz, String mathScoreAct, String engScoreAct, String scienceScoreAct, String filipinoScoreAct, String clScoreAct) {
         this.myId = myId;
         this.sName = sName;
@@ -30,8 +30,8 @@ public class StudentModel {
         this.sBirthday = sBirthday;
         this.sLevel = sLevel;
         this.sGuardian = sGuardian;
-        this.imageUrl = imageUrl;
-        this.imageName = imageName;
+        this.imageurl = imageurl;
+        this.imagename = imagename;
         this.mathScoreQuiz = mathScoreQuiz;
         this.engScoreQuiz = engScoreQuiz;
         this.scienceScoreQuiz = scienceScoreQuiz;
@@ -134,20 +134,20 @@ public class StudentModel {
         this.sGuardian = sGuardian;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getImageurl() {
+        return imageurl;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setImageurl(String imageurl) {
+        this.imageurl = imageurl;
     }
 
-    public String getImageName() {
-        return imageName;
+    public String getImagename() {
+        return imagename;
     }
 
-    public void setImageName(String imageName) {
-        this.imageName = imageName;
+    public void setImagename(String imagename) {
+        this.imagename = imagename;
     }
 
     public String getMathScoreQuiz() {

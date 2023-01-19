@@ -26,13 +26,15 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class DisplayStudentData extends AppCompatActivity {
 
-    TextView name, level, guardianName, Phone, address, birthday, math, english, science, filipino, cl;
+    TextView name, level, guardianName, Phone, address, birthday, math, english, science, filipino, cl,
+            mathAct, englishAct, scienceAct, filipinoAct, clAct;
     String id, getNameIntent;
     String getSLevel;
     String getGuardianName, getBirthday, getAddress, imageStudent, phoneNumber, mathScore,
-            engScore, filiScore, sciScore, clScore;
+            engScore, filiScore, sciScore, clScore, mathScoreAct,
+            engScoreAct, filiScoreAct, sciScoreAct, clScoreAct;
     CircleImageView StudPicture;
-    LinearLayout filLayout;
+    LinearLayout filLayout, filLayoutAct;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -46,6 +48,7 @@ public class DisplayStudentData extends AppCompatActivity {
         math = findViewById(R.id.math);
         english = findViewById(R.id.english);
         filLayout = findViewById(R.id.filLayout);
+        filLayoutAct = findViewById(R.id.filLayoutAct);
         science = findViewById(R.id.science);
         cl = findViewById(R.id.cl);
         filipino = findViewById(R.id.filipino);
@@ -54,6 +57,11 @@ public class DisplayStudentData extends AppCompatActivity {
         address = findViewById(R.id.Address);
         birthday = findViewById(R.id.bday);
         StudPicture = findViewById(R.id.picture);
+        filipinoAct = findViewById(R.id.filipinoAct);
+        mathAct = findViewById(R.id.mathAct);
+        englishAct = findViewById(R.id.englishAct);
+        clAct = findViewById(R.id.clAct);
+        scienceAct = findViewById(R.id.scienceAct);
 
         getNameIntent = getIntent().getStringExtra("studentName");
         id = getIntent().getStringExtra("studentID");
@@ -76,20 +84,31 @@ public class DisplayStudentData extends AppCompatActivity {
                     sciScore = "";
                     filiScore = "";
                     clScore = "";
+                    mathScoreAct = "";
+                    engScoreAct = "";
+                    sciScoreAct = "";
+                    filiScoreAct = "";
+                    clScoreAct = "";
                     //imageDisplay = "";
                     for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
                         StudentModel studentInfo = documentSnapshot.toObject(StudentModel.class);
-                        studentInfo.setMyid(documentSnapshot.getId());
+                        studentInfo.setMyId(documentSnapshot.getId());
                         getGuardianName += studentInfo.getsGuardian();
                         getBirthday += studentInfo.getsBirthday();
                         getAddress += studentInfo.getsAddress();
                         imageStudent += studentInfo.getImageurl();
                         phoneNumber += studentInfo.getGuardianPhone();
-                        mathScore += studentInfo.getMathScore();
-                        engScore += studentInfo.getEngScore();
-                        sciScore += studentInfo.getScienceScore();
-                        filiScore += studentInfo.getScienceScore();
-                        clScore += studentInfo.getScienceScore();
+                        mathScore += studentInfo.getMathScoreQuiz();
+                        engScore += studentInfo.getEngScoreQuiz();
+                        sciScore += studentInfo.getScienceScoreQuiz();
+                        filiScore += studentInfo.getScienceScoreQuiz();
+                        clScore += studentInfo.getScienceScoreQuiz();
+
+                        mathScoreAct += studentInfo.getMathScoreAct();
+                        engScoreAct += studentInfo.getEngScoreAct();
+                        sciScoreAct += studentInfo.getScienceScoreAct();
+                        filiScoreAct += studentInfo.getFilipinoScoreAct();
+                        clScoreAct += studentInfo.getScienceScoreAct();
 
                     }
 
@@ -101,6 +120,7 @@ public class DisplayStudentData extends AppCompatActivity {
                     Phone.setText(phoneNumber);
                     if (!getSLevel.equals("Nursery")){
                         filLayout.setVisibility(View.VISIBLE);
+                        filLayoutAct.setVisibility(View.VISIBLE);
                         if (mathScore.equals("null")){
                             math.setText("Not yet taken");
                         }if(engScore.equals("null")){
@@ -111,7 +131,19 @@ public class DisplayStudentData extends AppCompatActivity {
                             science.setText("Not yet taken");
                         }if(clScore.equals("null")){
                             cl.setText("Take the quiz");
-                        }if (!mathScore.equals("null")){
+                        }
+                        if (mathScoreAct.equals("null")){
+                            mathAct.setText("Not yet taken");
+                        }if(engScoreAct.equals("null")){
+                            englishAct.setText("Not yet taken");
+                        }if(filiScoreAct.equals("null")){
+                            filipinoAct.setText("Not yet taken");
+                        }if(sciScoreAct.equals("null")){
+                            scienceAct.setText("Not yet taken");
+                        }if(clScoreAct.equals("null")){
+                            clAct.setText("Take the quiz");
+                        }
+                        if (!mathScore.equals("null")){
                             math.setText(mathScore + "/10");
                         }if(!engScore.equals("null")){
                             english.setText(engScore + "/10");
@@ -123,9 +155,22 @@ public class DisplayStudentData extends AppCompatActivity {
                             cl.setText(clScore + "/10");
                         }
 
+                        if (!mathScoreAct.equals("null")){
+                            mathAct.setText(mathScoreAct + "/5");
+                        }if(!engScoreAct.equals("null")){
+                            englishAct.setText(engScoreAct + "/5");
+                        }if(!filiScoreAct.equals("null")){
+                            filipinoAct.setText(filiScoreAct + "/5");
+                        }if(!sciScoreAct.equals("null")){
+                            scienceAct.setText(sciScoreAct + "/5");
+                        }if(!clScoreAct.equals("null")){
+                            clAct.setText(clScoreAct + "/5");
+                        }
+
 
                     }else {
                         filLayout.setVisibility(View.GONE);
+                        filLayoutAct.setVisibility(View.GONE);
                         if (mathScore.equals("null")) {
                             math.setText("Not yet taken");
                         }
@@ -141,6 +186,21 @@ public class DisplayStudentData extends AppCompatActivity {
                         if (clScore.equals("null")) {
                             cl.setText("Not yet taken");
                         }
+                        if (mathScoreAct.equals("null")) {
+                            mathAct.setText("Not yet taken");
+                        }
+                        if (engScoreAct.equals("null")) {
+                            englishAct.setText("Not yet taken");
+                        }
+                        if (filiScoreAct.equals("null")) {
+                            filipinoAct.setText("Not yet taken");
+                        }
+                        if (sciScoreAct.equals("null")) {
+                            scienceAct.setText("Not yet taken");
+                        }
+                        if (clScoreAct.equals("null")) {
+                            clAct.setText("Not yet taken");
+                        }
                         if (!mathScore.equals("null")) {
                             math.setText(mathScore + "/10");
                         }
@@ -155,6 +215,22 @@ public class DisplayStudentData extends AppCompatActivity {
                         }
                         if (!clScore.equals("null")) {
                             cl.setText(clScore + "/10");
+                        }
+
+                        if (!mathScoreAct.equals("null")) {
+                            mathAct.setText(mathScoreAct + "/10");
+                        }
+                        if (!engScoreAct.equals("null")) {
+                            englishAct.setText(engScoreAct + "/10");
+                        }
+                        if (!filiScoreAct.equals("null")) {
+                            filipinoAct.setText(filiScoreAct + "/10");
+                        }
+                        if (!sciScoreAct.equals("null")) {
+                            scienceAct.setText(sciScoreAct + "/10");
+                        }
+                        if (!clScoreAct.equals("null")) {
+                            clAct.setText(clScoreAct + "/10");
                         }
 
                     }

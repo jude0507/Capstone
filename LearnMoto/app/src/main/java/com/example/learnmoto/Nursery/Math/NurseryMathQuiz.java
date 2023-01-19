@@ -19,7 +19,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.learnmoto.AudioService;
 import com.example.learnmoto.CheckConnection.NetworkChangeListener;
+import com.example.learnmoto.MathActivity;
 import com.example.learnmoto.MathAddition;
+import com.example.learnmoto.Preparatory.Math.PreparatoryMathQuiz;
 import com.example.learnmoto.R;
 import com.example.learnmoto.Student.StudentHomeView;
 
@@ -149,6 +151,10 @@ public class NurseryMathQuiz extends AppCompatActivity {
     public void MathQuiz(View view) {
         startActivity(new Intent(this, MathAddition.class));
         stopService(new Intent(this, AudioService.class));
+    }
+
+    public void mathActivity(View view) {
+        startActivity(new Intent(this, MathActivity.class));
     }
 
 }

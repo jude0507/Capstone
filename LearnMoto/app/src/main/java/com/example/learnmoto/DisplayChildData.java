@@ -25,13 +25,15 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class DisplayChildData extends AppCompatActivity {
 
-    TextView name, level, guardianName, Phone, address, birthday, math, english, fili, science, cl;
+    TextView name, level, guardianName, Phone, address, birthday, math, english, fili, science, cl,
+            mathAct, englishAct, scienceAct, filipinoAct, clAct;
     String id, getNameIntent;
     String getlevel, getGuardianName, getBirthday, getAddress, imageStudent, phoneNumber, mathScore,
-            engScore, filiScore, sciScore, clScore;
+            engScore, filiScore, sciScore, clScore, mathScoreAct,
+    engScoreAct, filiScoreAct, sciScoreAct, clScoreAct;
     CircleImageView StudPicture;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    LinearLayout filipinoLayout;
+    LinearLayout filipinoLayout, filLayoutAct;
     NetworkChangeListener networkChangeListener = new NetworkChangeListener();
 
     @Override
@@ -51,6 +53,12 @@ public class DisplayChildData extends AppCompatActivity {
         birthday = findViewById(R.id.bday);
         StudPicture = findViewById(R.id.picture);
         filipinoLayout = findViewById(R.id.filipinoLayout);
+        filLayoutAct = findViewById(R.id.filLayoutAct);
+        filipinoAct = findViewById(R.id.filipinoAct);
+        mathAct = findViewById(R.id.mathAct);
+        englishAct = findViewById(R.id.englishAct);
+        clAct = findViewById(R.id.clAct);
+        scienceAct = findViewById(R.id.scienceAct);
 
         filipinoLayout.setVisibility(View.GONE);
         getNameIntent = getIntent().getStringExtra("studentName");
@@ -74,21 +82,34 @@ public class DisplayChildData extends AppCompatActivity {
                     sciScore = "";
                     clScore = "";
                     getlevel = "";
+                    mathScoreAct = "";
+                    engScoreAct = "";
+                    sciScoreAct = "";
+                    filiScoreAct = "";
+                    clScoreAct = "";
                     //imageDisplay = "";
                     for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
                         StudentModel studentInfo = documentSnapshot.toObject(StudentModel.class);
-                        studentInfo.setMyid(documentSnapshot.getId());
+                        studentInfo.setMyId(documentSnapshot.getId());
                         getGuardianName += studentInfo.getsGuardian();
                         getBirthday += studentInfo.getsBirthday();
                         getAddress += studentInfo.getsAddress();
                         imageStudent += studentInfo.getImageurl();
                         phoneNumber += studentInfo.getGuardianPhone();
-                        engScore += studentInfo.getEngScore();
-                        mathScore += studentInfo.getMathScore();
-                        filiScore += studentInfo.getFilipinoScore();
-                        sciScore += studentInfo.getScienceScore();
-                        clScore += studentInfo.getClScore();
+                        engScore += studentInfo.getEngScoreQuiz();
+
+                        mathScore += studentInfo.getMathScoreQuiz();
+                        filiScore += studentInfo.getFilipinoScoreQuiz();
+                        sciScore += studentInfo.getScienceScoreQuiz();
+                        clScore += studentInfo.getClScoreQuiz();
                         getlevel += studentInfo.getsLevel();
+
+                        mathScoreAct += studentInfo.getMathScoreAct();
+                        engScoreAct += studentInfo.getEngScoreAct();
+                        sciScoreAct += studentInfo.getScienceScoreAct();
+                        filiScoreAct += studentInfo.getFilipinoScoreAct();
+                        clScoreAct += studentInfo.getScienceScoreAct();
+
                     }
 
                     name.setText(getNameIntent);
@@ -122,9 +143,33 @@ public class DisplayChildData extends AppCompatActivity {
                             cl.setText(clScore + "/10");
                         }
 
+                        if (mathScoreAct.equals("null")){
+                            mathAct.setText("Not yet taken");
+                        }if(engScoreAct.equals("null")){
+                            englishAct.setText("Not yet taken");
+                        }if(filiScoreAct.equals("null")){
+                            filipinoAct.setText("Not yet taken");
+                        }if(sciScoreAct.equals("null")){
+                            scienceAct.setText("Not yet taken");
+                        }if(clScoreAct.equals("null")){
+                            clAct.setText("Not yet taken");
+                        }if (!mathScoreAct.equals("null")){
+                            mathAct.setText(mathScoreAct + "/5");
+                        }if(!engScoreAct.equals("null")){
+                            englishAct.setText(engScoreAct + "/5");
+                        }if(!filiScoreAct.equals("null")){
+                            filLayoutAct.setVisibility(View.VISIBLE);
+                            filipinoAct.setText(filiScoreAct + "/5");
+                        }if(!sciScoreAct.equals("null")){
+                            scienceAct.setText(sciScoreAct + "/5");
+                        }if(!clScoreAct.equals("null")){
+                            clAct.setText(clScoreAct + "/5");
+                        }
+
 
                     }else{
                         filipinoLayout.setVisibility(View.GONE);
+                        filLayoutAct.setVisibility(View.GONE);
                         if (mathScore.equals("null")){
                             math.setText("Not yet taken");
                         }if(engScore.equals("null")){
@@ -145,6 +190,28 @@ public class DisplayChildData extends AppCompatActivity {
                             science.setText(sciScore + "/10");
                         }if(!clScore.equals("null")){
                             cl.setText(clScore + "/10");
+                        }
+
+                        if (mathScoreAct.equals("null")){
+                            mathAct.setText("Not yet taken");
+                        }if(engScoreAct.equals("null")){
+                            englishAct.setText("Not yet taken");
+                        }if(filiScoreAct.equals("null")){
+                            filipinoAct.setText("Not yet taken");
+                        }if(sciScoreAct.equals("null")){
+                            scienceAct.setText("Not yet taken");
+                        }if(clScoreAct.equals("null")){
+                            clAct.setText("Not yet taken");
+                        }if (!mathScoreAct.equals("null")){
+                            mathAct.setText(mathScoreAct + "/5");
+                        }if(!engScoreAct.equals("null")){
+                            englishAct.setText(engScoreAct + "/5");
+                        }if(!filiScoreAct.equals("null")){
+                            filipinoAct.setText(filiScoreAct + "/5");
+                        }if(!sciScoreAct.equals("null")){
+                            scienceAct.setText(sciScoreAct + "/5");
+                        }if(!clScoreAct.equals("null")){
+                            clAct.setText(clScoreAct + "/5");
                         }
 
 //                        name.setText(getNameIntent);

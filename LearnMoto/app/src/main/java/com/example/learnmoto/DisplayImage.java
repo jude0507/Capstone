@@ -39,7 +39,7 @@ public class DisplayImage {
                     String imageDisplay = "";
                     for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
                         StudentModel studentInfo = documentSnapshot.toObject(StudentModel.class);
-                        studentInfo.setMyid(documentSnapshot.getId());
+                        studentInfo.setMyId(documentSnapshot.getId());
                         imageDisplay += studentInfo.getImageurl();
 
                     }

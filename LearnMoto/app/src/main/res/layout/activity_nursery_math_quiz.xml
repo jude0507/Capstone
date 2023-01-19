@@ -24,7 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Take A Quiz"
+                android:text="Assessment"
                 android:textColor="@color/white"
                 android:textSize="15dp"
                 android:textStyle="bold"/>
@@ -64,6 +64,7 @@
                             android:layout_marginStart="50dp"
                             android:textSize="20sp" />
 
+
                     </LinearLayout>
 
                     <Button
@@ -95,6 +96,17 @@
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         android:onClick="MathQuiz"
+                        android:drawableEnd="@drawable/ic_reading"
+                        android:layout_gravity="center"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Activity"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:layout_marginTop="5dp"
+                        android:onClick="mathActivity"
                         android:drawableEnd="@drawable/ic_reading"
                         android:layout_gravity="center"/>
 
