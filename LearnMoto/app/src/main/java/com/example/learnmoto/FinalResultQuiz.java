@@ -9,6 +9,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.learnmoto.Kinder.Filipino.KinderFilipinoQuiz;
+import com.example.learnmoto.Preparatory.Filipino.PreparatoryFilipinoQuiz;
+import com.example.learnmoto.Student.StudentHomeView;
+
 public class FinalResultQuiz extends AppCompatActivity {
     TextView finalScore,statusView;
     MediaPlayer mediaPlayer;
@@ -38,6 +42,21 @@ public class FinalResultQuiz extends AppCompatActivity {
     }
 
     public void exitBtn(View view) {
-
+        exitActivity();
     }
+
+    @Override
+    public void onBackPressed() {
+        exitActivity();
+    }
+
+    private void exitActivity() {
+        if(StudentHomeView.level.equals("Preparatory")){
+            startActivity(new Intent(getApplicationContext(), PreparatoryFilipinoQuiz.class));
+        }else if(StudentHomeView.level.equals("Kinder")){
+            startActivity(new Intent(getApplicationContext(), KinderFilipinoQuiz.class));
+        }
+    }
+
+
 }

@@ -6,41 +6,52 @@ import java.util.List;
 
 public class StudentModel {
 
-    String myid;
+    String myId;
     public String sName, sAddress, sAge,sPassword, guardianPhone, sID, sGender, sBirthday,
-            sLevel, sGuardian, imageurl, imagename, mathScore, engScore, scienceScore, filipinoScore, clScore;
+            sLevel, sGuardian, imageUrl, imageName, mathScoreQuiz, engScoreQuiz, scienceScoreQuiz, filipinoScoreQuiz, clScoreQuiz,
+            mathScoreAct,engScoreAct,scienceScoreAct,filipinoScoreAct,clScoreAct;
 
     public StudentModel(){
 
     }
 
-    public StudentModel(String sName, String sAddress, String sAge, String sGender, String sBirthday, String sLevel, String sID, String sPassword, String guardianPhone,
-                        String imageurl, String imagename, String mathScore, String engScore, String scienceScore, String filipinoScore, String clScore) {
+    public StudentModel(String myId, String sName, String sAddress, String sAge, String sPassword, String guardianPhone,
+                        String sID, String sGender, String sBirthday, String sLevel, String sGuardian, String imageUrl,
+                        String imageName, String mathScoreQuiz, String engScoreQuiz, String scienceScoreQuiz, String filipinoScoreQuiz,
+                        String clScoreQuiz, String mathScoreAct, String engScoreAct, String scienceScoreAct, String filipinoScoreAct, String clScoreAct) {
+        this.myId = myId;
         this.sName = sName;
         this.sAddress = sAddress;
         this.sAge = sAge;
+        this.sPassword = sPassword;
+        this.guardianPhone = guardianPhone;
+        this.sID = sID;
         this.sGender = sGender;
         this.sBirthday = sBirthday;
         this.sLevel = sLevel;
-        this.sPassword = sPassword;
-        this.sID = sID;
-        this.guardianPhone = guardianPhone;
-        this.imageurl = imageurl;
-        this.imagename = imagename;
-        this.mathScore = mathScore;
-        this.engScore = engScore;
-        this.scienceScore = scienceScore;
-        this.filipinoScore = filipinoScore;
-        this.clScore = clScore;
+        this.sGuardian = sGuardian;
+        this.imageUrl = imageUrl;
+        this.imageName = imageName;
+        this.mathScoreQuiz = mathScoreQuiz;
+        this.engScoreQuiz = engScoreQuiz;
+        this.scienceScoreQuiz = scienceScoreQuiz;
+        this.filipinoScoreQuiz = filipinoScoreQuiz;
+        this.clScoreQuiz = clScoreQuiz;
+        this.mathScoreAct = mathScoreAct;
+        this.engScoreAct = engScoreAct;
+        this.scienceScoreAct = scienceScoreAct;
+        this.filipinoScoreAct = filipinoScoreAct;
+        this.clScoreAct = clScoreAct;
     }
 
     @Exclude
-    public String getMyid() {
-        return myid;
+
+    public String getMyId() {
+        return myId;
     }
 
-    public void setMyid(String documentid) {
-        this.myid = myid;
+    public void setMyId(String myId) {
+        this.myId = myId;
     }
 
     public String getsName() {
@@ -73,6 +84,14 @@ public class StudentModel {
 
     public void setsPassword(String sPassword) {
         this.sPassword = sPassword;
+    }
+
+    public String getGuardianPhone() {
+        return guardianPhone;
+    }
+
+    public void setGuardianPhone(String guardianPhone) {
+        this.guardianPhone = guardianPhone;
     }
 
     public String getsID() {
@@ -115,67 +134,99 @@ public class StudentModel {
         this.sGuardian = sGuardian;
     }
 
-    public String getImageurl() {
-        return imageurl;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setImageurl(String imageurl) {
-        this.imageurl = imageurl;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
-    public String getImagename() {
-        return imagename;
+    public String getImageName() {
+        return imageName;
     }
 
-    public void setImagename(String imagename) {
-        this.imagename = imagename;
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
     }
 
-    public String getGuardianPhone() {
-        return guardianPhone;
+    public String getMathScoreQuiz() {
+        return mathScoreQuiz;
     }
 
-    public void setGuardianPhone(String guardianPhone) {
-        this.guardianPhone = guardianPhone;
+    public void setMathScoreQuiz(String mathScoreQuiz) {
+        this.mathScoreQuiz = mathScoreQuiz;
     }
 
-    public String getMathScore() {
-        return mathScore;
+    public String getEngScoreQuiz() {
+        return engScoreQuiz;
     }
 
-    public void setMathScore(String mathScore) {
-        this.mathScore = mathScore;
+    public void setEngScoreQuiz(String engScoreQuiz) {
+        this.engScoreQuiz = engScoreQuiz;
     }
 
-    public String getEngScore() {
-        return engScore;
+    public String getScienceScoreQuiz() {
+        return scienceScoreQuiz;
     }
 
-    public void setEngScore(String engScore) {
-        this.engScore = engScore;
+    public void setScienceScoreQuiz(String scienceScoreQuiz) {
+        this.scienceScoreQuiz = scienceScoreQuiz;
     }
 
-    public String getScienceScore() {
-        return scienceScore;
+    public String getFilipinoScoreQuiz() {
+        return filipinoScoreQuiz;
     }
 
-    public void setScienceScore(String scienceScore) {
-        this.scienceScore = scienceScore;
+    public void setFilipinoScoreQuiz(String filipinoScoreQuiz) {
+        this.filipinoScoreQuiz = filipinoScoreQuiz;
     }
 
-    public String getFilipinoScore() {
-        return filipinoScore;
+    public String getClScoreQuiz() {
+        return clScoreQuiz;
     }
 
-    public void setFilipinoScore(String filipinoScore) {
-        this.filipinoScore = filipinoScore;
+    public void setClScoreQuiz(String clScoreQuiz) {
+        this.clScoreQuiz = clScoreQuiz;
     }
 
-    public String getClScore() {
-        return clScore;
+    public String getMathScoreAct() {
+        return mathScoreAct;
     }
 
-    public void setClScore(String clScore) {
-        this.clScore = clScore;
+    public void setMathScoreAct(String mathScoreAct) {
+        this.mathScoreAct = mathScoreAct;
+    }
+
+    public String getEngScoreAct() {
+        return engScoreAct;
+    }
+
+    public void setEngScoreAct(String engScoreAct) {
+        this.engScoreAct = engScoreAct;
+    }
+
+    public String getScienceScoreAct() {
+        return scienceScoreAct;
+    }
+
+    public void setScienceScoreAct(String scienceScoreAct) {
+        this.scienceScoreAct = scienceScoreAct;
+    }
+
+    public String getFilipinoScoreAct() {
+        return filipinoScoreAct;
+    }
+
+    public void setFilipinoScoreAct(String filipinoScoreAct) {
+        this.filipinoScoreAct = filipinoScoreAct;
+    }
+
+    public String getClScoreAct() {
+        return clScoreAct;
+    }
+
+    public void setClScoreAct(String clScoreAct) {
+        this.clScoreAct = clScoreAct;
     }
 }
