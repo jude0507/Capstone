@@ -102,6 +102,7 @@ public class DisplayChildData extends AppCompatActivity {
                         filiScore += studentInfo.getFilipinoScoreQuiz();
                         sciScore += studentInfo.getScienceScoreQuiz();
                         clScore += studentInfo.getClScoreQuiz();
+                        filiScore += studentInfo.getFilipinoScoreQuiz();
                         getlevel += studentInfo.getsLevel();
 
                         mathScoreAct += studentInfo.getMathScoreAct();
@@ -130,7 +131,8 @@ public class DisplayChildData extends AppCompatActivity {
                             science.setText("Not yet taken");
                         }if(clScore.equals("null")){
                             cl.setText("Not yet taken");
-                        }if (!mathScore.equals("null")){
+                        }
+                        if (!mathScore.equals("null")){
                             math.setText(mathScore + "/10");
                         }if(!engScore.equals("null")){
                             english.setText(engScore + "/10");

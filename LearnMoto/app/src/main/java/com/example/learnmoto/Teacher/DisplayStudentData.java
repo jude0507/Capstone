@@ -218,19 +218,19 @@ public class DisplayStudentData extends AppCompatActivity {
                         }
 
                         if (!mathScoreAct.equals("null")) {
-                            mathAct.setText(mathScoreAct + "/10");
+                            mathAct.setText(mathScoreAct + "/5");
                         }
                         if (!engScoreAct.equals("null")) {
-                            englishAct.setText(engScoreAct + "/10");
+                            englishAct.setText(engScoreAct + "/5");
                         }
                         if (!filiScoreAct.equals("null")) {
-                            filipinoAct.setText(filiScoreAct + "/10");
+                            filipinoAct.setText(filiScoreAct + "/5");
                         }
                         if (!sciScoreAct.equals("null")) {
-                            scienceAct.setText(sciScoreAct + "/10");
+                            scienceAct.setText(sciScoreAct + "/5");
                         }
                         if (!clScoreAct.equals("null")) {
-                            clAct.setText(clScoreAct + "/10");
+                            clAct.setText(clScoreAct + "/5");
                         }
 
                     }
